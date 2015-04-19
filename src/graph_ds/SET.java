@@ -300,9 +300,13 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
 		System.out.println(set.contains("www.simpsons.com"));
 		System.out.println();
 
-		System.out.println("ceil(www.simpsonr.com) = " + set.ceil("www.simpsonr.com"));
+		System.out.println("----- ceil: returns the smallest key in the set greater than or equal to key");
+		System.out.println("ceil(www.snopesr.com) = " + set.ceil("www.snopesr.com"));
 		System.out.println("ceil(www.simpsons.com) = " + set.ceil("www.simpsons.com"));
+		System.out.println("ceil(www.simpsonr.com) = " + set.ceil("www.simpsonr.com"));
 		System.out.println("ceil(www.simpsont.com) = " + set.ceil("www.simpsont.com"));
+		System.out.println();
+		System.out.println("----- floor: returns the largest key in the set less than or equal to key");
 		System.out.println("floor(www.simpsonr.com) = " + set.floor("www.simpsonr.com"));
 		System.out.println("floor(www.simpsons.com) = " + set.floor("www.simpsons.com"));
 		System.out.println("floor(www.simpsont.com) = " + set.floor("www.simpsont.com"));

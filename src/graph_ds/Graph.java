@@ -17,6 +17,8 @@ package graph_ds;
  *
  *************************************************************************/
 
+import input_output.*;
+
 /**
  * The <tt>Graph</tt> class represents an undirected graph of vertices with
  * string names. It supports the following operations: add an edge, add a
@@ -24,14 +26,18 @@ package graph_ds;
  * to a vertex, is there a vertex, is there an edge between two vertices.
  * Self-loops are permitted; parallel edges are discarded.
  * <p>
+ * </p>
+ * The <tt>Graph</tt> uses Symbol Table to store the Vertex as Key and the set
+ * of its adjacent vertices as its Value. <tt>Symbol Table</tt> holds the
+ * values(adjacent vertices) of each vertex and provides Logarithmic time
+ * operations.
  *
  */
-
-import input_output.*;
 
 public class Graph {
 
 	// symbol table: key = string vertex, value = set of neighboring vertices
+
 	private ST<String, SET<String>> st;
 
 	// number of edges

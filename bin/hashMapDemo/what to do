@@ -1,0 +1,23 @@
+Make an abstract class LivingBeing
+
+Extend this class to HumanBeing, and Animals. 
+
+Read input from the file for each Entity i.e for HumanBeing and Animal.
+Each line in the file corresponds to a specific entity be it HumanBeing or an Animal.
+
+These entries should be stored in a DataStructure where it is easy to find each entry
+and retrieve each entity by its name/type;
+
+Questions:
+1) Store all the records in a Data Structure.
+2) find out whether the record is BONDER or not! If yes, find out the spouse name. and print both the names
+3) Implement all the OOP features.
+4) Implement LinkedList, ArrayList, Set, HashSet along with the HashMap in Java. 
+5) The name of each of the record should be inserted and retrieved in O(1) time.
+6) Calculate total number of pairs, total living beings, total humans and total animals.
+7) Sort each living being and each animal in ascending order by age.
+
+DS to implement with this project:
+HashMap
+LinkedList
+ArrayList

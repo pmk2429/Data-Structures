@@ -11,8 +11,8 @@ package graph_ds.generator;
  *************************************************************************/
 
 import input_output.*;
+import input_output.standardio.StdOut;
 import graph_ds.*;
-import graph_ds.Graph;
 
 /**
  * The <tt>GraphGenerator</tt> class provides static methods for creating

@@ -29,6 +29,8 @@ package graph_ds.operations;
  *************************************************************************/
 
 import input_output.*;
+import input_output.standardio.StdIn;
+import input_output.standardio.StdOut;
 import graph_ds.*;
 import queue.Queue;
 import stack.Stack;
@@ -87,7 +89,7 @@ public class PathFinder {
 	public static void main(String[] args) {
 		String filename = args[0];
 		String delimiter = args[1];
-		In in = new In(filename);
+		StdIn in = new StdIn(filename);
 		Graph G = GraphGenerator.read(in, delimiter);
 		String s = args[2];
 		PathFinder pf = new PathFinder(G, s);
@@ -99,5 +101,4 @@ public class PathFinder {
 			StdOut.println("distance " + pf.distanceTo(t));
 		}
 	}
-
 }

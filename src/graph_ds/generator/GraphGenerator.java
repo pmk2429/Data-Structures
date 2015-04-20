@@ -351,8 +351,6 @@ public class GraphGenerator {
 		return G;
 	}
 
-	// http://www.proofwiki.org/wiki/Labeled_Tree_from_Prüfer_Sequence
-	// http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.36.6484&rep=rep1&type=pdf
 	/**
 	 * Returns a uniformly random tree on <tt>V</tt> vertices. This algorithm
 	 * uses a Prufer sequence and takes time proportional to <em>V log V</em>.

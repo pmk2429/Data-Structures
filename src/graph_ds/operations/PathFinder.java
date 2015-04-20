@@ -28,10 +28,10 @@ package graph_ds.operations;
  *
  *************************************************************************/
 
-import input_output.*;
-import input_output.standardio.StdIn;
-import input_output.standardio.StdOut;
 import graph_ds.*;
+import graph_ds.generator.*;
+import input_output.standardio.*;
+import input_output.io.*;
 import queue.Queue;
 import stack.Stack;
 
@@ -89,7 +89,7 @@ public class PathFinder {
 	public static void main(String[] args) {
 		String filename = args[0];
 		String delimiter = args[1];
-		StdIn in = new StdIn(filename);
+		In in = new In(filename);
 		Graph G = GraphGenerator.read(in, delimiter);
 		String s = args[2];
 		PathFinder pf = new PathFinder(G, s);

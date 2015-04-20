@@ -3,7 +3,7 @@ package graph_ds.operations;
 /*************************************************************************
  *  Compilation:  javac PathFinder.java
  *  Execution:    java Pathfinder input.txt delimiter source
- *  Dependencies: Queue.java Stack.java Graph.java
+ *  Dependencies: Queue.java Stack.java Graph.java(Undirected)
  *  
  *  Runs breadth first search algorithm from source s on a graph G.
  *  After pre processing the graph, can process shortest path queries

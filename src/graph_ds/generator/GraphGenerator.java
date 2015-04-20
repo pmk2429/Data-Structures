@@ -10,9 +10,10 @@ package graph_ds.generator;
  *
  *************************************************************************/
 
-import input_output.*;
+import graph_ds.SET;
+import graph_ds.graph.*;
 import input_output.standardio.StdOut;
-import graph_ds.*;
+import input_output.standardio.StdRandom;
 
 /**
  * The <tt>GraphGenerator</tt> class provides static methods for creating

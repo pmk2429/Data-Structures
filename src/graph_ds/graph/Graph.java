@@ -33,8 +33,8 @@ package graph_ds.graph;
  *  
  *************************************************************************/
 
-import input_output.io.In;
-import input_output.standardio.StdOut;
+import iomain.io.In;
+import iomain.standardio.StdOut;
 import stack.Stack;
 
 /**

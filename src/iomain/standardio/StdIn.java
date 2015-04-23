@@ -1,4 +1,4 @@
-package input_output.standardio;
+package iomain.standardio;
 
 /*************************************************************************
  *  Compilation:  javac StdIn.java

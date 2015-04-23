@@ -31,9 +31,8 @@ package graph_ds.graph;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import input_output.*;
-import input_output.standardio.StdIn;
-import input_output.standardio.StdOut;
+import iomain.standardio.StdIn;
+import iomain.standardio.StdOut;
 
 /**
  * The <tt>Bag</tt> class represents a bag (or multiset) of generic items. It

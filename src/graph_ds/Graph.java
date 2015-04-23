@@ -17,9 +17,9 @@ package graph_ds;
  *
  *************************************************************************/
 
-import input_output.*;
-import input_output.standardio.StdIn;
-import input_output.standardio.StdOut;
+import iomain.*;
+import iomain.standardio.StdIn;
+import iomain.standardio.StdOut;
 
 /**
  * The <tt>Graph</tt> class represents an undirected graph of vertices with

@@ -5,8 +5,8 @@ import java.util.NoSuchElementException;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import input_output.*;
-import input_output.standardio.StdOut;
+import iomain.standardio.*;
+import iomain.standardio.StdOut;
 
 /**
  * The <tt>ST</tt> class represents an ordered symbol table of generic key-value

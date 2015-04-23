@@ -29,9 +29,10 @@ package graph_ds.operations;
  *************************************************************************/
 
 import graph_ds.*;
+import graph_ds.graph.Graph;
 import graph_ds.generator.*;
-import input_output.standardio.*;
-import input_output.io.*;
+import iomain.io.*;
+import iomain.standardio.*;
 import queue.Queue;
 import stack.Stack;
 
@@ -43,7 +44,7 @@ public class PathFinder {
 	private ST<String, Integer> dist = new ST<String, Integer>();
 
 	// run BFS in graph G from given source vertex s
-	public PathFinder(Graph G, String s) {
+	public PathFinder(Graph g, String s) {
 
 		// put source on the queue
 		Queue<String> q = new Queue<String>();
@@ -54,7 +55,7 @@ public class PathFinder {
 		// all its neighbors, provided they haven't yet been visited
 		while (!q.isEmpty()) {
 			String v = q.dequeue();
-			for (String w : G.adjacentTo(v)) {
+			for (String w : g.adjacentTo(v)) {
 				if (!dist.contains(w)) {
 					q.enqueue(w);
 					dist.put(w, 1 + dist.get(v));

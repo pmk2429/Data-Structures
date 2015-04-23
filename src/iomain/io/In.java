@@ -1,4 +1,4 @@
-package input_output.io;
+package iomain.io;
 
 /*************************************************************************
  *  Compilation:  javac In.java

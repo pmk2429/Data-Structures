@@ -1,4 +1,4 @@
-package input_output.standardio;
+package iomain.standardio;
 
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;

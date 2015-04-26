@@ -71,6 +71,10 @@ public class MyArrayList {
 		return -1;
 	}
 
+	public boolean empty() {
+		return (getSize() == 0);
+	}
+
 	// increaseListSize() method is used to increase the size
 	// of the existing ArrayList.
 	private void increaseListSize() {

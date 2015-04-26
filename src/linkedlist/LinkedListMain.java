@@ -1,9 +1,15 @@
 package linkedlist;
 
+/**
+ * {@link LinkedListMain} class in Ocean jar.
+ * 
+ * @author Pavitra
+ *
+ */
 public class LinkedListMain {
 	// reference to the head node.
-	private Node head;
-	private int listCount;
+	public Node head;
+	public int listCount;
 
 	// LinkedList constructor
 	public LinkedListMain() {
@@ -50,15 +56,15 @@ public class LinkedListMain {
 	// post: returns the element at the specified position in this list.
 	{
 		// index must be 1 or higher
-		if (index <= 0)
+		if (index <= 0) {
 			return null;
+		}
 
 		Node current = head.getNext();
 		for (int i = 1; i < index; i++) {
 			if (current.getNext() == null) {
 				return null;
 			}
-
 			current = current.getNext();
 		}
 		return current.getData();
@@ -73,9 +79,9 @@ public class LinkedListMain {
 
 		Node current = head;
 		for (int i = 1; i < index; i++) {
-			if (current.getNext() == null)
+			if (current.getNext() == null) {
 				return false;
-
+			}
 			current = current.getNext();
 		}
 		current.setNext(current.getNext().getNext());
@@ -99,7 +105,11 @@ public class LinkedListMain {
 		return output;
 	}
 
-	private class Node {
+	public Node getHead() {
+		return this.head;
+	}
+
+	public class Node {
 		// reference to the next node in the chain,
 		// or null if there isn't one.
 		Node next;
@@ -136,5 +146,6 @@ public class LinkedListMain {
 		public void setNext(Node _next) {
 			next = _next;
 		}
+
 	}
 }

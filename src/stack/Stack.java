@@ -18,7 +18,6 @@ package stack;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import input_output.*;
 import iomain.standardio.StdIn;
 import iomain.standardio.StdOut;
 

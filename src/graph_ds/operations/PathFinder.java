@@ -28,9 +28,7 @@ package graph_ds.operations;
  *
  *************************************************************************/
 
-import graph_ds.*;
-import graph_ds.graph.Graph;
-import graph_ds.generator.*;
+import graph_ds.undirected.*;
 import iomain.io.*;
 import iomain.standardio.*;
 import queue.Queue;

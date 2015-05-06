@@ -10,12 +10,12 @@ package graph_ds.generator;
  *
  *************************************************************************/
 
-import graph_ds.SET;
+import graph_ds.undirected.SET;
 import graph_ds.graph.*;
-import iomain.io.In;
-import iomain.standardio.StdOut;
-import iomain.standardio.StdRandom;
+import iomain.standardio.*;
+import priorityqueue.MinPQ;
 
+;
 /**
  * The <tt>GraphGenerator</tt> class provides static methods for creating
  * various graphs, including Erdos-Renyi random graphs, random bipartite graphs,
@@ -398,19 +398,6 @@ public class GraphGenerator {
 				pq.insert(prufer[i]);
 		}
 		G.addEdge(pq.delMin(), pq.delMin());
-		return G;
-	}
-
-	public static Graph read(In in, String delimiter) {
-		Graph G = new Graph();
-		while (in.hasNextLine()) {
-			String line = in.readLine();
-			String[] names = line.split(delimiter);
-			String movie = names[0];
-			for (int i = 1; i < names.length; i++) {
-				G.addEdge(movie, names[i]);
-			}
-		}
 		return G;
 	}
 

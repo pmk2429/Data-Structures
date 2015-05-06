@@ -1,4 +1,4 @@
-package graph_ds;
+package graph_ds.undirected;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

@@ -90,7 +90,7 @@ public class Merge {
 	 ***********************************************************************/
 
 	// is v < w ?
-	private static boolean less(Comparable v, Comparable w) {
+	private static boolean less(Comparable<Comparable> v, Comparable w) {
 		return (v.compareTo(w) < 0);
 	}
 

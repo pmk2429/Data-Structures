@@ -1,5 +1,13 @@
 package objectOrdering.comparable;
 
+/**
+ * This class demonstrates the implementation aspects of Comparable interface. 
+ * Comparable allows the natural object ordering of the class.
+ * By implementing a Comparable, we can sort any Object in its natural order.
+ * 
+ * In the below mentioned example, Comparable is implemented on Population of countries.
+ */
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,9 +28,8 @@ public class ComparableMain {
 		System.out.println("\nBefore Sorting: ");
 		for (int i = 0; i < listOfCountries.size(); i++) {
 			Country country = listOfCountries.get(i);
-			System.out.println("Country Id: " + country.getCountryId() + "||"
-					+ "Country name:" + country.getCountryName() + " || "
-					+ country.getCountryPopulation());
+			System.out.println("Country Id: " + country.getCountryId() + "||" + "Country name:"
+					+ country.getCountryName() + " || " + country.getCountryPopulation());
 		}
 
 		/**
@@ -37,9 +44,8 @@ public class ComparableMain {
 
 		for (int i = 0; i < listOfCountries.size(); i++) {
 			Country country = (Country) listOfCountries.get(i);
-			System.out.println("Country Id: " + country.getCountryId() + " || "
-					+ "Country name: " + country.getCountryName() + " || "
-					+ country.getCountryPopulation());
+			System.out.println("Country Id: " + country.getCountryId() + " || " + "Country name: "
+					+ country.getCountryName() + " || " + country.getCountryPopulation());
 		}
 	}
 }

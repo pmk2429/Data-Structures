@@ -1,5 +1,10 @@
 package heap.datastruct;
 
+/**
+ * Heap<Object extends Comparable<Object>> is the general Heap implementation using the Comparable interface.
+ * This class provides the basic feature of Heap implementation.
+ */
+
 import java.util.*;
 
 @SuppressWarnings("unchecked")
@@ -120,20 +125,30 @@ public class Heap<AnyType extends Comparable<AnyType>> {
 		Heap<String> h = new Heap<String>();
 
 		h.insert("p");
-		h.insert("r");
-		h.insert("i");
-		h.insert("o");
-		h.insert("r");
+		h.insert("a");
+		h.insert("v");
 		h.insert("i");
 		h.insert("t");
-		h.insert("y");
+		h.insert("r");
+		h.insert("a");
+		h.insert("k");
+		h.insert("a");
+		h.insert("n");
+		h.insert("s");
+		h.insert("a");
+		h.insert("r");
+		h.insert("a");
+
 		System.out.println(h);
-		h.deleteMin();
-		System.out.println(h);
+		// h.deleteMin();
+		// System.out.println(h);
+
+		System.out.println("---------------------------------");
 
 		Heap<Integer> tmp = new Heap<Integer>();
 		Integer[] a = { 4, 7, 7, 7, 5, 0, 2, 3, 5, 1 };
 		tmp.heapSort(a);
+
 		System.out.println(Arrays.toString(a));
 	}
 }

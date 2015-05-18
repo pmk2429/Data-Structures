@@ -1,6 +1,7 @@
 package heap.datastruct;
 
 /**
+ * The below mentioned code represents the MinHeap presentation of Heap Data Structure.
  * Heap<Object extends Comparable<Object>> is the general Heap implementation using the Comparable interface.
  * This class provides the basic feature of Heap implementation.
  */
@@ -148,7 +149,13 @@ public class Heap<AnyType extends Comparable<AnyType>> {
 		Heap<Integer> tmp = new Heap<Integer>();
 		Integer[] a = { 4, 7, 7, 7, 5, 0, 2, 3, 5, 1 };
 		tmp.heapSort(a);
-
 		System.out.println(Arrays.toString(a));
+
+		// 1 2 8 3 4 9 12 99 5 6
+		Integer[] b = { 8, 3, 9, 2, 6, 1, 12, 99, 5, 4 };
+		tmp.heapSort(b);
+
+		System.out.println("---------------------------------");
+		System.out.println(Arrays.toString(b));
 	}
 }

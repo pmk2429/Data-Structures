@@ -63,7 +63,7 @@ public class Heap<AnyType extends Comparable<AnyType>> {
 	/**
 	 * Sorts a given array of items.
 	 */
-	public void heapSort(AnyType[] array) {
+	public Object[] heapSort(AnyType[] array) {
 		size = array.length;
 		heap = (AnyType[]) new Comparable[size + 1];
 		System.arraycopy(array, 0, heap, 1, size);
@@ -78,6 +78,8 @@ public class Heap<AnyType extends Comparable<AnyType>> {
 		}
 		for (int k = 0; k < heap.length - 1; k++)
 			array[k] = heap[heap.length - 1 - k];
+
+		return array;
 	}
 
 	/**
@@ -148,7 +150,7 @@ public class Heap<AnyType extends Comparable<AnyType>> {
 
 		Heap<Integer> tmp = new Heap<Integer>();
 		Integer[] a = { 4, 7, 7, 7, 5, 0, 2, 3, 5, 1 };
-		tmp.heapSort(a);
+		Integer[] result = (Integer[]) tmp.heapSort(a);
 		System.out.println(Arrays.toString(a));
 
 		// 1 2 8 3 4 9 12 99 5 6

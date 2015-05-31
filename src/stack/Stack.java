@@ -29,10 +29,7 @@ import iomain.standardio.StdOut;
  * <p>
  * All stack operations except iteration are constant time.
  * <p>
- * For additional documentation, see <a
- * href="http://introcs.cs.princeton.edu/43stack">Section 4.3</a> of
- * <i>Introduction to Programming in Java: An Interdisciplinary Approach</i> by
- * Robert Sedgewick and Kevin Wayne.
+ * 
  */
 public class Stack<Item> implements Iterable<Item> {
 	private int N; // size of the stack

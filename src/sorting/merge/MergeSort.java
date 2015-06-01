@@ -27,8 +27,8 @@ public class MergeSort {
 	private static void merge(Comparable[] a, Comparable[] tmp, int left, int right, int rightEnd) {
 		int leftEnd = right - 1;
 		int k = left;
-		int num = rightEnd - left + 1;
 
+		int num = rightEnd - left + 1;
 		while (left <= leftEnd && right <= rightEnd)
 			if (a[left].compareTo(a[right]) <= 0)
 				tmp[k++] = a[left++];

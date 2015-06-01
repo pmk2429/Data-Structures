@@ -1,5 +1,15 @@
 package sortingAlgorithms;
 
+/**
+ * QuickSortDemo provides an implementation of QuickSort algorithm This
+ * algorithm performs sorting operations in O(N Log N) time complexity making it
+ * the faster then Merge sort implementation. In addition QuickSort is used as
+ * "in-place" sorting algorithm where elements in an array are sorted without
+ * creating a duplicate array.
+ * 
+ * @author Pavitra
+ *
+ */
 public class QuickSortDemo {
 	private int[] sortArray;
 	private int length;

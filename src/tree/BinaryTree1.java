@@ -1,4 +1,4 @@
-package treeDemo;
+package tree;
 
 import java.util.Scanner;
 import java.util.Random;

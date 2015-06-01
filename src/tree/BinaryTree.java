@@ -1,4 +1,4 @@
-package treeDemo;
+package tree;
 
 /**
  * Implement these Operations add remove find findMininum findMaximum delete

@@ -1,4 +1,4 @@
-package treeDemo;
+package tree;
 
 import java.util.*;//for convenience, we incluce all from util package
 

@@ -1,4 +1,4 @@
-package treeDemo;
+package tree;
 
 public interface BinaryTreeInterface {
 	public Node addNode(int key, String name);

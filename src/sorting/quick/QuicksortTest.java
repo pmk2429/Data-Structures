@@ -3,7 +3,7 @@ package sorting.quick;
 import java.util.Arrays;
 import java.util.Random;
 
-import org.junit.Before;
+/*import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
@@ -103,3 +103,4 @@ public class QuicksortTest {
 		System.out.println();
 	}
 }
+*/

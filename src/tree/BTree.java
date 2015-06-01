@@ -1,4 +1,4 @@
-package treeDemo;
+package tree;
 
 public class BTree {
 

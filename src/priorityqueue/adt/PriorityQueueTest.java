@@ -15,7 +15,7 @@ class Task {
 
 	/** toString() **/
 	public String toString() {
-		return "Job Name : " + job + "\nPriority : " + priority;
+		return "Job Name : " + job + "\t Priority : " + priority;
 	}
 }
 
@@ -98,14 +98,31 @@ class PriorityQueue {
 /** Class PriorityQueueTest **/
 public class PriorityQueueTest {
 	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
+		PriorityQueue pq = new PriorityQueue(6);
+		pq.insert("A", 2);
+		pq.insert("C", 3);
+		pq.insert("B", 4);
+		pq.insert("V", 7);
+		pq.insert("E", 1);
+		pq.insert("F", 5);
+
+		for (int i = 0; i <= pq.size(); i++) {
+			Task obj = pq.remove();
+			System.out.println(obj.toString());
+		}
+
+	}
+}
+
+/*
+Scanner scan = new Scanner(System.in);
 		System.out.println("Priority Queue Test\n");
 
 		System.out.println("Enter size of priority queue ");
 		PriorityQueue pq = new PriorityQueue(scan.nextInt());
 
 		char ch;
-		/*  Perform Priority Queue operations */
+		  Perform Priority Queue operations 
 		do {
 			System.out.println("\nPriority Queue Operations\n");
 			System.out.println("1. insert");
@@ -145,5 +162,6 @@ public class PriorityQueueTest {
 			System.out.println("\nDo you want to continue (Type y or n) \n");
 			ch = scan.next().charAt(0);
 		} while (ch == 'Y' || ch == 'y');
-	}
-}
+
+		scan.close();
+*/

@@ -8,6 +8,7 @@ import java.io.*;
 ////////////////////////////////////////////////////////////////
 class Node {
 	private int iData; // data item (key)
+
 	// -------------------------------------------------------------
 
 	public Node(int key) // constructor
@@ -32,6 +33,7 @@ class Heap {
 	private Node[] heapArray;
 	private int maxSize; // size of array
 	private int currentSize; // number of nodes in array
+
 	// -------------------------------------------------------------
 
 	public Heap(int mx) // constructor
@@ -55,7 +57,7 @@ class Heap {
 		trickleUp(currentSize++);
 		return true;
 	} // end insert()
-	// -------------------------------------------------------------
+		// -------------------------------------------------------------
 
 	public void trickleUp(int index) {
 		int parent = (index - 1) / 2;
@@ -68,7 +70,7 @@ class Heap {
 		} // end while
 		heapArray[index] = bottom;
 	} // end trickleUp()
-	// -------------------------------------------------------------
+		// -------------------------------------------------------------
 
 	public Node remove() // delete item with max key
 	{ // (assumes non-empty list)
@@ -77,7 +79,7 @@ class Heap {
 		trickleDown(0);
 		return root;
 	} // end remove()
-	// -------------------------------------------------------------
+		// -------------------------------------------------------------
 
 	public void trickleDown(int index) {
 		int largerChild;
@@ -88,8 +90,7 @@ class Heap {
 			int rightChild = leftChild + 1;
 			// find larger child
 			if (rightChild < currentSize && // (rightChild exists?)
-					heapArray[leftChild].getKey() < heapArray[rightChild]
-							.getKey())
+					heapArray[leftChild].getKey() < heapArray[rightChild].getKey())
 				largerChild = rightChild;
 			else
 				largerChild = leftChild;
@@ -102,7 +103,7 @@ class Heap {
 		} // end while
 		heapArray[index] = top; // root to index
 	} // end trickleDown()
-	// -------------------------------------------------------------
+		// -------------------------------------------------------------
 
 	public boolean change(int index, int newValue) {
 		if (index < 0 || index >= currentSize)
@@ -117,7 +118,7 @@ class Heap {
 			trickleDown(index); // trickle it down
 		return true;
 	} // end change()
-	// -------------------------------------------------------------
+		// -------------------------------------------------------------
 
 	public void displayHeap() {
 		System.out.print("heapArray: "); // array format
@@ -160,7 +161,7 @@ class Heap {
 		} // end for
 		System.out.println("\n" + dots + dots); // dotted bottom line
 	} // end displayHeap()
-	// -------------------------------------------------------------
+		// -------------------------------------------------------------
 } // end class Heap
 // //////////////////////////////////////////////////////////////
 
@@ -217,7 +218,7 @@ class HeapApp {
 			} // end switch
 		} // end while
 	} // end main()
-	// -------------------------------------------------------------
+		// -------------------------------------------------------------
 
 	public static String getString() throws IOException {
 		InputStreamReader isr = new InputStreamReader(System.in);

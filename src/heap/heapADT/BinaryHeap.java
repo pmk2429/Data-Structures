@@ -2,6 +2,14 @@ package heap.heapADT;
 
 import java.util.Arrays;
 
+/**
+ * BinaryHeap is the min-heap implementation of Heap Data structure.
+ * 
+ * @author Pavitra
+ *
+ * @param <T>
+ */
+
 public class BinaryHeap<T extends Comparable<T>> {
 	private static final int DEFAULT_CAPACITY = 10;
 	protected T[] array;
@@ -122,6 +130,7 @@ public class BinaryHeap<T extends Comparable<T>> {
 		}
 	}
 
+	// check if the node has parent or not.
 	protected boolean hasParent(int i) {
 		return i > 1;
 	}
@@ -159,4 +168,5 @@ public class BinaryHeap<T extends Comparable<T>> {
 		array[index1] = array[index2];
 		array[index2] = tmp;
 	}
+
 }

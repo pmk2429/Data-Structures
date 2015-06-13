@@ -117,6 +117,8 @@ public class Heap<AnyType extends Comparable<AnyType>> {
 		System.arraycopy(old, 1, heap, 1, size);
 	}
 
+	
+
 	public String toString() {
 		String out = "";
 		for (int k = 1; k <= size; k++)
@@ -132,13 +134,6 @@ public class Heap<AnyType extends Comparable<AnyType>> {
 		h.insert("v");
 		h.insert("i");
 		h.insert("t");
-		h.insert("r");
-		h.insert("a");
-		h.insert("k");
-		h.insert("a");
-		h.insert("n");
-		h.insert("s");
-		h.insert("a");
 		h.insert("r");
 		h.insert("a");
 

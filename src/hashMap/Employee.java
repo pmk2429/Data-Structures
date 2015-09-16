@@ -1,4 +1,4 @@
-package hashMapDemo;
+package hashMap;
 
 import java.util.HashMap;
 
@@ -44,7 +44,8 @@ public class Employee {
 		// TODO Auto-generated method stub
 
 		Employee emp = new Employee("abc", "hhh");
-		Employee emp2 = new Employee("abc", "hhh");
+		Employee emp2 = new Employee("abc", "222");
+		
 		HashMap<Employee, Employee> h = new HashMap<>();
 		// for (int i=0;i<5;i++){
 		h.put(emp, emp);

@@ -1,4 +1,4 @@
-package hashMapDemo;
+package hashMap;
 
 public class HBActivities {
 

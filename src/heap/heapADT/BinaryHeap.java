@@ -99,7 +99,9 @@ public class BinaryHeap<T extends Comparable<T>> {
 			int smallerChild = leftIndex(index);
 
 			// bubble with the smaller child, if I have a smaller child
-			if (hasRightChild(index) && array[leftIndex(index)].compareTo(array[rightIndex(index)]) > 0) {
+			if (hasRightChild(index)
+					&& array[leftIndex(index)]
+							.compareTo(array[rightIndex(index)]) > 0) {
 				smallerChild = rightIndex(index);
 			}
 

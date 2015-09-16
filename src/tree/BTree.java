@@ -68,6 +68,7 @@ public class BTree {
 		return a;
 	}
 
+	// method call for searching the root of the tree
 	public boolean search(TreeNode node, int data) {
 		boolean isNode = false;
 		if (node == null) {
@@ -269,7 +270,6 @@ public class BTree {
 	}
 
 	public int compare(int data, int data2) {
-
 		return data2 - data;
 	}
 
@@ -302,6 +302,5 @@ public class BTree {
 		System.out.println();
 		TreeNode smallest = tree.findMinNode(root, 11);
 		System.out.println("Smallest node in Tree: " + smallest.data);
-
 	}
 }

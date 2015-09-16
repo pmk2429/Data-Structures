@@ -21,9 +21,9 @@ public class BTreeDemo {
 		}
 	}
 
-	public BTreeDemo() {
-		root = null;
-	}
+	// public BTreeDemo() {
+	// root = null;
+	// }
 
 	boolean a;
 	private int[] insert;
@@ -47,7 +47,7 @@ public class BTreeDemo {
 					node.leftbnode = new Node(data);
 				}
 			}
-			// if root is smaller data is shifted to right
+			// if root is smaller data is shifted to right 	
 			else if (data > node.data) {
 				if (node.rightbnode != null) {
 					insert(node.rightbnode, data);
@@ -56,9 +56,7 @@ public class BTreeDemo {
 				}
 			}
 		}
-
-		return (node);
-
+		return node;
 	}
 
 	private int height(Node n) {

@@ -1,4 +1,4 @@
-package hashMap;
+package hashMap.main;
 
 public abstract class LivingBeing {
 	int age;

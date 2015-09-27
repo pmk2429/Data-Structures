@@ -1,8 +1,10 @@
 package hashMap;
 
 /**
- * Override only hashCode
- * 
+ * <p>
+ * <b>Override only hashCode </b>
+ * </p>
+ * <p>
  * MyClass first = new MyClass("a","first"); MyClass second = new
  * MyClass("a","second");
  * 
@@ -16,9 +18,11 @@ package hashMap;
  * second and iterates through the bucket looking if there is an object k such
  * that second.equals(k) is true it won't find any as second.equals(first) will
  * be false.
- * 
- * Override only equals
- * 
+ * </p>
+ * <p>
+ * <b>Override only equals </b>
+ * </p>
+ * <p>
  * If only equals is overriden, then when you call myMap.put(first,someValue)
  * first will hash to some bucket and when you call
  * myMap.put(second,someOtherValue) it will hash to some other bucket (as they
@@ -26,6 +30,19 @@ package hashMap;
  * to the same bucket, the map can't realize it and both of them stay in the
  * map.
  * 
+ * </p>
+ * <p>
+ * <hr>
+ * <br />
+ * Depending on the hashing function, 2 different objects can have the same hash
+ * code. However, 2 objects which are the same must produce the same result when
+ * hashed (unless someone implemented a hashing function with random numbers in
+ * which case it's useless)
+ * 
+ * For example, if I am hashing integers and my hashing function is simply (n %
+ * 10) then the number 17 and the number 27 will produce the same result. This
+ * does not mean that those numbers are the same.
+ * </p>
  * 
  * @author Pavitra
  *

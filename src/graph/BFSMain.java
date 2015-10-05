@@ -100,19 +100,24 @@ class Graph {
             }   // end while
         }  // end while(queue not empty)
 
-        // queue is empty, so we're done
+        // Queue is empty.
         for (int j = 0; j < nVerts; j++)             // reset flags
             vertexList[j].wasVisited = false;
-    }  // end bfs()
+    }
 
-    // returns an unvisited vertex adj to v
+    /**
+     * returns an Unvisited vertex of 'v'.
+     */
+
     public int getAdjUnvisitedVertex(int v) {
-        for (int j = 0; j < nVerts; j++)
-            if (adjMat[v][j] == 1 && vertexList[j].wasVisited == false)
+        for (int j = 0; j < nVerts; j++) {
+            if (adjMat[v][j] == 1 && vertexList[j].wasVisited == false) {
                 return j;
+            }
+        }
         return -1;
-    }  // end getAdjUnvisitedVertex()
-}  // end class Graph
+    }
+}
 
 public class BFSMain {
     public static void main(String[] args) {

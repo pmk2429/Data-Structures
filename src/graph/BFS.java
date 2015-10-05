@@ -7,60 +7,60 @@ import java.util.Scanner;
 
 public class BFS {
 
-	private Queue<Integer> queue;
+    private Queue<Integer> queue;
 
-	public BFS() {
-		queue = new LinkedList<Integer>();
-	}
+    public BFS() {
+        queue = new LinkedList<Integer>();
+    }
 
-	public void bfs(int adjacency_matrix[][], int source) {
-		int number_of_nodes = adjacency_matrix[source].length - 1;
+    public static void main(String... arg) {
+        int number_no_nodes, source;
+        Scanner scanner = null;
 
-		int[] visited = new int[number_of_nodes + 1];
-		int i, element;
+        try {
+            System.out.println("Enter the number of nodes in the graph");
+            scanner = new Scanner(System.in);
+            number_no_nodes = scanner.nextInt();
 
-		visited[source] = 1;
-		queue.add(source);
+            int adjacency_matrix[][] = new int[number_no_nodes + 1][number_no_nodes + 1];
+            System.out.println("Enter the adjacency matrix");
+            for (int i = 1; i <= number_no_nodes; i++)
+                for (int j = 1; j <= number_no_nodes; j++)
+                    adjacency_matrix[i][j] = scanner.nextInt();
 
-		while (!queue.isEmpty()) {
-			element = queue.remove();
-			i = element;
-			System.out.print(i + "\t");
-			while (i <= number_of_nodes) {
-				if (adjacency_matrix[element][i] == 1 && visited[i] == 0) {
-					queue.add(i);
-					visited[i] = 1;
-				}
-				i++;
-			}
-		}
-	}
+            System.out.println("Enter the source for the graph");
+            source = scanner.nextInt();
 
-	public static void main(String... arg) {
-		int number_no_nodes, source;
-		Scanner scanner = null;
+            System.out.println("The BFS traversal of the graph is ");
+            BFS bfs = new BFS();
+            bfs.bfs(adjacency_matrix, source);
 
-		try {
-			System.out.println("Enter the number of nodes in the graph");
-			scanner = new Scanner(System.in);
-			number_no_nodes = scanner.nextInt();
+        } catch (InputMismatchException inputMismatch) {
+            System.out.println("Wrong Input Format");
+        }
+        scanner.close();
+    }
 
-			int adjacency_matrix[][] = new int[number_no_nodes + 1][number_no_nodes + 1];
-			System.out.println("Enter the adjacency matrix");
-			for (int i = 1; i <= number_no_nodes; i++)
-				for (int j = 1; j <= number_no_nodes; j++)
-					adjacency_matrix[i][j] = scanner.nextInt();
+    public void bfs(int adjacency_matrix[][], int source) {
+        int number_of_nodes = adjacency_matrix[source].length - 1;
 
-			System.out.println("Enter the source for the graph");
-			source = scanner.nextInt();
+        int[] visited = new int[number_of_nodes + 1];
+        int i, element;
 
-			System.out.println("The BFS traversal of the graph is ");
-			BFS bfs = new BFS();
-			bfs.bfs(adjacency_matrix, source);
+        visited[source] = 1;
+        queue.add(source);
 
-		} catch (InputMismatchException inputMismatch) {
-			System.out.println("Wrong Input Format");
-		}
-		scanner.close();
-	}
+        while (!queue.isEmpty()) {
+            element = queue.remove();
+            i = element;
+            System.out.print(i + "\t");
+            while (i <= number_of_nodes) {
+                if (adjacency_matrix[element][i] == 1 && visited[i] == 0) {
+                    queue.add(i);
+                    visited[i] = 1;
+                }
+                i++;
+            }
+        }
+    }
 }

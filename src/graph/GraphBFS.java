@@ -1,25 +1,16 @@
 package graph;
 
-/**
- * Created by Pavitra on 9/27/2015.
- */
-
 import java.util.*;
 import java.util.Queue;
 
 public class GraphBFS {
-    /* ------------------------------------------
-       Data structure used to represent a graph
-       ------------------------------------------ */
+
     int[][] adjMatrix;
     int rootNode = 0;
     int NNodes;
 
     boolean[] visited;
 
-    /* -------------------------------
-       Construct a graph of N nodes
-       ------------------------------- */
     GraphBFS(int N) {
         NNodes = N;
         adjMatrix = new int[N][N];

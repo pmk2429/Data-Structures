@@ -6,7 +6,6 @@ class Queue {
     private int front;
     private int rear;
 
-    // -------------------------------------------------------------
     public Queue()            // constructor
     {
         queArray = new int[SIZE];
@@ -14,7 +13,6 @@ class Queue {
         rear = -1;
     }
 
-    // -------------------------------------------------------------
     public void insert(int j) // put item at rear of queue
     {
         if (rear == SIZE - 1)
@@ -22,7 +20,6 @@ class Queue {
         queArray[++rear] = j;
     }
 
-    // -------------------------------------------------------------
     public int remove()       // take item from front of queue
     {
         int temp = queArray[front++];
@@ -31,29 +28,23 @@ class Queue {
         return temp;
     }
 
-    // -------------------------------------------------------------
     public boolean isEmpty()  // true if queue is empty
     {
         return (rear + 1 == front || (front + SIZE - 1 == rear));
     }
-// -------------------------------------------------------------
 }  // end class Queue
 
-////////////////////////////////////////////////////////////////
 class Vertex {
     public char label;        // label (e.g. 'A')
     public boolean wasVisited;
 
-    // -------------------------------------------------------------
     public Vertex(char lab)   // constructor
     {
         label = lab;
         wasVisited = false;
     }
-// -------------------------------------------------------------
 }  // end class Vertex
 
-////////////////////////////////////////////////////////////////
 class Graph {
     private final int MAX_VERTS = 20;
     private Vertex vertexList[]; // list of vertices
@@ -61,7 +52,6 @@ class Graph {
     private int nVerts;          // current number of vertices
     private Queue theQueue;
 
-    // ------------------------------------------------------------
     public Graph()               // constructor
     {
         vertexList = new Vertex[MAX_VERTS];
@@ -74,23 +64,19 @@ class Graph {
         theQueue = new Queue();
     }  // end constructor
 
-    // -------------------------------------------------------------
     public void addVertex(char lab) {
         vertexList[nVerts++] = new Vertex(lab);
     }
 
-    // -------------------------------------------------------------
     public void addEdge(int start, int end) {
         adjMat[start][end] = 1;
         adjMat[end][start] = 1;
     }
 
-    // -------------------------------------------------------------
     public void displayVertex(int v) {
         System.out.print(vertexList[v].label);
     }
 
-    // -------------------------------------------------------------
     public void bfs()                   // breadth-first search
     {                                // begin at vertex 0
         vertexList[0].wasVisited = true; // mark it
@@ -114,7 +100,6 @@ class Graph {
             vertexList[j].wasVisited = false;
     }  // end bfs()
 
-    // -------------------------------------------------------------
     // returns an unvisited vertex adj to v
     public int getAdjUnvisitedVertex(int v) {
         for (int j = 0; j < nVerts; j++)
@@ -122,10 +107,8 @@ class Graph {
                 return j;
         return -1;
     }  // end getAdjUnvisitedVertex()
-// -------------------------------------------------------------
 }  // end class Graph
 
-////////////////////////////////////////////////////////////////
 public class BFSApp {
     public static void main(String[] args) {
         Graph theGraph = new Graph();
@@ -134,15 +117,21 @@ public class BFSApp {
         theGraph.addVertex('C');    // 2
         theGraph.addVertex('D');    // 3
         theGraph.addVertex('E');    // 4
+        theGraph.addVertex('F');    // 5
+        theGraph.addVertex('G');    // 6
+        theGraph.addVertex('H');    // 7
 
         theGraph.addEdge(0, 1);     // AB
         theGraph.addEdge(1, 2);     // BC
         theGraph.addEdge(0, 3);     // AD
         theGraph.addEdge(3, 4);     // DE
+        theGraph.addEdge(3, 5);     // EF
+        theGraph.addEdge(4, 6);     // EG
+        theGraph.addEdge(5, 6);     // FG
+        theGraph.addEdge(6, 7);     // GH
 
         System.out.print("Visits: ");
         theGraph.bfs();             // breadth-first search
         System.out.println();
     }  // end main()
 }  // end class BFSApp
-////////////////////////////////////////////////////////////////

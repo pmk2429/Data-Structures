@@ -32,6 +32,10 @@ class Queue {
     {
         return (rear + 1 == front || (front + SIZE - 1 == rear));
     }
+
+    public int get() {
+        return queArray[front];
+    }
 }  // end class Queue
 
 class Vertex {
@@ -84,11 +88,12 @@ class Graph {
         theQueue.insert(0);              // insert at tail
         int v2;
 
-        while (!theQueue.isEmpty())     // until queue empty,
-        {
-            int v1 = theQueue.remove();   // remove vertex at head
-            // until it has no unvisited neighbors
-            while ((v2 = getAdjUnvisitedVertex(v1)) != -1) {                                  // get one,
+        // loop until the Queue us Empty to traverse all the Vertices in the Graph.
+        while (!theQueue.isEmpty()) {
+            // remove vertex at head
+            int v1 = theQueue.remove();
+            // loop until the Adjacent of the current vertex is all visited.
+            while ((v2 = getAdjUnvisitedVertex(v1)) != -1) {
                 vertexList[v2].wasVisited = true;  // mark it
                 displayVertex(v2);                 // display it
                 theQueue.insert(v2);               // insert it
@@ -109,7 +114,7 @@ class Graph {
     }  // end getAdjUnvisitedVertex()
 }  // end class Graph
 
-public class BFSApp {
+public class BFSMain {
     public static void main(String[] args) {
         Graph theGraph = new Graph();
         theGraph.addVertex('A');    // 0  (start for bfs)
@@ -134,4 +139,4 @@ public class BFSApp {
         theGraph.bfs();             // breadth-first search
         System.out.println();
     }  // end main()
-}  // end class BFSApp
+}  // end class BFSMain

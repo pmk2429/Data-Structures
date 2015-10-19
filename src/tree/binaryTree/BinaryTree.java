@@ -230,14 +230,10 @@ public class BinaryTree {
 
     // find specific node
     public Node findNode(int key) {
-
         // Start at the top of the tree
-
         Node focusNode = root;
 
-        // While we haven't found the Node
-        // keep looking
-
+        // While we haven't found the Node keep looking
         while (focusNode.key != key) {
 
             // If we should search to the left

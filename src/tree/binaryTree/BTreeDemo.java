@@ -258,7 +258,6 @@ public class BTreeDemo {
 	}
 
 	private int getdata(BTreeDemo.Node node) {
-		// TODO Auto-generated method stub
 		while (node.rightbnode != null)
 			node = node.rightbnode;
 

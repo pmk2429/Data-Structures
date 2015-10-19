@@ -1,9 +1,15 @@
 package tree.api;
 
 /**
+ * A Node is the building block of the Tree Data Structure. This provides an efficient and easy way to add
+ * type specific data to the Node be it {@link String}, {@link Integer} or any other custom data type.
+ * <p>
+ * The Node class provide contains the basic properties of a Tree namely Data, Left and Right where Data is
+ * the type of Node being called upon by the calling class and Left, Right are the pointers to the
+ * Left and Right child of the Node.
+ * <p>
  * Created by Pavitra on 10/18/2015.
  */
-// internal Node class.
 public class Node<T> {
     // Nested Node class
     Node left, right;

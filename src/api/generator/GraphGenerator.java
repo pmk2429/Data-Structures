@@ -1,4 +1,4 @@
-package graph_ds.generator;
+package api.generator;
 
 /*************************************************************************
  *  Compilation:  javac GraphGenerator.java
@@ -10,8 +10,8 @@ package graph_ds.generator;
  *
  *************************************************************************/
 
-import graph_ds.undirected.SET;
-import graph_ds.graph.*;
+import api.undirected.SET;
+import api.graph.*;
 import iomain.standardio.*;
 import priorityqueue.MinPQ;
 
@@ -23,37 +23,10 @@ import priorityqueue.MinPQ;
  * <p>
  */
 public class GraphGenerator {
-	private static final class Edge implements Comparable<Edge> {
-		private int v;
-		private int w;
-
-		private Edge(int v, int w) {
-			if (v < w) {
-				this.v = v;
-				this.w = w;
-			} else {
-				this.v = w;
-				this.w = v;
-			}
-		}
-
-		public int compareTo(Edge that) {
-			if (this.v < that.v)
-				return -1;
-			if (this.v > that.v)
-				return +1;
-			if (this.w < that.w)
-				return -1;
-			if (this.w > that.w)
-				return +1;
-			return 0;
-		}
-	}
-
 	/**
 	 * Returns a random simple graph containing <tt>V</tt> vertices and
 	 * <tt>E</tt> edges.
-	 * 
+	 *
 	 * @param V
 	 *            the number of vertices
 	 * @param E
@@ -86,7 +59,7 @@ public class GraphGenerator {
 	 * Returns a random simple graph on <tt>V</tt> vertices, with an edge
 	 * between any two vertices with probability <tt>p</tt>. This is sometimes
 	 * referred to as the Erdos-Renyi random graph model.
-	 * 
+	 *
 	 * @param V
 	 *            the number of vertices
 	 * @param p
@@ -109,7 +82,7 @@ public class GraphGenerator {
 
 	/**
 	 * Returns the complete graph on <tt>V</tt> vertices.
-	 * 
+	 *
 	 * @param V
 	 *            the number of vertices
 	 * @return the complete graph on <tt>V</tt> vertices
@@ -121,7 +94,7 @@ public class GraphGenerator {
 	/**
 	 * Returns a complete bipartite graph on <tt>V1</tt> and <tt>V2</tt>
 	 * vertices.
-	 * 
+	 *
 	 * @param V1
 	 *            the number of vertices in one partition
 	 * @param V2
@@ -138,7 +111,7 @@ public class GraphGenerator {
 	/**
 	 * Returns a random simple bipartite graph on <tt>V1</tt> and <tt>V2</tt>
 	 * vertices with <tt>E</tt> edges.
-	 * 
+	 *
 	 * @param V1
 	 *            the number of vertices in one partition
 	 * @param V2
@@ -178,7 +151,7 @@ public class GraphGenerator {
 	/**
 	 * Returns a random simple bipartite graph on <tt>V1</tt> and <tt>V2</tt>
 	 * vertices, containing each possible edge with probability <tt>p</tt>.
-	 * 
+	 *
 	 * @param V1
 	 *            the number of vertices in one partition
 	 * @param V2
@@ -209,7 +182,7 @@ public class GraphGenerator {
 
 	/**
 	 * Returns a path graph on <tt>V</tt> vertices.
-	 * 
+	 *
 	 * @param V
 	 *            the number of vertices in the path
 	 * @return a path graph on <tt>V</tt> vertices
@@ -228,7 +201,7 @@ public class GraphGenerator {
 
 	/**
 	 * Returns a complete binary tree graph on <tt>V</tt> vertices.
-	 * 
+	 *
 	 * @param V
 	 *            the number of vertices in the binary tree
 	 * @return a complete binary tree graph on <tt>V</tt> vertices
@@ -247,7 +220,7 @@ public class GraphGenerator {
 
 	/**
 	 * Returns a cycle graph on <tt>V</tt> vertices.
-	 * 
+	 *
 	 * @param V
 	 *            the number of vertices in the cycle
 	 * @return a cycle graph on <tt>V</tt> vertices
@@ -267,7 +240,7 @@ public class GraphGenerator {
 
 	/**
 	 * Returns a wheel graph on <tt>V</tt> vertices.
-	 * 
+	 *
 	 * @param V
 	 *            the number of vertices in the wheel
 	 * @return a wheel graph on <tt>V</tt> vertices: a single vertex connected
@@ -298,7 +271,7 @@ public class GraphGenerator {
 
 	/**
 	 * Returns a star graph on <tt>V</tt> vertices.
-	 * 
+	 *
 	 * @param V
 	 *            the number of vertices in the star
 	 * @return a star graph on <tt>V</tt> vertices: a single vertex connected to
@@ -325,7 +298,7 @@ public class GraphGenerator {
 	 * Returns a uniformly random <tt>k</tt>-regular graph on <tt>V</tt>
 	 * vertices (not necessarily simple). The graph is simple with probability
 	 * only about e^(-k^2/4), which is tiny when k = 14.
-	 * 
+	 *
 	 * @param V
 	 *            the number of vertices in the graph
 	 * @return a uniformly random <tt>k</tt>-regular graph on <tt>V</tt>
@@ -355,7 +328,7 @@ public class GraphGenerator {
 	/**
 	 * Returns a uniformly random tree on <tt>V</tt> vertices. This algorithm
 	 * uses a Prufer sequence and takes time proportional to <em>V log V</em>.
-	 * 
+	 *
 	 * @param V
 	 *            the number of vertices in the tree
 	 * @return a uniformly random tree on <tt>V</tt> vertices
@@ -463,6 +436,33 @@ public class GraphGenerator {
 		StdOut.println("wheel");
 		StdOut.println(wheel(V));
 		StdOut.println();
+	}
+
+	private static final class Edge implements Comparable<Edge> {
+		private int v;
+		private int w;
+
+		private Edge(int v, int w) {
+			if (v < w) {
+				this.v = v;
+				this.w = w;
+			} else {
+				this.v = w;
+				this.w = v;
+			}
+		}
+
+		public int compareTo(Edge that) {
+			if (this.v < that.v)
+				return -1;
+			if (this.v > that.v)
+				return +1;
+			if (this.w < that.w)
+				return -1;
+			if (this.w > that.w)
+				return +1;
+			return 0;
+		}
 	}
 
 }

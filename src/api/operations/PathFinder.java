@@ -1,4 +1,4 @@
-package graph_ds.operations;
+package api.operations;
 
 /*************************************************************************
  *  Compilation:  javac PathFinder.java
@@ -28,7 +28,7 @@ package graph_ds.operations;
  *
  *************************************************************************/
 
-import graph_ds.undirected.*;
+import api.undirected.*;
 import iomain.io.*;
 import iomain.standardio.*;
 import queue.Queue;
@@ -63,6 +63,22 @@ public class PathFinder {
 		}
 	}
 
+	public static void main(String[] args) {
+		String filename = args[0];
+		String delimiter = args[1];
+		In in = new In(filename);
+		Graph G = GraphGenerator.read(in, delimiter);
+		String s = args[2];
+		PathFinder pf = new PathFinder(G, s);
+		while (!StdIn.isEmpty()) {
+			String t = StdIn.readLine();
+			for (String v : pf.pathTo(t)) {
+				StdOut.println("   " + v);
+			}
+			StdOut.println("distance " + pf.distanceTo(t));
+		}
+	}
+
 	// is v reachable from the source s?
 	public boolean hasPathTo(String v) {
 		return dist.contains(v);
@@ -83,21 +99,5 @@ public class PathFinder {
 			v = prev.get(v);
 		}
 		return path;
-	}
-
-	public static void main(String[] args) {
-		String filename = args[0];
-		String delimiter = args[1];
-		In in = new In(filename);
-		Graph G = GraphGenerator.read(in, delimiter);
-		String s = args[2];
-		PathFinder pf = new PathFinder(G, s);
-		while (!StdIn.isEmpty()) {
-			String t = StdIn.readLine();
-			for (String v : pf.pathTo(t)) {
-				StdOut.println("   " + v);
-			}
-			StdOut.println("distance " + pf.distanceTo(t));
-		}
 	}
 }

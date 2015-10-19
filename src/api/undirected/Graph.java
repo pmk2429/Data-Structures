@@ -1,4 +1,4 @@
-package graph_ds.undirected;
+package api.undirected;
 
 /*************************************************************************
  *  
@@ -17,7 +17,6 @@ package graph_ds.undirected;
  *
  *************************************************************************/
 
-import iomain.*;
 import iomain.standardio.StdIn;
 import iomain.standardio.StdOut;
 
@@ -64,6 +63,30 @@ public class Graph {
 				addEdge(names[0], names[i]);
 			}
 		}
+	}
+
+	public static void main(String[] args) {
+		Graph G = new Graph();
+		G.addEdge("A", "B");
+		G.addEdge("A", "C");
+		G.addEdge("C", "D");
+		G.addEdge("D", "E");
+		G.addEdge("D", "G");
+		G.addEdge("E", "G");
+		G.addVertex("H");
+
+		// print out graph
+		StdOut.println(G);
+
+		// print out graph again by iterating over vertices and edges
+		for (String v : G.vertices()) {
+			StdOut.print(v + ": ");
+			for (String w : G.adjacentTo(v)) {
+				StdOut.print(w + " ");
+			}
+			StdOut.println();
+		}
+
 	}
 
 	/**
@@ -160,30 +183,6 @@ public class Graph {
 			s.append("\n");
 		}
 		return s.toString();
-	}
-
-	public static void main(String[] args) {
-		Graph G = new Graph();
-		G.addEdge("A", "B");
-		G.addEdge("A", "C");
-		G.addEdge("C", "D");
-		G.addEdge("D", "E");
-		G.addEdge("D", "G");
-		G.addEdge("E", "G");
-		G.addVertex("H");
-
-		// print out graph
-		StdOut.println(G);
-
-		// print out graph again by iterating over vertices and edges
-		for (String v : G.vertices()) {
-			StdOut.print(v + ": ");
-			for (String w : G.adjacentTo(v)) {
-				StdOut.print(w + " ");
-			}
-			StdOut.println();
-		}
-
 	}
 
 }

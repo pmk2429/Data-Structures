@@ -1,4 +1,4 @@
-package tree;
+package tree.binaryTree;
 
 import java.util.*;
 
@@ -21,19 +21,14 @@ class BSTNode {
 		data = n;
 	}
 
-	/* Function to set left node */
-	public void setLeft(BSTNode n) {
-		left = n;
-	}
-
-	/* Function to set right node */
-	public void setRight(BSTNode n) {
-		right = n;
-	}
-
 	/* Function to get left node */
 	public BSTNode getLeft() {
 		return left;
+	}
+
+	/* Function to set left node */
+	public void setLeft(BSTNode n) {
+		left = n;
 	}
 
 	/* Function to get right node */
@@ -41,14 +36,19 @@ class BSTNode {
 		return right;
 	}
 
-	/* Function to set data to node */
-	public void setData(int d) {
-		data = d;
+	/* Function to set right node */
+	public void setRight(BSTNode n) {
+		right = n;
 	}
 
 	/* Function to get data from node */
 	public int getData() {
 		return data;
+	}
+
+	/* Function to set data to node */
+	public void setData(int d) {
+		data = d;
 	}
 }
 

@@ -1,4 +1,4 @@
-package tree;
+package tree.api;
 
 import java.util.*;//for convenience, we incluce all from util package
 

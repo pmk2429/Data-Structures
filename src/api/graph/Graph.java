@@ -1,4 +1,4 @@
-package graph_ds.graph;
+package api.graph;
 
 /*************************************************************************
  * Dependencies: Bag.java In.java StdOut.java

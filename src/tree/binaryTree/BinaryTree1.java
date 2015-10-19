@@ -1,4 +1,4 @@
-package tree;
+package tree.binaryTree;
 
 import java.util.Scanner;
 import java.util.Random;
@@ -6,28 +6,96 @@ import java.lang.String;
 
 public class BinaryTree1 {
 
-	private Node root;
 	// node is created
 	int count = 0;
-
-	private static class Node {
-		Node leftbnode, rightbnode;
-
-		int data;
-
-		Node(int newdata) {
-			leftbnode = null;
-			rightbnode = null;
-			this.data = newdata;
-		}
-	}
+	boolean a;
+	private Node root;
+	private int[] insert;
 
 	public BinaryTree1() {
 		root = null;
 	}
 
-	boolean a;
-	private int[] insert;
+	public static void main(String args[]) {
+		System.out.println("Enter number of elements");
+		int n = 0, s = 0, a[] = new int[10000];
+		// get input from user
+		Scanner in = new Scanner(System.in);
+		n = in.nextInt();
+		// generate random nos
+		Random randomGenerator = new Random();
+		for (int i = 0; i < n; i++) {
+			a[i] = randomGenerator.nextInt(100);
+		}
+		for (int i = 0; i < n; i++) {
+			System.out.print(" " + a[i]);
+		}
+		System.out.println();
+		BinaryTree1 b = new BinaryTree1();
+		// intial insertion
+		for (int k = 0; k < n; k++) {
+			if (b.count == 0 || b.count == n / 2) {
+				int h = b.height(b.root);
+				System.out.println("the height of the tree for n  " + b.count
+						+ " is " + +(h + 1));
+
+			}
+			b.insert(a[k]);
+
+		}
+		System.out.println(" ");
+
+		// System.out.println("-----------------------After initial insertion-----------------------------------------------");
+		b.printTree();
+
+		int de = (int) ((2 * n) * 0.2);
+		int f = (int) ((2 * n) * 0.3);
+		// 2n operation
+		System.out.println("During insertion");
+		for (int j = 0; j < f; j++) {
+			int x = randomGenerator.nextInt(100);
+			// System.out.println("Count="+b.count);
+
+			if (b.count == 0 || b.count == n / 2 || b.count == n
+					|| b.count == ((3 * n) / 2) || b.count == (2 * n)) {
+
+				int h = b.height(b.root);
+				System.out.println("the height of the tree for n  " + n
+						+ " is " + h);
+
+			}
+			// System.out.println("The no to be inserted is "+x);
+			b.insert(x);
+			// System.out.println("After insertion tree is ");
+			// b.printTree();
+		}
+
+		// search 0.5 probability
+		for (int j = 0; j < ((2 * n) * 0.5); j++) {
+			s = randomGenerator.nextInt(100);
+			b.search(s);
+			// b.printsearch(s);
+		}
+		// delete
+		System.out.println("During deletion");
+		for (int j = 0; j < de; j++) {
+			int y = randomGenerator.nextInt(100);
+
+			// System.out.println("Count="+b.count);
+			if (b.count == 0 || b.count == n / 2 || b.count == n
+					|| b.count == ((3 * n) / 2) || b.count == 2 * n) {
+				int h = b.height(b.root);
+				System.out.println("the height of the tree for n  " + n
+						+ " is " + h);
+			}
+			// System.out.println("The no to be deleted is "+y);
+			b.deletebst(y);
+			System.out.println("After deletion tree is ");
+			b.printTree();
+
+		}
+		System.out.println("Program done");
+	}
 
 	// insertion Function is called
 	public void insert(int data) {
@@ -212,85 +280,16 @@ public class BinaryTree1 {
 		return (node);
 	}
 
-	public static void main(String args[]) {
-		System.out.println("Enter number of elements");
-		int n = 0, s = 0, a[] = new int[10000];
-		// get input from user
-		Scanner in = new Scanner(System.in);
-		n = in.nextInt();
-		// generate random nos
-		Random randomGenerator = new Random();
-		for (int i = 0; i < n; i++) {
-			a[i] = randomGenerator.nextInt(100);
+	private static class Node {
+		Node leftbnode, rightbnode;
+
+		int data;
+
+		Node(int newdata) {
+			leftbnode = null;
+			rightbnode = null;
+			this.data = newdata;
 		}
-		for (int i = 0; i < n; i++) {
-			System.out.print(" "+a[i]);
-		}
-		System.out.println();
-		BinaryTree1 b = new BinaryTree1();
-		// intial insertion
-		for (int k = 0; k < n; k++) {
-			if (b.count == 0 || b.count == n / 2) {
-				int h = b.height(b.root);
-				System.out.println("the height of the tree for n  " + b.count
-						+ " is " + +(h + 1));
-
-			}
-			b.insert(a[k]);
-
-		}
-		System.out.println(" ");
-
-		// System.out.println("-----------------------After initial insertion-----------------------------------------------");
-		b.printTree();
-
-		int de = (int) ((2 * n) * 0.2);
-		int f = (int) ((2 * n) * 0.3);
-		// 2n operation
-		System.out.println("During insertion");
-		for (int j = 0; j < f; j++) {
-			int x = randomGenerator.nextInt(100);
-			// System.out.println("Count="+b.count);
-
-			if (b.count == 0 || b.count == n / 2 || b.count == n
-					|| b.count == ((3 * n) / 2) || b.count == (2 * n)) {
-
-				int h = b.height(b.root);
-				System.out.println("the height of the tree for n  " + n
-						+ " is " + h);
-
-			}
-			// System.out.println("The no to be inserted is "+x);
-			b.insert(x);
-			// System.out.println("After insertion tree is ");
-			// b.printTree();
-		}
-
-		// search 0.5 probability
-		for (int j = 0; j < ((2 * n) * 0.5); j++) {
-			s = randomGenerator.nextInt(100);
-			b.search(s);
-			// b.printsearch(s);
-		}
-		// delete
-		System.out.println("During deletion");
-		for (int j = 0; j < de; j++) {
-			int y = randomGenerator.nextInt(100);
-
-			// System.out.println("Count="+b.count);
-			if (b.count == 0 || b.count == n / 2 || b.count == n
-					|| b.count == ((3 * n) / 2) || b.count == 2 * n) {
-				int h = b.height(b.root);
-				System.out.println("the height of the tree for n  " + n
-						+ " is " + h);
-			}
-			// System.out.println("The no to be deleted is "+y);
-			b.deletebst(y);
-			System.out.println("After deletion tree is ");
-			b.printTree();
-
-		}
-		System.out.println("Program done");
 	}
 
 }

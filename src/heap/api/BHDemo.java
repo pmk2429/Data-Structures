@@ -1,4 +1,4 @@
-package heap.heapADT;
+package heap.api;
 
 public class BHDemo {
 	public static void main(String[] args) {

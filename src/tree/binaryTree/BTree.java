@@ -1,24 +1,42 @@
-package tree;
+package tree.binaryTree;
 
 public class BTree {
 
 	public static TreeNode root;
 
-	// Nested Node class
-	private static class TreeNode {
-		TreeNode leftChild;
-		TreeNode rightChild;
-		int data;
-
-		public TreeNode(int data) {
-			leftChild = null;
-			rightChild = null;
-			this.data = data;
-		}
-	}
-
 	public BTree() {
 		root = null;
+	}
+
+	public static void main(String[] args) {
+		BTree tree = new BTree();
+		tree.insert(11);
+		tree.insert(8);
+		tree.insert(12);
+		tree.insert(4);
+		tree.insert(9);
+		tree.insert(2);
+		tree.insert(5);
+		tree.insert(14);
+		tree.insert(13);
+		System.out.println();
+		tree.printTree();
+
+		System.out.println();
+		TreeNode predecessor = tree.findPredecessor(11);
+		System.out.println("Predecessor of 11: " + predecessor.data);
+
+		System.out.println();
+		TreeNode successor = tree.findSuccessor(11);
+		System.out.println("Successor of 11: " + successor.data);
+
+		System.out.println();
+		TreeNode largest = tree.findMaxNode(root, 11);
+		System.out.println("Largest node in Tree: " + largest.data);
+
+		System.out.println();
+		TreeNode smallest = tree.findMinNode(root, 11);
+		System.out.println("Smallest node in Tree: " + smallest.data);
 	}
 
 	public void insert(int data) {
@@ -273,34 +291,16 @@ public class BTree {
 		return data2 - data;
 	}
 
-	public static void main(String[] args) {
-		BTree tree = new BTree();
-		tree.insert(11);
-		tree.insert(8);
-		tree.insert(12);
-		tree.insert(4);
-		tree.insert(9);
-		tree.insert(2);
-		tree.insert(5);
-		tree.insert(14);
-		tree.insert(13);
-		System.out.println();
-		tree.printTree();
+	// Nested Node class
+	private static class TreeNode {
+		TreeNode leftChild;
+		TreeNode rightChild;
+		int data;
 
-		System.out.println();
-		TreeNode predecessor = tree.findPredecessor(11);
-		System.out.println("Predecessor of 11: " + predecessor.data);
-
-		System.out.println();
-		TreeNode successor = tree.findSuccessor(11);
-		System.out.println("Successor of 11: " + successor.data);
-
-		System.out.println();
-		TreeNode largest = tree.findMaxNode(root, 11);
-		System.out.println("Largest node in Tree: " + largest.data);
-
-		System.out.println();
-		TreeNode smallest = tree.findMinNode(root, 11);
-		System.out.println("Smallest node in Tree: " + smallest.data);
+		public TreeNode(int data) {
+			leftChild = null;
+			rightChild = null;
+			this.data = data;
+		}
 	}
 }

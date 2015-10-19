@@ -1,4 +1,4 @@
-package heap.heapADT;
+package heap.api;
 
 import java.util.Arrays;
 

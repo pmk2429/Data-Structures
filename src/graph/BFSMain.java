@@ -8,7 +8,7 @@ class Queue {
 
     public Queue()            // constructor
     {
-        queArray = new int[SIZE];
+        queArray = new int[SIZE]; 
         front = 0;
         rear = -1;
     }
@@ -38,6 +38,7 @@ class Queue {
     }
 }  // end class Queue
 
+
 class Vertex {
     public char label;        // label (e.g. 'A')
     public boolean wasVisited;
@@ -56,8 +57,9 @@ class Graph {
     private int nVerts;          // current number of vertices
     private Queue theQueue;
 
-    public Graph()               // constructor
-    {
+    // initialize the VertexList, Queue and Adjacency Matrix.
+    public Graph() {
+        // initialize the vertexList.
         vertexList = new Vertex[MAX_VERTS];
         // adjacency matrix
         adjMat = new int[MAX_VERTS][MAX_VERTS];

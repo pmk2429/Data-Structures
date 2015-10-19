@@ -1,4 +1,4 @@
-package graph_ds.undirected;
+package api.undirected;
 
 import iomain.io.In;
 import iomain.standardio.*;

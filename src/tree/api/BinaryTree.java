@@ -4,9 +4,8 @@ import java.util.*;
 import java.util.function.Consumer;
 
 /**
- * BinaryTree class provides a Generic Class to implement the Binary Tree DS. This class provides the
- * concrete implementation of the behavior specified in the ITree. Binary Tree class extends the
- * Comparable Interface for comparing the data based on
+ * A Generic implementation of the Binary Tree. This class provides the concrete implementation of the behavior
+ * specified in the ITree. Binary Tree class extends the Comparable Interface for comparing the data based
  * <p>
  * Created by Pavitra on 10/17/2015.
  */
@@ -14,7 +13,6 @@ public class BinaryTree<T extends Comparable<T>> implements ITree<T>, Iterable<T
 
     private Node<T> root;
     private Comparator<T> comparator;
-
 
     // Default constructor.
     public BinaryTree() {

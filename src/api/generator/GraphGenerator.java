@@ -13,7 +13,7 @@ package api.generator;
 import api.undirected.SET;
 import api.graph.*;
 import iomain.standardio.*;
-import priorityqueue.MinPQ;
+import queue.priorityqueue.MinPQ;
 
 ;
 /**

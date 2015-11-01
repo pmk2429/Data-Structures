@@ -9,7 +9,23 @@ public class TreeDemo {
         BinaryTree<Integer> bst = new BinaryTree<>();
         for (Integer n : a) bst.add(n);
 
+        BinaryTree<Animal> animalBinaryTree = new BinaryTree<Animal>();
+
         bst.preOrderTraversal();
         System.out.println();
+    }
+}
+
+
+class Animal implements Comparable<Animal> {
+    String name;
+    int age;
+
+    public Animal() {
+    }
+
+    @Override
+    public int compareTo(Animal o) {
+        return 0;
     }
 }

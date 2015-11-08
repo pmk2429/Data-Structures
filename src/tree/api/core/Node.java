@@ -1,4 +1,4 @@
-package tree.api;
+package tree.api.core;
 
 /**
  * A Node is the building block of the Tree Data Structure. This provides an efficient and easy way to add

@@ -1,6 +1,11 @@
-package tree.api;
+package tree.api.core;
 
-import java.util.*;
+import tree.api.exceptions.BoundaryViolationException;
+import tree.api.exceptions.InvalidNodeException;
+
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.Spliterator;
 import java.util.function.Consumer;
 
 /**
@@ -13,6 +18,8 @@ public class BinaryTree<T extends Comparable<T>> implements ITree<T>, Iterable<T
 
     private Node<T> root;
     private Comparator<T> comparator;
+    private static String INVALID_NODE_MESSAGE = "Invalid Node in Tree";
+    private static String INVALID_NODE_ERROR_CODE = "Invalid_Node";
 
     // Default constructor.
     public BinaryTree() {
@@ -34,17 +41,10 @@ public class BinaryTree<T extends Comparable<T>> implements ITree<T>, Iterable<T
         }
     }
 
-    /**
-     * This method is used to Add a {@link Node} to the BinaryTree. It takes a Generic data type as an
-     * argument and then internally calls another method add(Node, data) to insert the data into the BinaryTree
-     *
-     * @param data
-     */
     @Override
     public void add(T data) {
         root = add(root, data);
     }
-
 
     // Helper method used to add the type specific data to the Tree based on the index.
     private Node add(Node<T> root, T data) {
@@ -62,7 +62,6 @@ public class BinaryTree<T extends Comparable<T>> implements ITree<T>, Iterable<T
         else {
             root.right = add(root.right, data);
         }
-
         return root;
     }
 
@@ -99,7 +98,7 @@ public class BinaryTree<T extends Comparable<T>> implements ITree<T>, Iterable<T
             else if (root.right == null) return root.left;
             else {
                 // get the data from the right most node in the left subtree.
-                root.data = getData(root.left);
+                root.data = (T) getData(root.left);
                 // delete the rightmost node in the left subtree.
                 root.left = delete(root.left, root.data);
             }
@@ -107,9 +106,26 @@ public class BinaryTree<T extends Comparable<T>> implements ITree<T>, Iterable<T
         return null;
     }
 
+    /**
+     * Method to return whether the input Tree is BinaryTree or not.
+     *
+     * @param root
+     * @return
+     */
+    public boolean isBinaryTree(Node root) {
+        return false;
+    }
+
+
     @Override
     public void deleteMin(Node<T> root) {
 
+    }
+
+
+    @Override
+    public boolean isRoot(Node<T> node) {
+        return false;
     }
 
     @Override
@@ -122,44 +138,69 @@ public class BinaryTree<T extends Comparable<T>> implements ITree<T>, Iterable<T
         return root;
     }
 
-
     @Override
-    public void search() {
-
+    public T replace(Node<T> originalNode, T replacementNode) {
+        return null;
     }
+
 
     @Override
     public T getData(Node<T> node) {
         return node.data;
     }
 
-    @Override
+
+    /**
+     * Method to get the Right node of the Node.
+     *
+     * @param node
+     * @return
+     */
     public Node getRight(Node<T> node) {
         return node.right;
     }
 
-    @Override
+
+    /**
+     * Method to get the Left node of the Node.
+     *
+     * @param node
+     * @return
+     */
     public Node getLeft(Node<T> node) {
         return node.left;
     }
 
-    @Override
+    /**
+     * Returns the position of the Node in the Tree.
+     *
+     * @param node
+     * @return
+     */
     public int getPosition(Node node) {
         return 0;
     }
 
     @Override
     public int height(Node node) {
+
+
         return 0;
     }
 
     @Override
     public int depth(Node node) {
-        return 0;
-    }
-
-    @Override
-    public int maximum() {
+        if (isRoot(node)) {
+            return 0;
+        } else {
+            try {
+                return 1 + depth(this.parent((T) node.data));
+            } catch (InvalidNodeException e) {
+                e.getMessage();
+            } catch (BoundaryViolationException e) {
+                e.printStackTrace();
+            }
+        }
         return 0;
     }
 
@@ -184,9 +225,62 @@ public class BinaryTree<T extends Comparable<T>> implements ITree<T>, Iterable<T
     }
 
     @Override
+    public Node<T> parent(T data) throws InvalidNodeException, BoundaryViolationException {
+        if (data == null) {
+            throw new InvalidNodeException(INVALID_NODE_MESSAGE, INVALID_NODE_ERROR_CODE);
+        } else {
+            return parent(root, data);
+        }
+
+    }
+
+    /**
+     * Helper method to find the Parent of a specific Node in a Tree
+     *
+     * @param root
+     * @param data
+     * @return
+     */
+    private Node<T> parent(Node<T> root, T data) {
+        // Root does not have any parent.
+        if (isRoot(root) || root == null) {
+            return null;
+        } else {
+            // if the root's left or right is root itself, return root.
+            if (root.left.data == data || root.right.data == data) {
+                return root;
+            } else {
+                // if the data in root is less than data in given Node
+                if (root.data.compareTo(data) < 0) {
+                    return parent(root.right, data);
+                } else {
+                    return parent(root.left, data);
+                }
+            }
+        }
+    }
+
+    @Override
+    public boolean isInternal(Node<T> node) throws InvalidNodeException {
+        return false;
+    }
+
+    @Override
+    public boolean isExternal(Node<T> node) throws InvalidNodeException {
+        return false;
+    }
+
+
+    /**
+     * Method to find the successor of the given Node.
+     *
+     * @param root
+     * @return
+     */
     public Node getSuccessor(Node<T> root) {
         return null;
     }
+
 
     @Override
     public boolean hasLeft(Node node) {
@@ -209,11 +303,6 @@ public class BinaryTree<T extends Comparable<T>> implements ITree<T>, Iterable<T
     }
 
     @Override
-    public boolean isBinaryTree(Node root) {
-        return false;
-    }
-
-    @Override
     public boolean isEmpty() {
         return size() == 0;
     }
@@ -231,7 +320,6 @@ public class BinaryTree<T extends Comparable<T>> implements ITree<T>, Iterable<T
         return 0;
     }
 
-
     @Override
     public boolean contains(T data) {
         return false;
@@ -244,7 +332,6 @@ public class BinaryTree<T extends Comparable<T>> implements ITree<T>, Iterable<T
 
     @Override
     public void forEach(Consumer<? super T> action) {
-
     }
 
     @Override

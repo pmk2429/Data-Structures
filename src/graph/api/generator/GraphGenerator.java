@@ -1,4 +1,4 @@
-package api.generator;
+package graph.api.generator;
 
 /*************************************************************************
  *  Compilation:  javac GraphGenerator.java
@@ -10,8 +10,8 @@ package api.generator;
  *
  *************************************************************************/
 
-import api.undirected.SET;
-import api.graph.*;
+import graph.api.undirected.SET;
+import graph.api.graph.*;
 import iomain.standardio.*;
 import queue.priorityqueue.MinPQ;
 

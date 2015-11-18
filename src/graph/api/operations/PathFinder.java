@@ -1,4 +1,4 @@
-package api.operations;
+package graph.api.operations;
 
 /*************************************************************************
  *  Compilation:  javac PathFinder.java
@@ -28,7 +28,7 @@ package api.operations;
  *
  *************************************************************************/
 
-import api.undirected.*;
+import graph.api.undirected.*;
 import iomain.io.*;
 import iomain.standardio.*;
 import queue.Queue;

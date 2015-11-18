@@ -1,4 +1,4 @@
-package api.undirected;
+package graph.api.undirected;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

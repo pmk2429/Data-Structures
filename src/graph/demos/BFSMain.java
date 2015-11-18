@@ -1,4 +1,4 @@
-package graph;
+package graph.demos;
 
 class Queue {
     private final int SIZE = 20;

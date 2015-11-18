@@ -11,13 +11,24 @@ import tree.api.exceptions.InvalidNodeException;
  * Generic  interface and hence it provides a generic type checking for all the implementing classes which are
  * parameterized over custom types.
  * <p>
+ * Binary tree: Tree where each node has up to two leaves
+ * <p>
+ * 1
+ * / \
+ * 2   3
+ * <b>Binary search tree:</b> Used for searching. A binary tree where the left child contains only nodes with values
+ * less than the parent node, and where the right child only contains nodes with values greater than or equal to the parent.
+ * <p>
+ * 2
+ * / \
+ * 1   3
  * Created by Pavitra on 10/17/2015.
  */
 public interface ITree<T> {
 
     /**
-     * This method is used to Add a {@link Node} to the BinaryTree. It takes a Generic data type as an
-     * argument and then internally calls another method add(Node, data) to insert the data into the BinaryTree.
+     * This method is used to Add a {@link Node} to the BinarySearchTree. It takes a Generic data type as an
+     * argument and then internally calls another method add(Node, data) to insert the data into the BinarySearchTree.
      * Accepts <tt>Comparable </tt> type class.
      *
      * @param data
@@ -47,7 +58,7 @@ public interface ITree<T> {
      * @param node
      * @return
      */
-    boolean isRoot(Node<T> node);
+    boolean isRoot(T node) throws InvalidNodeException, BoundaryViolationException;
 
     /**
      * Method to delete the Maximum element found in the tree.
@@ -99,7 +110,7 @@ public interface ITree<T> {
      * @param node
      * @return
      */
-    int height(Node node);
+    int height(T node);
 
     /**
      * Returns the depth of a specific node in the Tree. Depth defines the total number of ancestors of a specific
@@ -108,7 +119,7 @@ public interface ITree<T> {
      * @param node
      * @return
      */
-    int depth(Node node);
+    int depth(T node) throws InvalidNodeException, BoundaryViolationException;
 
     /**
      * Method to get the total number of leaf in a particulat tree/subtree. This method takes root of tree/subtree as
@@ -219,5 +230,13 @@ public interface ITree<T> {
      * @return
      */
     int size();
+
+    /**
+     * Returns the Null node when no Node is found. The Null node
+     */
+    Node<T> getNullNode();
+
+
+    Node<T> search(T node);
 
 }

@@ -1,4 +1,4 @@
-package graph;
+package graph.demos;
 
 import java.util.InputMismatchException;
 import java.util.LinkedList;

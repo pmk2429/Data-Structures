@@ -1,4 +1,4 @@
-package graph;
+package graph.demos;
 
 import java.util.*;
 import java.util.Queue;

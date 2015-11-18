@@ -1,4 +1,4 @@
-package tree.binaryTree;
+package tree.bt;
 
 /**
  * Implement these Operations add remove find findMininum findMaximum delete

@@ -18,7 +18,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     private static String INVALID_NODE_MESSAGE = "Invalid Node in Tree";
     private static String INVALID_NODE_ERROR_CODE = "Invalid_Node";
-    int counter = 1;
     private Node<T> root;
     private Comparator<T> comparator;
 
@@ -120,13 +119,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
         return false;
     }
 
-
-    @Override
-    public void deleteMin(Node<T> root) {
-
-    }
-
-
     @Override
     public boolean isRoot(T node) throws BoundaryViolationException, InvalidNodeException {
         // check if the current node is parent or not
@@ -135,6 +127,11 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
         } else {
             return false;
         }
+    }
+
+    @Override
+    public void deleteMin(Node<T> root) {
+
     }
 
     @Override
@@ -196,12 +193,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
             return -1;
         } else {
             Node currentNode = search(node);
-            if (currentNode != null) {
-                return heightMain(currentNode)
-                        ;
-            } else {
-                return -1;
-            }
+            return currentNode != null ? heightMain(currentNode) : -1;
         }
     }
 
@@ -228,7 +220,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
         } else {
             return search(root, node);
         }
-
     }
 
     /**
@@ -251,7 +242,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
                 } else {
                     foundNode = search(root.right, node);
                 }
-
                 return foundNode;
             }
         } else {
@@ -282,12 +272,24 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
     }
 
     @Override
-    public Node findMaximum(Node root) {
+    public Node maximum() {
+
+        return maximum(root);
+    }
+
+    /**
+     * Helper method to find the Maximum element in a Tree or SubTree.
+     *
+     * @param root
+     * @return
+     */
+    private Node maximum(Node<T> root) {
+
         return null;
     }
 
     @Override
-    public Node findMinimum(Node root) {
+    public Node minimum() {
         return null;
     }
 
@@ -351,18 +353,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
     public Node getSuccessor(Node<T> root) {
         return null;
     }
-
-
-    @Override
-    public boolean hasLeft(Node node) {
-        return (node.left != null);
-    }
-
-    @Override
-    public boolean hasRight(Node node) {
-        return (node.right != null);
-    }
-
+    
     @Override
     public boolean hasChild(Node node) {
         return false;

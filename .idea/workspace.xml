@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4b1b7673-4238-44ec-8483-668796b14a4c" name="Default" comment="Add Height of Node and Search methods in the BST.">
+    <list default="true" id="4b1b7673-4238-44ec-8483-668796b14a4c" name="Default" comment="Remove debugging from methods">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tree/api/core/TreeADT.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tree/api/core/BinarySearchTree.java" afterPath="$PROJECT_DIR$/src/tree/api/core/BinarySearchTree.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tree/api/core/BinaryTree.java" afterPath="$PROJECT_DIR$/src/tree/api/core/BinaryTree.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tree/api/core/ITree.java" afterPath="$PROJECT_DIR$/src/tree/api/core/ITree.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tree/api/core/Node.java" afterPath="$PROJECT_DIR$/src/tree/api/core/Node.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tree/api/TreeDemo.java" afterPath="$PROJECT_DIR$/src/tree/api/TreeDemo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\tree\binaryTree\BSTMain.java" afterPath="$PROJECT_DIR$/src/tree/bt/BSTMain.java" />
+      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\tree\binaryTree\BTree.java" afterPath="$PROJECT_DIR$/src/tree/bt/BTree.java" />
+      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\tree\binaryTree\BTreeDemo.java" afterPath="$PROJECT_DIR$/src/tree/bt/BTreeDemo.java" />
+      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\tree\binaryTree\BinaryTree.java" afterPath="$PROJECT_DIR$/src/tree/bt/BinaryTree.java" />
+      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\tree\binaryTree\BinaryTree1.java" afterPath="$PROJECT_DIR$/src/tree/bt/BinaryTree1.java" />
+      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\tree\binaryTree\BinaryTreeInterface.java" afterPath="$PROJECT_DIR$/src/tree/bt/BinaryTreeInterface.java" />
     </list>
     <ignored path="DataStructures.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,29 +49,70 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BinarySearchTree.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ITree.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tree/api/core/ITree.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="203" column="43" selection-start-line="203" selection-start-column="43" selection-end-line="203" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BinarySearchTree.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tree/api/core/BinarySearchTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.19809826">
-              <caret line="194" column="18" selection-start-line="194" selection-start-column="18" selection-end-line="194" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="421" column="0" selection-start-line="421" selection-start-column="0" selection-end-line="421" selection-end-column="0" />
               <folding>
-                <element signature="e#7183#7184#0" expanded="true" />
-                <element signature="e#7207#7208#0" expanded="true" />
-                <element signature="e#7263#7264#0" expanded="true" />
-                <element signature="e#7290#7291#0" expanded="true" />
-                <element signature="e#7346#7347#0" expanded="true" />
-                <element signature="e#7373#7374#0" expanded="true" />
-                <element signature="e#7435#7436#0" expanded="true" />
-                <element signature="e#7462#7463#0" expanded="true" />
-                <element signature="e#9930#9931#0" expanded="true" />
-                <element signature="e#9958#9959#0" expanded="true" />
-                <element signature="e#10009#10010#0" expanded="true" />
-                <element signature="e#10036#10037#0" expanded="true" />
-                <element signature="e#10168#10169#0" expanded="true" />
-                <element signature="e#10195#10196#0" expanded="true" />
-                <element signature="e#10234#10235#0" expanded="true" />
-                <element signature="e#10270#10271#0" expanded="true" />
+                <element signature="e#1405#1406#0" expanded="true" />
+                <element signature="e#1443#1444#0" expanded="true" />
+                <element signature="e#4403#4404#0" expanded="true" />
+                <element signature="e#4435#4436#0" expanded="true" />
+                <element signature="e#4764#4765#0" expanded="true" />
+                <element signature="e#4796#4797#0" expanded="true" />
+                <element signature="e#7055#7056#0" expanded="true" />
+                <element signature="e#7079#7080#0" expanded="true" />
+                <element signature="e#7400#7401#0" expanded="true" />
+                <element signature="e#7427#7428#0" expanded="true" />
+                <element signature="e#7489#7490#0" expanded="true" />
+                <element signature="e#7516#7517#0" expanded="true" />
+                <element signature="e#9791#9792#0" expanded="true" />
+                <element signature="e#9819#9820#0" expanded="true" />
+                <element signature="e#9870#9871#0" expanded="true" />
+                <element signature="e#9897#9898#0" expanded="true" />
+                <element signature="e#10029#10030#0" expanded="true" />
+                <element signature="e#10056#10057#0" expanded="true" />
+                <element signature="e#10095#10096#0" expanded="true" />
+                <element signature="e#10131#10132#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TreeADT.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/tree/api/core/TreeADT.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.69550174">
+              <caret line="117" column="2" selection-start-line="117" selection-start-column="2" selection-end-line="117" selection-end-column="2" />
+              <folding>
+                <element signature="e#1988#1989#0" expanded="true" />
+                <element signature="e#2026#2027#0" expanded="true" />
+                <element signature="e#2843#2844#0" expanded="true" />
+                <element signature="e#2879#2880#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BinaryTree.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tree/api/core/BinaryTree.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -69,20 +121,8 @@
         <entry file="file://$PROJECT_DIR$/src/tree/api/TreeDemo.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="58" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
+              <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ITree.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tree/api/core/ITree.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="239" column="27" selection-start-line="239" selection-start-column="27" selection-end-line="239" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -178,11 +218,12 @@
         <option value="$PROJECT_DIR$/src/tree/api/exceptions/InvalidNodeException.java" />
         <option value="$PROJECT_DIR$/src/draw/StdDraw.java" />
         <option value="$PROJECT_DIR$/src/graph/api/undirected/Maze.java" />
-        <option value="$PROJECT_DIR$/src/tree/api/core/Node.java" />
-        <option value="$PROJECT_DIR$/src/tree/api/core/BinaryTree.java" />
-        <option value="$PROJECT_DIR$/src/tree/api/core/ITree.java" />
-        <option value="$PROJECT_DIR$/src/tree/api/TreeDemo.java" />
         <option value="$PROJECT_DIR$/src/tree/api/core/BinarySearchTree.java" />
+        <option value="$PROJECT_DIR$/src/tree/api/core/Node.java" />
+        <option value="$PROJECT_DIR$/src/tree/api/core/ITree.java" />
+        <option value="$PROJECT_DIR$/src/tree/api/core/BinaryTree.java" />
+        <option value="$PROJECT_DIR$/src/tree/api/TreeDemo.java" />
+        <option value="$PROJECT_DIR$/src/tree/api/core/TreeADT.java" />
       </list>
     </option>
   </component>
@@ -475,7 +516,7 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="tree.binaryTree.BinaryTree" />
+      <option name="MAIN_CLASS_NAME" value="tree.bt.BinaryTree" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -867,7 +908,7 @@
       <workItem from="1447387613056" duration="1206000" />
       <workItem from="1447667961383" duration="5206000" />
       <workItem from="1447740896902" duration="196000" />
-      <workItem from="1447795888224" duration="10915000" />
+      <workItem from="1447795888224" duration="14115000" />
     </task>
     <task id="LOCAL-00001" summary="BFS - trying it solve in other way&#10;">
       <created>1443332006087</created>
@@ -923,11 +964,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447828965507</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Remove debugging from methods">
+      <created>1447829049946</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1447829049946</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="142994000" />
+    <option name="totallyTimeSpent" value="146194000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -940,7 +987,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2522222" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -949,7 +996,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26222223" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26222223" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34666666" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2488889" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1014,7 +1061,8 @@
     <MESSAGE value="Tree DS - Created a delete(), hasLeft(), hasRight(), getLeft(), getRight(), search() methods&#10;" />
     <MESSAGE value="Changed the Directory structure of all the DS directories." />
     <MESSAGE value="Add Height of Node and Search methods in the BST." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Height of Node and Search methods in the BST." />
+    <MESSAGE value="Remove debugging from methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove debugging from methods" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1029,13 +1077,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ADTs/AsyncTaskADT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.05074971">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ADTs/ListADT.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12687428">
@@ -1176,35 +1217,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tree/binaryTree/BinaryTreeInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/tree/bt/BinaryTreeInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.53287196">
           <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tree/binaryTree/BSTMain.java">
+    <entry file="file://$PROJECT_DIR$/src/tree/bt/BSTMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3298731">
           <caret line="55" column="11" selection-start-line="55" selection-start-column="11" selection-end-line="55" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tree/binaryTree/BTreeDemo.java">
+    <entry file="file://$PROJECT_DIR$/src/tree/bt/BTreeDemo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="6.470588">
           <caret line="261" column="30" selection-start-line="261" selection-start-column="30" selection-end-line="261" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tree/binaryTree/BTree.java">
+    <entry file="file://$PROJECT_DIR$/src/tree/bt/BTree.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.27912343">
           <caret line="85" column="17" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tree/binaryTree/BinaryTree.java">
+    <entry file="file://$PROJECT_DIR$/src/tree/bt/BinaryTree.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.53287196">
           <caret line="237" column="0" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
@@ -1309,7 +1350,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tree/binaryTree/BinaryTree1.java">
+    <entry file="file://$PROJECT_DIR$/src/tree/bt/BinaryTree1.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="170" column="33" selection-start-line="170" selection-start-column="33" selection-end-line="170" selection-end-column="33" />
@@ -1321,14 +1362,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4992636">
           <caret line="1752" column="46" selection-start-line="1752" selection-start-column="46" selection-end-line="1752" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tree/api/core/BinaryTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16200295">
-          <caret line="5" column="58" selection-start-line="5" selection-start-column="58" selection-end-line="5" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1378,10 +1411,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/tree/api/core/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3656286">
+          <caret line="60" column="53" selection-start-line="60" selection-start-column="53" selection-end-line="60" selection-end-column="53" />
+          <folding>
+            <element signature="e#1483#1484#0" expanded="true" />
+            <element signature="e#1523#1524#0" expanded="true" />
+            <element signature="e#1685#1686#0" expanded="true" />
+            <element signature="e#1726#1727#0" expanded="true" />
+            <element signature="e#1772#1773#0" expanded="true" />
+            <element signature="e#1804#1805#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/tree/api/core/ITree.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="239" column="27" selection-start-line="239" selection-start-column="27" selection-end-line="239" selection-end-column="27" />
+          <caret line="203" column="43" selection-start-line="203" selection-start-column="43" selection-end-line="203" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1391,40 +1439,57 @@
     <entry file="file://$PROJECT_DIR$/src/tree/api/TreeDemo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="58" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
+          <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tree/api/core/Node.java">
+    <entry file="file://$PROJECT_DIR$/src/tree/api/core/BinaryTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5945946">
-          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tree/api/core/BinarySearchTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19809826">
-          <caret line="194" column="18" selection-start-line="194" selection-start-column="18" selection-end-line="194" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="421" column="0" selection-start-line="421" selection-start-column="0" selection-end-line="421" selection-end-column="0" />
           <folding>
-            <element signature="e#7183#7184#0" expanded="true" />
-            <element signature="e#7207#7208#0" expanded="true" />
-            <element signature="e#7263#7264#0" expanded="true" />
-            <element signature="e#7290#7291#0" expanded="true" />
-            <element signature="e#7346#7347#0" expanded="true" />
-            <element signature="e#7373#7374#0" expanded="true" />
-            <element signature="e#7435#7436#0" expanded="true" />
-            <element signature="e#7462#7463#0" expanded="true" />
-            <element signature="e#9930#9931#0" expanded="true" />
-            <element signature="e#9958#9959#0" expanded="true" />
-            <element signature="e#10009#10010#0" expanded="true" />
-            <element signature="e#10036#10037#0" expanded="true" />
-            <element signature="e#10168#10169#0" expanded="true" />
-            <element signature="e#10195#10196#0" expanded="true" />
-            <element signature="e#10234#10235#0" expanded="true" />
-            <element signature="e#10270#10271#0" expanded="true" />
+            <element signature="e#1405#1406#0" expanded="true" />
+            <element signature="e#1443#1444#0" expanded="true" />
+            <element signature="e#4403#4404#0" expanded="true" />
+            <element signature="e#4435#4436#0" expanded="true" />
+            <element signature="e#4764#4765#0" expanded="true" />
+            <element signature="e#4796#4797#0" expanded="true" />
+            <element signature="e#7055#7056#0" expanded="true" />
+            <element signature="e#7079#7080#0" expanded="true" />
+            <element signature="e#7400#7401#0" expanded="true" />
+            <element signature="e#7427#7428#0" expanded="true" />
+            <element signature="e#7489#7490#0" expanded="true" />
+            <element signature="e#7516#7517#0" expanded="true" />
+            <element signature="e#9791#9792#0" expanded="true" />
+            <element signature="e#9819#9820#0" expanded="true" />
+            <element signature="e#9870#9871#0" expanded="true" />
+            <element signature="e#9897#9898#0" expanded="true" />
+            <element signature="e#10029#10030#0" expanded="true" />
+            <element signature="e#10056#10057#0" expanded="true" />
+            <element signature="e#10095#10096#0" expanded="true" />
+            <element signature="e#10131#10132#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tree/api/core/TreeADT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69550174">
+          <caret line="117" column="2" selection-start-line="117" selection-start-column="2" selection-end-line="117" selection-end-column="2" />
+          <folding>
+            <element signature="e#1988#1989#0" expanded="true" />
+            <element signature="e#2026#2027#0" expanded="true" />
+            <element signature="e#2843#2844#0" expanded="true" />
+            <element signature="e#2879#2880#0" expanded="true" />
           </folding>
         </state>
       </provider>

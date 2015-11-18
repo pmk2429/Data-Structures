@@ -57,6 +57,24 @@ public class Node<T> {
         this.data = data;
     }
 
+    /**
+     * Returns <tt>true</tt> if there it a Left node to current Node else <tt>false</tt>
+     *
+     * @return
+     */
+    public boolean hasLeft() {
+        return this.left != null;
+    }
+
+    /**
+     * Returns <tt>true</tt> if there is a Right Node to current Node else <tt>false</tt>.
+     *
+     * @return
+     */
+    public boolean hasRight() {
+        return this.right != null;
+    }
+
     @Override
     public String toString() {
         return "" + data;

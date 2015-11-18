@@ -13,9 +13,9 @@ import tree.api.exceptions.InvalidNodeException;
  * <p>
  * Binary tree: Tree where each node has up to two leaves
  * <p>
- * 1
- * / \
- * 2   3
+ * &nbsp;&nbsp;1 <br/>
+ * &nbsp;/ \ <br/>
+ * 2   3<br/>
  * <b>Binary search tree:</b> Used for searching. A binary tree where the left child contains only nodes with values
  * less than the parent node, and where the right child only contains nodes with values greater than or equal to the parent.
  * <p>
@@ -61,7 +61,8 @@ public interface ITree<T> {
     boolean isRoot(T node) throws InvalidNodeException, BoundaryViolationException;
 
     /**
-     * Method to delete the Maximum element found in the tree.
+     * Method to delete the Maximum element found in the tree. Internally calls the <tt>maximum()</tt> method to find
+     * the Max element in a given Tree or Subtree and then deletes the found {@link Node}.
      *
      * @param root
      */
@@ -134,19 +135,17 @@ public interface ITree<T> {
      * Method to find the Maximum Node from the Tree. This method takes in the root of the tree/subtree of the param
      * and returns the Node with the Highest value in the corresponding Tree/Subtree.
      *
-     * @param root
      * @return Node
      */
-    Node findMaximum(Node root);
+    Node maximum();
 
     /**
      * Method to find the Minimum Node from the Tree. This method takes in the root of the tree/subtree of the param
      * and returns the Node with the Highest value in the corresponding Tree/Subtree.
      *
-     * @param root
      * @return Node
      */
-    Node findMinimum(Node root);
+    Node minimum();
 
     /**
      * Method to find the predecessor of the given Node.
@@ -186,22 +185,6 @@ public interface ITree<T> {
     boolean isExternal(Node<T> node) throws InvalidNodeException;
 
     /**
-     * Method to check whether the given Node has left Node or not.
-     *
-     * @param node
-     * @return
-     */
-    boolean hasLeft(Node<T> node);
-
-    /**
-     * Method to check whether the given Node has right Node or not.
-     *
-     * @param node
-     * @return
-     */
-    boolean hasRight(Node<T> node);
-
-    /**
      * Method to check that whether the Node has a Child or not.
      *
      * @param node
@@ -218,7 +201,7 @@ public interface ITree<T> {
     int getTotalChild(Node<T> node);
 
     /**
-     * Method to check whether the Tree is empty or not.
+     * Returns if the Tree is Empty or not.
      *
      * @return
      */
@@ -237,6 +220,12 @@ public interface ITree<T> {
     Node<T> getNullNode();
 
 
+    /**
+     * Searches for a given Node in the Tree.
+     *
+     * @param node
+     * @return
+     */
     Node<T> search(T node);
 
 }

@@ -1,6 +1,7 @@
 package tree.api;
 
 import tree.api.core.BinarySearchTree;
+import tree.api.core.BinaryTree;
 import tree.api.core.Node;
 import tree.api.exceptions.BoundaryViolationException;
 import tree.api.exceptions.InvalidNodeException;
@@ -35,6 +36,12 @@ public class TreeDemo {
 
         //bst.preOrderTraversal();
         //System.out.println();
+
+
+        System.out.println("----------------------------------------");
+        BinaryTree<Integer> bstAdt = new BinaryTree<>();
+        for (Integer n : a) bstAdt.add(n);
+        bstAdt.preOrderTraversal();
     }
 }
 

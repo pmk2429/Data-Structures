@@ -1,4 +1,4 @@
-package tree.binaryTree;
+package tree.bt;
 
 import java.util.Scanner;
 import java.util.Random;

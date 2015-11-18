@@ -192,19 +192,14 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     @Override
     public int height(T node) {
-        System.out.println("reached :" + counter);
-        counter++;
         if (node == null) {
             return -1;
         } else {
             Node currentNode = search(node);
             if (currentNode != null) {
-                System.out.println("Node is NOT NULL");
-                System.out.println("node in height: " + currentNode.data);
-                int height = heightMain(currentNode);
-                return height;
+                return heightMain(currentNode)
+                        ;
             } else {
-                System.out.println("Node is null man");
                 return -1;
             }
         }
@@ -228,7 +223,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     @Override
     public Node<T> search(T node) {
-        System.out.println("Reached in main search");
         if (node == null) {
             return null;
         } else {
@@ -245,7 +239,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
      * @return
      */
     private Node<T> search(Node<T> root, T node) {
-        System.out.println("Reached in halper search");
         System.out.println(root.getData() + " : " + node);
         if (root != null) {
             // if both are same
@@ -259,7 +252,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
                     foundNode = search(root.right, node);
                 }
 
-                System.out.println("foundNode : " + foundNode.getData());
                 return foundNode;
             }
         } else {

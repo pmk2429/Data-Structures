@@ -1,30 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4b1b7673-4238-44ec-8483-668796b14a4c" name="Default" comment="Changed the Directory structure of all the DS directories.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/graph/api/undirected/Maze.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/draw/StdDraw.java" />
-      <change type="DELETED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\bin\graph\BFS.class" afterPath="" />
-      <change type="DELETED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\bin\graph\DFS.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tree/api/core/BinaryTree.java" afterPath="$PROJECT_DIR$/src/tree/api/core/BinaryTree.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tree/api/core/ITree.java" afterPath="$PROJECT_DIR$/src/tree/api/core/ITree.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tree/api/core/Node.java" afterPath="$PROJECT_DIR$/src/tree/api/core/Node.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tree/api/TreeDemo.java" afterPath="$PROJECT_DIR$/src/tree/api/TreeDemo.java" />
+    <list default="true" id="4b1b7673-4238-44ec-8483-668796b14a4c" name="Default" comment="Add Height of Node and Search methods in the BST.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tree/api/core/BinarySearchTree.java" afterPath="$PROJECT_DIR$/src/tree/api/core/BinarySearchTree.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\api\WIKI.docx" afterPath="$PROJECT_DIR$/src/graph/api/WIKI.docx" />
-      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\api\generator\GraphGenerator.java" afterPath="$PROJECT_DIR$/src/graph/api/generator/GraphGenerator.java" />
-      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\api\graph\Bag.java" afterPath="$PROJECT_DIR$/src/graph/api/graph/Bag.java" />
-      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\api\graph\Graph.java" afterPath="$PROJECT_DIR$/src/graph/api/graph/Graph.java" />
-      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\api\operations\PathFinder.java" afterPath="$PROJECT_DIR$/src/graph/api/operations/PathFinder.java" />
-      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\api\undirected\Graph.java" afterPath="$PROJECT_DIR$/src/graph/api/undirected/Graph.java" />
-      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\api\undirected\GraphGenerator.java" afterPath="$PROJECT_DIR$/src/graph/api/undirected/GraphGenerator.java" />
-      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\api\undirected\SET.java" afterPath="$PROJECT_DIR$/src/graph/api/undirected/SET.java" />
-      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\api\undirected\ST.java" afterPath="$PROJECT_DIR$/src/graph/api/undirected/ST.java" />
-      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\graph\BFS.java" afterPath="$PROJECT_DIR$/src/graph/demos/BFS.java" />
-      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\graph\BFSMain.java" afterPath="$PROJECT_DIR$/src/graph/demos/BFSMain.java" />
-      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\graph\DFS.java" afterPath="$PROJECT_DIR$/src/graph/demos/DFS.java" />
-      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\graph\GraphBFS.java" afterPath="$PROJECT_DIR$/src/graph/demos/GraphBFS.java" />
-      <change type="MOVED" beforePath="D:\PMK\Development\JAVA_IntelliJ\DataStructures\src\tree\api\core\BinaryTree.java" afterPath="$PROJECT_DIR$/src/tree/api/core/BinarySearchTree.java" />
     </list>
     <ignored path="DataStructures.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,7 +30,7 @@
         <entry file="file://$PROJECT_DIR$/src/graph/api/undirected/Maze.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="133" column="31" selection-start-line="133" selection-start-column="31" selection-end-line="133" selection-end-column="31" />
+              <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -62,25 +41,25 @@
       <file leaf-file-name="BinarySearchTree.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tree/api/core/BinarySearchTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.58161646">
-              <caret line="231" column="27" selection-start-line="231" selection-start-column="27" selection-end-line="231" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.19809826">
+              <caret line="194" column="18" selection-start-line="194" selection-start-column="18" selection-end-line="194" selection-end-column="18" />
               <folding>
-                <element signature="e#7636#7637#0" expanded="true" />
-                <element signature="e#7660#7661#0" expanded="true" />
-                <element signature="e#7716#7717#0" expanded="true" />
-                <element signature="e#7743#7744#0" expanded="true" />
-                <element signature="e#7799#7800#0" expanded="true" />
-                <element signature="e#7826#7827#0" expanded="true" />
-                <element signature="e#7888#7889#0" expanded="true" />
-                <element signature="e#7915#7916#0" expanded="true" />
-                <element signature="e#10383#10384#0" expanded="true" />
-                <element signature="e#10411#10412#0" expanded="true" />
-                <element signature="e#10462#10463#0" expanded="true" />
-                <element signature="e#10489#10490#0" expanded="true" />
-                <element signature="e#10621#10622#0" expanded="true" />
-                <element signature="e#10648#10649#0" expanded="true" />
-                <element signature="e#10687#10688#0" expanded="true" />
-                <element signature="e#10723#10724#0" expanded="true" />
+                <element signature="e#7183#7184#0" expanded="true" />
+                <element signature="e#7207#7208#0" expanded="true" />
+                <element signature="e#7263#7264#0" expanded="true" />
+                <element signature="e#7290#7291#0" expanded="true" />
+                <element signature="e#7346#7347#0" expanded="true" />
+                <element signature="e#7373#7374#0" expanded="true" />
+                <element signature="e#7435#7436#0" expanded="true" />
+                <element signature="e#7462#7463#0" expanded="true" />
+                <element signature="e#9930#9931#0" expanded="true" />
+                <element signature="e#9958#9959#0" expanded="true" />
+                <element signature="e#10009#10010#0" expanded="true" />
+                <element signature="e#10036#10037#0" expanded="true" />
+                <element signature="e#10168#10169#0" expanded="true" />
+                <element signature="e#10195#10196#0" expanded="true" />
+                <element signature="e#10234#10235#0" expanded="true" />
+                <element signature="e#10270#10271#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -888,7 +867,7 @@
       <workItem from="1447387613056" duration="1206000" />
       <workItem from="1447667961383" duration="5206000" />
       <workItem from="1447740896902" duration="196000" />
-      <workItem from="1447795888224" duration="10775000" />
+      <workItem from="1447795888224" duration="10915000" />
     </task>
     <task id="LOCAL-00001" summary="BFS - trying it solve in other way&#10;">
       <created>1443332006087</created>
@@ -938,11 +917,17 @@
       <option name="project" value="LOCAL" />
       <updated>1446404408478</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Add Height of Node and Search methods in the BST.">
+      <created>1447828965507</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1447828965507</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="142854000" />
+    <option name="totallyTimeSpent" value="142994000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1028,20 +1013,13 @@
     <MESSAGE value="Tree DS - Created a Generic Interface for Tree behavior and helper methods. Created a BinartTree class with add Node method. Created Generic Node class.&#10;" />
     <MESSAGE value="Tree DS - Created a delete(), hasLeft(), hasRight(), getLeft(), getRight(), search() methods&#10;" />
     <MESSAGE value="Changed the Directory structure of all the DS directories." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed the Directory structure of all the DS directories." />
+    <MESSAGE value="Add Height of Node and Search methods in the BST." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Height of Node and Search methods in the BST." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/tree/api/core/BinarySearchTree.java</url>
-          <line>194</line>
-          <properties />
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="50" />
     </breakpoint-manager>
     <watches-manager />
@@ -1393,7 +1371,7 @@
     <entry file="file://$PROJECT_DIR$/src/graph/api/undirected/Maze.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="133" column="31" selection-start-line="133" selection-start-column="31" selection-end-line="133" selection-end-column="31" />
+          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1428,25 +1406,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tree/api/core/BinarySearchTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58161646">
-          <caret line="231" column="27" selection-start-line="231" selection-start-column="27" selection-end-line="231" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.19809826">
+          <caret line="194" column="18" selection-start-line="194" selection-start-column="18" selection-end-line="194" selection-end-column="18" />
           <folding>
-            <element signature="e#7636#7637#0" expanded="true" />
-            <element signature="e#7660#7661#0" expanded="true" />
-            <element signature="e#7716#7717#0" expanded="true" />
-            <element signature="e#7743#7744#0" expanded="true" />
-            <element signature="e#7799#7800#0" expanded="true" />
-            <element signature="e#7826#7827#0" expanded="true" />
-            <element signature="e#7888#7889#0" expanded="true" />
-            <element signature="e#7915#7916#0" expanded="true" />
-            <element signature="e#10383#10384#0" expanded="true" />
-            <element signature="e#10411#10412#0" expanded="true" />
-            <element signature="e#10462#10463#0" expanded="true" />
-            <element signature="e#10489#10490#0" expanded="true" />
-            <element signature="e#10621#10622#0" expanded="true" />
-            <element signature="e#10648#10649#0" expanded="true" />
-            <element signature="e#10687#10688#0" expanded="true" />
-            <element signature="e#10723#10724#0" expanded="true" />
+            <element signature="e#7183#7184#0" expanded="true" />
+            <element signature="e#7207#7208#0" expanded="true" />
+            <element signature="e#7263#7264#0" expanded="true" />
+            <element signature="e#7290#7291#0" expanded="true" />
+            <element signature="e#7346#7347#0" expanded="true" />
+            <element signature="e#7373#7374#0" expanded="true" />
+            <element signature="e#7435#7436#0" expanded="true" />
+            <element signature="e#7462#7463#0" expanded="true" />
+            <element signature="e#9930#9931#0" expanded="true" />
+            <element signature="e#9958#9959#0" expanded="true" />
+            <element signature="e#10009#10010#0" expanded="true" />
+            <element signature="e#10036#10037#0" expanded="true" />
+            <element signature="e#10168#10169#0" expanded="true" />
+            <element signature="e#10195#10196#0" expanded="true" />
+            <element signature="e#10234#10235#0" expanded="true" />
+            <element signature="e#10270#10271#0" expanded="true" />
           </folding>
         </state>
       </provider>

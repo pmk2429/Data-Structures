@@ -202,27 +202,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
     }
 
     /**
-     * Method to get the Right node of the Node.
-     *
-     * @param node
-     * @return
-     */
-    public Node getRight(Node<T> node) {
-        return node.right;
-    }
-
-
-    /**
-     * Method to get the Left node of the Node.
-     *
-     * @param node
-     * @return
-     */
-    public Node getLeft(Node<T> node) {
-        return node.left;
-    }
-
-    /**
      * Returns the position of the Node in the Tree.
      *
      * @param node
@@ -358,34 +337,54 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
     }
 
     @Override
-    public int getTotalLeaf() {
-        return 0;
-    }
-
-    @Override
-    public Node maximum() {
-
+    public Node<T> maximum() {
         return maximum(root);
     }
 
     /**
      * Helper method to find the Maximum element in a Tree or SubTree.
      *
-     * @param root
+     * @param node
      * @return
      */
-    private Node maximum(Node<T> root) {
-
-        return null;
+    private Node<T> maximum(Node<T> node) {
+        while (node.right != null) node = node.right;
+        return node;
     }
 
     @Override
     public Node minimum() {
+        return minimum(root);
+    }
+
+    /**
+     * Helper method to get the Minimum element in the Binary Search Tree
+     *
+     * @param node
+     * @return
+     */
+    private Node minimum(Node<T> node) {
+        while (node.left != null) node = node.left;
+        return node;
+    }
+
+    /**
+     * Returns the predecessor of the given Node in this BST.
+     *
+     * @param node
+     * @return
+     */
+    public Node<T> predecessor(T node) {
         return null;
     }
 
-    @Override
-    public Node getPredecessor(T node) {
+    /**
+     * Returns the successor of the given Node in this BST.
+     *
+     * @param node
+     * @return
+     */
+    public Node<T> successor(T node) {
         return null;
     }
 

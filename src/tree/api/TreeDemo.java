@@ -12,18 +12,6 @@ public class TreeDemo {
         for (Integer n : a) bst.add(n);
         System.out.println();
 
-//
-//        BinarySearchTree<Animal> zoo = new BinarySearchTree<>();
-//        Animal dog = new Animal("Tyson", 4);
-//        Animal cat = new Animal("Kittie", 3);
-//        Animal horse = new Animal("Seabiscuit", 6);
-//
-//
-//        Node<Animal> node = zoo.parent(dog);
-//
-//
-//        int depth = bst.depth(dog);
-
         boolean check = bst.isRoot(5);
 
         int height = bst.height(9);
@@ -42,10 +30,6 @@ public class TreeDemo {
         System.out.println("Again rearranged");
         bst.preOrderTraversal();
 
-//        Node<Integer> delNode = bst.deleteMin();
-//        System.out.println("Min node: " + delNode.getData());
-//        System.out.println("Rearranged preorder: ");
-//        bst.preOrderTraversal();
     }
 }
 

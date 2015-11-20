@@ -84,7 +84,7 @@ public interface ITree<T> {
      * @param replacementNode
      * @return
      */
-    public T replace(T originalNode, T replacementNode);
+    T replace(T originalNode, T replacementNode);
 
     /**
      * Returns <tt>true</tt> if this Tree contains the specified element.
@@ -123,13 +123,6 @@ public interface ITree<T> {
      */
     int depth(T node) throws InvalidNodeException, BoundaryViolationException;
 
-    /**
-     * Method to get the total number of leaf in a particulat tree/subtree. This method takes root of tree/subtree as
-     * an input param.
-     *
-     * @return
-     */
-    int getTotalLeaf();
 
     /**
      * Method to find the Maximum Node from the Tree. This method takes in the root of the tree/subtree of the param
@@ -137,7 +130,7 @@ public interface ITree<T> {
      *
      * @return Node
      */
-    Node maximum();
+    Node<T> maximum();
 
     /**
      * Method to find the Minimum Node from the Tree. This method takes in the root of the tree/subtree of the param
@@ -145,15 +138,7 @@ public interface ITree<T> {
      *
      * @return Node
      */
-    Node minimum();
-
-    /**
-     * Method to find the predecessor of the given Node.
-     *
-     * @param node
-     * @return
-     */
-    Node getPredecessor(T node);
+    Node<T> minimum();
 
 
     /**

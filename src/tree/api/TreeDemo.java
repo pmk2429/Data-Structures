@@ -17,18 +17,20 @@ public class TreeDemo {
         int height = bst.height(9);
         System.out.println("height: " + height);
 
-        Node<Integer> parent = bst.parent(5);
-
+        System.out.println("Parent of 8: " + bst.parent(8));
         System.out.println("Total leaves in Tree: " + bst.countLeaves());
 
-        System.out.println();
-        bst.preOrderTraversal();
-        System.out.println();
-//        bst.delete(1);
-//        bst.deleteMin();
-        bst.deleteMax();
-        System.out.println("Again rearranged");
-        bst.preOrderTraversal();
+        Node<Integer> minimum = bst.minimum();
+        Node<Integer> max = bst.maximum();
+        System.out.println("Minimum: " + minimum.getData());
+        System.out.println("Maximum: " + max.getData());
+
+        System.out.println("Size of Tree: " + bst.size());
+
+        System.out.println("Tree contains 6? " + bst.contains(4));
+
+        Node<Integer> node = bst.maximum();
+        System.out.println("Node has child? " + node.hasChild());
 
     }
 }

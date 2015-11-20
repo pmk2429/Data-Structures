@@ -123,6 +123,17 @@ public class Node<T> {
         return this.right != null;
     }
 
+    /**
+     * Returns if the Node has Child.
+     *
+     * @return
+     */
+    public boolean hasChild() {
+        return this.hasLeft() && this.hasRight();
+        // return (node.left == null && node.right == null);
+    }
+
+
     @Override
     public String toString() {
         return "" + data;

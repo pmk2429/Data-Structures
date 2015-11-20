@@ -300,14 +300,13 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
      * @return
      */
     private Node<T> search(Node<T> root, T node) {
-        System.out.println(root.getData() + " : " + node);
         if (root != null) {
             // if both are same
             if (compare(root.data, node) == 0) {
                 return root;
             } else {
                 Node foundNode = null;
-                if (compare(node, (T) root.left.data) < 0) {
+                if (compare(node, (T) root.data) < 0) {
                     foundNode = search(root.left, node);
                 } else {
                     foundNode = search(root.right, node);
@@ -456,34 +455,25 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
         }
     }
 
+    /**
+     * Helper method to check if this Node has Child or not.
+     *
+     * @param node
+     * @return
+     */
     private boolean hasChild(Node<T> node) {
         return (node.left == null && node.right == null);
     }
 
+    @Deprecated
     @Override
     public int getTotalChild(T node) {
-        return 0;
-    }
-
-
-    /**
-     * Method to find the successor of the given Node.
-     *
-     * @param root
-     * @return
-     */
-    public Node getSuccessor(Node<T> root) {
-        return null;
+        return 2;
     }
 
     @Override
     public boolean isEmpty() {
         return size() == 0;
-    }
-
-    @Override
-    public int size() {
-        return size(root);
     }
 
     @Override
@@ -493,17 +483,58 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
         return nullNode;
     }
 
-    // TODO: helper method for getting size of the root.
+    @Override
+    public int size() {
+        return size(root);
+    }
+
+    /**
+     * Helper method to find the size of this BST.
+     *
+     * @param root
+     * @return
+     */
     private int size(Node<T> root) {
         if (root == null)
             return 0;
-
-        return 0;
+        else {
+            return 1 + size(root.left) + size(root.right);
+        }
     }
 
     @Override
     public boolean contains(T data) {
-        return false;
+        if (data == null) return false;
+        else {
+            Node<T> foundNode = contains(root, data);
+            return (foundNode != null && foundNode.data.equals(data));
+        }
+    }
+
+    /**
+     * Helper method to check if this BST contains a specific Node.
+     *
+     * @param root
+     * @param node
+     * @return
+     */
+    private Node<T> contains(Node<T> root, T node) {
+        if (root != null) {
+            // if both are same
+            if (compare(root.data, node) == 0) {
+                return root;
+            } else {
+                Node foundNode = null;
+                if (compare(node, (T) root.data) < 0) {
+                    foundNode = contains(root.left, node);
+                } else {
+                    foundNode = contains(root.right, node);
+                }
+                return foundNode;
+            }
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -525,15 +556,23 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
         return null;
     }
 
+    /**
+     * Method to perform Pre order Traversal.
+     */
     public void preOrderTraversal() {
         preOrderHelper(root);
     }
 
-    private void preOrderHelper(Node r) {
-        if (r != null) {
-            System.out.print(r + " ");
-            preOrderHelper(r.left);
-            preOrderHelper(r.right);
+    /**
+     * Helper method to perform pre order Traversal.
+     *
+     * @param root
+     */
+    private void preOrderHelper(Node<T> root) {
+        if (root != null) {
+            System.out.print(root + " ");
+            preOrderHelper(root.left);
+            preOrderHelper(root.right);
         }
     }
 

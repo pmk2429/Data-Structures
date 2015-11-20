@@ -1,5 +1,8 @@
 package tree.api.core;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A Node is the building block of the Tree Data Structure. This provides an efficient and easy way to add
  * type specific data to the Node be it {@link String}, {@link Integer} or any other custom data type.
@@ -32,6 +35,51 @@ public class Node<T> {
         this.left = left;
         this.right = right;
     }
+
+    /**
+     * Return the children of Node<T>. The Tree<T> is represented by a single root Node<T> whose children are
+     * represented by a List<Node<T>>. Each of these Node<T> elements in the List can have children.
+     * The getChildren() method will return the children of a Node<T>.
+     *
+     * @return the children of Node<T>
+     */
+    public List<Node<T>> getChildren() {
+        if (this.children == null) {
+            return new ArrayList<Node<T>>();
+        }
+        return this.children;
+    }
+
+    public void setChildren(List<Node<T>> children) {
+        this.children = children;
+    }
+
+    /**
+     * Returns the number of immediate children of this Node<T>.
+     *
+     * @return the number of immediate children.
+     */
+    public int getNumberOfChildren() {
+        if (children == null) {
+            return 0;
+        }
+        return children.size();
+    }
+
+    /**
+     * Adds a child to the list of children for this Node<T>. The addition of
+     * the first child will create a new List<Node<T>>.
+     *
+     * @param child a Node<T> object to set.
+     */
+    public void addChild(Node<T> child) {
+        if (children == null) {
+            children = new ArrayList<Node<T>>();
+        }
+        children.add(child);
+    }
+
+    List<Node<T>> children;
 
     public Node getLeft() {
         return left;

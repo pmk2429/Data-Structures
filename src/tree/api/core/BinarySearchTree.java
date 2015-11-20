@@ -5,11 +5,12 @@ import tree.api.exceptions.InvalidNodeException;
 
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 
 /**
- * A Generic implementation of the Binary Tree. This class provides the concrete implementation of the behavior
+ * A Generic implementation of the Binary Search Tree. This class exhibits all the important behavior
  * specified in the ITree. Binary Tree class extends the Comparable Interface for comparing the data based
  * <p>
  * Created by Pavitra on 10/17/2015.
@@ -101,7 +102,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
             else if (root.right == null) return root.left;
             else {
                 // get the data from the right most node in the left subtree.
-                root.data = (T) getData(root.left);
+                root.data = (T) (root.left.data);
                 // delete the rightmost node in the left subtree.
                 root.left = delete(root.left, root.data);
             }
@@ -130,12 +131,12 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
     }
 
     @Override
-    public void deleteMin(Node<T> root) {
+    public void deleteMin() {
 
     }
 
     @Override
-    public void deleteMax(Node<T> root) {
+    public void deleteMax() {
 
     }
 
@@ -145,16 +146,9 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
     }
 
     @Override
-    public T replace(Node<T> originalNode, T replacementNode) {
+    public T replace(T originalNode, T replacementNode) {
         return null;
     }
-
-
-    @Override
-    public T getData(Node<T> node) {
-        return node.data;
-    }
-
 
     /**
      * Method to get the Right node of the Node.
@@ -222,6 +216,52 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
         }
     }
 
+    @Override
+    public int countLeaves() {
+        return countLeaves(root);
+    }
+
+    @Override
+    public int diameter() {
+        return diameter(root);
+    }
+
+    @Override
+    public List<Node<T>> getNodesAtLevel(int level) {
+        return null;
+    }
+
+    /**
+     * Helper method to count diameter of a Tree.
+     *
+     * @param root
+     * @return
+     */
+    private int diameter(Node<T> root) {
+        if (root == null) return 0;
+
+        //the path goes through the root
+//        int len1 = height(root.left) + height(root.right) + 3;
+
+        //the path does not pass the root
+//        int len2 = Math.max(diameter(root.left), diameter(root.right));
+
+//        return Math.max(len1, len2);
+        return 0;
+    }
+
+    /**
+     * Helper method to count total Leaf Nodes in a given Tree.
+     *
+     * @param root
+     * @return
+     */
+    private int countLeaves(Node<T> root) {
+        if (root == null) return 0;
+        else if (root.left == null && root.right == null) return 1;
+        else return countLeaves(root.left) + countLeaves(root.right);
+    }
+
     /**
      * Helper method to find the desired Node in a Tree.
      *
@@ -267,7 +307,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
     }
 
     @Override
-    public int getTotalLeaf(Node<T> root) {
+    public int getTotalLeaf() {
         return 0;
     }
 
@@ -294,7 +334,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
     }
 
     @Override
-    public Node getPredecessor(Node<T> root) {
+    public Node getPredecessor(T node) {
         return null;
     }
 
@@ -334,13 +374,45 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
     }
 
     @Override
-    public boolean isInternal(Node<T> node) throws InvalidNodeException {
+    public boolean isInternal(T node) throws InvalidNodeException {
         return false;
     }
 
+    private boolean isExternal(Node<T> node) {
+        return (node.left == null && node.right == null);
+    }
+
     @Override
-    public boolean isExternal(Node<T> node) throws InvalidNodeException {
-        return false;
+    public boolean isExternal(T node) throws InvalidNodeException {
+        if (node != null) {
+            Node<T> foundNode = search(node);
+            if (foundNode != null) {
+                return isExternal(foundNode);
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean hasChild(T node) {
+        if (node != null) {
+            Node<T> foundNode = search(node);
+            return hasChild(foundNode);
+        } else {
+            return false;
+        }
+    }
+
+    private boolean hasChild(Node<T> node) {
+        return (node.left == null && node.right == null);
+    }
+
+    @Override
+    public int getTotalChild(T node) {
+        return 0;
     }
 
 
@@ -352,16 +424,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
      */
     public Node getSuccessor(Node<T> root) {
         return null;
-    }
-    
-    @Override
-    public boolean hasChild(Node node) {
-        return false;
-    }
-
-    @Override
-    public int getTotalChild(Node node) {
-        return 0;
     }
 
     @Override
@@ -392,6 +454,11 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
     @Override
     public boolean contains(T data) {
         return false;
+    }
+
+    @Override
+    public Iterable<T> children(T node) {
+        return null;
     }
 
     @Override

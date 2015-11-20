@@ -5,6 +5,8 @@ import tree.api.exceptions.BoundaryViolationException;
 import tree.api.exceptions.EmptyTreeException;
 import tree.api.exceptions.InvalidNodeException;
 
+import java.util.List;
+
 /**
  * ITree is a generic Interface which exhibits all the possible behavior of the Tree Data Structure. Implementing this
  * interface will provide the calling class to follow the default behavior of the Tree Data Structure. ITree is a
@@ -46,9 +48,8 @@ public interface ITree<T> {
     /**
      * Method to delete the Minimum element( found in the Tree.
      *
-     * @param root
      */
-    void deleteMin(Node<T> root);
+    void deleteMin();
 
 
     /**
@@ -64,9 +65,8 @@ public interface ITree<T> {
      * Method to delete the Maximum element found in the tree. Internally calls the <tt>maximum()</tt> method to find
      * the Max element in a given Tree or Subtree and then deletes the found {@link Node}.
      *
-     * @param root
      */
-    void deleteMax(Node<T> root);
+    void deleteMax();
 
     /**
      * Method to return the root node of the Tree. This method throws an exception if the tree is empty.
@@ -83,15 +83,7 @@ public interface ITree<T> {
      * @param replacementNode
      * @return
      */
-    public T replace(Node<T> originalNode, T replacementNode);
-
-    /**
-     * Method to get the Data in the Node. Returns the Generic bound data.
-     *
-     * @param node
-     * @return
-     */
-    T getData(Node<T> node);
+    public T replace(T originalNode, T replacementNode);
 
     /**
      * Returns <tt>true</tt> if this Tree contains the specified element.
@@ -104,6 +96,14 @@ public interface ITree<T> {
      */
     boolean contains(T data);
 
+
+    /**
+     * Returns an iterable container holding the children of Node of type T
+     *
+     * @param node
+     * @return
+     */
+    Iterable<T> children(T node);
 
     /**
      * Returns the height of the Node in the Tree
@@ -126,10 +126,9 @@ public interface ITree<T> {
      * Method to get the total number of leaf in a particulat tree/subtree. This method takes root of tree/subtree as
      * an input param.
      *
-     * @param root
      * @return
      */
-    int getTotalLeaf(Node<T> root);
+    int getTotalLeaf();
 
     /**
      * Method to find the Maximum Node from the Tree. This method takes in the root of the tree/subtree of the param
@@ -153,7 +152,7 @@ public interface ITree<T> {
      * @param node
      * @return
      */
-    Node getPredecessor(Node<T> node);
+    Node getPredecessor(T node);
 
 
     /**
@@ -173,7 +172,7 @@ public interface ITree<T> {
      * @return
      * @throws InvalidNodeException
      */
-    boolean isInternal(Node<T> node) throws InvalidNodeException;
+    boolean isInternal(T node) throws InvalidNodeException;
 
     /**
      * Returns whether a given node is external or not
@@ -182,7 +181,7 @@ public interface ITree<T> {
      * @return
      * @throws InvalidNodeException
      */
-    boolean isExternal(Node<T> node) throws InvalidNodeException;
+    boolean isExternal(T node) throws InvalidNodeException;
 
     /**
      * Method to check that whether the Node has a Child or not.
@@ -190,7 +189,7 @@ public interface ITree<T> {
      * @param node
      * @return
      */
-    boolean hasChild(Node<T> node);
+    boolean hasChild(T node);
 
     /**
      * Method to return the total number of Child for a given Node.
@@ -198,7 +197,8 @@ public interface ITree<T> {
      * @param node
      * @return
      */
-    int getTotalChild(Node<T> node);
+    int getTotalChild(T node);
+
 
     /**
      * Returns if the Tree is Empty or not.
@@ -228,4 +228,25 @@ public interface ITree<T> {
      */
     Node<T> search(T node);
 
+    /**
+     * Counts the number of Leaf Nodes in a given Tree.
+     *
+     * @return
+     */
+    int countLeaves();
+
+    /**
+     * Returns number of nodes on the longest path between two leaves in a Tree.
+     *
+     * @return
+     */
+    int diameter();
+
+    /**
+     * Returns the List of Nodes at a specific level
+     *
+     * @param level Level at which the List of Node is to be retrieved
+     * @return List of Nodes<T>
+     */
+    List<Node<T>> getNodesAtLevel(int level);
 }

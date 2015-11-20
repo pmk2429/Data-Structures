@@ -36,12 +36,14 @@ public class TreeDemo {
 
         //bst.preOrderTraversal();
         //System.out.println();
-
+        System.out.println(bst.countLeaves());
 
         System.out.println("----------------------------------------");
         BinaryTree<Integer> bstAdt = new BinaryTree<>();
         for (Integer n : a) bstAdt.add(n);
         bstAdt.preOrderTraversal();
+        System.out.println();
+
     }
 }
 

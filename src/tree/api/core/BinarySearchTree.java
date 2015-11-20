@@ -77,10 +77,8 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
      * @return
      */
     @Override
-    public Node<T> delete(T data) {
+    public void delete(T data) {
         root = delete(root, data);
-
-        return null;
     }
 
     // helper method to delete the data using the root Node.
@@ -102,12 +100,34 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
             else if (root.right == null) return root.left;
             else {
                 // get the data from the right most node in the left subtree.
-                root.data = (T) (root.left.data);
+                root.data = (T) rightMost(root.left);
                 // delete the rightmost node in the left subtree.
                 root.left = delete(root.left, root.data);
             }
         }
-        return null;
+        return root;
+    }
+
+    /**
+     * Helper method to traverse to the Right most Node in the Tree - SubTree
+     *
+     * @param node
+     * @return
+     */
+    private T rightMost(Node<T> node) {
+        while (node.right != null) node = node.right;
+        return node.data;
+    }
+
+    /**
+     * Helper method to traverse to the Left most Node in the Tree - SubTree
+     *
+     * @param node
+     * @return
+     */
+    private T leftMost(Node<T> node) {
+        while (node.left != null) node = node.left;
+        return node.data;
     }
 
     /**
@@ -131,13 +151,44 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
     }
 
     @Override
-    public void deleteMin() {
-
+    public void deleteMin() throws InvalidNodeException {
+        root = deleteMin(root);
     }
 
+    /**
+     * Helper method to delete the Node from the Tree. It traverses the Left sub tree to get the Minimum element node.
+     *
+     * @param root
+     * @return
+     */
+    private Node<T> deleteMin(Node<T> root) throws InvalidNodeException {
+        if (root.left == null) return root.right;
+        else {
+            root.left = deleteMin(root.left);
+            return root;
+        }
+    }
+
+    /**
+     * Traverses in the right Sub Tree of the Tree and finds the Max element.
+     */
     @Override
     public void deleteMax() {
+        root = deleteMax(root);
+    }
 
+    /**
+     * Helper method to delete the maximum element in the BST
+     *
+     * @param root
+     * @return
+     */
+    private Node<T> deleteMax(Node<T> root) {
+        if (root.right == null) return root.left;
+        else {
+            root.right = deleteMax(root.right);
+            return root;
+        }
     }
 
     @Override

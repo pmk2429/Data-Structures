@@ -43,14 +43,22 @@ public interface ITree<T> {
      * @param data
      * @return
      */
-    Node delete(T data);
+    void delete(T data);
 
     /**
      * Method to delete the Minimum element( found in the Tree.
      *
+     * @return
+     * @throws InvalidNodeException
      */
-    void deleteMin();
+    void deleteMin() throws InvalidNodeException;
 
+
+    /**
+     * Method to delete the Maximum element found in the tree. Internally calls the <tt>maximum()</tt> method to find
+     * the Max element in a given Tree or Subtree and then deletes the found {@link Node}.
+     */
+    void deleteMax() throws InvalidNodeException;
 
     /**
      * Returns whether the given Node is root or not. This method checks for the parent of the Node to determine
@@ -60,13 +68,6 @@ public interface ITree<T> {
      * @return
      */
     boolean isRoot(T node) throws InvalidNodeException, BoundaryViolationException;
-
-    /**
-     * Method to delete the Maximum element found in the tree. Internally calls the <tt>maximum()</tt> method to find
-     * the Max element in a given Tree or Subtree and then deletes the found {@link Node}.
-     *
-     */
-    void deleteMax();
 
     /**
      * Method to return the root node of the Tree. This method throws an exception if the tree is empty.

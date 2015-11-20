@@ -81,7 +81,7 @@ public class Node<T> {
 
     List<Node<T>> children;
 
-    public Node getLeft() {
+    public Node<T> getLeft() {
         return left;
     }
 
@@ -89,7 +89,7 @@ public class Node<T> {
         this.left = left;
     }
 
-    public Node getRight() {
+    public Node<T> getRight() {
         return right;
     }
 

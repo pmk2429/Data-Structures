@@ -584,21 +584,70 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
      * Method to perform Pre order Traversal.
      */
     public void preOrderTraversal() {
-        preOrderHelper(root);
+        preOrderTraversal(root);
     }
+
 
     /**
      * Helper method to perform pre order Traversal.
      *
      * @param root
      */
-    private void preOrderHelper(Node<T> root) {
+    private void preOrderTraversal(Node root) {
         if (root != null) {
             System.out.print(root + " ");
-            preOrderHelper(root.left);
-            preOrderHelper(root.right);
+            preOrderTraversal(root.left);
+            preOrderTraversal(root.right);
         }
     }
+
+    /**
+     * Method to Traverse this Binary Search Tree in PreOrder Traversal Fashion.
+     *
+     * @return
+     */
+    public ArrayList<ArrayList<T>> levelOrder() {
+        if (root == null)
+            return null;
+
+        return levelOrder(root);
+    }
+
+    /**
+     * Returns the List of Nodes at each level in this Binary Tree.
+     *
+     * @param root
+     * @return
+     */
+    private ArrayList<ArrayList<T>> levelOrder(Node<T> root) {
+        ArrayList<ArrayList<T>> al = new ArrayList<>();
+        ArrayList<T> nodeValues = new ArrayList<>();
+        if (root == null)
+            return al;
+
+        LinkedList<Node<T>> current = new LinkedList<>();
+        LinkedList<Node<T>> next = new LinkedList<>();
+        current.add(root);
+
+        while (!current.isEmpty()) {
+            Node<T> node = current.remove();
+
+            if (node.left != null)
+                next.add(node.left);
+            if (node.right != null)
+                next.add(node.right);
+
+            nodeValues.add(node.data);
+            if (current.isEmpty()) {
+                current = next;
+                next = new LinkedList<>();
+                al.add(nodeValues);
+                nodeValues = new ArrayList();
+            }
+        }
+        return al;
+    }
+
 
     // Other basic features of the BinarySearchTree.
 

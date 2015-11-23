@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4b1b7673-4238-44ec-8483-668796b14a4c" name="Default" comment="Remove debugging from methods">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tree/api/core/BinarySearchTree.java" afterPath="$PROJECT_DIR$/src/tree/api/core/BinarySearchTree.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tree/api/core/ITree.java" afterPath="$PROJECT_DIR$/src/tree/api/core/ITree.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tree/api/TreeLevelPrint.java" afterPath="$PROJECT_DIR$/src/tree/api/TreeLevelPrint.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DataStructures.iws" />
@@ -31,8 +29,8 @@
       <file leaf-file-name="BinarySearchTree.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tree/api/core/BinarySearchTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7716263">
-              <caret line="292" column="7" selection-start-line="292" selection-start-column="7" selection-end-line="292" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.38638985">
+              <caret line="631" column="19" selection-start-line="631" selection-start-column="19" selection-end-line="631" selection-end-column="19" />
               <folding>
                 <element signature="e#12228#12229#0" expanded="true" />
                 <element signature="e#12292#12293#0" expanded="true" />
@@ -806,7 +804,7 @@
       <workItem from="1447740896902" duration="196000" />
       <workItem from="1447795888224" duration="15366000" />
       <workItem from="1447957867750" duration="19062000" />
-      <workItem from="1448228687029" duration="10011000" />
+      <workItem from="1448228687029" duration="10781000" />
     </task>
     <task id="LOCAL-00001" summary="BFS - trying it solve in other way&#10;">
       <created>1443332006087</created>
@@ -872,7 +870,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="176518000" />
+    <option name="totallyTimeSpent" value="177288000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1347,8 +1345,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tree/api/core/BinarySearchTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7716263">
-          <caret line="292" column="7" selection-start-line="292" selection-start-column="7" selection-end-line="292" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.38638985">
+          <caret line="631" column="19" selection-start-line="631" selection-start-column="19" selection-end-line="631" selection-end-column="19" />
           <folding>
             <element signature="e#12228#12229#0" expanded="true" />
             <element signature="e#12292#12293#0" expanded="true" />

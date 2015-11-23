@@ -3,10 +3,7 @@ package tree.api.core;
 import tree.api.exceptions.BoundaryViolationException;
 import tree.api.exceptions.InvalidNodeException;
 
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Spliterator;
+import java.util.*;
 import java.util.function.Consumer;
 
 /**
@@ -257,8 +254,40 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
     }
 
     @Override
-    public List<Node<T>> getNodesAtLevel(int level) {
-        return null;
+    public List<Node<T>> getNodesAtLevel(int level) throws InvalidNodeException {
+
+        return level > 0 ? getNodesAtLevel(root, level) : null;
+    }
+
+    private List<Node<T>> getNodesAtLevel(Node<T> root, int desiredLevel) throws
+            InvalidNodeException {
+        if (root == null)
+            throw new InvalidNodeException(INVALID_NODE_MESSAGE, INVALID_NODE_ERROR_CODE);
+
+        int currentLevel = 0;
+        List<Node<T>> listOfNodes = new ArrayList<>();
+        Queue<Node> bfsQueue = new LinkedList<>();
+        bfsQueue.add(root);
+
+        while (!bfsQueue.isEmpty()) {
+            int levels = bfsQueue.size();
+            while (levels > 0) {
+                Node<T> node = bfsQueue.poll();
+                if (currentLevel == desiredLevel) {
+                    listOfNodes.add(node);
+                    break;
+                }
+                if (node.left != null) {
+                    bfsQueue.add(node.left);
+                }
+                if (node.right != null) {
+                    bfsQueue.add(node.right);
+                }
+                levels--;
+            }
+            currentLevel++;
+        }
+        return listOfNodes;
     }
 
     /**
@@ -422,11 +451,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
         }
     }
 
-    @Override
-    public boolean isInternal(T node) throws InvalidNodeException {
-        return false;
-    }
-
     private boolean isExternal(Node<T> node) {
         return (node.left == null && node.right == null);
     }
@@ -462,7 +486,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
      * @return
      */
     private boolean hasChild(Node<T> node) {
-        return (node.left == null && node.right == null);
+        return node.hasChild();
     }
 
     @Deprecated

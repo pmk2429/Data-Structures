@@ -150,16 +150,6 @@ public interface ITree<T> {
      */
     Node<T> parent(T data) throws InvalidNodeException, BoundaryViolationException;
 
-
-    /**
-     * Returns whether a given node is internal or not
-     *
-     * @param node
-     * @return
-     * @throws InvalidNodeException
-     */
-    boolean isInternal(T node) throws InvalidNodeException;
-
     /**
      * Returns whether a given node is external or not
      *
@@ -234,5 +224,5 @@ public interface ITree<T> {
      * @param level Level at which the List of Node is to be retrieved
      * @return List of Nodes<T>
      */
-    List<Node<T>> getNodesAtLevel(int level);
+    List<Node<T>> getNodesAtLevel(int level) throws InvalidNodeException;
 }

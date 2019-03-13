@@ -1,24 +1,24 @@
 package tree.bt;
 
 public interface BinaryTreeInterface {
-    Node addNode(int key, String name);
+  Node addNode(int key, String name);
 
-    Node deleteNode();
+  Node deleteNode();
 
-    void search();
+  void search();
 
-    int height();
+  int height();
 
-    int depth();
+  int depth();
 
-    int maximum();
+  int maximum();
 
-    Node findMaximum();
+  Node findMaximum();
 
-    Node findMinimum();
+  Node findMinimum();
 
-    boolean hasLeft(Node node);
+  boolean hasLeft(Node node);
 
-    boolean hasRight(Node node);
+  boolean hasRight(Node node);
 
 }

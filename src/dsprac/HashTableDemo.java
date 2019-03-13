@@ -1,4 +1,4 @@
-package dsDemos;
+package dsprac;
 
 import java.util.*;
 

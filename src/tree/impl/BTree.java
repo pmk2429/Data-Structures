@@ -1,4 +1,4 @@
-package tree.bt;
+package tree.impl;
 
 public class BTree {
 

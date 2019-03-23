@@ -30,7 +30,7 @@ public interface ITree<T> {
 
   /**
    * This method is used to Add a {@link Node} to the BinarySearchTree. It takes a Generic data type as an
-   * argument and then internally calls another method add(Node, data) to insert the data into the BinarySearchTree.
+   * argument and then int ernally calls another method add(Node, data) to insert the data into the BinarySearchTree.
    * Accepts <tt>Comparable </tt> type class.
    *
    * @param data

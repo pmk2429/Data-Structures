@@ -180,6 +180,33 @@ public class LinkedList<AnyType> implements Iterable<AnyType> {
   }
 
   /**
+   * Removes the element from the specified index
+   *
+   * @param index
+   */
+  public void remove(int index) {
+    if (head == null) {
+      throw new RuntimeException("cannot delete");
+    }
+
+    Node<AnyType> cur = head;
+    Node<AnyType> prev = null;
+
+    int i = 0;
+    while (i < index) {
+      prev = cur;
+      cur = cur.next;
+    }
+
+    if (cur == null) {
+      throw new RuntimeException("cannot delete");
+    }
+
+    //delete cur node
+    prev.next = cur.next;
+  }
+
+  /**
    * Returns a deep copy of the list
    * Complexity: O(n^2)
    */
@@ -192,21 +219,6 @@ public class LinkedList<AnyType> implements Iterable<AnyType> {
     }
 
     return twin;
-  }
-
-  /**
-   * Returns a deep copy of the list
-   * Complexity: O(n)
-   */
-  public LinkedList<AnyType> copy2() {
-    LinkedList<AnyType> twin = new LinkedList<AnyType>();
-    Node<AnyType> tmp = head;
-    while (tmp != null) {
-      twin.addFirst(tmp.data);
-      tmp = tmp.next;
-    }
-
-    return twin.reverse();
   }
 
   /**

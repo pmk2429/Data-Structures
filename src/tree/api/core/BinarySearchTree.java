@@ -16,7 +16,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
   private static String INVALID_NODE_MESSAGE = "Invalid Node in Tree";
   private static String INVALID_NODE_ERROR_CODE = "Invalid_Node";
-  private Node<T> root;
+  private Node root;
   private Comparator<T> comparator;
 
   // Default constructor.
@@ -37,11 +37,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
     } else {
       return comparator.compare(x, y);
     }
-  }
-
-  @Override
-  public void add(T data) {
-    root = add(root, data);
   }
 
   // Helper method used to add the type specific data to the Tree based on the index.
@@ -66,6 +61,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
     return root;
   }
 
+  @Override
+  public void add(T data) {
+    root = add(root, data);
+  }
 
   /**
    * This method is used to delete the node from the BinarySearchTree.
@@ -112,7 +111,9 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
    * @return
    */
   private T rightMost(Node<T> node) {
-    while (node.right != null) node = node.right;
+    while (node.right != null) {
+      node = node.right;
+    }
     return node.data;
   }
 

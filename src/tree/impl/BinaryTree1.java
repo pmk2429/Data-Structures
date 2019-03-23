@@ -1,4 +1,4 @@
-package tree.bt;
+package tree.impl;
 
 import java.util.Scanner;
 import java.util.Random;
@@ -261,16 +261,7 @@ public class BinaryTree1 {
       return x.data;
   }
 
-  private int getdata(BinaryTree1.Node node) {
-    while (node.rightbnode != null)
-      node = node.rightbnode;
-
-    return node.data;
-  }
-
   private int compare(int data, int data2) {
-    // TODO Auto-generated method stub
-
     return (data2 - data);
   }
 

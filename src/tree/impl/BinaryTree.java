@@ -1,4 +1,4 @@
-package tree.bt;
+package tree.impl;
 
 /**
  * Implement these Operations add remove find findMininum findMaximum delete
@@ -39,130 +39,90 @@ public class BinaryTree {
   }
 
   // Delete Node
-
   public boolean remove(int key) {
     // Start at the top of the tree
-
     Node focusNode = root;
     Node parent = root;
 
-    // When searching for a Node this will
-    // tell us whether to search to the
-    // right or left
-
+    // When searching for a Node this will tell us whether to search to the right or left
     boolean isItALeftChild = true;
 
-    // While we haven't found the Node
-    // keep looking
+    // While we haven't found the Node keep looking
     while (focusNode.key != key) {
       parent = focusNode;
+
       // If we should search to the left
       if (key < focusNode.key) {
         isItALeftChild = true;
-
         // Shift the focus Node to the left child
         focusNode = focusNode.leftChild;
-
       } else {
         // Greater than focus node so go to the right
         isItALeftChild = false;
-
         // Shift the focus Node to the right child
         focusNode = focusNode.rightChild;
       }
 
       // The node wasn't found
-      if (focusNode == null)
+      if (focusNode == null) {
         return false;
-
+      }
     }
 
     // If Node doesn't have children delete it
     if (focusNode.leftChild == null && focusNode.rightChild == null) {
-
       // If root delete it
-      if (focusNode == root)
+      if (focusNode == root) {
         root = null;
-
-        // If it was marked as a left child
-        // of the parent delete it in its parent
-      else if (isItALeftChild)
+      } else if (isItALeftChild) { // If it was marked as a left child of the parent delete it in its parent
         parent.leftChild = null;
-
-        // Vice versa for the right child
-      else
+      } else { // Vice versa for the right child
         parent.rightChild = null;
-
+      }
     }
 
     // If no right child
     else if (focusNode.rightChild == null) {
-
-      if (focusNode == root)
+      if (focusNode == root) {
         root = focusNode.leftChild;
-
-        // If focus Node was on the left of parent
-        // move the focus Nodes left child up to the
-        // parent node
-
-      else if (isItALeftChild)
+      } else if (isItALeftChild) { // If focus Node was on the left of parent move the focus Nodes left child up to the parent node
         parent.leftChild = focusNode.leftChild;
-
-        // Vice versa for the right child
-
-      else
+      } else { // Vice versa for the right child
         parent.rightChild = focusNode.leftChild;
-
+      }
     }
 
     // If no left child
     else if (focusNode.leftChild == null) {
-
-      if (focusNode == root)
+      if (focusNode == root) {
         root = focusNode.rightChild;
-
-        // If focus Node was on the left of parent
-        // move the focus Nodes right child up to the
-        // parent node
-
-      else if (isItALeftChild)
+      } // If focus Node was on the left of parent move the focus Nodes right child up to the parent node
+      else if (isItALeftChild) {
         parent.leftChild = focusNode.rightChild;
-
-        // Vice versa for the left child
-
-      else
+      } else { // Vice versa for the left child
         parent.rightChild = focusNode.rightChild;
-
+      }
     }
 
-    // Two children so I need to find the deleted nodes
-    // replacement
+    // Two children so I need to find the deleted nodes replacement
     else {
-
       Node replacement = getReplacementNode(focusNode);
-
-      // If the focusNode is root replace root
-      // with the replacement
-      if (focusNode == root)
+      // If the focusNode is root replace root with the replacement
+      if (focusNode == root) {
         root = replacement;
-
-        // If the deleted node was a left child
-        // make the replacement the left child
-      else if (isItALeftChild)
+      } // If the deleted node was a left child make the replacement the left child
+      else if (isItALeftChild) {
         parent.leftChild = replacement;
-
-        // Vice versa if it was a right child
-      else
+      } else { // Vice versa if it was a right child
         parent.rightChild = replacement;
-
+      }
       replacement.leftChild = focusNode.leftChild;
     }
     return true;
-
   }
-  // Get the replacement for the Node removed.
 
-  public Node getReplacementNode(Node replacedNode) {
+  // Get the replacement for the Node removed.
+  private Node getReplacementNode(Node replacedNode) {
 
     Node replacementParent = replacedNode;
     Node replacement = replacedNode;
@@ -194,8 +154,8 @@ public class BinaryTree {
     return replacement;
 
   }
-  // find specific node
 
+  // find specific node
   public Node findNode(int key) {
     // Start at the top of the tree
     Node focusNode = root;
@@ -222,27 +182,27 @@ public class BinaryTree {
     return focusNode;
 
   }
-  // In order Traversal
 
-  public void inOrderTraverse(Node focusNode) {
+  // In order Traversal
+  private void inOrderTraverse(Node focusNode) {
     if (focusNode != null) {
       inOrderTraverse(focusNode.leftChild);
       System.out.println(focusNode);
       inOrderTraverse(focusNode.rightChild);
     }
   }
-  // Preorder Traversal
 
-  public void preOrderTraverse(Node focusNode) {
+  // Preorder Traversal
+  private void preOrderTraverse(Node focusNode) {
     if (focusNode != null) {
       System.out.println(focusNode);
       preOrderTraverse(focusNode.leftChild);
       preOrderTraverse(focusNode.rightChild);
     }
   }
-  // Postorder Traversal
 
-  public void postOrderTraverse(Node focusNode) {
+  // Postorder Traversal
+  private void postOrderTraverse(Node focusNode) {
     if (focusNode != null) {
       postOrderTraverse(focusNode.leftChild);
       postOrderTraverse(focusNode.rightChild);
@@ -275,8 +235,8 @@ public class BinaryTree {
     System.out.println("\nNode with the key 75: " + tree.findNode(75));
 
     System.out.println("Remove Key 25");
-
     tree.remove(25);
+
     System.out.println("25 is now: " + tree.findNode(25));
 
     System.out.println("\n---------------------------");
@@ -287,17 +247,17 @@ public class BinaryTree {
 
 class Node {
   int key;
-  String name;
+  private String value;
 
   Node leftChild;
   Node rightChild;
 
-  Node(int key, String name) {
+  Node(int key, String value) {
     this.key = key;
-    this.name = name;
+    this.value = value;
   }
 
   public String toString() {
-    return name + " has a key " + key;
+    return value + " has a key " + key;
   }
 }

@@ -1,5 +1,7 @@
 package tree.bt;
 
+import tree.impl.BinaryTree;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -92,6 +94,8 @@ public interface BinaryTreeApi {
    */
   Node predecessor();
 
+  Node predecessor(Node node);
+
   /**
    * If X has two childrenits successor is the minimum value in its right subtree
    *
@@ -99,7 +103,15 @@ public interface BinaryTreeApi {
    */
   Node successor();
 
-  List<Node> immediateSuccessors();
+  Node successor(Node node);
+
+  /**
+   * Prints n immediate successors of the specified node.
+   *
+   * @param n
+   * @return
+   */
+  List<Node> immediateSuccessors(Node node, int n);
 
   /**
    * Returns the list of nodes by each level as a list constituent
@@ -146,4 +158,23 @@ public interface BinaryTreeApi {
    * @return
    */
   List<Node> postOrderTraversal();
+
+  /**
+   * A complete binary tree is a binary tree in which every level, except possibly the last, is completely filled
+   * and all nodes are as far left as possible.
+   *
+   * @return
+   */
+  boolean isComplete();
+
+  /**
+   * A full binary tree (sometimes proper binary tree or 2-tree or strictly binary tree) is a tree in
+   * which every node other than the leaves has two children.
+   *
+   * @return
+   */
+  boolean isFull();
+
+  boolean isLeaf(Node node);
+
 }

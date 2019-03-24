@@ -1,5 +1,21 @@
 bin/
+target/
+classpath/
+project/
+*.iml
+*.iws
+.DS_Store
+
+Ocean.iml
+
+# .idea files
 .idea
-.idea/*
-.classpath
-.project/
+.idea/workspace.xml
+.idea/misc.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/encodings.xml
+.idea/kotlinc.xml
+.idea/jsLibraryMappings.xml
+.idea/codeStyles/codeStyleConfi

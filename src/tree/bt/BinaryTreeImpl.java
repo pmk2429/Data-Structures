@@ -221,7 +221,6 @@ public class BinaryTreeImpl implements BinaryTreeApi {
     }
 
     return lists;
-
   }
 
   @Override
@@ -301,18 +300,74 @@ public class BinaryTreeImpl implements BinaryTreeApi {
     return 0;
   }
 
+  private Node findPredecessor(Node node) {
+    // max value in left subtree
+    if (node == null) {
+      return getNullNode();
+    }
+
+    if (node.left == null) {
+      return getNullNode();
+    }
+
+    Node leftRoot = node.left;
+
+    return maximum(leftRoot);
+  }
+
   @Override
   public Node predecessor() {
-    return null;
+    return findPredecessor(root);
+  }
+
+  @Override
+  public Node predecessor(Node node) {
+    return findPredecessor(node);
+  }
+
+  private Node findSuccessor(Node node) {
+    // min value in right sub tree
+    if (node == null) {
+      return getNullNode();
+    }
+
+    if (node.right == null) {
+      return getNullNode();
+    }
+
+    Node rightRoot = node.right;
+
+    return minimum(rightRoot);
   }
 
   @Override
   public Node successor() {
-    return null;
+    return findSuccessor(root);
   }
 
   @Override
-  public List<Node> immediateSuccessors() {
+  public Node successor(Node node) {
+    return findSuccessor(node);
+  }
+
+  @Override
+  public List<Node> immediateSuccessors(Node node, int n) {
+
+    if (node == null) {
+      return null;
+    }
+
+    // build the list using inorder traversal
+    List<Node> inorder = inOrderTraversal();
+
+    if (n < inorder.size()) {
+      if (inorder.contains(node)) {
+        int startIndex = inorder.indexOf(node) + 1;
+        // now get the element starting 5 until n
+        return inorder.subList(startIndex, startIndex + n);
+      }
+    }
+
     return null;
   }
 
@@ -326,24 +381,118 @@ public class BinaryTreeImpl implements BinaryTreeApi {
     return null;
   }
 
+  private void buildInorderTraversal(Node node, List<Node> inorder) {
+    if (node != null) {
+      if (node.left != null) {
+        buildInorderTraversal(node.left, inorder);
+      }
+      inorder.add(node);
+      if (node.right != null) {
+        buildInorderTraversal(node.right, inorder);
+      }
+    }
+  }
+
   @Override
   public List<Node> inOrderTraversal() {
-    return null;
+    if (root == null) {
+      return null;
+    }
+    List<Node> inorder = new ArrayList<>();
+    buildInorderTraversal(root, inorder);
+    return inorder;
+  }
+
+  private void buildPreOrderTraversal(Node node, List<Node> preOrder) {
+    if (node != null) {
+      preOrder.add(node);
+      if (node.left != null) {
+        buildPreOrderTraversal(node.left, preOrder);
+      }
+      if (node.right != null) {
+        buildPreOrderTraversal(node.right, preOrder);
+      }
+    }
   }
 
   @Override
   public List<Node> preOrderTraversal() {
-    return null;
+    if (root == null) {
+      return null;
+    }
+
+    List<Node> preOrder = new ArrayList<>();
+    buildPreOrderTraversal(root, preOrder);
+
+    return preOrder;
+  }
+
+  private void buildPostOrderTraversal(Node node, List<Node> postOrder) {
+    if (node != null) {
+      if (node.left != null) {
+        buildPostOrderTraversal(node.left, postOrder);
+      }
+      if (node.right != null) {
+        buildPostOrderTraversal(node.right, postOrder);
+      }
+      postOrder.add(node);
+    }
   }
 
   @Override
   public List<Node> postOrderTraversal() {
-    return null;
+    if (root == null) {
+      return null;
+    }
+
+    List<Node> postOrder = new ArrayList<>();
+    buildPostOrderTraversal(root, postOrder);
+
+    return postOrder;
   }
 
   private Node getNullNode() {
     Node node = new Node(0, "Node Unavailable");
     return node;
+  }
+
+  @Override
+  public boolean isComplete() {
+    return false;
+  }
+
+  private boolean isFullTree(Node node) {
+    boolean isFull = false;
+
+    // empty tree is a full BT
+    if (node == null) {
+      return true;
+    }
+
+    if (node.left == null && node.right == null) {
+      return true;
+    }
+
+    // a full binary tree always has odd number of nodes
+    if (count % 2 == 0) {
+      return false;
+    }
+
+    if ((node.left != null) && (node.right != null)) {
+      isFull = (isFullTree(node.left) && isFullTree(node.right));
+    }
+
+    return isFull;
+  }
+
+  @Override
+  public boolean isFull() {
+    return isFullTree(root);
+  }
+
+  @Override
+  public boolean isLeaf(Node node) {
+    return node.right == null && node.left == null;
   }
 
   // In order printing of tree

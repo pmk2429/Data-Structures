@@ -1,13 +1,13 @@
 package heap.api;
 
 public class BHDemo {
-	public static void main(String[] args) {
-		BinaryHeap<String> heap = new BinaryHeap<String>();
-		heap.add("pavitra");
-		heap.add("ruchir");
-		heap.add("luv");
-		heap.add("nana");
-		heap.add("ani");
-
-	}
+  public static void main(String[] args) {
+    BinaryHeap<String> heap = new BinaryHeap<String>();
+    heap.add("Pavitra");
+    heap.add("Harsha");
+    heap.add("Anna");
+    heap.add("Tushar");
+    heap.add("Jigar");
+    heap.add("Pranav");
+  }
 }

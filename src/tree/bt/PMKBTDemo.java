@@ -64,5 +64,8 @@ public class PMKBTDemo {
       System.out.println(n.data + " - " + n.value);
     }
 
+    int totalChild = binaryTree.totalChild(b);
+    System.out.println(totalChild);
+
   }
 }

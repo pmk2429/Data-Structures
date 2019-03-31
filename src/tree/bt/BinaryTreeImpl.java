@@ -295,9 +295,30 @@ public class BinaryTreeImpl implements BinaryTreeApi {
     return (node.left != null || node.right != null);
   }
 
+  private int deduceTotalChild(Node node) {
+    if (node == null) {
+      return -1;
+    }
+
+    if (node == root) {
+      return count - 1;
+    }
+
+    if (node.right == null || node.left == null) {
+      return 1;
+    } else {
+      return deduceTotalChild(node.right) + deduceTotalChild(node.left);
+    }
+  }
+
   @Override
-  public int getTotalChild() {
-    return 0;
+  public int totalChild() {
+    return deduceTotalChild(root);
+  }
+
+  @Override
+  public int totalChild(Node node) {
+    return deduceTotalChild(node);
   }
 
   private Node findPredecessor(Node node) {

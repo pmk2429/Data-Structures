@@ -85,7 +85,9 @@ public interface BinaryTreeApi {
 
   boolean hasChild(Node node);
 
-  int getTotalChild();
+  int totalChild();
+
+  int totalChild(Node node);
 
   /**
    * If X has two childrenits predecessor is the maximum value in its left subtree

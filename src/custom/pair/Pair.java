@@ -24,12 +24,12 @@ public class Pair<A, B> {
     if (other instanceof Pair) {
       Pair otherPair = (Pair) other;
       return
-              ((this.first == otherPair.first ||
-                      (this.first != null && otherPair.first != null &&
-                              this.first.equals(otherPair.first))) &&
-                      (this.second == otherPair.second ||
-                              (this.second != null && otherPair.second != null &&
-                                      this.second.equals(otherPair.second))));
+          ((this.first == otherPair.first ||
+              (this.first != null && otherPair.first != null &&
+                  this.first.equals(otherPair.first))) &&
+              (this.second == otherPair.second ||
+                  (this.second != null && otherPair.second != null &&
+                      this.second.equals(otherPair.second))));
     }
 
     return false;

@@ -4,9 +4,9 @@ public class Vertex implements Comparable<Vertex> {
   /**
    * label for Vertex
    */
-  public String name;
+  public String label;
   /**
-   * length of shortest path from source
+   * length of shortest path from source. Property used to compare Vertex.
    */
   public int distance;
   /**
@@ -26,23 +26,23 @@ public class Vertex implements Comparable<Vertex> {
   public static final int INFINITY = Integer.MAX_VALUE;
 
   public Vertex(String v) {
-    name = v;
+    label = v;
     distance = INFINITY; // start as infinity away
     predecessor = null;
     centrality = 0.0;
   }
 
   /**
-   * The name of the Vertex is assumed to be unique, so it is used as a HashCode
+   * The label of the Vertex is assumed to be unique, so it is used as a HashCode
    *
    * @see java.lang.Object#hashCode()
    */
   public int hashCode() {
-    return name.hashCode();
+    return label.hashCode();
   }
 
   public String toString() {
-    return name;
+    return label;
   }
 
   /**
@@ -54,7 +54,7 @@ public class Vertex implements Comparable<Vertex> {
     if (diff != 0) {
       return diff;
     } else {
-      return name.compareTo(other.name);
+      return label.compareTo(other.label);
     }
   }
 }

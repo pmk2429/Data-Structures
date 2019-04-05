@@ -9,7 +9,7 @@ public class BinaryTreeImpl implements BinaryTreeApi {
   private Node root = null;
   private int count = 0;
 
-  // Utility helper method to add new Node to Binary Tree
+  // Utility Binarhelper method to add new Node to Binary Tree
   private Node add(Node root, Node newNode) {
     if (root == null) {
       root = newNode;
@@ -32,6 +32,7 @@ public class BinaryTreeImpl implements BinaryTreeApi {
 
   @Override
   public void delete(Node node) {
+
   }
 
   @Override

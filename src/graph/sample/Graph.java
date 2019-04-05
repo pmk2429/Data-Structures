@@ -19,7 +19,6 @@ public class Graph {
     myAdjList = new HashMap<>();
     myVertices = new HashMap<>();
     myNumVertices = myNumEdges = 0;
-
   }
 
   /**
@@ -72,9 +71,9 @@ public class Graph {
    * @return true iff from-to exists in this Graph
    */
   public boolean hasEdge(String from, String to) {
-
-    if (!hasVertex(from) || !hasVertex(to))
+    if (!hasVertex(from) || !hasVertex(to)) {
       return false;
+    }
     return myAdjList.get(myVertices.get(from)).contains(myVertices.get(to));
   }
 
@@ -88,8 +87,9 @@ public class Graph {
    */
   public void addEdge(String from, String to) {
     Vertex v, w;
-    if (hasEdge(from, to))
+    if (hasEdge(from, to)) {
       return;
+    }
     myNumEdges += 1;
     if ((v = getVertex(from)) == null)
       v = addVertex(from);
@@ -134,11 +134,11 @@ public class Graph {
     return myVertices.values();
   }
 
-  public int numVertices() {
+  public int totalVertices() {
     return myNumVertices;
   }
 
-  public int numEdges() {
+  public int totalEdges() {
     return myNumEdges;
   }
 
@@ -198,7 +198,7 @@ public class Graph {
       for (Vertex v : myVertices.values()) {
         String id = "v" + count++;
         idToName.put(v, id);
-        out.write(id + "," + escapedVersion(v.name));
+        out.write(id + "," + escapedVersion(v.label));
         out.write(",6," + v.distance + "\n");
       }
       out.write("edgedef> node1,node2,color\n");
@@ -219,6 +219,13 @@ public class Graph {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  public void bfsTraversal() {
+
+  }
+
+  public void dfsTraversal() {
 
   }
 
@@ -238,11 +245,11 @@ public class Graph {
     // print out graph again by iterating over vertices and edges
     for (Vertex v : G.getVertices()) {
       System.out.print(v + ": ");
-      for (Vertex w : G.adjacentTo(v.name)) {
+      for (Vertex w : G.adjacentTo(v.label)) {
         System.out.print(w + " ");
       }
       System.out.println();
     }
-    G.outputGDF("graph.gdf");
+    //G.outputGDF("graph.gdf");
   }
 }

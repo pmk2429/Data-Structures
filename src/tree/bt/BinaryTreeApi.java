@@ -1,7 +1,5 @@
 package tree.bt;
 
-import tree.impl.BinaryTree;
-
 import java.util.LinkedList;
 import java.util.List;
 

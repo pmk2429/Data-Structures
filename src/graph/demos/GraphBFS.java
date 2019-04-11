@@ -1,15 +1,15 @@
 package graph.demos;
 
-import java.util.*;
+import java.util.LinkedList;
 import java.util.Queue;
 
 public class GraphBFS {
 
-  int[][] adjMatrix;
-  int rootNode = 0;
-  int NNodes;
+  private int[][] adjMatrix;
+  private int rootNode = 0;
+  private int NNodes;
 
-  boolean[] visited;
+  private boolean[] visited;
 
   GraphBFS(int N) {
     NNodes = N;
@@ -26,9 +26,11 @@ public class GraphBFS {
     visited = new boolean[NNodes];
 
 
-    for (i = 0; i < NNodes; i++)
-      for (j = 0; j < NNodes; j++)
+    for (i = 0; i < NNodes; i++) {
+      for (j = 0; j < NNodes; j++) {
         adjMatrix[i][j] = mat[i][j];
+      }
+    }
   }
 
 
@@ -64,27 +66,28 @@ public class GraphBFS {
   }
 
 
-  int getUnvisitedChildNode(int n) {
+  private int getUnvisitedChildNode(int n) {
     int j;
 
     for (j = 0; j < NNodes; j++) {
       if (adjMatrix[n][j] > 0) {
-        if (!visited[j])
+        if (!visited[j]) {
           return (j);
+        }
       }
     }
 
     return (-1);
   }
 
-  void clearVisited() {
+  private void clearVisited() {
     int i;
-
-    for (i = 0; i < visited.length; i++)
+    for (i = 0; i < visited.length; i++) {
       visited[i] = false;
+    }
   }
 
-  void printNode(int n) {
+  private void printNode(int n) {
     System.out.println(n);
   }
 }

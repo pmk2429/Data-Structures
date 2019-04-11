@@ -1,11 +1,11 @@
-package heap.sample;
+package heap.impl;
 
 import java.util.Scanner;
 
-public class BinaryHeapDemo {
+public class BinaryHeapRun {
 
   public static void main(String[] args) {
-    BinaryHeapInt heap = new BinaryHeapInt(10);
+    MinBinaryHeapInt heap = new MinBinaryHeapInt(10);
     heap.insert(3);
     heap.insert(5);
     heap.insert(9);
@@ -17,16 +17,16 @@ public class BinaryHeapDemo {
     heap.insert(14);
     heap.insert(8);
 
-//    heap.insert(10);
-//    heap.insert(15);
-//    heap.insert(20);
-//    heap.insert(17);
-//    heap.insert(25);
-
     heap.printHeap();
+
+    System.out.println("Min Child Index - " + heap.minChildIndex(3));
+    System.out.println("Max Child Index - " + heap.maxChildIndex(3));
 
     heap.delete(1);
     heap.printHeap();
+
+    System.out.println(heap.isMinHeap());
+    System.out.println(heap.isMaxHeap());
   }
 
   public static void demo() {
@@ -35,7 +35,7 @@ public class BinaryHeapDemo {
     System.out.println("Enter size of Binary heap");
 
     /** Make object of BinaryHeap **/
-    BinaryHeapInt bh = new BinaryHeapInt(scan.nextInt());
+    MinBinaryHeapInt bh = new MinBinaryHeapInt(scan.nextInt());
 
     char ch;
     /** Perform Binary Heap operations **/

@@ -54,7 +54,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
     if (compare(data, root.data) < 0) {
       root.left = add(root.left, data);
     }
-    // if the data to be inserted is greater than the root data, insert to right of child.
+    // if the data to be inserted is greater than the' root data, insert to right of child.
     else {
       root.right = add(root.right, data);
     }
@@ -261,7 +261,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
   }
 
   private List<Node<T>> getNodesAtLevel(Node<T> root, int desiredLevel) throws
-          InvalidNodeException {
+      InvalidNodeException {
     if (root == null)
       throw new InvalidNodeException(INVALID_NODE_MESSAGE, INVALID_NODE_ERROR_CODE);
 
@@ -603,35 +603,24 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
   }
 
   /**
-   * Method to Traverse this Binary Search Tree in PreOrder Traversal Fashion.
-   *
-   * @return
-   */
-  public ArrayList<ArrayList<T>> levelOrder() {
-    if (root == null)
-      return null;
-
-    return levelOrder(root);
-  }
-
-  /**
    * Returns the List of Nodes at each level in this Binary Tree.
    *
    * @param root
    * @return
    */
-  private ArrayList<ArrayList<T>> levelOrder(Node<T> root) {
-    ArrayList<ArrayList<T>> al = new ArrayList<>();
-    ArrayList<T> nodeValues = new ArrayList<>();
-    if (root == null)
+  private List<List<T>> levelOrder(Node<T> root) {
+    List<List<T>> al = new ArrayList<>();
+    List<T> nodeValues = new ArrayList<>();
+    if (root == null) {
       return al;
+    }
 
-    LinkedList<Node<T>> current = new LinkedList<>();
-    LinkedList<Node<T>> next = new LinkedList<>();
+    List<Node<T>> current = new LinkedList<>();
+    List<Node<T>> next = new LinkedList<>();
     current.add(root);
 
     while (!current.isEmpty()) {
-      Node<T> node = current.remove();
+      Node<T> node = ((LinkedList<Node<T>>) current).remove();
 
       if (node.left != null)
         next.add(node.left);
@@ -643,12 +632,23 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
         current = next;
         next = new LinkedList<>();
         al.add(nodeValues);
-        nodeValues = new ArrayList();
+        nodeValues = new ArrayList<>();
       }
     }
     return al;
   }
 
+  /**
+   * Method to Traverse this Binary Search Tree in PreOrder Traversal Fashion.
+   *
+   * @return
+   */
+  public List<List<T>> levelOrder() {
+    if (root == null)
+      return null;
+
+    return levelOrder(root);
+  }
 
   // Other basic features of the BinarySearchTree.
 

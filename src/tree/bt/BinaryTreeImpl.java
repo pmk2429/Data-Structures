@@ -1,8 +1,6 @@
 package tree.bt;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class BinaryTreeImpl implements BinaryTreeApi {
 
@@ -209,9 +207,9 @@ public class BinaryTreeImpl implements BinaryTreeApi {
   }
 
   @Override
-  public List<LinkedList<Node>> getNodesAtLevel(int level) {
-    List<LinkedList<Node>> lists = new ArrayList<>();
-    LinkedList<Node> list = new LinkedList<>();
+  public List<List<Node>> getNodesAtLevel(int level) {
+    List<List<Node>> lists = new ArrayList<>();
+    List<Node> list = new LinkedList<>();
 
     int i = 0;
     while (i < depth(root)) {
@@ -395,7 +393,76 @@ public class BinaryTreeImpl implements BinaryTreeApi {
 
   @Override
   public List<List<Node>> levelOrder() {
-    return null;
+    List<List<Node>> result = new ArrayList<>();
+
+    if (root == null) {
+      return result;
+    }
+
+    LinkedList<Node> nodeQueue = new LinkedList<>();
+    LinkedList<Integer> levelQueue = new LinkedList<>();
+
+    nodeQueue.offer(root);
+    levelQueue.offer(1); //start from 1
+
+    while (!nodeQueue.isEmpty()) {
+      Node node = nodeQueue.poll();
+      int level = levelQueue.poll();
+
+      // get the most recent level to add the node to that list
+      List<Node> temp;
+      if (result.size() < level) {
+        temp = new ArrayList<>();
+        result.add(temp);
+      } else {
+        temp = result.get(level - 1);
+      }
+
+      // add the node to current level list
+      temp.add(node);
+
+      // check for left node
+      if (node.left != null) {
+        nodeQueue.offer(node.left);
+        levelQueue.offer(level + 1);
+      }
+
+      // check for right node
+      if (node.right != null) {
+        nodeQueue.offer(node.right);
+        levelQueue.offer(level + 1);
+      }
+    }
+
+    return result;
+  }
+
+  @Override
+  public void printLevelOrder() {
+    if (root == null) {
+      return;
+    }
+
+    Node currNode = root;
+    LinkedList<Node> nodesQ = new LinkedList<>();
+    nodesQ.add(currNode);
+
+    while (!nodesQ.isEmpty()) {
+      // print the current node
+      System.out.println(nodesQ.peek().value);
+
+      if (currNode.left != null) {
+        nodesQ.add(currNode.left);
+      }
+
+      if (currNode.right != null) {
+        nodesQ.add(currNode.right);
+      }
+
+      nodesQ.remove();
+      currNode = nodesQ.peek();
+    }
+
   }
 
   @Override
@@ -515,6 +582,28 @@ public class BinaryTreeImpl implements BinaryTreeApi {
   @Override
   public boolean isLeaf(Node node) {
     return node.right == null && node.left == null;
+  }
+
+  private void reverseTree(Node root) {
+    if (root == null) {
+      return;
+    }
+
+    // swap nodes
+    Node temp = root.right;
+    root.right = root.left;
+    root.left = temp;
+
+    // reverse left tree
+    reverseTree(root.left);
+
+    // reverse right tree
+    reverseTree(root.right);
+  }
+
+  @Override
+  public void reverse() {
+    reverseTree(root);
   }
 
   // In order printing of tree

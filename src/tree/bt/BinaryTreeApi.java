@@ -63,7 +63,7 @@ public interface BinaryTreeApi {
 
   int getLevel(Node node);
 
-  List<LinkedList<Node>> getNodesAtLevel(int level);
+  List<List<Node>> getNodesAtLevel(int level);
 
   int size();
 
@@ -119,6 +119,8 @@ public interface BinaryTreeApi {
    * @return
    */
   List<List<Node>> levelOrder();
+
+  void printLevelOrder();
 
   /**
    * Provides Recursive approach to find the <tt>Lowest Common Ancestor</tt>.
@@ -176,5 +178,7 @@ public interface BinaryTreeApi {
   boolean isFull();
 
   boolean isLeaf(Node node);
+
+  void reverse();
 
 }

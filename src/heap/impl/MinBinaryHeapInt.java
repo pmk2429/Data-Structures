@@ -1,4 +1,4 @@
-package heap.sample;
+package heap.impl;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;
@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
  * BinaryHeap allows to implement Heap DS in Java.
  * This class covers  basic implementations of Heaps such as
  **/
-public class BinaryHeapInt {
+public class MinBinaryHeapInt {
   /**
    * The number of children each node has
    **/
@@ -18,7 +18,7 @@ public class BinaryHeapInt {
   /**
    * Constructor
    **/
-  public BinaryHeapInt(int capacity) {
+  public MinBinaryHeapInt(int capacity) {
     size = 0;
     heap = new int[capacity + 1];
     Arrays.fill(heap, -1);
@@ -109,7 +109,7 @@ public class BinaryHeapInt {
     int childIndex;
     int tmp = heap[index];
     while (kthChildIndex(index, 1) < size) {
-      childIndex = minChild(index);
+      childIndex = minChildIndex(index);
       if (heap[childIndex] < tmp) {
         heap[index] = heap[childIndex];
       } else {
@@ -179,17 +179,37 @@ public class BinaryHeapInt {
   /**
    * Returns the smallest child index of the current index.
    **/
-  private int minChild(int ind) {
-    int bestChildIndex = kthChildIndex(ind, 1);
+  public int minChildIndexPosition(int index) {
+    int bestChildIndex = kthChildIndex(index, 1);
     int k = 2;
-    int posIndex = kthChildIndex(ind, k);
+    int posIndex = kthChildIndex(index, k);
     while ((k <= d) && (posIndex < size)) {
       if (heap[posIndex] < heap[bestChildIndex]) {
         bestChildIndex = posIndex;
       }
-      posIndex = kthChildIndex(ind, k++);
+      posIndex = kthChildIndex(index, k++);
     }
     return bestChildIndex;
+  }
+
+  public int minChildIndex(int index) {
+    int leftChild = kthChildIndex(index, 1);
+    int rightChild = kthChildIndex(index, 2);
+
+    return heap[leftChild] > heap[rightChild] ? rightChild : leftChild;
+  }
+
+  /**
+   * Function to return the maximum child index of the current index
+   *
+   * @param index
+   * @return
+   */
+  public int maxChildIndex(int index) {
+    int leftChild = kthChildIndex(index, 1);
+    int rightChild = kthChildIndex(index, 2);
+
+    return heap[rightChild] > heap[leftChild] ? rightChild : leftChild;
   }
 
   /**
@@ -197,8 +217,9 @@ public class BinaryHeapInt {
    **/
   public void printHeap() {
     System.out.print("\nHeap = ");
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < size; i++) {
       System.out.print(heap[i] + " ");
+    }
     System.out.println();
   }
 
@@ -244,11 +265,75 @@ public class BinaryHeapInt {
     j = temp;
   }
 
+  public boolean isLeaf(int index) {
+    if ((index > size / 2) && index < size) {
+      return true;
+    }
+
+    return false;
+  }
+
   public boolean isValidMinHeap(int[] heapArr) {
     return false;
   }
 
   public boolean isValidMaxHeap(int[] heapArr) {
     return false;
+  }
+
+  /**
+   * Checks whether the current heap satisfies the minHeap property or not
+   *
+   * @return
+   */
+  public boolean isMinHeap() {
+    boolean isMinHeap = true;
+
+    int n = heap.length - 1;
+
+    for (int i = (n / 2 - 1); i >= 0; i--) {
+      if (heap[i] > heap[getLeftChildIndex(i)]) {
+        isMinHeap = false;
+      }
+
+      if (getRightChildIndex(i) < n) {
+        if (heap[i] > heap[getRightChildIndex(i)]) {
+          isMinHeap = false;
+        }
+      }
+    }
+    return isMinHeap;
+  }
+
+  /**
+   * Checks whether the current heap satisfies the maxHeap property or not
+   *
+   * @return
+   */
+  public boolean isMaxHeap() {
+    boolean isMaxHeap = true;
+    int n = heap.length - 1;
+
+    for (int i = (n / 2 - 1); i >= 0; i--) {
+      if (heap[i] > heap[getLeftChildIndex(i)]) {
+        isMaxHeap = false;
+      }
+
+      if (getRightChildIndex(i) < n) {
+        if (heap[i] < heap[getRightChildIndex(i)]) {
+          isMaxHeap = false;
+        }
+      }
+    }
+
+    return isMaxHeap;
+  }
+
+  public int kthSmallestElement() {
+    return -1;
+  }
+
+  public int kthLargestElement() {
+    return -2;
   }
 }

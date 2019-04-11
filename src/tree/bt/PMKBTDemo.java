@@ -13,6 +13,7 @@ public class PMKBTDemo {
     Node e = new Node(6, "KPK");
     Node f = new Node(2, "HPK");
     Node g = new Node(8, "BMK");
+    Node h = new Node(9, "TPK");
 
     binaryTree.add(a);
     binaryTree.add(b);
@@ -21,8 +22,17 @@ public class PMKBTDemo {
     binaryTree.add(e);
     binaryTree.add(f);
     binaryTree.add(g);
+    binaryTree.add(h);
 
-    binaryTree.printTree();
+    //binaryTree.printTree();
+
+    binaryTree.levelOrder();
+
+    List<List<Node>> levels = binaryTree.levelOrder();
+
+    for (List<Node> nodes : levels) {
+      System.out.println(nodes);
+    }
 
 //    System.out.println(binaryTree.height(e));
 //    System.out.println(binaryTree.depth());
@@ -59,13 +69,13 @@ public class PMKBTDemo {
 //      System.out.println(n.data + " - " + n.value);
 //    }
 
-    List<Node> immediateSuccessors = binaryTree.immediateSuccessors(a, 2);
-    for (Node n : immediateSuccessors) {
-      System.out.println(n.data + " - " + n.value);
-    }
-
-    int totalChild = binaryTree.totalChild(b);
-    System.out.println(totalChild);
+//    List<Node> immediateSuccessors = binaryTree.immediateSuccessors(a, 2);
+//    for (Node n : immediateSuccessors) {
+//      System.out.println(n.data + " - " + n.value);
+//    }
+//
+//    int totalChild = binaryTree.totalChild(b);
+//    System.out.println(totalChild);
 
   }
 }

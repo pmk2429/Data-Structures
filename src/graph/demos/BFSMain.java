@@ -6,30 +6,29 @@ class Queue {
   private int front;
   private int rear;
 
-  public Queue()            // constructor
-  {
+  public Queue() {
     queArray = new int[SIZE];
     front = 0;
     rear = -1;
   }
 
-  public void insert(int j) // put item at rear of queue
-  {
+  public void insert(int j) {
+    // put item at rear of queue
     if (rear == SIZE - 1)
       rear = -1;
     queArray[++rear] = j;
   }
 
-  public int remove()       // take item from front of queue
-  {
+  // take item from front of queue
+  public int remove() {
     int temp = queArray[front++];
     if (front == SIZE)
       front = 0;
     return temp;
   }
 
-  public boolean isEmpty()  // true if queue is empty
-  {
+  // true if queue is empty
+  public boolean isEmpty() {
     return (rear + 1 == front || (front + SIZE - 1 == rear));
   }
 
@@ -40,15 +39,14 @@ class Queue {
 
 
 class Vertex {
-  public char label;        // label (e.g. 'A')
-  public boolean wasVisited;
+  char label;        // label (e.g. 'A')
+  boolean wasVisited;
 
-  public Vertex(char lab)   // constructor
-  {
+  Vertex(char lab) {
     label = lab;
     wasVisited = false;
   }
-}  // end class Vertex
+}
 
 class Graph {
   private final int MAX_VERTS = 20;
@@ -58,7 +56,7 @@ class Graph {
   private Queue theQueue;
 
   // initialize the VertexList, Queue and Adjacency Matrix.
-  public Graph() {
+  Graph() {
     // initialize the vertexList.
     vertexList = new Vertex[MAX_VERTS];
     // adjacency matrix
@@ -70,21 +68,20 @@ class Graph {
     theQueue = new Queue();
   }  // end constructor
 
-  public void addVertex(char lab) {
+  void addVertex(char lab) {
     vertexList[nVerts++] = new Vertex(lab);
   }
 
-  public void addEdge(int start, int end) {
+  void addEdge(int start, int end) {
     adjMat[start][end] = 1;
     adjMat[end][start] = 1;
   }
 
-  public void displayVertex(int v) {
+  void displayVertex(int v) {
     System.out.print(vertexList[v].label);
   }
 
-  public void bfs()                   // breadth-first search
-  {                                // begin at vertex 0
+  void bfs() {                                // begin at vertex 0
     vertexList[0].wasVisited = true; // mark it
     displayVertex(0);                // display it
     theQueue.insert(0);              // insert at tail

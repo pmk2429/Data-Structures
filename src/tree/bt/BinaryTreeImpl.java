@@ -1,13 +1,16 @@
 package tree.bt;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class BinaryTreeImpl implements BinaryTreeApi {
 
   private Node root = null;
   private int count = 0;
 
-  // Utility Binarhelper method to add new Node to Binary Tree
+  // Utility helper method to add new Node to Binary Tree
   private Node add(Node root, Node newNode) {
     if (root == null) {
       root = newNode;
@@ -545,9 +548,14 @@ public class BinaryTreeImpl implements BinaryTreeApi {
     return node;
   }
 
+  // Util method to check if the current tree is complete or not.
+  private boolean isComplete(Node root) {
+    return false;
+  }
+
   @Override
   public boolean isComplete() {
-    return false;
+    return isComplete(root);
   }
 
   private boolean isFullTree(Node node) {
@@ -604,6 +612,69 @@ public class BinaryTreeImpl implements BinaryTreeApi {
   @Override
   public void reverse() {
     reverseTree(root);
+  }
+
+  @Override
+  public boolean isLevelOrderSorted() {
+    boolean isSorted = true;
+
+    Node currNode = root;
+
+    // to store maximum value of previous level
+    int prevMax = Integer.MIN_VALUE;
+
+    // to store minimum value of current level
+    int minVal;
+
+    // to store maximum value of current level
+    int maxVal;
+
+    // to store number of nodes in current level
+    int levelSize;
+
+    // queue to perform level order traversal.
+    Queue<Node> q = new LinkedList<>();
+    q.add(currNode);
+
+    while (!q.isEmpty()) {
+
+      // find number of nodes in current level
+      levelSize = q.size();
+
+      minVal = Integer.MAX_VALUE;
+      maxVal = Integer.MIN_VALUE;
+
+      // traverse current level and find minimum and maximum value of this level
+      while (levelSize > 0) {
+        currNode = q.poll();
+
+        levelSize--;
+
+        minVal = Math.min(minVal, currNode.data);
+        maxVal = Math.max(maxVal, currNode.data);
+
+        if (currNode.left != null) {
+          q.add(currNode.left);
+        }
+
+        if (currNode.right != null) {
+          q.add(currNode.right);
+        }
+      }
+
+      // if minimum value of this level is not greater than maximum
+      // value of previous level then given tree is not level sorted.
+      if (minVal <= prevMax) {
+        isSorted = false;
+      }
+
+      // maximum value of this level is
+      // previous maximum value for
+      // next level.
+      prevMax = maxVal;
+    }
+
+    return isSorted;
   }
 
   // In order printing of tree

@@ -1,4 +1,4 @@
-package graph.demos;
+package graph.traversals;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

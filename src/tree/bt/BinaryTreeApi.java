@@ -181,4 +181,10 @@ public interface BinaryTreeApi {
 
   void reverse();
 
+  /**
+   * Returns true if the max node at ith level is less than or equal to min node at i+1th level.
+   *
+   * @return
+   */
+  boolean isLevelOrderSorted();
 }

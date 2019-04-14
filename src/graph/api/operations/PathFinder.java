@@ -41,7 +41,7 @@ public class PathFinder {
 	private ST<String, String> prev = new ST<String, String>();
 	private ST<String, Integer> dist = new ST<String, Integer>();
 
-	// run BFS in graph G from given source vertex s
+	// run BFSAdjacencyList in graph G from given source vertex s
 	public PathFinder(Graph g, String s) {
 
 		// put source on the queue

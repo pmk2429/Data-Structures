@@ -196,7 +196,7 @@ public class MinBinaryHeapInt {
     int leftChild = kthChildIndex(index, 1);
     int rightChild = kthChildIndex(index, 2);
 
-    return heap[leftChild] > heap[rightChild] ? rightChild : leftChild;
+    return heap[leftChild] < heap[rightChild] ? leftChild : rightChild;
   }
 
   /**

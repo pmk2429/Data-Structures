@@ -207,6 +207,27 @@ public class LinkedList<AnyType> implements Iterable<AnyType> {
   }
 
   /**
+   * Applies to sorted LinkedList. Removes the duplicates from the list.
+   */
+  public void removeDuplicateSorted() {
+    if (head == null) {
+      throw new NullPointerException("Empty List");
+    }
+
+    Node<AnyType> prev = head;
+    Node<AnyType> cur = head.next;
+
+    while (cur != null) {
+      if (prev.data == cur.data) {
+        prev.next = cur.next;
+      } else {
+        prev = cur;
+        cur = cur.next;
+      }
+    }
+  }
+
+  /**
    * Returns a deep copy of the list
    * Complexity: O(n^2)
    */

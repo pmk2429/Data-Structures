@@ -3,189 +3,188 @@ package dsprac;
 import java.util.*;
 
 public class StackDemo {
-	private String[] stackArray;
-	private int stackSize;
+  private String[] stackArray;
+  private int stackSize;
 
-	// Set stack as empty
-	private int topOfStack = -1;
+  // Set stack as empty
+  private int topOfStack = -1;
 
-	StackDemo(int size) {
-		stackSize = size;
-		stackArray = new String[size];
+  StackDemo(int size) {
+    stackSize = size;
+    stackArray = new String[size];
 
-		// Assign -1 to every value in array so that
-		// we can control what gets printed on screen.
+    // Assign -1 to every value in array so that
+    // we can control what gets printed on screen.
 
-		Arrays.fill(stackArray, "-1");
-	}
+    Arrays.fill(stackArray, "-1");
+  }
 
-	/**
-	 * push() is used to insert item or rather push item to Stack. For pushing
-	 * item on stack, we need to check whether Stack is empty or whether Stack
-	 * is full or whether the TOS can insert any element or not.
-	 * 
-	 * @param input
-	 */
-	public void push(String input) {
-		if (topOfStack + 1 < stackSize) {
-			topOfStack++;
-			stackArray[topOfStack] = input;
-		} else {
-			System.out.println("Sorry the Stack is full!");
-			displayStack();
-			System.out
-					.println("PUSH " + input + " was added to top of Stack\n");
-		}
-	}
+  /**
+   * push() is used to insert item or rather push item to Stack. For pushing
+   * item on stack, we need to check whether Stack is empty or whether Stack
+   * is full or whether the TOS can insert any element or not.
+   *
+   * @param input
+   */
+  public void push(String input) {
+    if (topOfStack + 1 < stackSize) {
+      topOfStack++;
+      stackArray[topOfStack] = input;
+    } else {
+      System.out.println("Sorry the Stack is full!");
+      displayStack();
+      System.out.println("PUSH " + input + " was added to top of Stack\n");
+    }
+  }
 
-	/**
-	 * pop() always returns the element at the TOS. It will check is Stack is
-	 * empty or not. It not, then it will pop the top element of the stack.
-	 */
-	public String pop() {
-		if (topOfStack >= 0) {
-			displayStack();
-			System.out.println("POP: " + stackArray[topOfStack]
-					+ " was Removed from Stack");
+  /**
+   * pop() always returns the element at the TOS. It will check is Stack is
+   * empty or not. It not, then it will pop the top element of the stack.
+   */
+  public String pop() {
+    if (topOfStack >= 0) {
+      displayStack();
+      System.out.println("POP: " + stackArray[topOfStack]
+          + " was Removed from Stack");
 
-			// So after we perform this step, the item from memory will not be
-			// deleted, but
-			// it becomes unavailable from the Stack.
+      // So after we perform this step, the item from memory will not be
+      // deleted, but
+      // it becomes unavailable from the Stack.
 
-			stackArray[topOfStack] = "-1"; // Assign -1 so it won't appear on
-											// Stack.
-			return stackArray[topOfStack--];
-		} else {
-			displayStack();
-			System.out.println("Sorry But the Stack is Empty");
+      stackArray[topOfStack] = "-1"; // Assign -1 so it won't appear on
+      // Stack.
+      return stackArray[topOfStack--];
+    } else {
+      displayStack();
+      System.out.println("Sorry But the Stack is Empty");
 
-			return "-1";
+      return "-1";
 
-		}
-	}
+    }
+  }
 
-	public String peek() {
+  public String peek() {
 
-		displayStack();
+    displayStack();
 
-		System.out.println("PEEK " + stackArray[topOfStack]
-				+ " Is at the Top of the Stack\n");
+    System.out.println("PEEK " + stackArray[topOfStack]
+        + " Is at the Top of the Stack\n");
 
-		return stackArray[topOfStack];
+    return stackArray[topOfStack];
 
-	}
+  }
 
-	public void pushMany(String multipleValues) {
+  public void pushMany(String multipleValues) {
 
-		String[] tempString = multipleValues.split(" ");
+    String[] tempString = multipleValues.split(" ");
 
-		for (int i = 0; i < tempString.length; i++) {
+    for (int i = 0; i < tempString.length; i++) {
 
-			push(tempString[i]);
+      push(tempString[i]);
 
-		}
+    }
 
-	}
+  }
 
-	public void popAll() {
+  public void popAll() {
 
-		for (int i = topOfStack; i >= 0; i--) {
+    for (int i = topOfStack; i >= 0; i--) {
 
-			pop();
+      pop();
 
-		}
+    }
 
-	}
+  }
 
-	public void popDisplayAll() {
+  public void popDisplayAll() {
 
-		String theReverse = "";
+    String theReverse = "";
 
-		for (int i = topOfStack; i >= 0; i--) {
+    for (int i = topOfStack; i >= 0; i--) {
 
-			theReverse += stackArray[i];
+      theReverse += stackArray[i];
 
-		}
+    }
 
-		System.out.println("The Reverse: " + theReverse);
+    System.out.println("The Reverse: " + theReverse);
 
-		popAll();
+    popAll();
 
-	}
+  }
 
-	public void displayStack() {
+  public void displayStack() {
 
-		for (int n = 0; n < 61; n++)
-			System.out.print("-");
+    for (int n = 0; n < 61; n++)
+      System.out.print("-");
 
-		System.out.println();
+    System.out.println();
 
-		for (int n = 0; n < stackSize; n++) {
+    for (int n = 0; n < stackSize; n++) {
 
-			System.out.format("| %2s " + " ", n);
+      System.out.format("| %2s " + " ", n);
 
-		}
+    }
 
-		System.out.println("|");
+    System.out.println("|");
 
-		for (int n = 0; n < 61; n++)
-			System.out.print("-");
+    for (int n = 0; n < 61; n++)
+      System.out.print("-");
 
-		System.out.println();
+    System.out.println();
 
-		for (int n = 0; n < stackSize; n++) {
+    for (int n = 0; n < stackSize; n++) {
 
-			if (stackArray[n].equals("-1"))
-				System.out.print("|     ");
+      if (stackArray[n].equals("-1"))
+        System.out.print("|     ");
 
-			else
-				System.out.print(String.format("| %2s " + " ", stackArray[n]));
+      else
+        System.out.print(String.format("| %2s " + " ", stackArray[n]));
 
-		}
+    }
 
-		System.out.println("|");
+    System.out.println("|");
 
-		for (int n = 0; n < 61; n++)
-			System.out.print("-");
+    for (int n = 0; n < 61; n++)
+      System.out.print("-");
 
-		System.out.println();
+    System.out.println();
 
-	}
+  }
 
-	public static void main(String[] args) {
+  public static void main(String[] args) {
 
-		StackDemo theStack = new StackDemo(10);
+    StackDemo theStack = new StackDemo(10);
 
-		theStack.push("10");
-		theStack.push("17");
-		theStack.push("13");
+    theStack.push("10");
+    theStack.push("17");
+    theStack.push("13");
 
-		// Look at the top value on the stack
+    // Look at the top value on the stack
 
-		theStack.peek();
+    theStack.peek();
 
-		// Remove values from the stack (LIFO)
+    // Remove values from the stack (LIFO)
 
-		theStack.pop();
-		theStack.pop();
-		theStack.pop();
+    theStack.pop();
+    theStack.pop();
+    theStack.pop();
 
-		theStack.push("24");
-		theStack.push("29");
-		// Add many to the stack
+    theStack.push("24");
+    theStack.push("29");
+    // Add many to the stack
 
-		// theStack.pushMany("R E D R U M");
+    // theStack.pushMany("R E D R U M");
 
-		// Remove all from the stack
+    // Remove all from the stack
 
-		// theStack.popAll();
+    // theStack.popAll();
 
-		// Remove all from the stack and print them
+    // Remove all from the stack and print them
 
-		// theStack.popDisplayAll();
+    // theStack.popDisplayAll();
 
-		theStack.displayStack();
+    theStack.displayStack();
 
-	}
+  }
 
 }

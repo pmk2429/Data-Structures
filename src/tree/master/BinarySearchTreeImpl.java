@@ -1,11 +1,11 @@
-package tree.bt;
+package tree.master;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
-public class BinaryTreeImpl implements BinaryTreeApi {
+/**
+ * Implementation of BST and all its APIs.
+ */
+public class BinarySearchTreeImpl implements IBinaryTreeApi {
 
   private Node root = null;
   private int count = 0;
@@ -53,7 +53,7 @@ public class BinaryTreeImpl implements BinaryTreeApi {
         searchNode = searchNode.left;
       } else if (key > searchNode.data) {
         searchNode = searchNode.right;
-      } else if (searchNode.data == key) {
+      } else {
         return searchNode;
       }
     }
@@ -473,6 +473,30 @@ public class BinaryTreeImpl implements BinaryTreeApi {
     return null;
   }
 
+  private List<Node> iterativeInorderTraversal() {
+    List<Node> result = new ArrayList<>();
+    Stack<Node> stack = new Stack<>();
+
+    Node p = root;
+    while (p != null) {
+      stack.push(p);
+      p = p.left;
+    }
+
+    while (!stack.isEmpty()) {
+      Node t = stack.pop();
+      result.add(t);
+
+      t = t.right;
+      while (t != null) {
+        stack.push(t);
+        t = t.left;
+      }
+    }
+
+    return result;
+  }
+
   private void buildInorderTraversal(Node node, List<Node> inorder) {
     if (node != null) {
       if (node.left != null) {
@@ -675,6 +699,74 @@ public class BinaryTreeImpl implements BinaryTreeApi {
     }
 
     return isSorted;
+  }
+
+  int kthCount = 0;
+
+  private Node kthLargestUtil(Node node, int k, int c) {
+    Node kthNode = getNullNode();
+    if (node == null || kthCount >= k) {
+      return kthNode;
+    }
+
+    // Follow reverse inorder traversal so that the largest element is visited first
+    kthLargestUtil(node.right, k, kthCount);
+
+    // Increment count of visited nodes
+    kthCount++;
+
+    // If kthCount becomes k now, then this is the k'th largest
+    if (c == k) {
+      System.out.println(k + "th largest element is " + node.data);
+      kthNode = node;
+    }
+
+    // Recur for left subtree
+    kthLargestUtil(node.left, k, c);
+
+    return kthNode;
+  }
+
+  @Override
+  public Node kthLargest() {
+    return kthLargestUtil(root, 3, kthCount);
+  }
+
+  @Override
+  public boolean isBalanced() {
+
+    return false;
+  }
+
+  /**
+   * Manages height of each subtree - only used for calculating diameter purposes
+   */
+  private class Height {
+    int value;
+  }
+
+  private int diameterUtil(Node root, Height height) {
+
+    Height rh = new Height();
+    Height lh = new Height();
+
+    if (root == null) {
+      height.value = 0;
+      return 0;
+    }
+
+    int leftDiameter = diameterUtil(root.left, lh);
+    int rightDiameter = diameterUtil(root.right, rh);
+
+    height.value = Math.max(lh.value, rh.value) + 1;
+
+    return Math.max(lh.value + rh.value + 1, Math.max(leftDiameter, rightDiameter));
+  }
+
+  @Override
+  public int diameter() {
+    Height h = new Height();
+    return diameterUtil(root, h);
   }
 
   // In order printing of tree

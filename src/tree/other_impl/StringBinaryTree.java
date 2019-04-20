@@ -1,4 +1,4 @@
-package tree.impl;
+package tree.other_impl;
 
 /**
  * Implement these Operations add remove find findMininum findMaximum delete
@@ -7,7 +7,25 @@ package tree.impl;
  * @author Pavitra
  */
 
-public class BinaryTree {
+public class StringBinaryTree {
+
+  class Node {
+    int key;
+    private String value;
+
+    Node leftChild;
+    Node rightChild;
+
+    Node(int key, String value) {
+      this.key = key;
+      this.value = value;
+    }
+
+    public String toString() {
+      return value + " has a key " + key;
+    }
+  }
+
   Node root;
 
   public void addNode(int key, String name) {
@@ -211,7 +229,7 @@ public class BinaryTree {
   }
 
   public static void main(String[] args) {
-    BinaryTree tree = new BinaryTree();
+    StringBinaryTree tree = new StringBinaryTree();
 
     tree.addNode(50, "CEO");
     tree.addNode(25, "VP");
@@ -242,22 +260,5 @@ public class BinaryTree {
     System.out.println("\n---------------------------");
     System.out.println("In order traversal\n");
     tree.inOrderTraverse(tree.root);
-  }
-}
-
-class Node {
-  int key;
-  private String value;
-
-  Node leftChild;
-  Node rightChild;
-
-  Node(int key, String value) {
-    this.key = key;
-    this.value = value;
-  }
-
-  public String toString() {
-    return value + " has a key " + key;
   }
 }

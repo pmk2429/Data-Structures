@@ -1,8 +1,8 @@
 package heap.impl;
 
 public class HeapSort {
-  // Follows max heap property to heapify
-  private static void heapify(int arr[], int n, int i) {
+  // Follows max heap property to maxHeapify
+  private static void maxHeapify(int arr[], int n, int i) {
     int largest = i; // Initialize largest as root
     int l = 2 * i + 1; // left = 2*i + 1
     int r = 2 * i + 2; // right = 2*i + 2
@@ -21,8 +21,8 @@ public class HeapSort {
       arr[i] = arr[largest];
       arr[largest] = swap;
 
-      // Recursively heapify the affected sub-tree
-      heapify(arr, n, largest);
+      // Recursively maxHeapify the affected sub-tree
+      maxHeapify(arr, n, largest);
     }
   }
 
@@ -31,7 +31,7 @@ public class HeapSort {
 
     // Build heap (rearrange array)
     for (int i = n / 2 - 1; i >= 0; i--)
-      heapify(arr, n, i);
+      maxHeapify(arr, n, i);
 
     // One by one extract an element from heap
     for (int i = n - 1; i >= 0; i--) {
@@ -40,8 +40,8 @@ public class HeapSort {
       arr[0] = arr[i];
       arr[i] = temp;
 
-      // call max heapify on the reduced heap
-      heapify(arr, i, 0);
+      // call max maxHeapify on the reduced heap
+      maxHeapify(arr, i, 0);
     }
 
     return arr;
@@ -62,7 +62,7 @@ public class HeapSort {
 
     // Build heap from array using max heap property
     for (int i = n / 2 - 1; i >= 0; i--) {
-      heapify(arr, n, i);
+      maxHeapify(arr, n, i);
     }
 
     System.out.println("Max Heap property");

@@ -75,14 +75,15 @@ public class Queue<Item> implements Iterable<Item> {
    * @param item the item to add
    */
   public void enqueue(Item item) {
-    Node<Item> oldlast = last;
-    last = new Node<Item>();
+    Node<Item> prev = last;
+    last = new Node<>();
     last.item = item;
     last.next = null;
-    if (isEmpty())
+    if (isEmpty()) {
       first = last;
-    else
-      oldlast.next = last;
+    } else {
+      prev.next = last;
+    }
     N++;
   }
 
@@ -123,14 +124,14 @@ public class Queue<Item> implements Iterable<Item> {
    * order
    */
   public Iterator<Item> iterator() {
-    return new ListIterator<Item>(first);
+    return new QueueIterator<Item>(first);
   }
 
   // an iterator, doesn't implement remove() since it's optional
-  private class ListIterator<Item> implements Iterator<Item> {
+  private class QueueIterator<Item> implements Iterator<Item> {
     private Node<Item> current;
 
-    public ListIterator(Node<Item> first) {
+    public QueueIterator(Node<Item> first) {
       current = first;
     }
 

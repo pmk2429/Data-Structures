@@ -1,4 +1,4 @@
-package tree.bt;
+package tree.master;
 
 /**
  * PMK's implementation of the Node structure

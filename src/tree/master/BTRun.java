@@ -33,7 +33,7 @@ public class BTRun {
     }
 
     System.out.println(binaryTree.height(e));
-    System.out.println(binaryTree.depth());
+    System.out.println(binaryTree.maxDepth());
 
     System.out.println(binaryTree.parent(d).value);
 

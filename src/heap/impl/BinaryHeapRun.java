@@ -19,14 +19,17 @@ public class BinaryHeapRun {
 
     heap.printHeap();
 
-    System.out.println("Min Child Index - " + heap.minChildIndex(3));
-    System.out.println("Max Child Index - " + heap.maxChildIndex(3));
+    System.out.println("3rd smallest element - " + heap.kthSmallest(3));
 
-    heap.delete(1);
-    heap.printHeap();
+    System.out.println("Min Child of Node 6 - " + heap.get(heap.minChildIndex(3)));
+    System.out.println("Max Child of Node 3 - " + heap.get(heap.maxChildIndex(3)));
 
-    System.out.println(heap.isMinHeap());
-    System.out.println(heap.isMaxHeap());
+    System.out.println("Max Element in this heap: " + heap.findMax());
+//    heap.delete(1);
+//    heap.printHeap();
+//
+//    System.out.println(heap.isMinHeap());
+//    System.out.println(heap.isMaxHeap());
   }
 
   public static void demo() {
@@ -59,7 +62,7 @@ public class BinaryHeapRun {
           break;
         case 2:
           try {
-            System.out.println("Min Element : " + bh.deleteMin());
+            System.out.println("Min Element : " + bh.extractMin());
           } catch (Exception e) {
             System.out.println(e.getMessage());
           }

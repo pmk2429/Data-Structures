@@ -47,7 +47,7 @@ public class DFSStackAndRecursion {
     Stack<Node> stack = new Stack<>();
     node.visited = true;
     System.out.print(node.data + " ");
-    stack.add(node);
+    stack.push(node);
 
     while (!stack.isEmpty()) {
       Node element = stack.pop();

@@ -99,31 +99,100 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
     return deduceHeight(node);
   }
 
-  private int deduceDepth(Node node) {
-    int h1 = 0, h2 = 0;
+  private int deduceMaxDepth(Node node) {
+    int ld;
+    int rd;
+
+    if (root == null) {
+      return -1;
+    }
+    if (root == node) {
+      return 1;
+    }
+
+    ld = deduceMaxDepth(root.left);
+    rd = deduceMaxDepth(root.right);
+
+    return Math.max(ld, rd) + 1;
+  }
+
+  @Override
+  public int maxDepth() {
+    return deduceMaxDepth(root);
+  }
+
+  @Override
+  public int maxDepth(Node node) {
+    return deduceMaxDepth(node);
+  }
+
+  /**
+   * Note that the previous approach traverses all the nodes even for a highly unbalanced tree.
+   * In fact, we could optimize this scenario by doing a breadth-first traversal (also known as level-order traversal).
+   * When we encounter the first leaf node, we immediately stop the traversal.
+   * We also keep track of the current depth and increment it when we reach the end of level.
+   * We know that we have reached the end of level when the current node is the right-most node.
+   * Compared to the recursion approach, the breadth-first traversal works well for highly unbalanced tree because
+   * it does not need to traverse all nodes. The worst case is when the tree is a full binary tree with a total of
+   * n nodes. In this case, we have to traverse all nodes. The worst case space complexity is O(n), due to the
+   * extra space needed to store current level nodes in the queue.
+   *
+   * @param root
+   * @return
+   */
+  private int deduceMinDepthBFS(Node root) {
+    if (root == null) {
+      return 0;
+    }
+    Queue<Node> q = new LinkedList<>();
+    q.add(root);
+    Node rightMost = root;
+    int depth = 1;
+
+    while (!q.isEmpty()) {
+      Node node = q.poll();
+      if (node.left == null && node.right == null) break;
+      if (node.left != null) q.add(node.left);
+      if (node.right != null) q.add(node.right);
+      if (node == rightMost) {
+        depth++;
+        rightMost = (node.right != null) ? node.right : node.left;
+      }
+    }
+    return depth;
+  }
+
+  private int deduceMinDepth(Node node) {
     if (node == null) {
       return -1;
-    } else if (node == root) {
-      return 0;
-    } else {
-      if (root.left != null) {
-        h1 = depth(root.left);
-      }
-      if (root.right != null) {
-        h2 = depth(root.right);
-      }
-      return Math.max(h1, h2) + 1;
     }
+
+    if (node == root) {
+      return 1;
+    }
+
+    if (root.left == null) {
+      return deduceMinDepth(root.right);
+    }
+
+    if (root.right == null) {
+      return deduceMinDepth(root.left);
+    }
+
+    int lmd = deduceMinDepth(root.left);
+    int rmd = deduceMinDepth(root.right);
+
+    return Math.min(lmd, rmd) + 1;
   }
 
   @Override
-  public int depth() {
-    return deduceDepth(root);
+  public int minDepth() {
+    return deduceMinDepth(root);
   }
 
   @Override
-  public int depth(Node node) {
-    return deduceDepth(node);
+  public int minDepth(Node node) {
+    return deduceMinDepth(node);
   }
 
   @Override
@@ -215,7 +284,7 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
     List<Node> list = new LinkedList<>();
 
     int i = 0;
-    while (i < depth(root)) {
+    while (i < maxDepth(root)) {
       LinkedList<Node> s = new LinkedList<>(list);
       lists.add(i, s);
       list.clear();
@@ -701,7 +770,7 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
     return isSorted;
   }
 
-  int kthCount = 0;
+  private int kthCount = 0;
 
   private Node kthLargestUtil(Node node, int k, int c) {
     Node kthNode = getNullNode();
@@ -732,10 +801,24 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
     return kthLargestUtil(root, 3, kthCount);
   }
 
+  private boolean isBalanced(Node root) {
+    int lh;
+    int rh;
+
+    if (root == null) {
+      return true;
+    }
+
+    lh = height(root.left);
+    rh = height(root.right);
+
+    return Math.abs(lh - rh) <= 1 && isBalanced(root.left) && isBalanced(root.right);
+
+  }
+
   @Override
   public boolean isBalanced() {
-
-    return false;
+    return isBalanced(root);
   }
 
   /**
@@ -767,6 +850,26 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
   public int diameter() {
     Height h = new Height();
     return diameterUtil(root, h);
+  }
+
+  private boolean isValidBSTUtil(Node node, Integer low, Integer high) {
+    if (node == null) {
+      return true;
+    }
+
+    return ((low == null || node.data > low) && (high == null || node.data < high)
+        && (isValidBSTUtil(node.left, low, node.data))
+        && (isValidBSTUtil(node.right, node.data, high)));
+  }
+
+  @Override
+  public boolean isValidBST() {
+    return isValidBSTUtil(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+  }
+
+  @Override
+  public boolean isValidBST(Node node) {
+    return isValidBSTUtil(node, Integer.MIN_VALUE, Integer.MAX_VALUE);
   }
 
   // In order printing of tree

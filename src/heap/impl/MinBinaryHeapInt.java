@@ -97,9 +97,22 @@ public class MinBinaryHeapInt {
   }
 
   /**
-   * Function to delete min element
+   * Returns max element in the Min Heap
    **/
-  public int deleteMin() {
+  public int findMax() {
+    int maxElement = heap[size / 2];
+
+    for (int i = 1 + size / 2; i < size; ++i) {
+      maxElement = Math.max(maxElement, heap[i]);
+    }
+
+    return maxElement;
+  }
+
+  /**
+   * Returns the minimum element from the Heap after deleting.
+   **/
+  public int extractMin() {
     int keyItem = heap[0];
     delete(0);
     return keyItem;
@@ -210,6 +223,14 @@ public class MinBinaryHeapInt {
     int rightChild = kthChildIndex(index, 2);
 
     return heap[rightChild] > heap[leftChild] ? rightChild : leftChild;
+  }
+
+  public int get(int index) {
+    if (index < 0 || index > size - 1) {
+      return -1;
+    }
+
+    return heap[index];
   }
 
   /**
@@ -329,11 +350,15 @@ public class MinBinaryHeapInt {
     return isMaxHeap;
   }
 
-  public int kthSmallestElement() {
-    return -1;
+  public int kthSmallest(int k) {
+    int i = 0;
+    while (i < k) {
+      i++;
+    }
+    return heap[i];
   }
 
-  public int kthLargestElement() {
+  public int kthLargest(int k) {
     return -2;
   }
 }

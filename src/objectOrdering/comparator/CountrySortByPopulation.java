@@ -4,11 +4,9 @@ import java.util.Comparator;
 
 public class CountrySortByPopulation implements Comparator<Country> {
 
-	@Override
-	public int compare(Country country1, Country country2) {
-		return (country1.getPopulation() < country2.getPopulation()) ? -1
-				: (country1.getPopulation() > country2.getPopulation()) ? 1 : 0;
-
-	}
+  @Override
+  public int compare(Country country1, Country country2) {
+    return Long.compare(country1.getPopulation(), country2.getPopulation());
+  }
 
 }

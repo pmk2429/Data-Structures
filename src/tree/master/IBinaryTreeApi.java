@@ -36,9 +36,13 @@ public interface IBinaryTreeApi {
    *
    * @return depth of root Node
    */
-  int depth();
+  int maxDepth();
 
-  int depth(Node node);
+  int maxDepth(Node node);
+
+  int minDepth();
+
+  int minDepth(Node node);
 
   /**
    * The diameter (or width) of a tree is the number of nodes on the longest path between any two leaf nodes.
@@ -199,4 +203,8 @@ public interface IBinaryTreeApi {
    * @return
    */
   int diameter();
+
+  boolean isValidBST();
+
+  boolean isValidBST(Node node);
 }

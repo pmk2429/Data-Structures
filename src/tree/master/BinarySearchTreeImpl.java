@@ -471,8 +471,8 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
       return result;
     }
 
-    LinkedList<Node> nodeQueue = new LinkedList<>();
-    LinkedList<Integer> levelQueue = new LinkedList<>();
+    Queue<Node> nodeQueue = new LinkedList<>();
+    Queue<Integer> levelQueue = new LinkedList<>();
 
     nodeQueue.offer(root);
     levelQueue.offer(1); //start from 1
@@ -643,8 +643,61 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
 
   // Util method to check if the current tree is complete or not.
   private boolean isComplete(Node root) {
-    return false;
+    // Base Case: An empty tree is complete Binary Tree
+    if (root == null) {
+      return true;
+    }
+
+    // Create an empty queue
+    Queue<Node> queue = new LinkedList<>();
+
+    // Create a flag variable which will be set true
+    // when a non full node is seen
+    boolean flag = false;
+
+    // Do level order traversal using queue.
+    queue.add(root);
+    while (!queue.isEmpty()) {
+      Node temp_node = queue.poll();
+
+      /* Check if left child is present*/
+      if (temp_node.left != null) {
+        // If we have seen a non full node, and we see a node
+        // with non-empty left child, then the given tree is not a complete Binary Tree
+        if (flag) {
+          return false;
+        }
+
+        // Enqueue Left Child
+        queue.add(temp_node.left);
+      }
+      // If this a non-full node, set the flag as true
+      else {
+        flag = true;
+      }
+
+      /* Check if right child is present*/
+      if (temp_node.right != null) {
+        // If we have seen a non full node, and we see a node
+        // with non-empty right child, then the given tree is not
+        // a complete Binary Tree
+        if (flag) {
+          return false;
+        }
+
+        // Enqueue Right Child
+        queue.add(temp_node.right);
+
+      }
+      // If this a non-full node, set the flag as true
+      else {
+        flag = true;
+      }
+    }
+    // If we reach here, then the tree is complete Bianry Tree
+    return true;
   }
+
 
   @Override
   public boolean isComplete() {

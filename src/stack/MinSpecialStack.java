@@ -20,54 +20,52 @@ import java.util.Stack;
  * For example, let the element to be removed be 1 and minEle be 2. We remove 1 and update minEle as 2*2 – 1 = 3.
  */
 public class MinSpecialStack {
-  Stack<Integer> s;
+  Stack<Integer> ST;
   Integer minEle;
 
   MinSpecialStack() {
-    s = new Stack<Integer>();
+    ST = new Stack<>();
   }
 
   // Prints minimum element of MyStack
   void getMin() {
     // Get the minimum number in the entire stack
-    if (s.isEmpty())
+    if (ST.isEmpty()) {
       System.out.println("Stack is empty");
-
-      // variable minEle stores the minimum element
-      // in the stack.
-    else
-      System.out.println("Minimum Element in the " +
-          " stack is: " + minEle);
+    } else {
+      // variable minEle stores the minimum element in the stack
+      System.out.println("Minimum Element in the stack is: " + minEle);
+    }
   }
 
   // prints top element of MyStack
   void peek() {
-    if (s.isEmpty()) {
+    if (ST.isEmpty()) {
       System.out.println("Stack is empty ");
       return;
     }
 
-    Integer t = s.peek(); // Top element.
+    Integer t = ST.peek(); // Top element.
 
     System.out.print("Top Most Element is: ");
 
-    // If t < minEle means minEle stores
-    // value of t.
-    if (t < minEle)
+    // If t < minEle means minEle stores value of t
+    if (t < minEle) {
       System.out.println(minEle);
-    else
+    } else {
       System.out.println(t);
+    }
   }
 
   // Removes the top element from MyStack
   void pop() {
-    if (s.isEmpty()) {
+    if (ST.isEmpty()) {
       System.out.println("Stack is empty");
       return;
     }
 
     System.out.print("Top Most Element Removed: ");
-    Integer t = s.pop();
+    Integer t = ST.pop();
 
     // Minimum will change as the minimum element
     // of the stack is being removed.
@@ -80,19 +78,19 @@ public class MinSpecialStack {
 
   // Insert new number into MyStack
   void push(Integer x) {
-    if (s.isEmpty()) {
+    if (ST.isEmpty()) {
       minEle = x;
-      s.push(x);
+      ST.push(x);
       System.out.println("Number Inserted: " + x);
       return;
     }
 
     // If new number is less than original minEle
     if (x < minEle) {
-      s.push(2 * x - minEle);
+      ST.push(2 * x - minEle);
       minEle = x;
     } else
-      s.push(x);
+      ST.push(x);
 
     System.out.println("Number Inserted: " + x);
   }

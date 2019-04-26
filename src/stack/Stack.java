@@ -114,7 +114,7 @@ public class Stack<Item> implements Iterable<Item> {
     return new StackIterator();
   }
 
-  // an iterator, doesn't implement remove() since it's optional
+  // an iterator, doesn't implement remove() since it'ST optional
   private class StackIterator implements Iterator<Item> {
     private Node current = first;
 

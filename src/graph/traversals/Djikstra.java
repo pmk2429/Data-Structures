@@ -12,7 +12,7 @@ public class Djikstra {
   private int V; // Number of vertices
   List<List<Node>> adj;
 
-  Djikstra(int V) {
+  private Djikstra(int V) {
     this.V = V;
     dist = new int[V];
     settled = new HashSet<>();

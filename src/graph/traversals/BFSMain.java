@@ -99,6 +99,15 @@ class Graph {
     }
     return -1;
   }
+
+  private int findDegree(Graph G, int ver) {
+    int degree = 0;
+    for (int i = 0; i < vertices; i++) {
+      if (adjMat[ver][i] == 1)
+        degree++;
+    }
+    return degree;
+  }
 }
 
 public class BFSMain {

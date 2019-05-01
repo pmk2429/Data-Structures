@@ -37,10 +37,10 @@ public class DFS {
     scanner.close();
   }
 
-  public void dfs(int adjacency_matrix[][], int source) {
+  private void dfs(int[][] adjacency_matrix, int source) {
     int number_of_nodes = adjacency_matrix[source].length - 1;
 
-    int visited[] = new int[number_of_nodes + 1];
+    int[] visited = new int[number_of_nodes + 1];
     int element = source;
     int i = source;
     System.out.print(element + "\t");

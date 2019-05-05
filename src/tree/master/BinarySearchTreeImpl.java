@@ -537,9 +537,41 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
 
   }
 
+  private Node getLowestCommonAncestor(Node root, Node a, Node b) {
+    Node left;
+    Node right;
+
+    // base case to return the function
+    if (root == null) {
+      return null;
+    }
+
+    //if a or b is itself the root, then the root itself is the LCA
+    if (a == root || b == root) {
+      return root;
+    }
+
+    // If Node a and Node b lie in the leftChild, their Lowest Common Ancestor is in the leftChild.
+    left = getLowestCommonAncestor(root.left, a, b);
+
+    // If Node a and Node b lie in the right,their Lowest Common Ancestor is in the right.
+    right = getLowestCommonAncestor(root.right, a, b);
+
+    // Otherwise, root is the Lowest common ancestor.
+    if (left != null && right != null) {
+      return root;
+    }
+
+    return (left != null) ? left : right;
+  }
+
   @Override
   public Node getLowestCommonAncestor(Node a, Node b) {
-    return null;
+    if (root == null) {
+      return null;
+    }
+
+    return getLowestCommonAncestor(root, a, b);
   }
 
   private List<Node> iterativeInorderTraversal() {

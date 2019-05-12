@@ -58,13 +58,11 @@ public class ComparatorMain {
     }
 
     // Comparator Definition
-    Comparator<Country> comparator = new Comparator<Country>() {
-      public int compare(Country o1, Country o2) {
-        if (o1.countryName.equals(o2.countryName)) {
-          return o1.countryName.compareTo(o2.countryName);
-        }
+    Comparator<Country> comparator = (o1, o2) -> {
+      if (o1.countryName.equals(o2.countryName)) {
         return o1.countryName.compareTo(o2.countryName);
       }
+      return o1.countryName.compareTo(o2.countryName);
     };
 
   }

@@ -10,7 +10,7 @@ public class Djikstra {
   private Set<Integer> settled;
   private PriorityQueue<Node> pq;
   private int V; // Number of vertices
-  List<List<Node>> adj;
+  private List<List<Node>> adj;
 
   private Djikstra(int V) {
     this.V = V;
@@ -34,7 +34,7 @@ public class Djikstra {
 
     while (settled.size() != V) {
       // remove the minimum distance node from the priority queue
-      int currData = pq.poll().node;
+      int currData = Objects.requireNonNull(pq.poll()).node;
 
       // adding the node whose distance is finalized
       settled.add(currData);

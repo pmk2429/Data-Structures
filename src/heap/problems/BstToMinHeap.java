@@ -68,6 +68,7 @@ public class BstToMinHeap {
 
     // BST to MIN HEAP conversion
     int[] array = nodes.stream().mapToInt(i -> i).toArray();
+
     int n = array.length;
     for (int i = (n / 2) - 1; i >= 0; i--) {
       heapifyBst(array, n, i);

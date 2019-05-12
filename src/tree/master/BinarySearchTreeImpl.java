@@ -78,7 +78,6 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
    * @return
    */
   private int deduceHeight(Node node) {
-
     if (node == null) {
       return 0;
     }
@@ -546,7 +545,7 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
       return null;
     }
 
-    //if a or b is itself the root, then the root itself is the LCA
+    // if a or b is itself the root, then the root itself is the LCA
     if (a == root || b == root) {
       return root;
     }
@@ -618,6 +617,27 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
     List<Node> inorder = new ArrayList<>();
     buildInorderTraversal(root, inorder);
     return inorder;
+  }
+
+  /**
+   * Verify that whether the current traversal is preorder or not.
+   * <p>
+   * [5,2,6,1,3] -> false
+   * [5,2,1,3,6] -> true
+   */
+  public boolean verifyPreOrder(int[] preorder) {
+    int low = Integer.MIN_VALUE;
+    Stack<Integer> path = new Stack();
+    for (int p : preorder) {
+      if (p < low) {
+        return false;
+      }
+      while (!path.empty() && p > path.peek()) {
+        low = path.pop();
+      }
+      path.push(p);
+    }
+    return true;
   }
 
   private void buildPreOrderTraversal(Node node, List<Node> preOrder) {

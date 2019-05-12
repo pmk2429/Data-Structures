@@ -7,6 +7,7 @@ public class ArrayToBst {
     if (start > end) {
       return null;
     }
+
     int mid = (start + end) / 2;
 
     if (root == null) {

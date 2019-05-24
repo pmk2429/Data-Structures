@@ -8,6 +8,7 @@ public class MergeSort {
     int k = left;
 
     int num = rightEnd - left + 1;
+
     while (left <= leftEnd && right <= rightEnd) {
       if (a[left].compareTo(a[right]) <= 0) {
         tmp[k++] = a[left++];

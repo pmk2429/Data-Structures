@@ -9,7 +9,7 @@ public class WordSearch {
   private static int M;
   private static int N;
 
-  public List<String> findWords(char[][] board, String[] words) {
+  private static List<String> findWords(char[][] board, String[] words) {
     List<String> result = new ArrayList<>();
     if (board == null || board.length == 0 || board[0].length == 0 || words == null || words.length == 0) {
       return result;
@@ -26,7 +26,7 @@ public class WordSearch {
     return result;
   }
 
-  private void recursiveFindWords(List<String> result, char[][] board, TrieNode parent, int x, int y) {
+  private static void recursiveFindWords(List<String> result, char[][] board, TrieNode parent, int x, int y) {
     if (outOfBounds(board, x, y) || board[x][y] == '#' || parent.children.get(board[x][y]) == null) {
       return; // return if out of bounds, if visited and if current cell is a character in the trie
     }
@@ -49,12 +49,12 @@ public class WordSearch {
     board[x][y] = xy; // Set as unvisited since we are about to backtracking
   }
 
-  private boolean outOfBounds(char[][] board, int x, int y) {
+  private static boolean outOfBounds(char[][] board, int x, int y) {
     return x < 0 || x >= board.length || y < 0 || y >= board[0].length;
   }
 
   // The trie is represented by a root node, not a Trie object
-  private TrieNode buildTrie(String[] words) {
+  private static TrieNode buildTrie(String[] words) {
     TrieNode root = new TrieNode();
     for (String word : words) {
       if (word == null || word.isEmpty()) {
@@ -81,7 +81,7 @@ public class WordSearch {
     return root;
   }
 
-  private class TrieNode {
+  private static class TrieNode {
     boolean isEndOfWord; // this.word is null if isEndOfWord is false
     String word; // Store the word so that no StringBuilder is needed to build the word char by char
     Map<Character, TrieNode> children;
@@ -102,5 +102,8 @@ public class WordSearch {
 
     M = board.length;
     N = board[0].length;
+
+    System.out.println(findWords(board, words));
+
   }
 }

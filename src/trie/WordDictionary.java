@@ -14,7 +14,7 @@ public class WordDictionary {
 
       Node(boolean isWordEnd) {
         this.isWordEnd = isWordEnd;
-        this.next = new Node[26];
+        this.next = new Node[256];
       }
     }
 
@@ -35,10 +35,10 @@ public class WordDictionary {
       Node cur = root;
       for (int i = 0; i < wordLen; ++i) {
         char ch = word.charAt(i);
-        if (cur.next[ch - 'a'] == null) {
-          cur.next[ch - 'a'] = new Node();
+        if (cur.next[ch] == null) {
+          cur.next[ch] = new Node();
         }
-        cur = cur.next[ch - 'a'];
+        cur = cur.next[ch];
       }
 
       if (!cur.isWordEnd) {
@@ -61,7 +61,7 @@ public class WordDictionary {
       char ch = word.charAt(index);
       index += 1;
       if (ch == '.') {
-        for (int i = 0; i < 26; ++i) {
+        for (int i = 0; i < 256; ++i) {
           if (node.next[i] == null) continue;
           boolean result = search(node.next[i], word, index);
           if (result) {
@@ -71,8 +71,8 @@ public class WordDictionary {
         return false;
       } else {
         // current character matched ?
-        boolean curIs = node.next[ch - 'a'] != null;
-        return curIs && search(node.next[ch - 'a'], word, index);
+        boolean curIs = node.next[ch] != null;
+        return curIs && search(node.next[ch], word, index);
       }
     }
   }
@@ -96,7 +96,18 @@ public class WordDictionary {
   /**
    * Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter.
    */
-  public boolean search(String word) {
+  public boolean contains(String word) {
     return trie.search(word);
+  }
+
+  public static void main(String[] args) {
+    WordDictionary dictionary = new WordDictionary();
+    dictionary.addWord("Pavitra");
+    dictionary.addWord("Mummy");
+    dictionary.addWord("Mamu");
+    dictionary.addWord("KP");
+    dictionary.addWord("Tysu");
+
+    System.out.println(dictionary.contains("kp"));
   }
 }

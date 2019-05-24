@@ -64,6 +64,7 @@ public class MyQueueArray {
     queueObj.insert(25);
     queueObj.insert(16);
     queueObj.insert(40);
+    queueObj.insert(24);
 
     queueObj.displayQueue();
 

@@ -2,7 +2,7 @@ package heap.impl;
 
 public class HeapSort {
   // Follows max heap property to maxHeapify
-  private static void maxHeapify(int arr[], int n, int i) {
+  private static void maxHeapify(int[] arr, int n, int i) {
     int largest = i; // Initialize largest as root
     int l = 2 * i + 1; // left = 2*i + 1
     int r = 2 * i + 2; // right = 2*i + 2
@@ -30,8 +30,9 @@ public class HeapSort {
     int n = arr.length;
 
     // Build heap (rearrange array)
-    for (int i = n / 2 - 1; i >= 0; i--)
+    for (int i = n / 2 - 1; i >= 0; i--) {
       maxHeapify(arr, n, i);
+    }
 
     // One by one extract an element from heap
     for (int i = n - 1; i >= 0; i--) {
@@ -48,7 +49,7 @@ public class HeapSort {
   }
 
   /* A utility function to print array of size n */
-  private static void printArray(int arr[]) {
+  private static void printArray(int[] arr) {
     int n = arr.length;
     for (int i = 0; i < n; ++i) {
       System.out.print(arr[i] + " ");
@@ -57,7 +58,7 @@ public class HeapSort {
   }
 
   public static void main(String[] args) {
-    int arr[] = {12, 11, 13, 5, 6, 7};
+    int[] arr = {12, 11, 13, 5, 6, 7};
     int n = arr.length;
 
     // Build heap from array using max heap property

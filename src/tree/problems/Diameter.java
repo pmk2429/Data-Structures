@@ -29,8 +29,7 @@ public class Diameter {
     int rightDiameter = diameter(root.right, rh);
 
     height.value = Math.max(lh.value, rh.value) + 1;
-
-    // TODO
+    
     return Math.max(lh.value + rh.value + 1, Math.max(leftDiameter, rightDiameter));
   }
 

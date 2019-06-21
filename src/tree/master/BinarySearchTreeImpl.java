@@ -105,6 +105,7 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
     if (root == null) {
       return -1;
     }
+
     if (root == node) {
       return 1;
     }

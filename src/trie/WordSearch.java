@@ -9,23 +9,6 @@ public class WordSearch {
   private static int M;
   private static int N;
 
-  private static List<String> findWords(char[][] board, String[] words) {
-    List<String> result = new ArrayList<>();
-    if (board == null || board.length == 0 || board[0].length == 0 || words == null || words.length == 0) {
-      return result;
-    }
-
-    TrieNode root = buildTrie(words);
-
-    for (int i = 0; i < board.length; i++) {
-      for (int j = 0; j < board[0].length; j++) {
-        recursiveFindWords(result, board, root, i, j);
-      }
-    }
-
-    return result;
-  }
-
   private static void recursiveFindWords(List<String> result, char[][] board, TrieNode parent, int x, int y) {
     if (outOfBounds(board, x, y) || board[x][y] == '#' || parent.children.get(board[x][y]) == null) {
       return; // return if out of bounds, if visited and if current cell is a character in the trie
@@ -64,7 +47,6 @@ public class WordSearch {
       TrieNode parent = root;
       for (int i = 0; i < word.length(); i++) {
         char cur = word.charAt(i);
-
         TrieNode child = parent.children.get(cur);
         if (child == null) {
           child = new TrieNode();
@@ -81,13 +63,30 @@ public class WordSearch {
     return root;
   }
 
+  private static List<String> findWords(char[][] board, String[] words) {
+    List<String> result = new ArrayList<>();
+    if (board == null || board.length == 0 || board[0].length == 0 || words == null || words.length == 0) {
+      return result;
+    }
+
+    TrieNode root = buildTrie(words);
+
+    for (int i = 0; i < M; i++) {
+      for (int j = 0; j < N; j++) {
+        recursiveFindWords(result, board, root, i, j);
+      }
+    }
+
+    return result;
+  }
+
   private static class TrieNode {
-    boolean isEndOfWord; // this.word is null if isEndOfWord is false
+    boolean isEndOfWord; // this word is null if isEndOfWord is false
     String word; // Store the word so that no StringBuilder is needed to build the word char by char
     Map<Character, TrieNode> children;
 
     TrieNode() {
-      this.children = new HashMap<>();
+      children = new HashMap<>();
     }
   }
 
@@ -98,6 +97,7 @@ public class WordSearch {
         {'i', 'h', 'k', 'r'},
         {'i', 'f', 'l', 'v'}
     };
+
     String[] words = {"oath", "pea", "eat", "rain"};
 
     M = board.length;

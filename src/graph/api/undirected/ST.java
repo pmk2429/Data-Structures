@@ -82,7 +82,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
 
 		StdOut.println();
 
-		StdOut.println("min key: " + st.min());
+		StdOut.println("getMin key: " + st.min());
 		StdOut.println("max key: " + st.max());
 		StdOut.println("size:    " + st.size());
 		StdOut.println();
@@ -212,7 +212,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
 	 */
 	public Key min() {
 		if (isEmpty())
-			throw new NoSuchElementException("called min() with empty symbol table");
+			throw new NoSuchElementException("called getMin() with empty symbol table");
 		return st.firstKey();
 	}
 

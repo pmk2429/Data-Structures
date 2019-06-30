@@ -6,11 +6,13 @@ package tree.problems;
 public class Node {
   int data;
   int height;
+  int hd; //horizontal distance of the node
   Node left, right;
 
   Node(int data) {
     this.data = data;
     this.height = 1;
+    this.hd = 0;
     this.left = null;
     this.right = null;
   }

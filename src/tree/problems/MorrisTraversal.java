@@ -3,7 +3,7 @@ package tree.problems;
 /**
  * Print BST keys in given Range | O(1) Space
  * Given two values n1 and n2 (where n1 < n2) and a root pointer to a Binary Search Tree. Print all the keys of tree
- * in range n1 to n2. i.e. print all Nodes n such that n1<=n<=n2 and n is a key of given BST.
+ * in range n1 to n2. i.e. print all Nodes n such that n1<=n<=n2 and n is a data of given BST.
  * Print all the keys in increasing order.
  * <p>
  * Prerequisites : Morris traversal | Threaded binary trees
@@ -18,7 +18,7 @@ package tree.problems;
  * <p>
  * Approach : Morris Traversal is a very nice memory efficient technique to do tree traversal without using stack
  * or recursion in constant memory O(1) based on Threaded Binary Trees. Morris traversal can be used in solving
- * problems where inorder tree traversals are used especially in order statistics eg-Kth largest element in BST,
+ * problems where inorder tree problems are used especially in order statistics eg-Kth largest element in BST,
  * Kth smallest in BST etc. Hence, this is where Morris traversal would come handy as a more efficient method to do
  * inorder traversal in constant O(1) space without using any stack or recursion.
  */

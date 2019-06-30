@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * WAP to convert BST to min heap with a condition that all the elements in the right sub tree of heap should be greater
+ * WAP to convert BST to getMin heap with a condition that all the elements in the right sub tree of heap should be greater
  * than all the elements in the left subtree.
  */
 public class BstToMinHeap {
@@ -53,7 +53,7 @@ public class BstToMinHeap {
       arr[i] = arr[smallest];
       arr[smallest] = swap;
 
-      // recursively min heapify
+      // recursively getMin heapify
       heapifyBst(arr, n, smallest);
     }
   }

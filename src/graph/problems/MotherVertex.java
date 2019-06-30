@@ -1,5 +1,5 @@
 
-package graph.traversals;
+package graph.problems;
 
 import java.util.LinkedList;
 

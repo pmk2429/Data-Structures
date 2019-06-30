@@ -1,4 +1,4 @@
-package graph.traversals;
+package graph.problems;
 
 public class DjikstraPrintPaths {
   private static final int NO_PARENT = -1;

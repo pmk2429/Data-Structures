@@ -16,15 +16,15 @@ public class LoadBalancer {
 //
 //    // Assign an item to a server
 //    for (int j = 0; j < n; j++) {
-//      // Pick a random server, update if new min.
-//      Queue<Integer> min = servers.sample();
+//      // Pick a random server, update if new getMin.
+//      Queue<Integer> getMin = servers.sample();
 //      for (int k = 1; k < s; k++) {
 //        Queue<Integer> queue = servers.sample();
-//        if (queue.length() < min.length()) min = queue;
+//        if (queue.length() < getMin.length()) getMin = queue;
 //      }
 //
-//      // min is the shortest server queue
-//      min.enqueue(j);
+//      // getMin is the shortest server queue
+//      getMin.enqueue(j);
 //    }
 //  }
 }

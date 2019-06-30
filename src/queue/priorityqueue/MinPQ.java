@@ -4,7 +4,7 @@ package queue.priorityqueue;
  *  Compilation:  javac MinPQ.java
  *  Execution:    java MinPQ < input.txt
  *
- *  Generic min priority queue implementation with a binary heap.
+ *  Generic getMin priority queue implementation with a binary heap.
  *  Can be used with a comparator instead of the natural order.
  *
  *  % java MinPQ < tinyPQ.txt
@@ -31,7 +31,7 @@ import iomain.standardio.*;
  * <p>
  * This implementation uses a binary heap. The <em>insert</em> and
  * <em>delete-the-minimum</em> operations take logarithmic amortized time. The
- * <em>min</em>, <em>size</em>, and <em>is-empty</em> operations take constant
+ * <em>getMin</em>, <em>size</em>, and <em>is-empty</em> operations take constant
  * time. Construction takes time proportional to the specified capacity or the
  * number of items used to initialize the data structure.
  * <p>
@@ -225,7 +225,7 @@ public class MinPQ<Key> implements Iterable<Key> {
     pq[j] = swap;
   }
 
-  // is pq[1..N] a min heap?
+  // is pq[1..N] a getMin heap?
   private boolean isMinHeap() {
     return isMinHeap(1);
   }
@@ -234,7 +234,7 @@ public class MinPQ<Key> implements Iterable<Key> {
    * Iterators
    **********************************************************************/
 
-  // is subtree of pq[1..N] rooted at k a min heap?
+  // is subtree of pq[1..N] rooted at k a getMin heap?
   private boolean isMinHeap(int k) {
     if (k > N)
       return true;
@@ -249,7 +249,7 @@ public class MinPQ<Key> implements Iterable<Key> {
   /**
    * Returns an iterator that iterates over the keys on the priority queue in
    * ascending order. The iterator doesn't implement <tt>remove()</tt> since
-   * it's optional.
+   * it'qImpl optional.
    *
    * @return an iterator that iterates over the keys in ascending order
    */

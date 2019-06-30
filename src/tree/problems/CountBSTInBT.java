@@ -28,7 +28,7 @@ package tree.problems;
  * 4   6
  * Output: 10
  * We know that a single node represents a BST and since here 8
- * nodes are present they all are BSTs.Also a subtree rooted under node 5 is a BST
+ * nodes are present they all are BSTs. Also a subtree rooted under node 5 is a BST
  * <p>
  * 5
  * / \

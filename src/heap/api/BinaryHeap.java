@@ -3,7 +3,7 @@ package heap.api;
 import java.util.Arrays;
 
 /**
- * BinaryHeap is the min-heap implementation of Heap Data structure.
+ * BinaryHeap is the getMin-heap implementation of Heap Data structure.
  * <p>
  * Note : The Binary Heap has the root index starting 0 and not 1.
  *
@@ -27,7 +27,7 @@ public class BinaryHeap<T extends Comparable<T>> {
   }
 
   /**
-   * Adds a value to the min-heap.
+   * Adds a value to the getMin-heap.
    */
   public void add(T value) {
     // grow array if needed
@@ -89,7 +89,7 @@ public class BinaryHeap<T extends Comparable<T>> {
   /**
    * Performs the "bubble down" operation to place the element that is at the
    * root of the heap in its correct place so that the heap maintains the
-   * min-heap order property.
+   * getMin-heap order property.
    */
   protected void bubbleDown() {
     int index = 1;
@@ -119,7 +119,7 @@ public class BinaryHeap<T extends Comparable<T>> {
   /**
    * Performs the "bubble up" operation to place a newly inserted element
    * (i.e. the element that is at the size index) in its correct place so that
-   * the heap maintains the min-heap order property.
+   * the heap maintains the getMin-heap order property.
    */
   protected void bubbleUp() {
     int index = this.size;

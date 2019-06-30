@@ -18,7 +18,7 @@ public class MergeKSortedLinkedLists {
   /**
    * O(nk log k) runtime, O(k) space – Min Heap:
    * <p>
-   * We could use a min heap of size k. The heap is first initialized with the smallest element from each list.
+   * We could use a getMin heap of size k. The heap is first initialized with the smallest element from each list.
    * Then as we extract the nodes out from the heap, we must remember to insert its next node into the heap.
    * As each insert operation into the heap costs log(k) and there are a total of nk elements, the total runtime
    * complexity is O(nk log k).

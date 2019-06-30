@@ -1,7 +1,7 @@
 package tree.problems;
 
 /**
- * Construct a Binary Tree using Preorder and Postorder traversals
+ * Construct a Binary Tree using Preorder and Postorder problems
  * <p>
  * Let us consider the two given arrays as pre[] = {1, 2, 4, 8, 9, 5, 3, 6, 7} and post[] = {8, 9, 4, 5, 2, 6, 7, 3, 1};
  * In pre[], the leftmost element is root of tree. Since the tree is full and array size is more than 1.
@@ -51,7 +51,7 @@ public class ConstructBSTFromPrePostTraversals {
   }
 
   // The main function to construct Full Binary Tree from given preorder and
-  // postorder traversals. This function mainly uses constructTreeUtil()
+  // postorder problems. This function mainly uses constructTreeUtil()
   private static Node constructTree(int[] pre, int[] post, int size) {
     preindex = 0;
     return constructTreeUtil(pre, post, 0, size - 1, size);

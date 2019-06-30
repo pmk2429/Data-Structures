@@ -45,7 +45,7 @@ public class BinaryHeapRun {
     do {
       System.out.println("\nBinary Heap Operations\n");
       System.out.println("1. insert ");
-      System.out.println("2. delete min");
+      System.out.println("2. delete getMin");
       System.out.println("3. check full");
       System.out.println("4. check empty");
       System.out.println("5. clear");

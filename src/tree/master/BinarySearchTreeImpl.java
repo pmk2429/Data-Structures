@@ -418,7 +418,7 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
   }
 
   private Node findSuccessor(Node node) {
-    // min value in right sub tree
+    // getMin value in right sub tree
     if (node == null) {
       return getNullNode();
     }
@@ -878,8 +878,9 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
 
   private int kthCount = 0;
 
-  private Node kthLargestUtil(Node node, int k, int c) {
+  private Node kthLargestUtil(Node node, int k, int count) {
     Node kthNode = getNullNode();
+
     if (node == null || kthCount >= k) {
       return kthNode;
     }
@@ -891,13 +892,13 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
     kthCount++;
 
     // If kthCount becomes k now, then this is the k'th largest
-    if (c == k) {
+    if (count == k) {
       System.out.println(k + "th largest element is " + node.data);
       kthNode = node;
     }
 
     // Recur for left subtree
-    kthLargestUtil(node.left, k, c);
+    kthLargestUtil(node.left, k, count);
 
     return kthNode;
   }

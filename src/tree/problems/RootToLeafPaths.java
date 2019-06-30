@@ -18,24 +18,23 @@ public class RootToLeafPaths {
     System.out.println();
   }
 
-  private static void rootToLeaf(Node root, int[] path, int pathLen) {
+  private static void rootToLeaf(Node node, int[] path, int pathLen) {
     // base case for recursion
-    if (root == null) {
+    if (node == null) {
       return;
     }
 
     /* append this node to the path array */
-    path[pathLen] = root.data;
-    pathLen++;
+    path[pathLen++] = node.data;
 
-    if (isLeaf(root)) {
+    if (isLeaf(node)) {
       // print the traversed path
       printPath(path, pathLen);
     } else {
       // recur left subtree
-      rootToLeaf(root.left, path, pathLen);
+      rootToLeaf(node.left, path, pathLen);
       // recur right subtree
-      rootToLeaf(root.right, path, pathLen);
+      rootToLeaf(node.right, path, pathLen);
     }
   }
 

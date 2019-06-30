@@ -94,7 +94,7 @@ public class PriorityQueueMain {
 
 		@Override
 		public String toString() {
-			return String.format("%s: $%d", name, price);
+			return String.format("%qImpl: $%d", name, price);
 		}
 
 	}

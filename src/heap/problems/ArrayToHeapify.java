@@ -53,7 +53,7 @@ public class ArrayToHeapify {
       arr[i] = arr[smallest];
       arr[smallest] = swap;
 
-      // recursively min heapify
+      // recursively getMin heapify
       minHeapify(arr, n, smallest);
     }
   }

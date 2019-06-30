@@ -169,7 +169,7 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
    */
   public Key min() {
     if (isEmpty())
-      throw new NoSuchElementException("called min() with empty set");
+      throw new NoSuchElementException("called getMin() with empty set");
     return set.first();
   }
 

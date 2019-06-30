@@ -5,16 +5,14 @@ public class SwapAdjacentNodes {
   private static ListNode swapAdjacentPairs(ListNode head) {
     ListNode dummy = new ListNode(0);
     dummy.next = head;
-    // used for traversal
-    ListNode p = head;
-    ListNode prev = dummy;
-    while (head != null) {
-      ListNode q = p.next;
-      ListNode r = p.next.next;
-      q.next = p;
-      p.next = r;
-      prev = p;
-      p = r;
+    ListNode current = dummy;
+    while (current.next != null && current.next.next != null) {
+      ListNode p = current.next;
+      ListNode q = current.next.next;
+      p.next = q.next;
+      current.next = q;
+      current.next.next = p;
+      current = current.next.next;
     }
     return dummy.next;
   }

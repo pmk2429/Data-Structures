@@ -1,4 +1,4 @@
-package graph.traversals;
+package graph.problems;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -14,9 +14,11 @@ public class Clone {
     if (vertex == null) {
       return null;
     }
+
     Map<GraphNode, GraphNode> edgeMap = new HashMap<>();
     Queue<GraphNode> gQueue = new LinkedList<>();
     gQueue.add(vertex);
+
     GraphNode graphCopy = new GraphNode(vertex.label);
     edgeMap.put(vertex, graphCopy);
 

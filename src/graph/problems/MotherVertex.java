@@ -2,13 +2,14 @@
 package graph.problems;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class MotherVertex {
   private int V; // No. of vertices
 
   // Array of lists for Adjacency List Representation an array of linked list
   // in this implementation the graph vertex values will be same array index
-  private LinkedList<Integer>[] adj;
+  private List<Integer>[] adj;
 
   MotherVertex(int v) {
     V = v;

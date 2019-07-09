@@ -26,7 +26,7 @@ package tree.problems;
  *          \
  *           6
  */
-public class BSTToLinkedListInPlace {
+public class FlattenBSTToLinkedListInPlace {
 
   // Definition for a binary tree node.
   class TreeNode {

@@ -42,13 +42,13 @@ public class CompleteLevelOrderBT {
     }
 
     if (index < arr.length) {
-      Node curNode = new Node(arr[index]);
-      root = curNode;
+      root = new Node(arr[index]);
 
       // for any parent i in a BT, left child is positioned at 2*i+1 and right child at 2*i+2
       root.left = insertLevelOrder(arr, root.left, leftChildIndex(index));
       root.right = insertLevelOrder(arr, root.right, rightChildIndex(index));
     }
+
     return root;
   }
 

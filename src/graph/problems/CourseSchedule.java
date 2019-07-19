@@ -68,8 +68,8 @@ public class CourseSchedule {
 
     // start topo sorting.
     // note: we only check for legal DAG.
-    // we want to see that in did 'numCourses' nodes got dequeued from the Q.
-    // if its not the case - we a a cycle which means the answer to our question is false.
+    // we want to see that in 'numCourses' nodes got dequeued from the Q.
+    // if its not the case - there was a cycle which means the answer to our question is false.
     int counter = 0;
 
     while (!gQ.isEmpty()) {
@@ -77,7 +77,7 @@ public class CourseSchedule {
       int nodeId = gQ.poll();
 
       // remove its edges and update the inDegree array.
-      // if of one of the children got an in degree 0 - add it to the Q and perform BFS
+      // if one of the children got an in degree 0 - add it to the Q and perform BFS
       for (int childId : graph[nodeId]) {
         inDegree[childId]--;
 

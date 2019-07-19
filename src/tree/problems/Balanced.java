@@ -39,6 +39,6 @@ public class Balanced {
   }
 
   public static void main(String[] args) {
-    Node root = Node.createBT();
+    Node root = Node.createBTComplex();
   }
 }

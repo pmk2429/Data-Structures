@@ -59,7 +59,7 @@ public class BottomView {
         queue.add(temp.right);
       }
     }
-    
+
     // Traverse the map elements using the iterator.
     for (Map.Entry<Integer, Integer> me : map.entrySet()) {
       System.out.print(me.getValue() + " ");

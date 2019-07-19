@@ -23,6 +23,17 @@ public class Node {
   }
 
   public static Node createBT() {
+    Node root = new Node(4);
+    root.left = new Node(9);
+    root.right = new Node(0);
+
+    root.left.left = new Node(5);
+    root.left.right = new Node(1);
+
+    return root;
+  }
+
+  public static Node createBTComplex() {
     Node root = new Node(1);
     root.left = new Node(2);
     root.right = new Node(3);

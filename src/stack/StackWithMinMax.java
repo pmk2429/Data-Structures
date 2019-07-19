@@ -7,12 +7,12 @@ public class StackWithMinMax extends Stack<Integer> {
   private Stack<Integer> minStack;
   private Stack<Integer> maxStack;
 
-  public StackWithMinMax () {
+  public StackWithMinMax() {
     minStack = new Stack<Integer>();
     maxStack = new Stack<Integer>();
   }
 
-  public void push(int value){
+  public void push(int value) {
     if (value <= min()) { // Note the '=' sign here
       minStack.push(value);
     }

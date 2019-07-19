@@ -67,14 +67,6 @@ public class NodeExists {
     return verifyPath(root, path);
   }
 
-  private static int getLeftChildIndex(int index) {
-    return (2 * index) + 1;
-  }
-
-  private static int getRightChildIndex(int index) {
-    return (2 * index) + 2;
-  }
-
   private static int getParentIndex(int index) {
     return index / 2;
   }

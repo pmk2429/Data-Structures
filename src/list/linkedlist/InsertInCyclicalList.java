@@ -16,16 +16,16 @@ public class InsertInCyclicalList {
     }
   }
 
-  private static Node insert(Node head, int insertVal) {
+  private static Node insert(Node head, int val) {
     if (head == null) {
-      return new Node(insertVal, null);
+      return new Node(val, null);
     }
 
     Node curr = head;
-    while (insertVal < curr.val) {
+    while (val < curr.val) {
       curr = curr.next;
     }
-    Node nodeToInsert = new Node(insertVal);
+    Node nodeToInsert = new Node(val);
     nodeToInsert.next = curr.next;
     curr.next = nodeToInsert;
 

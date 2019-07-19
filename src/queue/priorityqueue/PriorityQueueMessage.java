@@ -9,7 +9,6 @@ enum ProductQuality {
 
 class Product implements Comparable<Product> {
   String name;
-
   ProductQuality priority;
 
   Product(String str, ProductQuality pri) {

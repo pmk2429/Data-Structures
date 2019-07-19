@@ -1,7 +1,5 @@
 package tree.problems;
 
-import java.util.Arrays;
-
 public class RootToLeafPaths {
 
   private static boolean isLeaf(Node node) {

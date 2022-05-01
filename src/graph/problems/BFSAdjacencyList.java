@@ -10,8 +10,7 @@ import java.util.Queue;
  */
 public class BFSAdjacencyList {
 
-  private Queue<Node> queue;
-  static ArrayList<Node> nodes = new ArrayList<>();
+  private final Queue<Node> queue;
 
   static class Node {
     int data;
@@ -43,18 +42,19 @@ public class BFSAdjacencyList {
 
   void bfs(Node node) {
     node.visited = true;
+    System.out.print(node.data + " ");
     queue.add(node);
 
     while (!queue.isEmpty()) {
       Node element = queue.poll();
-      // display
-      System.out.print(element.data + " ");
       // get neighbors
       List<Node> neighbours = element.getNeighbours();
       for (Node n : neighbours) {
         if (n != null && !n.visited) {
-          queue.add(n);
           n.visited = true;
+          // display
+          System.out.print(n.data + " ");
+          queue.add(n);
         }
       }
     }

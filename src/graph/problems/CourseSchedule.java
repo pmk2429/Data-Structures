@@ -34,66 +34,66 @@ import java.util.Queue;
  */
 public class CourseSchedule {
 
-  private static boolean canFinish(int numCourses, int[][] prerequisites) {
-    List<Integer>[] graph = new LinkedList[numCourses];
+    private static boolean canFinish(int numCourses, int[][] prerequisites) {
+        List<Integer>[] graph = new LinkedList[numCourses];
 
-    for (int i = 0; i < graph.length; i++) {
-      graph[i] = new LinkedList<>();
-    }
-
-    // init an in-degree array.
-    int[] inDegree = new int[numCourses];
-
-    // init queue
-    Queue<Integer> gQ = new LinkedList<>();
-
-    for (int i = 0; i < prerequisites.length; i++) {
-      // get the edge (u,v)
-      int u = prerequisites[i][1];
-      int v = prerequisites[i][0];
-
-      inDegree[v]++;
-
-      // add to the graph.
-      graph[u].add(v);
-    }
-
-    // before we start the process of sorting, find all nodes
-    // that have 0 inDegree and put them in the Q.
-    for (int i = 0; i < inDegree.length; i++) {
-      if (inDegree[i] == 0) {
-        gQ.add(i);
-      }
-    }
-
-    // start topo sorting.
-    // note: we only check for legal DAG.
-    // we want to see that in 'numCourses' nodes got dequeued from the Q.
-    // if its not the case - there was a cycle which means the answer to our question is false.
-    int counter = 0;
-
-    while (!gQ.isEmpty()) {
-      // poll a node with inDegree 0
-      int nodeId = gQ.poll();
-
-      // remove its edges and update the inDegree array.
-      // if one of the children got an in degree 0 - add it to the Q and perform BFS
-      for (int childId : graph[nodeId]) {
-        inDegree[childId]--;
-
-        if (inDegree[childId] == 0) {
-          gQ.add(childId);
+        for (int i = 0; i < graph.length; i++) {
+            graph[i] = new LinkedList<>();
         }
-      }
-      counter++;
+
+        // init an in-degree array.
+        int[] inDegree = new int[numCourses];
+
+        // init queue
+        Queue<Integer> gQ = new LinkedList<>();
+
+        for (int i = 0; i < prerequisites.length; i++) {
+            // get the edge (u,v)
+            int u = prerequisites[i][1];
+            int v = prerequisites[i][0];
+
+            inDegree[v]++;
+
+            // add to the graph.
+            graph[u].add(v);
+        }
+
+        // before we start the process of sorting, find all nodes
+        // that have 0 inDegree and put them in the Q.
+        for (int i = 0; i < inDegree.length; i++) {
+            if (inDegree[i] == 0) {
+                gQ.add(i);
+            }
+        }
+
+        // start topo sorting.
+        // note: we only check for legal DAG.
+        // we want to see that in 'numCourses' nodes got dequeued from the Q.
+        // if its not the case - there was a cycle which means the answer to our question is false.
+        int counter = 0;
+
+        while (!gQ.isEmpty()) {
+            // poll a node with inDegree 0
+            int nodeId = gQ.poll();
+
+            // remove its edges and update the inDegree array.
+            // if one of the children got an in degree 0 - add it to the Q and perform BFS
+            for (int childId : graph[nodeId]) {
+                inDegree[childId]--;
+
+                if (inDegree[childId] == 0) {
+                    gQ.add(childId);
+                }
+            }
+            counter++;
+        }
+
+        return (counter == numCourses);
     }
 
-    return (counter == numCourses);
-  }
-
-  public static void main(String[] args) {
-    int numOfCourses = 2;
-    int[][] preReqs = {{1, 0}, {0, 1}};
-    System.out.println(canFinish(numOfCourses, preReqs));
-  }
+    public static void main(String[] args) {
+        int numOfCourses = 2;
+        int[][] preReqs = {{1, 0}, {0, 1}};
+        System.out.println(canFinish(numOfCourses, preReqs));
+    }
 }

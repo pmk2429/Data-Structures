@@ -30,31 +30,31 @@ package tree.problems;
  * is able to be more efficient.
  */
 public class MaxiumumPathSum {
-  private int maxSum;
+    private int maxSum;
 
-  /**
-   * At any given node in the binary tree, the max sum of a Node can be represented using one of following
-   * 1 - Max(left subtree) + node
-   * 2 - Max(right subtree) + node
-   * 3 - Max(left subtree) + Max(Right subtree) + node
-   * 4 - Node
-   *
-   * @param root
-   */
-  private int findMax(Node root) {
-    if (root == null) {
-      return 0;
+    /**
+     * At any given node in the binary tree, the max sum of a Node can be represented using one of following
+     * 1 - Max(left subtree) + node
+     * 2 - Max(right subtree) + node
+     * 3 - Max(left subtree) + Max(Right subtree) + node
+     * 4 - Node
+     *
+     * @param root
+     */
+    private int findMax(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        int left = findMax(root.left);
+        int right = findMax(root.right);
+        maxSum = Math.max(root.data + left + right, maxSum);
+        int res = root.data + Math.max(left, right);
+        return (res > 0 ? res : 0);
     }
-    int left = findMax(root.left);
-    int right = findMax(root.right);
-    maxSum = Math.max(root.data + left + right, maxSum);
-    int res = root.data + Math.max(left, right);
-    return (res > 0 ? res : 0);
-  }
 
-  public int maxPathSum(Node root) {
-    maxSum = Integer.MIN_VALUE;
-    findMax(root);
-    return maxSum;
-  }
+    public int maxPathSum(Node root) {
+        maxSum = Integer.MIN_VALUE;
+        findMax(root);
+        return maxSum;
+    }
 }

@@ -28,45 +28,45 @@ package tree.problems;
  */
 public class CompleteLevelOrderBT {
 
-  private static int leftChildIndex(int i) {
-    return 2 * i + 1;
-  }
-
-  private static int rightChildIndex(int i) {
-    return 2 * i + 2;
-  }
-
-  private static Node insertLevelOrder(int[] arr, Node root, int index) {
-    if (arr.length < 1) {
-      return null;
+    private static int leftChildIndex(int i) {
+        return 2 * i + 1;
     }
 
-    if (index < arr.length) {
-      root = new Node(arr[index]);
-
-      // for any parent i in a BT, left child is positioned at 2*i+1 and right child at 2*i+2
-      root.left = insertLevelOrder(arr, root.left, leftChildIndex(index));
-      root.right = insertLevelOrder(arr, root.right, rightChildIndex(index));
+    private static int rightChildIndex(int i) {
+        return 2 * i + 2;
     }
 
-    return root;
-  }
+    private static Node insertLevelOrder(int[] arr, Node root, int index) {
+        if (arr.length < 1) {
+            return null;
+        }
 
-  private static void inOrderTraversal(Node root) {
-    if (root == null) {
-      return;
+        if (index < arr.length) {
+            root = new Node(arr[index]);
+
+            // for any parent i in a BT, left child is positioned at 2*i+1 and right child at 2*i+2
+            root.left = insertLevelOrder(arr, root.left, leftChildIndex(index));
+            root.right = insertLevelOrder(arr, root.right, rightChildIndex(index));
+        }
+
+        return root;
     }
 
-    inOrderTraversal(root.left);
-    System.out.print(root.data + " ");
-    inOrderTraversal(root.right);
-  }
+    private static void inOrderTraversal(Node root) {
+        if (root == null) {
+            return;
+        }
 
-  public static void main(String[] args) {
-    int[] arr = {1, 2, 3, 4, 5, 6, 6, 6, 6};
-    Node root = new Node(arr[0]);
-    root = insertLevelOrder(arr, root, 0);
-    System.out.println("Level order BT representation - Inorder");
-    inOrderTraversal(root);
-  }
+        inOrderTraversal(root.left);
+        System.out.print(root.data + " ");
+        inOrderTraversal(root.right);
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5, 6, 6, 6, 6};
+        Node root = new Node(arr[0]);
+        root = insertLevelOrder(arr, root, 0);
+        System.out.println("Level order BT representation - Inorder");
+        inOrderTraversal(root);
+    }
 }

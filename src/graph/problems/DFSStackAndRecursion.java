@@ -32,9 +32,9 @@ public class DFSStackAndRecursion {
 
   // Recursive DFS
   void dfs(Node node) {
+    node.visited = true;
     System.out.print(node.data + " ");
     List<Node> neighbours = node.getNeighbours();
-    node.visited = true;
     for (Node n : neighbours) {
       if (n != null && !n.visited) {
         dfs(n);

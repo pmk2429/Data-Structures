@@ -33,44 +33,46 @@ import java.util.Stack;
  */
 public class RecoverTreePreOrder {
 
-  private static Node recoverFromPreOrder(String S) {
-    Node root = null;
-    var parents = new Stack<Node>();
+    private static Node recoverFromPreOrder(String S) {
+        Node root = null;
+        var parents = new Stack<Node>();
 
-    for (int i = 0; i < S.length(); ) {
-      // parse depth and value
-      int depth = 0, val = 0;
-      for (; i < S.length() && S.charAt(i) == '-'; i++) {
-        depth++;
-      }
-      for (; i < S.length() && S.charAt(i) != '-'; i++) {
-        val = val * 10 + (S.charAt(i) - '0');
-      }
-      var node = new Node(val);
+        for (int i = 0; i < S.length(); ) {
+            // parse depth and value
+            int depth = 0, val = 0;
+            for (; i < S.length() && S.charAt(i) == '-'; i++) {
+                depth++;
+            }
+            for (; i < S.length() && S.charAt(i) != '-'; i++) {
+                val = val * 10 + (S.charAt(i) - '0');
+            }
+            var node = new Node(val);
 
-      while (parents.size() > depth) {
-        parents.pop();
-      }
+            while (parents.size() > depth) {
+                parents.pop();
+            }
 
-      if (root == null) {
-        root = node;
-      } else {
-        var p = parents.peek();
-        if (p.left == null) {
-          p.left = node;
-        } else {
-          p.right = node;
+            if (root == null) {
+                root = node;
+            }
+            else {
+                var p = parents.peek();
+                if (p.left == null) {
+                    p.left = node;
+                }
+                else {
+                    p.right = node;
+                }
+            }
+
+            parents.push(node);
         }
-      }
 
-      parents.push(node);
+        return root;
     }
 
-    return root;
-  }
-
-  public static void main(String[] args) {
-    String input = "1-2--3--4-5--6--7";
-    recoverFromPreOrder(input);
-  }
+    public static void main(String[] args) {
+        String input = "1-2--3--4-5--6--7";
+        recoverFromPreOrder(input);
+    }
 }

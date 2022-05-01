@@ -26,5 +26,6 @@ public class ArrayToBst {
     int length = arr.length;
     Arrays.sort(arr);
     root = constructBST(arr, 0, length - 1, root);
+    System.out.println(root.data);
   }
 }

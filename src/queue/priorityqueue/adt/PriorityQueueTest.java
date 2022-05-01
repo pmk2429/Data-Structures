@@ -1,115 +1,139 @@
 package queue.priorityqueue.adt;
 
-/** class Task **/
+/**
+ * class Task
+ **/
 class Task {
-	String job;
-	int priority;
+    String job;
+    int priority;
 
-	/** Constructor **/
-	public Task(String job, int priority) {
-		this.job = job;
-		this.priority = priority;
-	}
+    /**
+     * Constructor
+     **/
+    public Task(String job, int priority) {
+        this.job = job;
+        this.priority = priority;
+    }
 
-	/** toString() **/
-	public String toString() {
-		return "Job Name : " + job + "\t Priority : " + priority;
-	}
+    /**
+     * toString()
+     **/
+    public String toString() {
+        return "Job Name : " + job + "\t Priority : " + priority;
+    }
 }
 
-/** Class PriorityQueue **/
+/**
+ * Class PriorityQueue
+ **/
 class PriorityQueue {
-	private Task[] heap;
-	private int heapSize, capacity;
+    private Task[] heap;
+    private int heapSize, capacity;
 
-	/** Constructor **/
-	public PriorityQueue(int capacity) {
-		this.capacity = capacity + 1;
-		heap = new Task[this.capacity];
-		heapSize = 0;
-	}
+    /**
+     * Constructor
+     **/
+    public PriorityQueue(int capacity) {
+        this.capacity = capacity + 1;
+        heap = new Task[this.capacity];
+        heapSize = 0;
+    }
 
-	/** function to clear **/
-	public void clear() {
-		heap = new Task[capacity];
-		heapSize = 0;
-	}
+    /**
+     * function to clear
+     **/
+    public void clear() {
+        heap = new Task[capacity];
+        heapSize = 0;
+    }
 
-	/** function to check if empty **/
-	public boolean isEmpty() {
-		return heapSize == 0;
-	}
+    /**
+     * function to check if empty
+     **/
+    public boolean isEmpty() {
+        return heapSize == 0;
+    }
 
-	/** function to check if full **/
-	public boolean isFull() {
-		return heapSize == capacity - 1;
-	}
+    /**
+     * function to check if full
+     **/
+    public boolean isFull() {
+        return heapSize == capacity - 1;
+    }
 
-	/** function to get Size **/
-	public int size() {
-		return heapSize;
-	}
+    /**
+     * function to get Size
+     **/
+    public int size() {
+        return heapSize;
+    }
 
-	/** function to insert task **/
-	public void insert(String job, int priority) {
-		Task newJob = new Task(job, priority);
+    /**
+     * function to insert task
+     **/
+    public void insert(String job, int priority) {
+        Task newJob = new Task(job, priority);
 
-		heap[++heapSize] = newJob;
-		int pos = heapSize;
-		while (pos != 1 && newJob.priority > heap[pos / 2].priority) {
-			heap[pos] = heap[pos / 2];
-			pos /= 2;
-		}
-		heap[pos] = newJob;
-	}
+        heap[++heapSize] = newJob;
+        int pos = heapSize;
+        while (pos != 1 && newJob.priority > heap[pos / 2].priority) {
+            heap[pos] = heap[pos / 2];
+            pos /= 2;
+        }
+        heap[pos] = newJob;
+    }
 
-	/** function to remove task **/
-	public Task remove() {
-		int parent, child;
-		Task item, temp;
-		if (isEmpty()) {
-			System.out.println("Heap is empty");
-			return null;
-		}
+    /**
+     * function to remove task
+     **/
+    public Task remove() {
+        int parent, child;
+        Task item, temp;
+        if (isEmpty()) {
+            System.out.println("Heap is empty");
+            return null;
+        }
 
-		item = heap[1];
-		temp = heap[heapSize--];
+        item = heap[1];
+        temp = heap[heapSize--];
 
-		parent = 1;
-		child = 2;
-		while (child <= heapSize) {
-			if (child < heapSize && heap[child].priority < heap[child + 1].priority)
-				child++;
-			if (temp.priority >= heap[child].priority)
-				break;
+        parent = 1;
+        child = 2;
+        while (child <= heapSize) {
+            if (child < heapSize && heap[child].priority < heap[child + 1].priority)
+                child++;
+            if (temp.priority >= heap[child].priority)
+                break;
 
-			heap[parent] = heap[child];
-			parent = child;
-			child *= 2;
-		}
-		heap[parent] = temp;
+            heap[parent] = heap[child];
+            parent = child;
+            child *= 2;
+        }
+        heap[parent] = temp;
 
-		return item;
-	}
+        return item;
+    }
 }
 
-/** Class PriorityQueueTest **/
+/**
+ * Class PriorityQueueTest
+ **/
 public class PriorityQueueTest {
-	public static void main(String[] args) {
-		PriorityQueue pq = new PriorityQueue(6);
-		pq.insert("A", 2);
-		pq.insert("C", 3);
-		pq.insert("B", 4);
-		pq.insert("V", 7);
-		pq.insert("E", 1);
-		pq.insert("F", 5);
+    public static void main(String[] args) {
+        PriorityQueue pq = new PriorityQueue(6);
+        pq.insert("A", 2);
+        pq.insert("C", 3);
+        pq.insert("B", 4);
+        pq.insert("V", 7);
+        pq.insert("E", 1);
+        pq.insert("F", 5);
 
-		for (int i = 0; i <= pq.size(); i++) {
-			Task obj = pq.remove();
-			System.out.println(obj.toString());
-		}
+        for (int i = 0; i <= pq.size(); i++) {
+            Task obj = pq.remove();
+            System.out.println(obj.toString());
+        }
 
-	}
+    }
 }
 
 /*

@@ -22,7 +22,7 @@ public class ColumnOrder {
   // Utility function to store vertical order in map 'm' 
   // 'hd' is horizontal distance of current node from root. 
   // 'hd' is initially passed as 0 
-  private static void getVerticalOrder(Node root, int horizontalDist, TreeMap<Integer, List<Integer>> columnMap) {
+  private static void buildVerticalOrder(Node root, int horizontalDist, TreeMap<Integer, List<Integer>> columnMap) {
     // Base case 
     if (root == null) {
       return;
@@ -39,10 +39,10 @@ public class ColumnOrder {
     columnMap.put(horizontalDist, res);
 
     // Store nodes in left subtree
-    getVerticalOrder(root.left, horizontalDist - 1, columnMap); // left go -1
+    buildVerticalOrder(root.left, horizontalDist - 1, columnMap); // left go -1
 
     // Store nodes in right subtree 
-    getVerticalOrder(root.right, horizontalDist + 1, columnMap); // right go +1
+    buildVerticalOrder(root.right, horizontalDist + 1, columnMap); // right go +1
   }
 
   // The main function to print vertical oder of a binary tree with given root
@@ -50,7 +50,7 @@ public class ColumnOrder {
     // Create a map and store vertical oder in map using function getVerticalOrder()
     TreeMap<Integer, List<Integer>> m = new TreeMap<>();
     int hd = 0;
-    getVerticalOrder(root, hd, m);
+    buildVerticalOrder(root, hd, m);
 
     // Traverse the map and print nodes at every horizontal distance (hd)
     for (Map.Entry<Integer, List<Integer>> entry : m.entrySet()) {

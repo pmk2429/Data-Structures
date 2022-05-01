@@ -2,41 +2,42 @@ package list.linkedlist;
 
 public class MergeTwoLinkedLists {
 
-  private static class Node {
-    int data;
-    Node next;
+    private static class Node {
+        int data;
+        Node next;
 
-    Node(int data) {
-      this.data = data;
-      this.next = null;
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
     }
-  }
 
-  private static Node merge(Node l1, Node l2) {
-    Node dummyHead = new Node(0);
-    Node p = dummyHead;
+    private static Node merge(Node listHead1, Node listHead2) {
+        Node dummyHead = new Node(0);
+        Node p = dummyHead;
 
-    while (l1 != null && l2 != null) {
-      if (l1.data < l2.data) {
-        p.next = l1;
-        l1 = l1.next;
-      } else if (l2.data < l1.data) {
-        p.next = l2;
-        l2 = l2.next;
-      }
-      p = p.next;
+        while (listHead1 != null && listHead2 != null) {
+            if (listHead1.data < listHead2.data) {
+                p.next = listHead1;
+                listHead1 = listHead1.next;
+            }
+            else if (listHead2.data < listHead1.data) {
+                p.next = listHead2;
+                listHead2 = listHead2.next;
+            }
+            p = p.next;
+        }
+        if (listHead1 != null) {
+            p.next = listHead1;
+        }
+        if (listHead2 != null) {
+            p.next = listHead2;
+        }
+        return dummyHead.next;
     }
-    if (l1 != null) {
-      p.next = l1;
-    }
-    if (l2 != null) {
-      p.next = l2;
-    }
-    return dummyHead.next;
-  }
 
-  public static void main(String[] args) {
+    public static void main(String[] args) {
 
-  }
+    }
 }
 

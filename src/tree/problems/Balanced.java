@@ -16,29 +16,29 @@ package tree.problems;
  */
 public class Balanced {
 
-  private static int height(Node root) {
-    if (root == null) {
-      return 0;
+    private static int height(Node root) {
+        if (root == null) {
+            return 0;
+        }
+
+        return 1 + Math.max(height(root.left), height(root.right));
     }
 
-    return 1 + Math.max(height(root.left), height(root.right));
-  }
+    private static boolean isBalanced(Node root) {
+        int lh;
+        int rh;
 
-  private static boolean isBalanced(Node root) {
-    int lh;
-    int rh;
+        if (root == null) {
+            return true;
+        }
 
-    if (root == null) {
-      return true;
+        lh = height(root.left);
+        rh = height(root.right);
+
+        return (Math.abs(lh - rh) <= 1 && isBalanced(root.left) && isBalanced(root.right));
     }
 
-    lh = height(root.left);
-    rh = height(root.right);
-
-    return (Math.abs(lh - rh) <= 1 && isBalanced(root.left) && isBalanced(root.right));
-  }
-
-  public static void main(String[] args) {
-    Node root = Node.createBTComplex();
-  }
+    public static void main(String[] args) {
+        Node root = Node.createBTComplex();
+    }
 }

@@ -29,7 +29,7 @@ package tree.problems;
  * Anytime when you found that doing top down approach uses a lot of repeated calculation, bottom up approach usually
  * is able to be more efficient.
  */
-public class MaxiumumPathSum {
+public class MaximumPathSum {
     private int maxSum;
 
     /**
@@ -49,7 +49,7 @@ public class MaxiumumPathSum {
         int right = findMax(root.right);
         maxSum = Math.max(root.data + left + right, maxSum);
         int res = root.data + Math.max(left, right);
-        return (res > 0 ? res : 0);
+        return Math.max(res, 0);
     }
 
     public int maxPathSum(Node root) {

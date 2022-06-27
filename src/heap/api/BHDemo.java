@@ -2,7 +2,7 @@ package heap.api;
 
 public class BHDemo {
   public static void main(String[] args) {
-    BinaryHeap<String> heap = new BinaryHeap<String>();
+    BinaryHeap<String> heap = new BinaryHeap<>();
     heap.add("Pavitra");
     heap.add("Harsha");
     heap.add("Anna");

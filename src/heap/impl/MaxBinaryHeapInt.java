@@ -7,113 +7,114 @@ import java.util.Arrays;
  */
 public class MaxBinaryHeapInt {
 
-  private int[] heap;
-  private int size;
-  private static final int d = 2; // binary heap
+    private int[] heap;
+    private int size;
+    private static final int d = 2; // binary heap
 
-  MaxBinaryHeapInt(int size) {
-    this.size = size;
-    heap = new int[size];
-    // initiate the binary heap
-    Arrays.fill(heap, -1);
-  }
-
-  public int kthChildIndex(int i, int k) {
-    return d * i + k;
-  }
-
-  public int maxChildIndex(int index) {
-    return 0;
-  }
-
-  public int minChildIndex(int index) {
-    return 0;
-  }
-
-  public void makeEmpty() {
-    size = 0;
-  }
-
-  public void insert(int element) {
-    heap[size++] = element;
-    heapifyUp();
-  }
-
-  public void insertAt(int index) {
-  }
-
-  // performs heapifyUp for MaxHeap property
-  public void heapifyUp() {
-    int index = size - 1;
-    int curElement = heap[index];
-
-    while (index > 0 && curElement > heap[getParentIndex(index)]) {
-      // swap the elements until the max element is at the top
-      heap[index] = heap[getParentIndex(index)];
-      index = getParentIndex(index);
+    MaxBinaryHeapInt(int size) {
+        this.size = size;
+        heap = new int[size];
+        // initiate the binary heap
+        Arrays.fill(heap, -1);
     }
-    heap[index] = curElement;
-  }
 
-  public void heapifyDown(int index) {
-    int curElement = heap[index];
-    int childIndex;
-
-    while (kthChildIndex(index, 1) < size) {
-      childIndex = maxChildIndex(index);
-      if (heap[index] > curElement) {
-        heap[index] = heap[childIndex];
-      } else {
-        break;
-      }
-      index = childIndex;
+    public int kthChildIndex(int i, int k) {
+        return d * i + k;
     }
-    heap[index] = curElement;
-  }
 
-  public int delete(int index) {
-    int curElement = heap[index];
-    heap[index] = heap[size - 1];
-    size--;
-    heapifyDown(index);
-    return curElement;
-  }
+    public int maxChildIndex(int index) {
+        return 0;
+    }
 
-  public int getParentIndex(int index) {
-    return (index - 1) / 2;
-  }
+    public int minChildIndex(int index) {
+        return 0;
+    }
 
-  public int getLeftChildIndex(int index) {
-    return 2 * index + 1;
-  }
+    public void makeEmpty() {
+        size = 0;
+    }
 
-  public int getRightChildIndex(int index) {
-    return 2 * index + 2;
-  }
+    public void insert(int element) {
+        heap[size++] = element;
+        heapifyUp();
+    }
 
-  public int parent(int index) {
-    return heap[getParentIndex(index)];
-  }
+    public void insertAt(int index) {
+    }
 
-  public int leftChild(int index) {
-    return heap[getLeftChildIndex(index)];
-  }
+    // performs heapifyUp for MaxHeap property
+    public void heapifyUp() {
+        int index = size - 1;
+        int curElement = heap[index];
 
-  public int RightChild(int index) {
-    return heap[getRightChildIndex(index)];
-  }
+        while (index > 0 && curElement > heap[getParentIndex(index)]) {
+            // swap the elements until the max element is at the top
+            heap[index] = heap[getParentIndex(index)];
+            index = getParentIndex(index);
+        }
+        heap[index] = curElement;
+    }
 
-  public boolean hasParent(int index) {
-    return getParentIndex(index) >= 0;
-  }
+    public void heapifyDown(int index) {
+        int curElement = heap[index];
+        int childIndex;
 
-  public boolean hasLeftChild(int index) {
-    return getLeftChildIndex(index) < size;
-  }
+        while (kthChildIndex(index, 1) < size) {
+            childIndex = maxChildIndex(index);
+            if (heap[index] > curElement) {
+                heap[index] = heap[childIndex];
+            }
+            else {
+                break;
+            }
+            index = childIndex;
+        }
+        heap[index] = curElement;
+    }
 
-  public boolean hasRightChild(int index) {
-    return getRightChildIndex(index) < size;
-  }
+    public int delete(int index) {
+        int curElement = heap[index];
+        heap[index] = heap[size - 1];
+        size--;
+        heapifyDown(index);
+        return curElement;
+    }
+
+    public int getParentIndex(int index) {
+        return (index - 1) / 2;
+    }
+
+    public int getLeftChildIndex(int index) {
+        return 2 * index + 1;
+    }
+
+    public int getRightChildIndex(int index) {
+        return 2 * index + 2;
+    }
+
+    public int parent(int index) {
+        return heap[getParentIndex(index)];
+    }
+
+    public int leftChild(int index) {
+        return heap[getLeftChildIndex(index)];
+    }
+
+    public int RightChild(int index) {
+        return heap[getRightChildIndex(index)];
+    }
+
+    public boolean hasParent(int index) {
+        return getParentIndex(index) >= 0;
+    }
+
+    public boolean hasLeftChild(int index) {
+        return getLeftChildIndex(index) < size;
+    }
+
+    public boolean hasRightChild(int index) {
+        return getRightChildIndex(index) < size;
+    }
 }
 
 

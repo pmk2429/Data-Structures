@@ -477,8 +477,8 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
             return result;
         }
 
-        Queue<Node> nodeQueue = new LinkedList<>();
-        Queue<Integer> levelQueue = new LinkedList<>();
+        Deque<Node> nodeQueue = new LinkedList<>();
+        Deque<Integer> levelQueue = new LinkedList<>();
 
         nodeQueue.offer(root);
         levelQueue.offer(1); //start from 1

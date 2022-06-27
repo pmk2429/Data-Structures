@@ -1,5 +1,10 @@
 package tree.problems;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 /**
  * Construct a complete binary tree from given array in level order fashion
  * Given an array of elements, our task is to construct a complete binary tree from this array in level order fashion.
@@ -26,7 +31,7 @@ package tree.problems;
  * / \ /
  * 6  6 6
  */
-public class CompleteLevelOrderBT {
+public class LevelOrderInsertionBT {
 
     private static int leftChildIndex(int i) {
         return 2 * i + 1;

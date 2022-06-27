@@ -17,38 +17,29 @@ package list.linkedlist;
  */
 public class MaxElementMerge {
 
-  private static ListNode maxMerge(ListNode head1, ListNode head2) {
-    ListNode ptr1 = head1;
-    ListNode ptr2 = head2;
-    ListNode root = null;
-    ListNode temp;
-    ListNode ptr;
+    private static ListNode maxMerge(ListNode head1, ListNode head2) {
+        ListNode ptr1 = head1;
+        ListNode ptr2 = head2;
+        ListNode root = null, temp, ptr;
 
-    while (ptr1 != null && ptr2 != null) {
-      temp = new ListNode(-1);
+        while (ptr1 != null && ptr2 != null) {
+            temp = new ListNode(-1);
 
-      if (ptr1.data < ptr2.data) {
-        temp.data = ptr2.data;
-      } else {
-        temp.data = ptr1.data;
-      }
+            temp.data = Math.max(ptr1.data, ptr2.data);
 
-      if (root == null) {
-        root = temp;
-      } else {
-        ptr = root;
-        while (ptr.next != null) {
-          ptr = ptr.next;
+            if (root == null) {
+                root = temp;
+            }
+            else {
+                ptr = root;
+                while (ptr.next != null) {
+                    ptr = ptr.next;
+                }
+                ptr.next = temp;
+            }
+            ptr1 = ptr1.next;
+            ptr2 = ptr2.next;
         }
-        ptr.next = temp;
-      }
-      ptr1 = ptr1.next;
-      ptr2 = ptr2.next;
+        return root;
     }
-    return root;
-  }
-
-  public static void main(String[] args) {
-
-  }
 }

@@ -28,7 +28,7 @@ public class ColumnOrder {
             return;
         }
 
-        //get the vector list at 'hd'
+        // get the vector list at 'hd'
         List<Integer> res = columnMap.get(horizontalDist);
 
         // Store current node in map 'm'

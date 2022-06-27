@@ -19,32 +19,32 @@ package tree.problems;
  */
 public class CompleteBT {
 
-  private int countNodes(Node root) {
-    if (root == null) {
-      return 0;
+    private int countNodes(Node root) {
+        if (root == null) {
+            return 0;
+        }
+
+        if (root.left == null && root.right == null) {
+            return 1;
+        }
+
+        return 1 + countNodes(root.left) + countNodes(root.right);
     }
 
-    if (root.left == null && root.right == null) {
-      return 1;
+    boolean isComplete(Node root, int index, int totalNodes) {
+        // An empty tree is complete
+        if (root == null) {
+            return true;
+        }
+
+        // If index assigned to current node is more than
+        // number of nodes in tree, then tree is not complete
+        if (index >= totalNodes) {
+            return false;
+        }
+
+        return (isComplete(root.left, 2 * index + 1, totalNodes)
+            && isComplete(root.right, 2 * index + 2, totalNodes));
+
     }
-
-    return 1 + countNodes(root.left) + countNodes(root.right);
-  }
-
-  boolean isComplete(Node root, int index, int totalNodes) {
-    // An empty tree is complete
-    if (root == null) {
-      return true;
-    }
-
-    // If index assigned to current node is more than
-    // number of nodes in tree, then tree is not complete
-    if (index >= totalNodes) {
-      return false;
-    }
-
-    return (isComplete(root.left, 2 * index + 1, totalNodes)
-        && isComplete(root.right, 2 * index + 2, totalNodes));
-
-  }
 }

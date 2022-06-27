@@ -56,8 +56,8 @@ public class RecoverBinaryTree {
     }
 
     public void recoverTree(Node root) {
-        Deque<Node> stack = new ArrayDeque();
-        Node x = null, y = null, pred = null;
+        Deque<Node> stack = new ArrayDeque<>();
+        Node x = null, y = null, prev = null;
 
         while (!stack.isEmpty() || root != null) {
             while (root != null) {
@@ -65,16 +65,16 @@ public class RecoverBinaryTree {
                 root = root.left;
             }
             root = stack.removeLast();
-            if (pred != null && root.data < pred.data) {
+            if (prev != null && root.data < prev.data) {
                 y = root;
                 if (x == null) {
-                    x = pred;
+                    x = prev;
                 }
                 else {
                     break;
                 }
             }
-            pred = root;
+            prev = root;
             root = root.right;
         }
 

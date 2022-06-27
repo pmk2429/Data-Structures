@@ -4,81 +4,78 @@ import java.util.*;
 
 public class BottomView {
 
-  Node root; //root node of tree
+    Node root; //root node of tree
 
-  public BottomView() {
-  }
-
-  // Parameterized tree constructor
-  private BottomView(Node node) {
-    root = node;
-  }
-
-  private void bottomView() {
-    if (root == null) {
-      return;
+    // Parameterized tree constructor
+    private BottomView(Node node) {
+        root = node;
     }
 
-    int hd;
+    private void bottomView() {
+        if (root == null) {
+            return;
+        }
 
-    // TreeMap which stores key value pair sorted on key value
-    Map<Integer, Integer> map = new TreeMap<>();
+        int horizontalDistance;
 
-    // Queue to store tree nodes in level order traversal
-    Queue<Node> queue = new LinkedList<>();
+        // TreeMap which stores key value pair sorted on key value
+        Map<Integer, Integer> map = new TreeMap<>();
 
-    // Assign initialized horizontal distance value to root
-    // node and add it to the queue.
-    queue.add(root);
+        // Queue to store tree nodes in level order traversal
+        Deque<Node> queue = new ArrayDeque<>();
 
-    // Loop until the queue is empty (standard level order loop)
-    while (!queue.isEmpty()) {
-      Node temp = queue.poll();
+        // Assign initialized horizontal distance value to root
+        // node and add it to the queue.
+        queue.add(root);
 
-      // Extract the horizontal distance value from the
-      // dequeued tree node.
-      hd = temp.hd;
+        // Loop until the queue is empty (standard level order loop)
+        while (!queue.isEmpty()) {
+            Node temp = queue.poll();
 
-      // Put the dequeued tree node to TreeMap having key
-      // as horizontal distance. Every time we find a node
-      // having same horizontal distance we need to replace
-      // the data in the map.
-      map.put(hd, temp.data);
+            // Extract the horizontal distance value from the
+            // dequeued tree node.
+            horizontalDistance = temp.hd;
 
-      // If the dequeued node has a left child add it to the
-      // queue with a horizontal distance hd-1.
-      if (temp.left != null) {
-        temp.left.hd = hd - 1;
-        queue.add(temp.left);
-      }
+            // Put the dequeued tree node to TreeMap having key
+            // as horizontal distance. Every time we find a node
+            // having same horizontal distance we need to replace
+            // the data in the map.
+            map.put(horizontalDistance, temp.data);
 
-      // If the dequeued node has a left child add it to the
-      // queue with a horizontal distance hd+1.
-      if (temp.right != null) {
-        temp.right.hd = hd + 1;
-        queue.add(temp.right);
-      }
+            // If the dequeued node has a left child add it to the
+            // queue with a horizontal distance hd-1.
+            if (temp.left != null) {
+                temp.left.hd = horizontalDistance - 1;
+                queue.add(temp.left);
+            }
+
+            // If the dequeued node has a left child add it to the
+            // queue with a horizontal distance hd+1.
+            if (temp.right != null) {
+                temp.right.hd = horizontalDistance + 1;
+                queue.add(temp.right);
+            }
+        }
+
+        // Traverse the map elements using the iterator.
+        for (Map.Entry<Integer, Integer> me : map.entrySet()) {
+            System.out.print(me.getValue() + " ");
+        }
     }
 
-    // Traverse the map elements using the iterator.
-    for (Map.Entry<Integer, Integer> me : map.entrySet()) {
-      System.out.print(me.getValue() + " ");
+    public static void main(String[] args) {
+        Node root = new Node(20);
+        root.left = new Node(8);
+        root.right = new Node(22);
+        root.left.left = new Node(5);
+        root.left.right = new Node(3);
+        root.right.left = new Node(4);
+        root.right.right = new Node(25);
+        root.left.right.left = new Node(10);
+        root.left.right.right = new Node(14);
+        BottomView tree = new BottomView(root);
+
+        System.out.println("Bottom view of the given binary tree:");
+        tree.bottomView();
     }
-  }
-
-  public static void main(String[] args) {
-    Node root = new Node(20);
-    root.left = new Node(8);
-    root.right = new Node(22);
-    root.left.left = new Node(5);
-    root.left.right = new Node(3);
-    root.right.left = new Node(4);
-    root.right.right = new Node(25);
-    root.left.right.left = new Node(10);
-    root.left.right.right = new Node(14);
-    BottomView tree = new BottomView(root);
-
-    System.out.println("Bottom view of the given binary tree:");
-    tree.bottomView();
-  }
 }

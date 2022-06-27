@@ -1,144 +1,146 @@
 package tree.problems;
 
 public class AVLTree {
-  Node root;
+    Node root;
 
-  // A utility function to get the height of the tree
-  private int height(Node N) {
-    if (N == null) {
-      return 0;
+    // A utility function to get the height of the tree
+    private int height(Node N) {
+        if (N == null) {
+            return 0;
+        }
+
+        return N.height;
     }
 
-    return N.height;
-  }
-
-  // A utility function to get maximum of two integers
-  private int max(int a, int b) {
-    return (a > b) ? a : b;
-  }
-
-  // A utility function to right rotate subtree rooted with y
-  // See the diagram given above.
-  private Node rightRotate(Node y) {
-    Node x = y.left;
-    Node T2 = x.right;
-
-    // Perform rotation
-    x.right = y;
-    y.left = T2;
-
-    // Update heights
-    y.height = max(height(y.left), height(y.right)) + 1;
-    x.height = max(height(x.left), height(x.right)) + 1;
-
-    // Return new root
-    return x;
-  }
-
-  // A utility function to left rotate subtree rooted with x
-  // See the diagram given above.
-  private Node leftRotate(Node x) {
-    Node y = x.right;
-    Node T2 = y.left;
-
-    // Perform rotation
-    y.left = x;
-    x.right = T2;
-
-    //  Update heights
-    x.height = max(height(x.left), height(x.right)) + 1;
-    y.height = max(height(y.left), height(y.right)) + 1;
-
-    // Return new root
-    return y;
-  }
-
-  // Get Balance factor of node N
-  private int getBalance(Node N) {
-    if (N == null)
-      return 0;
-
-    return height(N.left) - height(N.right);
-  }
-
-  /**
-   * 1 - Perform normal BST insertion
-   * 2 - Update height of ancestor node
-   * 3 - Get the balance factor of this ancestor node tocheck whether this node became unbalanced
-   *
-   * @param node
-   * @param key
-   * @return
-   */
-  private Node insert(Node node, int key) {
-    /* 1.  Perform the normal BST insertion */
-    if (node == null) {
-      return (new Node(key));
+    // A utility function to get maximum of two integers
+    private int max(int a, int b) {
+        return (a > b) ? a : b;
     }
 
-    if (key < node.data) {
-      node.left = insert(node.left, key);
-    } else if (key > node.data) {
-      node.right = insert(node.right, key);
-    } else {
-      // Duplicate keys not allowed
-      return node;
+    // A utility function to right rotate subtree rooted with y
+    // See the diagram given above.
+    private Node rightRotate(Node y) {
+        Node x = y.left;
+        Node T2 = x.right;
+
+        // Perform rotation
+        x.right = y;
+        y.left = T2;
+
+        // Update heights
+        y.height = max(height(y.left), height(y.right)) + 1;
+        x.height = max(height(x.left), height(x.right)) + 1;
+
+        // Return new root
+        return x;
     }
 
-    /* 2. Update height of this ancestor node */
-    node.height = 1 + max(height(node.left), height(node.right));
+    // A utility function to left rotate subtree rooted with x
+    // See the diagram given above.
+    private Node leftRotate(Node x) {
+        Node y = x.right;
+        Node T2 = y.left;
+
+        // Perform rotation
+        y.left = x;
+        x.right = T2;
+
+        //  Update heights
+        x.height = max(height(x.left), height(x.right)) + 1;
+        y.height = max(height(y.left), height(y.right)) + 1;
+
+        // Return new root
+        return y;
+    }
+
+    // Get Balance factor of node N
+    private int getBalance(Node N) {
+        if (N == null)
+            return 0;
+
+        return height(N.left) - height(N.right);
+    }
+
+    /**
+     * 1 - Perform normal BST insertion
+     * 2 - Update height of ancestor node
+     * 3 - Get the balance factor of this ancestor node tocheck whether this node became unbalanced
+     *
+     * @param node
+     * @param key
+     * @return
+     */
+    private Node insert(Node node, int key) {
+        /* 1.  Perform the normal BST insertion */
+        if (node == null) {
+            return (new Node(key));
+        }
+
+        if (key < node.data) {
+            node.left = insert(node.left, key);
+        }
+        else if (key > node.data) {
+            node.right = insert(node.right, key);
+        }
+        else {
+            // Duplicate keys not allowed
+            return node;
+        }
+
+        /* 2. Update height of this ancestor node */
+        node.height = 1 + max(height(node.left), height(node.right));
 
     /* 3. Get the balance factor of this ancestor
     node to check whether this node became
     unbalanced */
-    int balance = getBalance(node);
+        int balance = getBalance(node);
 
-    // If this node becomes unbalanced, then there are 4 cases
-    // A - Left Left Case
-    if (balance > 1 && key < node.left.data) {
-      return rightRotate(node);
+        // If this node becomes unbalanced, then there are 4 cases
+        // A - Left Left Case
+        if (balance > 1 && key < node.left.data) {
+            return rightRotate(node);
+        }
+
+        // B - Right Right Case
+        if (balance < -1 && key > node.right.data) {
+            return leftRotate(node);
+        }
+
+        // C - Left Right Case
+        if (balance > 1 && key > node.left.data) {
+            node.left = leftRotate(node.left);
+            return rightRotate(node);
+        }
+
+        // D - Right Left Case
+        if (balance < -1 && key < node.right.data) {
+            node.right = rightRotate(node.right);
+            return leftRotate(node);
+        }
+
+        /* return the (unchanged) node pointer */
+        return node;
     }
 
-    // B - Right Right Case
-    if (balance < -1 && key > node.right.data) {
-      return leftRotate(node);
+    // A utility function to print preorder traversal of the tree.
+    // The function also prints height of every node
+    private void preOrder(Node node) {
+        if (node != null) {
+            System.out.print(node.data + " ");
+            preOrder(node.left);
+            preOrder(node.right);
+        }
     }
 
-    // C - Left Right Case
-    if (balance > 1 && key > node.left.data) {
-      node.left = leftRotate(node.left);
-      return rightRotate(node);
-    }
-
-    // D - Right Left Case
-    if (balance < -1 && key < node.right.data) {
-      node.right = rightRotate(node.right);
-      return leftRotate(node);
-    }
-
-    /* return the (unchanged) node pointer */
-    return node;
-  }
-
-  // A utility function to print preorder traversal of the tree.
-  // The function also prints height of every node
-  private void preOrder(Node node) {
-    if (node != null) {
-      System.out.print(node.data + " ");
-      preOrder(node.left);
-      preOrder(node.right);
-    }
-  }
-
-  public static void main(String[] args) {
-    AVLTree tree = new AVLTree();
-    /* Constructing tree given in the above figure */
-    tree.root = tree.insert(tree.root, 10);
-    tree.root = tree.insert(tree.root, 20);
-    tree.root = tree.insert(tree.root, 30);
-    tree.root = tree.insert(tree.root, 40);
-    tree.root = tree.insert(tree.root, 50);
-    tree.root = tree.insert(tree.root, 25);
+    public static void main(String[] args) {
+        AVLTree tree = new AVLTree();
+        /* Constructing tree given in the above figure */
+        tree.root = tree.insert(tree.root, 10);
+        tree.root = tree.insert(tree.root, 20);
+        tree.root = tree.insert(tree.root, 30);
+        tree.root = tree.insert(tree.root, 40);
+        tree.root = tree.insert(tree.root, 50);
+        tree.root = tree.insert(tree.root, 25);
 
     /* The constructed AVL Tree would be
              30
@@ -147,8 +149,8 @@ public class AVLTree {
          /  \     \
         10  25    50
     */
-    System.out.println("Preorder traversal" + " of constructed tree is : ");
-    tree.preOrder(tree.root);
-  }
+        System.out.println("Preorder traversal" + " of constructed tree is : ");
+        tree.preOrder(tree.root);
+    }
 
 }

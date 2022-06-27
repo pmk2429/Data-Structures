@@ -24,61 +24,63 @@ package tree.problems;
  */
 public class MorrisTraversal {
 
-  // Function to print the keys in range
-  private static void rangeTraversal(Node root, int n1, int n2) {
-    if (root == null)
-      return;
+    // Function to print the keys in range
+    private static void rangeTraversal(Node root, int n1, int n2) {
+        if (root == null)
+            return;
 
-    Node curr = root;
+        Node curr = root;
 
-    while (curr != null) {
+        while (curr != null) {
 
-      if (curr.left == null) {
-        // check if current Node
-        // lies between n1 and n2
-        if (curr.data <= n2 && curr.data >= n1) {
-          System.out.print(curr.data + " ");
+            if (curr.left == null) {
+                // check if current Node
+                // lies between n1 and n2
+                if (curr.data <= n2 && curr.data >= n1) {
+                    System.out.print(curr.data + " ");
+                }
+
+                curr = curr.right;
+            }
+            else {
+                Node pre = curr.left;
+                // finding the inorder predecessor-
+                // inorder predecessor is the right
+                // most in left subtree or the left
+                // child, i.e in BST it is the
+                // maximum(right most) in left subtree.
+                while (pre.right != null && pre.right != curr) {
+                    pre = pre.right;
+                }
+
+                if (pre.right == null) {
+                    pre.right = curr;
+                    curr = curr.left;
+                }
+                else {
+                    pre.right = null;
+                    // check if current Node lies
+                    // between n1 and n2
+                    if (curr.data <= n2 && curr.data >= n1) {
+                        System.out.print(curr.data + " ");
+                    }
+                    curr = curr.right;
+                }
+            }
         }
-
-        curr = curr.right;
-      } else {
-        Node pre = curr.left;
-        // finding the inorder predecessor-
-        // inorder predecessor is the right
-        // most in left subtree or the left
-        // child, i.e in BST it is the
-        // maximum(right most) in left subtree.
-        while (pre.right != null && pre.right != curr) {
-          pre = pre.right;
-        }
-
-        if (pre.right == null) {
-          pre.right = curr;
-          curr = curr.left;
-        } else {
-          pre.right = null;
-          // check if current Node lies
-          // between n1 and n2
-          if (curr.data <= n2 && curr.data >= n1) {
-            System.out.print(curr.data + " ");
-          }
-          curr = curr.right;
-        }
-      }
     }
-  }
 
-  // Helper function to create a new Node
-  static Node newNode(int data) {
-    Node temp = new Node(data);
-    temp.right = null;
-    temp.left = null;
+    // Helper function to create a new Node
+    static Node newNode(int data) {
+        Node temp = new Node(data);
+        temp.right = null;
+        temp.left = null;
 
-    return temp;
-  }
+        return temp;
+    }
 
-  // Driver Code
-  public static void main(String[] args) {
+    // Driver Code
+    public static void main(String[] args) {
 
     /* Constructed binary tree is
         4
@@ -88,15 +90,15 @@ public class MorrisTraversal {
     1 3 6 10
 */
 
-    Node root = newNode(4);
-    root.left = newNode(2);
-    root.right = newNode(7);
-    root.left.left = newNode(1);
-    root.left.right = newNode(3);
-    root.right.left = newNode(6);
-    root.right.right = newNode(10);
+        Node root = newNode(4);
+        root.left = newNode(2);
+        root.right = newNode(7);
+        root.left.left = newNode(1);
+        root.left.right = newNode(3);
+        root.right.left = newNode(6);
+        root.right.right = newNode(10);
 
-    rangeTraversal(root, 4, 12);
+        rangeTraversal(root, 4, 12);
 
-  }
+    }
 }

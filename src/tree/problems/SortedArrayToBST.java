@@ -6,24 +6,24 @@ package tree.problems;
  * A height-balanced tree is a tree whose subtrees differ in height by no more than one and the subtrees are height-balanced, too.
  */
 public class SortedArrayToBST {
-  public Node sortedArrayToBST(int[] num) {
-    return sortedArrayToBST(num, 0, num.length - 1);
-  }
-
-  private Node sortedArrayToBST(int[] arr, int start, int end) {
-    if (start > end) {
-      return null;
+    public Node sortedArrayToBST(int[] num) {
+        return sortedArrayToBST(num, 0, num.length - 1);
     }
 
-    if (arr.length == 0) {
-      return null;
+    private Node sortedArrayToBST(int[] arr, int start, int end) {
+        if (start > end) {
+            return null;
+        }
+
+        if (arr.length == 0) {
+            return null;
+        }
+
+        int mid = (start + end) / 2;
+        Node root = new Node(arr[mid]);
+        root.left = sortedArrayToBST(arr, start, mid - 1);
+        root.right = sortedArrayToBST(arr, mid + 1, end);
+
+        return root;
     }
-
-    int mid = (start + end) / 2;
-    Node root = new Node(arr[mid]);
-    root.left = sortedArrayToBST(arr, start, mid - 1);
-    root.right = sortedArrayToBST(arr, mid + 1, end);
-
-    return root;
-  }
 }

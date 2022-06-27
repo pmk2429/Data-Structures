@@ -5,22 +5,12 @@ package list.linkedlist;
  */
 public class CountNodesCircularLinkedList {
 
-    static class Node {
-        int data;
-        Node next;
-
-        public Node() {
-        }
-
-        public Node(int data, Node next) {
-            this.data = data;
-            this.next = next;
-        }
-    }
-
-    private static Node push(Node head, int data) {
-        Node first = new Node();
-        Node temp = head;
+    /**
+     * Inserts node in Circular LinkedList
+     */
+    private static ListNode push(ListNode head, int data) {
+        ListNode first = new ListNode();
+        ListNode temp = head;
         first.next = head;
         first.data = data;
 
@@ -40,8 +30,8 @@ public class CountNodesCircularLinkedList {
     }
 
     /* Function to print nodes in a given Circular linked list */
-    private static int countNodes(Node head) {
-        Node temp = head;
+    private static int countNodes(ListNode head) {
+        ListNode temp = head;
         int count = 0;
         if (head != null) {
             do {
@@ -54,8 +44,9 @@ public class CountNodesCircularLinkedList {
     }
 
     public static void main(String[] args) {
-        Node head = null;
+        ListNode head = null;
         head = push(head, 12);
+        head = push(head, 5);
         head = push(head, 56);
         head = push(head, 2);
         head = push(head, 11);

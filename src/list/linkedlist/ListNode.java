@@ -4,15 +4,20 @@ public class ListNode {
     public int data;
     public ListNode next;
 
-    ListNode() {
+    public ListNode() {
     }
 
-    ListNode(int data) {
+    public ListNode(int data) {
         this.data = data;
         this.next = null;
     }
 
-    ListNode(int data, ListNode next) {
+    public ListNode(ListNode next) {
+        this.data = -1;
+        this.next = next;
+    }
+
+    public ListNode(int data, ListNode next) {
         this.data = data;
         this.next = next;
     }

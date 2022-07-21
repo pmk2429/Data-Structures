@@ -943,14 +943,13 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
     }
 
     private int diameterUtil(Node root, Height height) {
-
-        Height rh = new Height();
-        Height lh = new Height();
-
         if (root == null) {
             height.value = 0;
             return 0;
         }
+
+        Height rh = new Height();
+        Height lh = new Height();
 
         int leftDiameter = diameterUtil(root.left, lh);
         int rightDiameter = diameterUtil(root.right, rh);
@@ -971,7 +970,8 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
             return true;
         }
 
-        return ((low == null || node.data > low) && (high == null || node.data < high)
+        return ((low == null || node.data > low)
+            && (high == null || node.data < high)
             && (isValidBSTUtil(node.left, low, node.data))
             && (isValidBSTUtil(node.right, node.data, high)));
     }

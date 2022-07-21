@@ -25,8 +25,7 @@ public class MaxConsecutiveOnes {
         if (nums.length == 0) return 0;
 
         if (nums.length == 1) {
-            if (nums[0] == 1) return 1;
-            else return 0;
+            return (nums[0] == 1) ? 1 : 0;
         }
 
         int maxCount = 0, sum = 0;
@@ -35,7 +34,7 @@ public class MaxConsecutiveOnes {
                 sum++;
             }
             else {
-                if (maxCount < sum) {
+                if (sum > maxCount) {
                     maxCount = sum;
                 }
                 sum = 0;
@@ -45,7 +44,7 @@ public class MaxConsecutiveOnes {
     }
 
     public static void main(String[] args) {
-        int[] nums = {1, 0, 1, 1, 0, 1};
+        int[] nums = {1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1};
         System.out.println(findMaxConsecutiveOnes(nums));
     }
 }

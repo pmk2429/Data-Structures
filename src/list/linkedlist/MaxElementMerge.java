@@ -24,7 +24,6 @@ public class MaxElementMerge {
 
         while (ptr1 != null && ptr2 != null) {
             temp = new ListNode(-1);
-
             temp.data = Math.max(ptr1.data, ptr2.data);
 
             if (root == null) {

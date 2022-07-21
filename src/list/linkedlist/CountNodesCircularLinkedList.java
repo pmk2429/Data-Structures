@@ -9,7 +9,7 @@ public class CountNodesCircularLinkedList {
      * Inserts node in Circular LinkedList
      */
     private static ListNode push(ListNode head, int data) {
-        ListNode first = new ListNode();
+        ListNode first = new ListNode(-1);
         ListNode temp = head;
         first.next = head;
         first.data = data;

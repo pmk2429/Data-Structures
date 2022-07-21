@@ -1,5 +1,7 @@
 package heap.problems;
 
+import list.linkedlist.ListNode;
+
 import java.util.PriorityQueue;
 
 /**
@@ -17,37 +19,33 @@ import java.util.PriorityQueue;
  */
 public class MergeKSortedLists {
 
-  private ListNode mergeKLists(ListNode[] lists) {
-    PriorityQueue<Integer> nodes = new PriorityQueue<>();
+    private ListNode mergeKLists(ListNode[] lists) {
+        ListNode dummyHead = new ListNode(0);
 
-    for (ListNode n : lists) {
-      ListNode curNode = n;
-      while (curNode != null) {
-        nodes.add(curNode.val);
-        curNode = curNode.next;
-      }
+        if (lists == null || lists.length == 0) {
+            return dummyHead;
+        }
+
+        PriorityQueue<Integer> nodesQueue = new PriorityQueue<>();
+
+        for (ListNode n : lists) {
+            ListNode curNode = n;
+            while (curNode != null) {
+                nodesQueue.add(curNode.data);
+                curNode = curNode.next;
+            }
+        }
+
+        ListNode result = dummyHead;
+        while (!nodesQueue.isEmpty()) {
+            result.next = new ListNode(nodesQueue.poll());
+            result = result.next;
+        }
+
+        return dummyHead.next;
     }
 
-    ListNode result = new ListNode(0);
-    ListNode resultNode = result;
-    while (!nodes.isEmpty()) {
-      resultNode.next = new ListNode(nodes.poll());
-      resultNode = resultNode.next;
+    public static void main(String[] args) {
+
     }
-
-    return result.next;
-  }
-
-  public static void main(String[] args) {
-
-  }
-}
-
-class ListNode {
-  int val;
-  ListNode next;
-
-  ListNode(int x) {
-    val = x;
-  }
 }

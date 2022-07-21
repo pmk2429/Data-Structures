@@ -36,7 +36,7 @@ public class RotateLinkedList {
 
         /**
          * Since n may be a large number compared to the length of list.
-         * So we need to know the length of linked list.After that, move the list after the (l-n%l )th node
+         * So we need to know the length of linked list. After that, move the list after the (l - n % l)th node
          * to the front to finish the rotation.
          *
          * Ex: {1,2,3} k=2 Move the list after the 1st node to the front

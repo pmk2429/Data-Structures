@@ -16,14 +16,13 @@ public class Diameter {
     }
 
     private static int diameter(Node root, Height height) {
-
-        Height rh = new Height();
-        Height lh = new Height();
-
         if (root == null) {
             height.value = 0;
             return 0;
         }
+
+        Height rh = new Height();
+        Height lh = new Height();
 
         int leftDiameter = diameter(root.left, lh);
         int rightDiameter = diameter(root.right, rh);
@@ -34,9 +33,7 @@ public class Diameter {
     }
 
     private static int diam(Node root) {
-        Height h = new Height();
-        Node curr = root;
-        return diameter(curr, h);
+        return diameter(root, new Height());
     }
 
     public static void main(String[] args) {

@@ -55,7 +55,7 @@ public class MergeKSortedLinkedLists {
     }
 
     private static ListNode merge2Lists(ListNode l1, ListNode l2) {
-        ListNode dummyHead = new ListNode(0);
+        ListNode dummyHead = new ListNode(-1);
         ListNode p = dummyHead;
 
         while (l1 != null && l2 != null) {

@@ -109,6 +109,6 @@ public class WordDictionary {
         dictionary.addWord("KP");
         dictionary.addWord("Tysu");
 
-        System.out.println(dictionary.contains("kp"));
+        System.out.println(dictionary.contains("KP"));
     }
 }

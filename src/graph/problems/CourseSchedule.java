@@ -47,10 +47,10 @@ public class CourseSchedule {
         // init queue
         Queue<Integer> gQ = new LinkedList<>();
 
-        for (int i = 0; i < prerequisites.length; i++) {
+        for (int[] prerequisite : prerequisites) {
             // get the edge (u,v)
-            int u = prerequisites[i][1];
-            int v = prerequisites[i][0];
+            int u = prerequisite[1];
+            int v = prerequisite[0];
 
             inDegree[v]++;
 

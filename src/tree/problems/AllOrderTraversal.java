@@ -77,9 +77,6 @@ public class AllOrderTraversal {
 
     /**
      * Uses Queue to perform Level Order
-     *
-     * @param root
-     * @return
      */
     public List<List<Integer>> levelOrderTraversal(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
@@ -105,13 +102,36 @@ public class AllOrderTraversal {
     }
 
     /**
+     * Uses Queue to perform Level Order
+     */
+    public List<List<TreeNode>> levelOrderTraversalTreeNode(TreeNode root) {
+        List<List<TreeNode>> res = new ArrayList<>();
+        if (root == null) return res;
+        Deque<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            List<TreeNode> currentLevelNodes = new ArrayList<>();
+            int count = queue.size();
+            for (int i = 0; i < count; i++) {
+                TreeNode node = queue.poll();
+                currentLevelNodes.add(node);
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+            }
+            res.add(currentLevelNodes);
+        }
+        return res;
+    }
+
+    /**
      * Level Order Traversal using DFS
-     *
-     * @param root
-     * @return
      */
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        List<List<Integer>> res = new ArrayList<>();
         levelHelper(res, root, 0);
         return res;
     }
@@ -119,7 +139,7 @@ public class AllOrderTraversal {
     public void levelHelper(List<List<Integer>> res, TreeNode root, int height) {
         if (root == null) return;
         if (height >= res.size()) {
-            res.add(new LinkedList<Integer>());
+            res.add(new LinkedList<>());
         }
         res.get(height).add(root.val);
         levelHelper(res, root.left, height + 1);

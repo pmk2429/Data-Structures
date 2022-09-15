@@ -19,28 +19,28 @@ public class DFS {
             scanner = new Scanner(System.in);
             number_of_nodes = scanner.nextInt();
 
-            int adjacency_matrix[][] = new int[number_of_nodes + 1][number_of_nodes + 1];
+            int[][] adjacencyMatrix = new int[number_of_nodes + 1][number_of_nodes + 1];
             System.out.println("Enter the adjacency matrix");
             for (int i = 1; i <= number_of_nodes; i++)
                 for (int j = 1; j <= number_of_nodes; j++)
-                    adjacency_matrix[i][j] = scanner.nextInt();
+                    adjacencyMatrix[i][j] = scanner.nextInt();
 
             System.out.println("Enter the source for the graph");
             source = scanner.nextInt();
 
             System.out.println("The DFS Traversal for the graph is given by ");
             DFS dfs = new DFS();
-            dfs.dfs(adjacency_matrix, source);
+            dfs.dfs(adjacencyMatrix, source);
         } catch (InputMismatchException inputMismatch) {
             System.out.println("Wrong Input format");
         }
         scanner.close();
     }
 
-    private void dfs(int[][] adjacency_matrix, int source) {
-        int number_of_nodes = adjacency_matrix[source].length - 1;
+    private void dfs(int[][] adjacencyMatrix, int source) {
+        int numberOfNodes = adjacencyMatrix[source].length - 1;
 
-        int[] visited = new int[number_of_nodes + 1];
+        int[] visited = new int[numberOfNodes + 1];
         int element = source;
         int i;
         System.out.print(element + "\t");
@@ -50,8 +50,8 @@ public class DFS {
         while (!stack.isEmpty()) {
             element = stack.peek();
             i = element;
-            while (i <= number_of_nodes) {
-                if (adjacency_matrix[element][i] == 1 && visited[i] == 0) {
+            while (i <= numberOfNodes) {
+                if (adjacencyMatrix[element][i] == 1 && visited[i] == 0) {
                     visited[i] = 1;
                     stack.push(i);
                     element = i;

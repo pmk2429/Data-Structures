@@ -1,8 +1,8 @@
 package graph.problems;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -37,7 +37,7 @@ public class BFSAdjacencyList {
     }
 
     BFSAdjacencyList() {
-        queue = new LinkedList<>();
+        queue = new ArrayDeque<>();
     }
 
     void bfs(Node node) {

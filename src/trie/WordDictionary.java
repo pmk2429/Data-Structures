@@ -2,11 +2,11 @@ package trie;
 
 public class WordDictionary {
 
-    private class Trie {
+    private static class Trie {
 
         private class Node {
             private boolean isWordEnd;
-            private Node[] next;
+            private final Node[] next;
 
             Node() {
                 this(false);
@@ -18,7 +18,7 @@ public class WordDictionary {
             }
         }
 
-        private Node root;
+        private final Node root;
 
         /**
          * Initialize your data structure here.

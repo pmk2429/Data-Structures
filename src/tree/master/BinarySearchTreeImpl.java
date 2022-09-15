@@ -56,9 +56,6 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
             else if (key > searchNode.data) {
                 searchNode = searchNode.right;
             }
-            else {
-                return searchNode;
-            }
         }
 
         // in this case, the key is not equal to Root and yet searchNode was traversed indicating mismatch
@@ -378,6 +375,10 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
 
         if (node == root) {
             return count - 1;
+        }
+
+        if (node.right == null && node.left == null) {
+            return 0;
         }
 
         if (node.right == null || node.left == null) {

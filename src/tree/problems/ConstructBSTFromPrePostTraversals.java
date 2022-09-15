@@ -13,47 +13,50 @@ package tree.problems;
 public class ConstructBSTFromPrePostTraversals {
 
     // variable to hold index in pre[] array
-    private static int preindex;
+    private static int preIndex;
 
-    private static Node constructTreeUtil(int[] pre, int[] post, int l, int h, int size) {
+    private static Node constructTreeUtil(int[] pre, int[] post, int l, int r, int size) {
         // Base case
-        if (preindex >= size || l > h) {
+        if (preIndex >= size || l > r) {
             return null;
         }
 
         // The first node in preorder traversal is root. So take the node at preIndex from
         // preorder and make it root, and increment preIndex
-        Node root = new Node(pre[preindex]);
-        preindex++;
+        Node root = new Node(pre[preIndex]);
+        preIndex++;
 
-        // If the current subarry has only one element, no need to recur or
+        // If the current sub array has only one element, no need to recur or
         // preIndex > size after incrementing
-        if (l == h || preindex >= size) {
+        if (preIndex >= size || l == r) {
             return root;
         }
+
         int i;
         // Search the next element of pre[] in post[]
-        for (i = l; i <= h; i++) {
-            if (post[i] == pre[preindex])
+        for (i = l; i <= r; i++) {
+            if (post[i] == pre[preIndex])
                 break;
         }
 
-        // i will be index of the root in left subtree
+        // `i` will be the index of the root in left subtree
 
         // Use the index of element found in postorder to divide postorder array
         // in two parts. Left subtree and right subtree
-        if (i <= h) {
+        if (i <= r) {
             root.left = constructTreeUtil(pre, post, l, i, size);
-            root.right = constructTreeUtil(pre, post, i + 1, h, size);
+            root.right = constructTreeUtil(pre, post, i + 1, r, size);
         }
 
         return root;
     }
 
-    // The main function to construct Full Binary Tree from given preorder and
-    // postorder problems. This function mainly uses constructTreeUtil()
+    /**
+     * The main function to construct Full Binary Tree from given preorder and
+     * postorder problems. This function mainly uses constructTreeUtil()
+     */
     private static Node constructTree(int[] pre, int[] post, int size) {
-        preindex = 0;
+        preIndex = 0;
         return constructTreeUtil(pre, post, 0, size - 1, size);
     }
 

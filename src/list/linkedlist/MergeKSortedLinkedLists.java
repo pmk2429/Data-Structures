@@ -23,9 +23,6 @@ public class MergeKSortedLinkedLists {
      * As each insert operation into the heap costs log(k) and there are a total of nk elements, the total runtime
      * complexity is O(nk log k).
      * Ignoring the extra space that is used to store the output list, we only use extra space of O(k) due to the heap.
-     *
-     * @param nodes
-     * @return
      */
     private ListNode mergeKLists(List<ListNode> nodes) {
         if (nodes.isEmpty()) {

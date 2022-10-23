@@ -1,19 +1,19 @@
 package tree.problems;
 
 public class TreeNode {
-    int val;
+    int data;
     TreeNode left;
     TreeNode right;
 
     TreeNode() {
     }
 
-    TreeNode(int val) {
-        this.val = val;
+    TreeNode(int data) {
+        this.data = data;
     }
 
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
+    TreeNode(int data, TreeNode left, TreeNode right) {
+        this.data = data;
         this.left = left;
         this.right = right;
     }

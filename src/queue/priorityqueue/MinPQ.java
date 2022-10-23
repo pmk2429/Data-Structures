@@ -89,8 +89,7 @@ public class MinPQ<Key> implements Iterable<Key> {
     public MinPQ(Key[] keys) {
         N = keys.length;
         pq = (Key[]) new Object[keys.length + 1];
-        for (int i = 0; i < N; i++)
-            pq[i + 1] = keys[i];
+        System.arraycopy(keys, 0, pq, 1, N);
         for (int k = N / 2; k >= 1; k--)
             sink(k);
         assert isMinHeap();

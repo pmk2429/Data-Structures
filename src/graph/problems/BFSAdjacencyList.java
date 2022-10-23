@@ -52,7 +52,6 @@ public class BFSAdjacencyList {
             for (Node n : neighbours) {
                 if (n != null && !n.visited) {
                     n.visited = true;
-                    // display
                     System.out.print(n.data + " ");
                     queue.add(n);
                 }

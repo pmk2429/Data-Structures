@@ -25,12 +25,12 @@ public class Balanced {
     }
 
     private static boolean isBalanced(Node root) {
-        int lh;
-        int rh;
-
         if (root == null) {
             return true;
         }
+
+        int lh;
+        int rh;
 
         lh = height(root.left);
         rh = height(root.right);

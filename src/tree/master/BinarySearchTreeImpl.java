@@ -546,9 +546,6 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
     }
 
     private Node getLowestCommonAncestor(Node root, Node a, Node b) {
-        Node left;
-        Node right;
-
         // base case to return the function
         if (root == null) {
             return null;
@@ -559,11 +556,15 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
             return root;
         }
 
+        if (a == null || b == null) {
+            return root;
+        }
+
         // If Node a and Node b lie in the leftChild, their Lowest Common Ancestor is in the leftChild.
-        left = getLowestCommonAncestor(root.left, a, b);
+        Node left = getLowestCommonAncestor(root.left, a, b);
 
         // If Node a and Node b lie in the right,their Lowest Common Ancestor is in the right.
-        right = getLowestCommonAncestor(root.right, a, b);
+        Node right = getLowestCommonAncestor(root.right, a, b);
 
         // Otherwise, root is the Lowest common ancestor.
         if (left != null && right != null) {
@@ -906,7 +907,7 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
         }
 
         // Recur for left subtree
-        kthLargestUtil(node.left, k, count);
+        kthLargestUtil(node.left, k, kthCount);
 
         return kthNode;
     }
@@ -917,15 +918,12 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
     }
 
     private boolean isBalanced(Node root) {
-        int lh;
-        int rh;
-
         if (root == null) {
             return true;
         }
 
-        lh = height(root.left);
-        rh = height(root.right);
+        int lh = height(root.left);
+        int rh = height(root.right);
 
         return Math.abs(lh - rh) <= 1 && isBalanced(root.left) && isBalanced(root.right);
 

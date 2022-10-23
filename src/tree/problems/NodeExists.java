@@ -9,10 +9,6 @@ public class NodeExists {
      * Binary String represents the path from root to the node, where '1' means going right and '0' means going left.
      * For example, 4 = "100", starting from the index 1, we go from root = 1, going left --> 2, going left --> 4;
      * 7 = "111", starting from index 1, we go from root = 1, going right --> 3, going right --> 7.
-     *
-     * @param root
-     * @param index
-     * @return
      */
     public boolean nodeExists(Node root, int index) {
         if (index <= 0) {
@@ -46,11 +42,11 @@ public class NodeExists {
         return index / 2;
     }
 
-    private static Deque<Integer> getPathFromRootTo(int childIndex) {
+    private static Deque<Integer> getPathFromRootTo(int target) {
         Deque<Integer> path = new ArrayDeque<>();
-        while (childIndex != ROOT) {
-            path.push(childIndex); // add to start of Queue
-            childIndex = getParentIndex(childIndex);
+        while (target != ROOT) {
+            path.push(target); // add to start of Queue
+            target = getParentIndex(target);
         }
         return path;
     }

@@ -2,8 +2,10 @@ package tree.problems;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.LinkedList;
 
+/**
+ * Inverts the Tree busing BFS level order. Inverts each element at current level then moves down.
+ */
 public class InvertTree {
 
     public TreeNode invertTree(TreeNode root) {
@@ -16,10 +18,11 @@ public class InvertTree {
 
         while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
+
             // swap left and right
-            TreeNode left = node.left;
+            TreeNode temp = node.left;
             node.left = node.right;
-            node.right = left;
+            node.right = temp;
 
             if (node.left != null) {
                 queue.offer(node.left);

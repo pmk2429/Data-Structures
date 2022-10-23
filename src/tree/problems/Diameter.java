@@ -21,8 +21,8 @@ public class Diameter {
             return 0;
         }
 
-        Height rh = new Height();
         Height lh = new Height();
+        Height rh = new Height();
 
         int leftDiameter = diameter(root.left, lh);
         int rightDiameter = diameter(root.right, rh);

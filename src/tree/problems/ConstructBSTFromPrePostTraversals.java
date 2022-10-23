@@ -15,37 +15,37 @@ public class ConstructBSTFromPrePostTraversals {
     // variable to hold index in pre[] array
     private static int preIndex;
 
-    private static Node constructTreeUtil(int[] pre, int[] post, int l, int r, int size) {
+    private static TreeNode constructBinaryTreeFromPrePost(int[] preOrder, int[] postOrder, int postStart, int postEnd) {
         // Base case
-        if (preIndex >= size || l > r) {
+        if (preIndex > preOrder.length - 1 || postStart > postEnd) {
             return null;
         }
 
         // The first node in preorder traversal is root. So take the node at preIndex from
         // preorder and make it root, and increment preIndex
-        Node root = new Node(pre[preIndex]);
+        TreeNode root = new TreeNode(preOrder[preIndex]);
         preIndex++;
 
         // If the current sub array has only one element, no need to recur or
         // preIndex > size after incrementing
-        if (preIndex >= size || l == r) {
+        if (preIndex > preOrder.length - 1 || postStart == postEnd) {
             return root;
         }
 
-        int i;
+        int postIndex;
         // Search the next element of pre[] in post[]
-        for (i = l; i <= r; i++) {
-            if (post[i] == pre[preIndex])
+        for (postIndex = postStart; postIndex <= postEnd; postIndex++) {
+            if (postOrder[postIndex] == root.data)
                 break;
         }
 
-        // `i` will be the index of the root in left subtree
+        // `i` will be the index of the root in postOrder (left subtree)
 
         // Use the index of element found in postorder to divide postorder array
         // in two parts. Left subtree and right subtree
-        if (i <= r) {
-            root.left = constructTreeUtil(pre, post, l, i, size);
-            root.right = constructTreeUtil(pre, post, i + 1, r, size);
+        if (postIndex <= postEnd) {
+            root.left = constructBinaryTreeFromPrePost(preOrder, postOrder, postStart, postIndex);
+            root.right = constructBinaryTreeFromPrePost(preOrder, postOrder, postIndex + 1, postEnd);
         }
 
         return root;
@@ -55,12 +55,12 @@ public class ConstructBSTFromPrePostTraversals {
      * The main function to construct Full Binary Tree from given preorder and
      * postorder problems. This function mainly uses constructTreeUtil()
      */
-    private static Node constructTree(int[] pre, int[] post, int size) {
+    private static TreeNode constructTree(int[] pre, int[] post) {
         preIndex = 0;
-        return constructTreeUtil(pre, post, 0, size - 1, size);
+        return constructBinaryTreeFromPrePost(pre, post, 0, post.length - 1);
     }
 
-    static void printInorder(Node root) {
+    static void printInorder(TreeNode root) {
         if (root == null) {
             return;
         }
@@ -71,12 +71,10 @@ public class ConstructBSTFromPrePostTraversals {
     }
 
     public static void main(String[] args) {
-
         int[] pre = {1, 2, 4, 8, 9, 5, 3, 6, 7};
         int[] post = {8, 9, 4, 5, 2, 6, 7, 3, 1};
 
-        int size = pre.length;
-        Node root = constructTree(pre, post, size);
+        TreeNode root = constructTree(pre, post);
 
         System.out.println("Inorder traversal of the constructed tree:");
         printInorder(root);

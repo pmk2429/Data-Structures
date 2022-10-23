@@ -45,6 +45,5 @@ public class CompleteBT {
 
         return (isComplete(root.left, 2 * index + 1, totalNodes)
             && isComplete(root.right, 2 * index + 2, totalNodes));
-
     }
 }

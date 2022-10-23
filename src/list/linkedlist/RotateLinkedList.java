@@ -20,7 +20,7 @@ package list.linkedlist;
  * 0 <= k <= 2 * 109
  */
 public class RotateLinkedList {
-    public ListNode rotateRight(ListNode head, int k) {
+    private static ListNode rotateRight(ListNode head, int k) {
         if (head == null) {
             return null;
         }
@@ -54,5 +54,12 @@ public class RotateLinkedList {
         slow.next = null;
 
         return head;
+    }
+
+    public static void main(String[] args) {
+        ListNode head = LinkedListUtil.createSmall();
+        int k = 2;
+        ListNode rotatedHead = rotateRight(head, k);
+        LinkedListUtil.display(rotatedHead);
     }
 }

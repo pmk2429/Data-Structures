@@ -41,67 +41,67 @@ import java.util.Set;
  * isEmpty() : O(1)
  */
 public class DoubleEndedPriorityQueue {
-  Set<Integer> qImpl;
+    Set<Integer> qImpl;
 
-  private DoubleEndedPriorityQueue() {
-    qImpl = new HashSet<>();
-  }
-
-  // Returns size of the queue. Works in O(1) time
-  int size() {
-    return qImpl.size();
-  }
-
-  // Returns true if queue is empty. Works
-  // in O(1) time
-  private boolean isEmpty() {
-    return (qImpl.size() == 0);
-  }
-
-  // Inserts an element. Works in O(Log n) time
-  private void insert(int x) {
-    qImpl.add(x);
-  }
-
-  // Returns minimum element. Works in O(1) time
-  private int getMin() {
-    return Collections.min(qImpl, null);
-  }
-
-  // Returns maximum element. Works in O(1) time
-  private int getMax() {
-    return Collections.max(qImpl, null);
-  }
-
-  // Deletes minimum element. Works in O(Log n)
-  // time
-  private void deleteMin() {
-    if (qImpl.size() == 0) {
-      return;
+    private DoubleEndedPriorityQueue() {
+        qImpl = new HashSet<>();
     }
-    qImpl.remove(Collections.min(qImpl, null));
-  }
 
-  // Deletes maximum element. Works in O(Log n)
-  // time
-  private void deleteMax() {
-    if (qImpl.size() == 0) {
-      return;
+    // Returns size of the queue. Works in O(1) time
+    int size() {
+        return qImpl.size();
     }
-    qImpl.remove(Collections.max(qImpl, null));
-  }
 
-  public static void main(String[] args) {
-    DoubleEndedPriorityQueue d = new DoubleEndedPriorityQueue();
-    d.insert(10);
-    d.insert(50);
-    d.insert(40);
-    d.insert(20);
-    System.out.println(d.getMin());
-    System.out.println(d.getMax());
-    d.deleteMax();
-    System.out.println(d.getMax());
-    d.deleteMin();
-    System.out.println(d.getMin());
-  }
+    // Returns true if queue is empty. Works
+    // in O(1) time
+    private boolean isEmpty() {
+        return (qImpl.size() == 0);
+    }
+
+    // Inserts an element. Works in O(Log n) time
+    private void insert(int x) {
+        qImpl.add(x);
+    }
+
+    // Returns minimum element. Works in O(1) time
+    private int getMin() {
+        return Collections.min(qImpl, null);
+    }
+
+    // Returns maximum element. Works in O(1) time
+    private int getMax() {
+        return Collections.max(qImpl, null);
+    }
+
+    // Deletes minimum element. Works in O(Log n)
+    // time
+    private void deleteMin() {
+        if (qImpl.size() == 0) {
+            return;
+        }
+        qImpl.remove(Collections.min(qImpl, null));
+    }
+
+    // Deletes maximum element. Works in O(Log n)
+    // time
+    private void deleteMax() {
+        if (qImpl.size() == 0) {
+            return;
+        }
+        qImpl.remove(Collections.max(qImpl, null));
+    }
+
+    public static void main(String[] args) {
+        DoubleEndedPriorityQueue d = new DoubleEndedPriorityQueue();
+        d.insert(10);
+        d.insert(50);
+        d.insert(40);
+        d.insert(20);
+        System.out.println(d.getMin());
+        System.out.println(d.getMax());
+        d.deleteMax();
+        System.out.println(d.getMax());
+        d.deleteMin();
+        System.out.println(d.getMin());
+    }
 }

@@ -1,5 +1,7 @@
 package tree.problems;
 
+import java.util.Arrays;
+
 public class RootToLeafPaths {
 
     private static boolean isLeaf(Node node) {
@@ -7,8 +9,8 @@ public class RootToLeafPaths {
     }
 
     private static void printPath(int[] path, int pathLen) {
-//        Arrays.stream(path).filter(num -> num > 0).forEach(p -> System.out.print(p + " "));
-//        System.out.println();
+        Arrays.stream(path).filter(num -> num > 0).forEach(p -> System.out.print(p + " "));
+        System.out.println();
 
         for (int i = 0; i < pathLen; i++) {
             System.out.print(path[i] + " ");
@@ -16,24 +18,24 @@ public class RootToLeafPaths {
         System.out.println();
     }
 
-    private static void rootToLeaf(Node node, int[] path, int pathLen) {
+    private static void rootToLeaf(Node node, int[] path, int pathLength) {
         // base case for recursion
         if (node == null) {
             return;
         }
 
         /* append this node to the path array */
-        path[pathLen++] = node.data;
+        path[pathLength++] = node.data;
 
         if (isLeaf(node)) {
             // print the traversed path
-            printPath(path, pathLen);
+            printPath(path, pathLength);
         }
         else {
             // recur left subtree
-            rootToLeaf(node.left, path, pathLen);
+            rootToLeaf(node.left, path, pathLength);
             // recur right subtree
-            rootToLeaf(node.right, path, pathLen);
+            rootToLeaf(node.right, path, pathLength);
         }
     }
 

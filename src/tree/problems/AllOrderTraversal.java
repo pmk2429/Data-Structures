@@ -4,6 +4,27 @@ import java.util.*;
 
 public class AllOrderTraversal {
 
+    public void preorder(TreeNode root, List<Integer> nums) {
+        if (root == null) return;
+        nums.add(root.data);
+        preorder(root.left, nums);
+        preorder(root.right, nums);
+    }
+
+    public void inorder(TreeNode root, List<Integer> nums) {
+        if (root == null) return;
+        inorder(root.left, nums);
+        nums.add(root.data);
+        inorder(root.right, nums);
+    }
+
+    public void postorder(TreeNode root, List<Integer> nums) {
+        if (root == null) return;
+        postorder(root.left, nums);
+        postorder(root.right, nums);
+        nums.add(root.data);
+    }
+
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> result = new LinkedList<>();
         if (root == null) return result;
@@ -12,7 +33,7 @@ public class AllOrderTraversal {
         while (!stack.isEmpty()) {
             TreeNode curr = stack.pop();
             if (curr != null) {
-                result.add(curr.val);
+                result.add(curr.data);
                 stack.push(curr.right);
                 stack.push(curr.left);
             }
@@ -30,7 +51,7 @@ public class AllOrderTraversal {
                 root = root.left;
             }
             else {
-                list.add(stack.peek().val);
+                list.add(stack.peek().data);
                 root = stack.pop().right;
             }
         }
@@ -46,33 +67,12 @@ public class AllOrderTraversal {
         while (!stack.isEmpty()) {
             TreeNode curr = stack.pop();
             if (curr != null) {
-                result.add(curr.val);
+                result.add(curr.data);
                 stack.push(curr.left);
                 stack.push(curr.right);
             }
         }
         return result;
-    }
-
-    public void preorder(TreeNode root, List<Integer> nums) {
-        if (root == null) return;
-        nums.add(root.val);
-        preorder(root.left, nums);
-        preorder(root.right, nums);
-    }
-
-    public void inorder(TreeNode root, List<Integer> nums) {
-        if (root == null) return;
-        inorder(root.left, nums);
-        nums.add(root.val);
-        inorder(root.right, nums);
-    }
-
-    public void postorder(TreeNode root, List<Integer> nums) {
-        if (root == null) return;
-        postorder(root.left, nums);
-        postorder(root.right, nums);
-        nums.add(root.val);
     }
 
     /**
@@ -88,7 +88,7 @@ public class AllOrderTraversal {
             int count = queue.size();
             for (int i = 0; i < count; i++) {
                 TreeNode node = queue.poll();
-                currentLevelNodes.add(node.val);
+                currentLevelNodes.add(node.data);
                 if (node.left != null) {
                     queue.add(node.left);
                 }
@@ -102,7 +102,7 @@ public class AllOrderTraversal {
     }
 
     /**
-     * Uses Queue to perform Level Order
+     * Uses Queue to perform Level Order using BFS
      */
     public List<List<TreeNode>> levelOrderTraversalTreeNode(TreeNode root) {
         List<List<TreeNode>> res = new ArrayList<>();
@@ -127,6 +127,16 @@ public class AllOrderTraversal {
         return res;
     }
 
+    public void levelHelper(List<List<Integer>> res, TreeNode root, int height) {
+        if (root == null) return;
+        if (height >= res.size()) {
+            res.add(new LinkedList<>());
+        }
+        res.get(height).add(root.data);
+        levelHelper(res, root.left, height + 1);
+        levelHelper(res, root.right, height + 1);
+    }
+
     /**
      * Level Order Traversal using DFS
      */
@@ -134,15 +144,5 @@ public class AllOrderTraversal {
         List<List<Integer>> res = new ArrayList<>();
         levelHelper(res, root, 0);
         return res;
-    }
-
-    public void levelHelper(List<List<Integer>> res, TreeNode root, int height) {
-        if (root == null) return;
-        if (height >= res.size()) {
-            res.add(new LinkedList<>());
-        }
-        res.get(height).add(root.val);
-        levelHelper(res, root.left, height + 1);
-        levelHelper(res, root.right, height + 1);
     }
 }

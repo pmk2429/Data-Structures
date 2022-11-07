@@ -3,21 +3,41 @@ package list.linkedlist;
 public class SwapAdjacentNodes {
 
     private static ListNode swapAdjacentPairs(ListNode head) {
+        if (head == null) {
+            return null;
+        }
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
-        ListNode current = dummy;
-        while (current.next != null && current.next.next != null) {
-            ListNode p = current.next;
-            ListNode q = current.next.next;
+        ListNode curr = dummy;
+        while (curr.next != null && curr.next.next != null) {
+            ListNode p = curr.next;
+            ListNode q = curr.next.next;
             p.next = q.next;
-            current.next = q;
-            current.next.next = p;
-            current = current.next.next;
+            curr.next = q;
+            curr.next.next = p;
+            curr = curr.next.next;
         }
         return dummy.next;
     }
 
-    public static void main(String[] args) {
+    private static void printList(ListNode head) {
+        ListNode curr = head;
+        while (curr != null) {
+            System.out.print(curr.data + " —> ");
+            curr = curr.next;
+        }
+        System.out.println("null");
+    }
 
+    public static void main(String[] args) {
+        int[] keys = {1, 2, 3, 4, 5, 8, 24, 9, 15};
+        ListNode head = null;
+        for (int i = keys.length - 1; i >= 0; i--) {
+            head = new ListNode(keys[i], head);
+        }
+        printList(head);
+        System.out.println();
+        head = swapAdjacentPairs(head);
+        printList(head);
     }
 }

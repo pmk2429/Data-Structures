@@ -12,20 +12,11 @@ package sorting.sortingAlgorithms;
 public class QuickSortDemo {
     private final int[] sortArray;
 
-    public QuickSortDemo(int[] sortArray) {
-        if (sortArray == null || sortArray.length == 0) {
-            System.out.println("Undefined Array!!!");
-        }
-        this.sortArray = sortArray;
-        int length = sortArray.length;
-        quickSort(0, length - 1);
-    }
-
-    public void quickSort(int lowerIndex, int higherIndex) {
-        int i = lowerIndex;
-        int j = higherIndex;
+    public void quickSort(int start, int end) {
+        int i = start;
+        int j = end;
         // determine the PIVOT
-        int pivot = sortArray[lowerIndex + (higherIndex - lowerIndex) / 2];
+        int pivot = sortArray[start + (end - start) / 2];
         while (i <= j) {
             while (sortArray[i] < pivot) {
                 i++;
@@ -39,11 +30,11 @@ public class QuickSortDemo {
                 j--;
             }
         }
-        if (lowerIndex < j) {
-            quickSort(lowerIndex, j);
+        if (start < j) {
+            quickSort(start, j);
         }
-        if (i < higherIndex) {
-            quickSort(i, higherIndex);
+        if (i < end) {
+            quickSort(i, end);
         }
     }
 
@@ -51,6 +42,15 @@ public class QuickSortDemo {
         int temp = sortArray[i];
         sortArray[i] = sortArray[j];
         sortArray[j] = temp;
+    }
+
+    public QuickSortDemo(int[] sortArray) {
+        if (sortArray == null || sortArray.length == 0) {
+            System.out.println("Undefined Array!!!");
+        }
+        this.sortArray = sortArray;
+        int length = sortArray.length;
+        quickSort(0, length - 1);
     }
 
     public static void main(String[] args) {

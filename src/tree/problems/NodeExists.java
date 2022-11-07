@@ -31,6 +31,27 @@ public class NodeExists {
         return root != null;
     }
 
+    private static boolean ifNodeExists(Node node, int key) {
+        if (node == null) {
+            return false;
+        }
+
+        if (node.data == key) {
+            return true;
+        }
+
+        // then recur on left subtree
+        boolean res1 = ifNodeExists(node.left, key);
+
+        // node found, no need to look further
+        if (res1) return true;
+
+        // node is not found in left,  so recur on right subtree /
+        boolean res2 = ifNodeExists(node.right, key);
+
+        return res2;
+    }
+
 
     //----------------------------------------------------------------------
     //------------------------------ Approach 2 ----------------------------

@@ -953,7 +953,7 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
         int leftDiameter = diameterUtil(root.left, lh);
         int rightDiameter = diameterUtil(root.right, rh);
 
-        height.value = Math.max(lh.value, rh.value) + 1;
+        height.value = 1 + Math.max(lh.value, rh.value);
 
         return Math.max(lh.value + rh.value + 1, Math.max(leftDiameter, rightDiameter));
     }

@@ -17,7 +17,7 @@ public class AddTwoLinkedList {
                 carry = 1;
             }
             else {
-                sum = list1.get(i) + list2.get(i) + carry;
+                sum += carry;
             }
             listSum.add(sum);
         }

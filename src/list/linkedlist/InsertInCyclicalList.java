@@ -1,5 +1,8 @@
 package list.linkedlist;
 
+/**
+ * This problem is same as {@link InsertInSortedLinkedList}.
+ */
 public class InsertInCyclicalList {
 
     private static ListNode insert(ListNode head, int val) {

@@ -23,7 +23,7 @@ public class FindNextNodeAtSameLevel {
         Deque<Node> queue = new ArrayDeque<>();
         queue.add(root);
 
-        Node front;
+        Node curr;
 
         // loop till queue is empty
         while (!queue.isEmpty()) {
@@ -32,9 +32,9 @@ public class FindNextNodeAtSameLevel {
 
             // process every node of the current level and enqueue their non-empty left and right child
             while (size-- > 0) {
-                front = queue.poll();
+                curr = queue.poll();
                 // if the desired node is found, return its next right node
-                if (front == node) {
+                if (curr == node) {
                     // if the next right node doesn't exist, return null
                     if (size == 0) {
                         return null;
@@ -42,12 +42,12 @@ public class FindNextNodeAtSameLevel {
                     return queue.peek();
                 }
 
-                if (front.left != null) {
-                    queue.add(front.left);
+                if (curr.left != null) {
+                    queue.add(curr.left);
                 }
 
-                if (front.right != null) {
-                    queue.add(front.right);
+                if (curr.right != null) {
+                    queue.add(curr.right);
                 }
             }
         }

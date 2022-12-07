@@ -22,25 +22,25 @@ public class RemoveCancellableNodes {
         if (head == null) {
             return null;
         }
-        ListNode node = head;
+        ListNode curr = head;
         Stack<ListNode> stack = new Stack<>();
 
-        while (node != null) {
-            if (node.data < 0) {
-                int sum = node.data;
+        while (curr != null) {
+            if (curr.data < 0) {
+                int sum = curr.data;
                 while (!stack.isEmpty()) {
                     ListNode temp = stack.pop();
                     sum += temp.data;
                     if (sum == 0) {
-                        node = stack.peek();
+                        curr = stack.peek();
                         break;
                     }
                 }
             }
             else {
-                stack.push(node);
+                stack.push(curr);
             }
-            node = node.next;
+            curr = curr.next;
         }
 
         return head;

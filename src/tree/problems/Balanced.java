@@ -29,11 +29,8 @@ public class Balanced {
             return true;
         }
 
-        int lh;
-        int rh;
-
-        lh = height(root.left);
-        rh = height(root.right);
+        int lh = height(root.left);
+        int rh = height(root.right);
 
         return (Math.abs(lh - rh) <= 1 && isBalanced(root.left) && isBalanced(root.right));
     }

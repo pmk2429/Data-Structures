@@ -31,14 +31,15 @@ public class CountNodesCircularLinkedList {
 
     /* Function to print nodes in a given Circular linked list */
     private static int countNodes(ListNode head) {
-        ListNode temp = head;
         int count = 0;
-        if (head != null) {
-            do {
-                temp = temp.next;
-                count++;
-            } while (temp != head);
+        if (head == null) {
+            return count;
         }
+        ListNode curr = head;
+        do {
+            curr = curr.next;
+            count++;
+        } while (curr != head);
 
         return count;
     }

@@ -23,27 +23,24 @@ import java.util.Stack;
  */
 public class ValidateSequence {
 
-  private static boolean isValid(int[] pushed, int[] popped) {
-    Stack<Integer> vst = new Stack<>();
-
-    // maintain total elements popped
-    int j = 0;
-    int length = pushed.length;
-    for (int i = 0; i < pushed.length; i++) {
-      int curr = pushed[i];
-      vst.push(curr);
-
-      while (!vst.isEmpty() && j < length && vst.peek() == popped[j]) {
-        vst.pop();
-        j++;
-      }
+    private static boolean isValid(int[] pushed, int[] popped) {
+        Stack<Integer> visited = new Stack<>();
+        // maintain total elements popped
+        int j = 0;
+        int length = pushed.length;
+        for (int curr : pushed) {
+            visited.push(curr);
+            while (!visited.isEmpty() && j < length && visited.peek() == popped[j]) {
+                visited.pop();
+                j++;
+            }
+        }
+        return j == length;
     }
-    return j == length;
-  }
 
-  public static void main(String[] args) {
-    int[] pushed = {1, 2, 3, 4, 5};
-    int[] popped = {4, 5, 3, 2, 1};
-    System.out.println(isValid(pushed, popped));
-  }
+    public static void main(String[] args) {
+        int[] pushed = {1, 2, 3, 4, 5};
+        int[] popped = {4, 5, 3, 2, 1};
+        System.out.println(isValid(pushed, popped));
+    }
 }

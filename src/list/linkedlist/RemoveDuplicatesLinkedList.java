@@ -29,18 +29,20 @@ public class RemoveDuplicatesLinkedList {
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode pre = dummy;
-        ListNode cur = head;
-        while (cur != null) {
-            while (cur.next != null && cur.data == cur.next.data) {
-                cur = cur.next;
+        ListNode curr = head;
+        while (curr != null) {
+            // here we check `curr.next` so that the condition `curr.next.data` doesn't throw NPE
+            while (curr.next != null && curr.data == curr.next.data) {
+                curr = curr.next;
             }
-            if (pre.next == cur) {
+            if (pre.next == curr) {
                 pre = pre.next;
             }
             else {
-                pre.next = cur.next;
+                // here bypass all the nodes that are equal; duplicates
+                pre.next = curr.next;
             }
-            cur = cur.next;
+            curr = curr.next;
         }
         return dummy.next;
     }

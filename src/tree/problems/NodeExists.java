@@ -41,15 +41,15 @@ public class NodeExists {
         }
 
         // then recur on left subtree
-        boolean res1 = ifNodeExists(node.left, key);
+        boolean leftExists = ifNodeExists(node.left, key);
 
         // node found, no need to look further
-        if (res1) return true;
+        if (leftExists) return true;
 
         // node is not found in left,  so recur on right subtree /
-        boolean res2 = ifNodeExists(node.right, key);
+        boolean rightExists = ifNodeExists(node.right, key);
 
-        return res2;
+        return rightExists;
     }
 
 
@@ -60,7 +60,7 @@ public class NodeExists {
 
     // The parent of any node N > 0 in such an array will always be at index (N-1)/2.
     private static int getParentIndex(int index) {
-        return index / 2;
+        return (index - 1) / 2;
     }
 
     private static Deque<Integer> getPathFromRootTo(int target) {

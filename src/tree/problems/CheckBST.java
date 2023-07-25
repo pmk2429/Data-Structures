@@ -10,10 +10,6 @@ package tree.problems;
 public class CheckBST {
     private static Node root;
 
-    private static boolean isBST() {
-        return isBSTUtil(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
-    }
-
     private static boolean isBSTUtil(Node node, int min, int max) {
         // an empty tree is BST
         if (node == null) {
@@ -26,6 +22,10 @@ public class CheckBST {
         }
 
         return (isBSTUtil(node.left, min, node.data - 1) && isBSTUtil(node.right, node.data + 1, max));
+    }
+
+    private static boolean isBST() {
+        return isBSTUtil(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
     private static boolean isBSTLeftRight(Node root, Node l, Node r) {

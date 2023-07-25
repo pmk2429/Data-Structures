@@ -26,6 +26,7 @@ public class ArrayToBst {
     public static void main(String[] args) {
         TreeNode root;
         int[] arr = {99, 35, 19, 0, 11, 40, 5};
+        // Most IMP step. Can't convert Array to BST without sorting Array first
         Arrays.sort(arr);
         System.out.println(Arrays.toString(arr));
         root = constructBST(arr, 0, arr.length - 1);

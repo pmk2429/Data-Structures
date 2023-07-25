@@ -42,7 +42,6 @@ public class RemoveElementLinkedList {
                 cur = cur.next;
             }
         }
-
         return dummy.next;
     }
 
@@ -53,8 +52,8 @@ public class RemoveElementLinkedList {
 
         ListNode dummy = new ListNode();
         dummy.next = head;
-        ListNode cur = head;
         ListNode prev = dummy;
+        ListNode cur = head;
 
         while (cur != null) {
             if (cur.data == data) {

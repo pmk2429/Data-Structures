@@ -34,7 +34,6 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
 
     @Override
     public void delete(Node node) {
-
     }
 
     @Override
@@ -99,9 +98,6 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
     }
 
     private int deduceMaxDepth(Node node) {
-        int ld;
-        int rd;
-
         if (root == null) {
             return -1;
         }
@@ -110,10 +106,10 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
             return 1;
         }
 
-        ld = deduceMaxDepth(root.left);
-        rd = deduceMaxDepth(root.right);
+        int ld = deduceMaxDepth(root.left);
+        int rd = deduceMaxDepth(root.right);
 
-        return Math.max(ld, rd) + 1;
+        return 1 + Math.max(ld, rd);
     }
 
     @Override
@@ -699,8 +695,7 @@ public class BinarySearchTreeImpl implements IBinaryTreeApi {
     }
 
     private Node getNullNode() {
-        Node node = new Node(0, "Node Unavailable");
-        return node;
+        return new Node(0, "Node Unavailable");
     }
 
     // Util method to check if the current tree is complete or not.

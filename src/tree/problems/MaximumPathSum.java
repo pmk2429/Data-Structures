@@ -38,17 +38,15 @@ public class MaximumPathSum {
      * 2 - Max(right subtree) + node
      * 3 - Max(left subtree) + Max(Right subtree) + node
      * 4 - Node
-     *
-     * @param root
      */
     private int findMax(Node root) {
         if (root == null) {
             return 0;
         }
-        int left = findMax(root.left);
-        int right = findMax(root.right);
-        maxSum = Math.max(root.data + left + right, maxSum);
-        int res = root.data + Math.max(left, right);
+        int leftMax = findMax(root.left);
+        int rightMax = findMax(root.right);
+        maxSum = Math.max(maxSum, root.data + leftMax + rightMax);
+        int res = root.data + Math.max(leftMax, rightMax);
         return Math.max(res, 0);
     }
 

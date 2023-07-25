@@ -7,9 +7,11 @@ package list.linkedlist;
  * <p>
  * Examples:
  * ---------
- * Input:  list1 = 5->2->3->8
+ * Input:
+ * list1 = 5->2->3->8
  * list2 = 1->7->4->5
- * Output:  New list = 5->7->4->8
+ * Output:
+ * New list = 5->7->4->8
  * <p>
  * Input: list1 = 2->8->9->3
  * list2 = 5->3->6->4
@@ -20,25 +22,25 @@ public class MaxElementMerge {
     private static ListNode maxMerge(ListNode head1, ListNode head2) {
         ListNode ptr1 = head1;
         ListNode ptr2 = head2;
-        ListNode root = null, temp, ptr;
+        ListNode head = null, temp, curr;
 
         while (ptr1 != null && ptr2 != null) {
             temp = new ListNode(-1);
             temp.data = Math.max(ptr1.data, ptr2.data);
 
-            if (root == null) {
-                root = temp;
+            if (head == null) {
+                head = temp;
             }
             else {
-                ptr = root;
-                while (ptr.next != null) {
-                    ptr = ptr.next;
+                curr = head;
+                while (curr.next != null) {
+                    curr = curr.next;
                 }
-                ptr.next = temp;
+                curr.next = temp;
             }
             ptr1 = ptr1.next;
             ptr2 = ptr2.next;
         }
-        return root;
+        return head;
     }
 }

@@ -14,10 +14,10 @@ import java.util.function.Consumer;
  */
 public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iterable<T> {
 
-    private static String INVALID_NODE_MESSAGE = "Invalid Node in Tree";
-    private static String INVALID_NODE_ERROR_CODE = "Invalid_Node";
-    private Node root;
-    private Comparator<T> comparator;
+    private static final String INVALID_NODE_MESSAGE = "Invalid Node in Tree";
+    private static final String INVALID_NODE_ERROR_CODE = "Invalid_Node";
+    private Node<T> root;
+    private final Comparator<T> comparator;
 
     // Default constructor.
     public BinarySearchTree() {
@@ -41,10 +41,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
     }
 
     // Helper method used to add the type specific data to the Tree based on the index.
-    private Node add(Node<T> root, T data) {
+    private Node<T> add(Node<T> root, T data) {
         // if root is null, create root.
         if (root == null) {
-            return new Node(data);
+            return new Node<>(data);
         }
 
         // if the data to be inserted is same as root, return the root.
@@ -69,9 +69,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * This method is used to delete the node from the BinarySearchTree.
-     *
-     * @param data
-     * @return
      */
     @Override
     public void delete(T data) {
@@ -107,9 +104,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * Helper method to traverse to the Right most Node in the Tree - SubTree
-     *
-     * @param node
-     * @return
      */
     private T rightMost(Node<T> node) {
         while (node.right != null) {
@@ -120,9 +114,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * Helper method to traverse to the Left most Node in the Tree - SubTree
-     *
-     * @param node
-     * @return
      */
     private T leftMost(Node<T> node) {
         while (node.left != null) node = node.left;
@@ -131,9 +122,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * Method to return whether the input Tree is BinarySearchTree or not.
-     *
-     * @param root
-     * @return
      */
     public boolean isBinaryTree(Node root) {
         return false;
@@ -152,12 +140,11 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * Helper method to delete the Node from the Tree. It traverses the Left sub tree to get the Minimum element node.
-     *
-     * @param root
-     * @return
      */
     private Node<T> deleteMin(Node<T> root) throws InvalidNodeException {
-        if (root.left == null) return root.right;
+        if (root.left == null) {
+            return root.right;
+        }
         else {
             root.left = deleteMin(root.left);
             return root;
@@ -174,9 +161,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * Helper method to delete the maximum element in the BST
-     *
-     * @param root
-     * @return
      */
     private Node<T> deleteMax(Node<T> root) {
         if (root.right == null) return root.left;
@@ -198,9 +182,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * Returns the position of the Node in the Tree.
-     *
-     * @param node
-     * @return
      */
     public int getPosition(Node node) {
         return 0;
@@ -220,10 +201,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * Helper method to find the Height of a specific Node in BinarySearchTree.
-     *
-     * @param node
-     * @param node
-     * @return
      */
     private int heightMain(Node node) {
         if (node != null) {
@@ -293,9 +270,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * Helper method to count diameter of a Tree.
-     *
-     * @param root
-     * @return
      */
     private int diameter(Node<T> root) {
         if (root == null) return 0;
@@ -312,9 +286,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * Helper method to count total Leaf Nodes in a given Tree.
-     *
-     * @param root
-     * @return
      */
     private int countLeaves(Node<T> root) {
         if (root == null) return 0;
@@ -324,10 +295,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * Helper method to find the desired Node in a Tree.
-     *
-     * @param root
-     * @param node
-     * @return
      */
     private Node<T> search(Node<T> root, T node) {
         if (root != null) {
@@ -376,9 +343,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * Helper method to find the Maximum element in a Tree or SubTree.
-     *
-     * @param node
-     * @return
      */
     private Node<T> maximum(Node<T> node) {
         while (node.right != null) node = node.right;
@@ -392,20 +356,16 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * Helper method to get the Minimum element in the Binary Search Tree
-     *
-     * @param node
-     * @return
      */
     private Node minimum(Node<T> node) {
-        while (node.left != null) node = node.left;
+        while (node.left != null) {
+            node = node.left;
+        }
         return node;
     }
 
     /**
      * Returns the predecessor of the given Node in this BST.
-     *
-     * @param node
-     * @return
      */
     public Node<T> predecessor(T node) {
         return null;
@@ -413,9 +373,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * Returns the successor of the given Node in this BST.
-     *
-     * @param node
-     * @return
      */
     public Node<T> successor(T node) {
         return null;
@@ -434,9 +391,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
     /**
      * Helper method to find the Parent of a specific Node in a Tree
      *
-     * @param root
      * @param data
-     * @return
      */
     private Node<T> parent(Node<T> root, T data) throws BoundaryViolationException, InvalidNodeException {
         // Root does not have any parent.
@@ -493,9 +448,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * Helper method to check if this Node has Child or not.
-     *
-     * @param node
-     * @return
      */
     private boolean hasChild(Node<T> node) {
         return node.hasChild();
@@ -526,9 +478,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * Helper method to find the size of this BST.
-     *
-     * @param root
-     * @return
      */
     private int size(Node<T> root) {
         if (root == null)
@@ -549,10 +498,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * Helper method to check if this BST contains a specific Node.
-     *
-     * @param root
-     * @param node
-     * @return
      */
     private Node<T> contains(Node<T> root, T node) {
         if (root != null) {
@@ -605,8 +550,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * Helper method to perform pre order Traversal.
-     *
-     * @param root
      */
     private void preOrderTraversal(Node root) {
         if (root != null) {
@@ -618,9 +561,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * Returns the List of Nodes at each level in this Binary Tree.
-     *
-     * @param root
-     * @return
      */
     private List<List<T>> levelOrder(Node<T> root) {
         List<List<T>> al = new ArrayList<>();
@@ -654,8 +594,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
 
     /**
      * Method to Traverse this Binary Search Tree in PreOrder Traversal Fashion.
-     *
-     * @return
      */
     public List<List<T>> levelOrder() {
         if (root == null)
@@ -679,8 +617,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Iter
      * If Node a and Node b lie in the leftChild, their Lowest Common Ancestor is in the leftChild.
      * If Node a and Node b lie in the right,their Lowest Common Ancestor is in the right.
      * Otherwise, root is the Lowest common ancestor.
-     *
-     * @return
      */
     public Node getLowestCommonAncestor(Node root, Node a, Node b) {
 

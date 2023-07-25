@@ -26,6 +26,7 @@ public class RemoveCancellableNodes {
         Stack<ListNode> stack = new Stack<>();
 
         while (curr != null) {
+            // if it's negative then pop and cancel nodes
             if (curr.data < 0) {
                 int sum = curr.data;
                 while (!stack.isEmpty()) {
@@ -37,7 +38,7 @@ public class RemoveCancellableNodes {
                     }
                 }
             }
-            else {
+            else { // if value is positive, push it on to the stack
                 stack.push(curr);
             }
             curr = curr.next;
@@ -47,6 +48,5 @@ public class RemoveCancellableNodes {
     }
 
     public static void main(String[] args) {
-
     }
 }

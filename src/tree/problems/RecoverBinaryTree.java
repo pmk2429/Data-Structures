@@ -49,6 +49,7 @@ import java.util.Deque;
  * Could you devise a constant space solution?
  */
 public class RecoverBinaryTree {
+
     public void swap(Node a, Node b) {
         int tmp = a.data;
         a.data = b.data;
@@ -56,15 +57,15 @@ public class RecoverBinaryTree {
     }
 
     public void recoverTree(Node root) {
-        Deque<Node> stack = new ArrayDeque<>();
+        Deque<Node> queue = new ArrayDeque<>();
         Node x = null, y = null, prev = null;
 
-        while (!stack.isEmpty() || root != null) {
+        while (!queue.isEmpty() || root != null) {
             while (root != null) {
-                stack.add(root);
+                queue.add(root);
                 root = root.left;
             }
-            root = stack.removeLast();
+            root = queue.removeLast();
             if (prev != null && root.data < prev.data) {
                 y = root;
                 if (x == null) {

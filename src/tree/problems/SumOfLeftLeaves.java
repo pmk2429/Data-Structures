@@ -21,15 +21,15 @@ package tree.problems;
  * -1000 <= Node.val <= 1000
  */
 public class SumOfLeftLeaves {
-    public int sumOfLeftLeaves(TreeNode root) {
-        return leftLeavesSumHelper(root, false);
+    private int leftLeavesSumHelper(TreeNode root, boolean isLeft) {
+        if (root == null)
+            return 0;
+        if (root.left == null && root.right == null && isLeft)
+            return root.data;
+        return leftLeavesSumHelper(root.left, true) + leftLeavesSumHelper(root.right, false);
     }
 
-    private int leftLeavesSumHelper(TreeNode root, boolean isLeft) {
-        if (root == null) return 0;
-        if (root.left == null && root.right == null && isLeft) {
-            return root.data;
-        }
-        return leftLeavesSumHelper(root.left, true) + leftLeavesSumHelper(root.right, false);
+    public int sumOfLeftLeaves(TreeNode root) {
+        return leftLeavesSumHelper(root, false);
     }
 }

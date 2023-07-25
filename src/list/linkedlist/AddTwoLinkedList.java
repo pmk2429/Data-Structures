@@ -37,7 +37,7 @@ public class AddTwoLinkedList {
         list2.add(9);
         list2.add(8);
         // 3 -> 5 -> 9
-        //
+        // +
         // 5 -> 9 -> 8
         LinkedList<Integer> listSum;
         listSum = addListObj.addLinkedList(list1, list2);

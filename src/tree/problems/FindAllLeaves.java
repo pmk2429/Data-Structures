@@ -24,9 +24,9 @@ import java.util.List;
  * Output: [[1]]
  */
 public class FindAllLeaves {
-    private List<List<Integer>> solution;
+    private static List<List<Integer>> leaves;
 
-    private int getHeight(TreeNode root) {
+    private static int getHeight(TreeNode root) {
         // return -1 for null nodes
         if (root == null) {
             return -1;
@@ -38,18 +38,23 @@ public class FindAllLeaves {
 
         int currHeight = 1 + Math.max(leftHeight, rightHeight);
 
-        if (solution.size() == currHeight) {
-            solution.add(new ArrayList<>());
+        if (leaves.size() == currHeight) {
+            leaves.add(new ArrayList<>());
         }
 
-        solution.get(currHeight).add(root.data);
+        leaves.get(currHeight).add(root.data);
 
         return currHeight;
     }
 
-    private List<List<Integer>> findLeaves(TreeNode root) {
-        this.solution = new ArrayList<>();
+    private static List<List<Integer>> findLeaves(TreeNode root) {
+        leaves = new ArrayList<>();
         getHeight(root);
-        return this.solution;
+        return leaves;
+    }
+
+    public static void main(String[] args) {
+        TreeNode root = TreeNode.createUnusualTree();
+        System.out.println(findLeaves(root));
     }
 }

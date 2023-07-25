@@ -1,13 +1,12 @@
 package list.linkedlist;
 
 /**
- * {@link LinkedListMain} class in Ocean jar.
+ * All things LinkedList implementation.
  *
  * @author Pavitra
  */
 public class LinkedListMain {
-    // reference to the head node.
-    private Node head;
+    private final Node head;
     private int listCount;
 
     // LinkedList constructor
@@ -18,9 +17,10 @@ public class LinkedListMain {
         listCount = 0;
     }
 
-    private void add(Object data)
-    // post: appends the specified element to the end of this list.
-    {
+    /**
+     * Appends the specified element to the end of this list.
+     */
+    private void add(Object data) {
         Node temp = new Node(data);
         Node current = head;
         // starting at the head node, crawl to the end of the list
@@ -32,10 +32,10 @@ public class LinkedListMain {
         listCount++;// increment the number of elements variable
     }
 
-    private void add(Object data, int index)
-    // post: inserts the specified element at the specified position in this
-    // list.
-    {
+    /**
+     * Inserts the specified element at the specified position in this
+     */
+    private void add(Object data, int index) {
         Node temp = new Node(data);
         Node current = head;
         // crawl to the requested index or the last element in the list,
@@ -51,9 +51,10 @@ public class LinkedListMain {
         listCount++;// increment the number of elements variable
     }
 
-    private Object get(int index)
-    // post: returns the element at the specified position in this list.
-    {
+    /**
+     * Returns the element at the specified position in this list.
+     */
+    private Object get(int index) {
         // index must be 1 or higher
         if (index <= 0) {
             return null;
@@ -69,9 +70,10 @@ public class LinkedListMain {
         return current.getData();
     }
 
-    private boolean remove(int index)
-    // post: removes the element at the specified position in this list.
-    {
+    /**
+     * Removes the element at the specified position in this list.
+     */
+    private boolean remove(int index) {
         // if the index is out of range, exit
         if (index < 1 || index > size())
             return false;
@@ -88,51 +90,22 @@ public class LinkedListMain {
         return true;
     }
 
-    private int size() { // post: returns the number of elements in this list.
+    private int size() {
         return listCount;
     }
 
     public String toString() {
         Node current = head.getNext();
-        String output = "";
+        StringBuilder output = new StringBuilder();
         while (current != null) {
-            output += "[" + current.getData().toString() + "]";
+            output.append("[").append(current.getData().toString()).append("]");
             current = current.getNext();
         }
-        return output;
+        return output.toString();
     }
 
     private Node getHead() {
         return this.head;
-    }
-
-    public Node removeDuplicates(Node head) {
-        Node returnNode = null;
-        Node previous = head.next;
-        if (previous.getData() == null) {
-            System.out.println("NULL");
-        }
-        Node current = previous.next;
-        while (current != null) {
-            Node runner = head.next;
-            while (runner != current) {
-                if (runner.getData() == current.getData()) {
-                    Node temp = current.next;
-                    previous.next = temp;
-                    current = temp;
-                    returnNode = temp;
-                    break;
-                }
-                runner = runner.next;
-                return returnNode;
-            }
-            if (runner == current) {
-                previous = current;
-                current = current.next;
-            }
-        }
-        return returnNode;
-
     }
 
     private class Node {
@@ -172,6 +145,5 @@ public class LinkedListMain {
         private void setNext(Node _next) {
             next = _next;
         }
-
     }
 }

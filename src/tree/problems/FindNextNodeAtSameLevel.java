@@ -13,7 +13,7 @@ public class FindNextNodeAtSameLevel {
      * The idea is to modify the level order traversal to maintain the level number of each node, and if
      * the given node is found, we return its immediate right node, present at the same level.
      */
-    private static Node findRightNode(Node root, Node node) {
+    private static Node findNextNodeAtSameLevel(Node root, Node node) {
         // return null if a tree is empty
         if (root == null) {
             return null;
@@ -75,7 +75,7 @@ public class FindNextNodeAtSameLevel {
         root.right.left.left = new Node(7);
         root.right.left.right = new Node(8);
 
-        Node right = findRightNode(root, root.left.right);
+        Node right = findNextNodeAtSameLevel(root, root.left.right);
         if (right != null) {
             System.out.print("Right node is " + right.data);
         }

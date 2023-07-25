@@ -4,12 +4,12 @@ import java.util.Stack;
 
 public class StackWithMinMax extends Stack<Integer> {
 
-    private Stack<Integer> minStack;
-    private Stack<Integer> maxStack;
+    private final Stack<Integer> minStack;
+    private final Stack<Integer> maxStack;
 
     public StackWithMinMax() {
-        minStack = new Stack<Integer>();
-        maxStack = new Stack<Integer>();
+        minStack = new Stack<>();
+        maxStack = new Stack<>();
     }
 
     public void push(int value) {

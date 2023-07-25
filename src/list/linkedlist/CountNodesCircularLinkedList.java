@@ -10,16 +10,16 @@ public class CountNodesCircularLinkedList {
      */
     private static ListNode push(ListNode head, int data) {
         ListNode first = new ListNode(-1);
-        ListNode temp = head;
+        ListNode curr = head;
         first.next = head;
         first.data = data;
 
         /* If linked list is not null then set the next of last node */
         if (head != null) {
-            while (temp.next != head) {
-                temp = temp.next;
+            while (curr.next != head) {
+                curr = curr.next;
             }
-            temp.next = first;
+            curr.next = first;
         }
         else {
             first.next = first; /* Circular list - For the first node */
@@ -29,7 +29,7 @@ public class CountNodesCircularLinkedList {
         return head;
     }
 
-    /* Function to print nodes in a given Circular linked list */
+    /** Function to count nodes in a Circular linked list */
     private static int countNodes(ListNode head) {
         int count = 0;
         if (head == null) {

@@ -1,9 +1,9 @@
 package list.linkedlist;
 
 public class Reverse {
-    ListNode reverseLinkedList(ListNode node) {
+    ListNode reverseLinkedList(ListNode head) {
         ListNode prev = null;
-        ListNode current = node;
+        ListNode current = head;
         ListNode next = null;
         while (current != null) {
             next = current.next;
@@ -11,7 +11,7 @@ public class Reverse {
             prev = current;
             current = next;
         }
-        node = prev;
-        return node;
+        head = prev;
+        return head;
     }
 }

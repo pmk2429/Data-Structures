@@ -1,0 +1,14 @@
+If you want to navigate to the curr being null node which is similar to do..while {}
+while (curr != null) {
+    curr = curr.next;
+}
+
+If want to move the `curr` pointer to the last element in the LinkedList
+while (curr != null) {
+    curr = curr.next;
+}
+
+If you want to move the `curr` pointer to 2 nodes before the end of the LinkedList
+while (curr.next.next != null) {
+    curr = curr.next;
+}

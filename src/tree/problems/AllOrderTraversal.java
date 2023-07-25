@@ -102,9 +102,9 @@ public class AllOrderTraversal {
     }
 
     /**
-     * Uses Queue to perform Level Order using BFS
+     * Same as above except the Level Order stores the {@link TreeNode} and not just Integer.
      */
-    public List<List<TreeNode>> levelOrderTraversalTreeNode(TreeNode root) {
+    public static List<List<TreeNode>> levelOrderTraversalTreeNode(TreeNode root) {
         List<List<TreeNode>> res = new ArrayList<>();
         if (root == null) return res;
         Deque<TreeNode> queue = new ArrayDeque<>();
@@ -115,6 +115,7 @@ public class AllOrderTraversal {
             for (int i = 0; i < count; i++) {
                 TreeNode node = queue.poll();
                 currentLevelNodes.add(node);
+
                 if (node.left != null) {
                     queue.add(node.left);
                 }
@@ -144,5 +145,10 @@ public class AllOrderTraversal {
         List<List<Integer>> res = new ArrayList<>();
         levelHelper(res, root, 0);
         return res;
+    }
+
+    public static void main(String[] args) {
+        TreeNode root = TreeNode.createUnusualTree();
+        System.out.println(levelOrderTraversalTreeNode(root));
     }
 }

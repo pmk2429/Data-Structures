@@ -11,20 +11,20 @@ import java.util.LinkedList;
  */
 
 public class FindNthToLastElement {
-  private static int findNthToLastElement(LinkedList<Integer> list, int position) {
-    int nthToLastIndex = list.size() - position;
-    return list.get(nthToLastIndex);
-  }
-
-  public static void main(String[] args) {
-    LinkedList<Integer> list = new LinkedList<>();
-    for (int i = 1; i <= 10; i++) {
-      list.add(i);
+    private static int findNthToLastElement(LinkedList<Integer> list, int position) {
+        int nthToLastIndex = list.size() - position;
+        return list.get(nthToLastIndex);
     }
 
-    int position = 4;
-    int desiredElement = findNthToLastElement(list, position);
-    System.out.println("List: " + list);
-    System.out.println("'" + position + "' Element to last in List is: " + desiredElement);
-  }
+    public static void main(String[] args) {
+        LinkedList<Integer> list = new LinkedList<>();
+        for (int i = 1; i <= 10; i++) {
+            list.add(i);
+        }
+
+        int position = 4;
+        int desiredElement = findNthToLastElement(list, position);
+        System.out.println("List: " + list);
+        System.out.println("'" + position + "' Element to last in List is: " + desiredElement);
+    }
 }

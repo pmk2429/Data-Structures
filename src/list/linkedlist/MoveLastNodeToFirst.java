@@ -31,26 +31,11 @@ public class MoveLastNodeToFirst {
         return head;
     }
 
-    private static void printList(ListNode head) {
-        ListNode curr = head;
-        while (curr != null) {
-            System.out.print(curr.data + " —> ");
-            curr = curr.next;
-        }
-        System.out.println("null");
-    }
-
     public static void main(String[] args) {
-        // input keys
-        int[] keys = {1, 2, 3, 4, 5, 8, 24, 9, 15};
-
-        ListNode head = null;
-        for (int i = keys.length - 1; i >= 0; i--) {
-            head = new ListNode(keys[i], head);
-        }
-        printList(head);
+        ListNode head = LinkedListUtil.createFromArray();
+        LinkedListUtil.printFancy(head);
         head = rearrange(head);
         System.out.println();
-        printList(head);
+        LinkedListUtil.printFancy(head);
     }
 }

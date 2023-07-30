@@ -27,11 +27,22 @@ package tree.problems;
  * -1000 <= targetSum <= 1000
  */
 public class PathSum {
-    public boolean hasPathSum(TreeNode root, int sum) {
-        if (root == null) return false;
 
-        if (root.left == null && root.right == null) return sum == root.data;
+    private static boolean hasPathSum(TreeNode root, int sum) {
+        if (root == null) {
+            return false;
+        }
 
-        return hasPathSum(root.left, sum - root.data) || hasPathSum(root.right, sum - root.data);
+        sum -= root.data;
+        if ((root.left == null) && (root.right == null)) {
+            return sum == 0;
+        }
+
+        return hasPathSum(root.left, sum) || hasPathSum(root.right, sum);
+    }
+
+    public static void main(String[] args) {
+        TreeNode root = TreeNode.createBTWithNull();
+        System.out.println(hasPathSum(root, 22));
     }
 }

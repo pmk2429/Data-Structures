@@ -28,27 +28,35 @@ package tree.problems;
  */
 public class FlattenBSTToLinkedListInPlace {
 
-    // Definition for a binary tree node.
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
+    private static void flatten(TreeNode root) {
+        if (root == null) {
+            return;
+        }
 
-        TreeNode(int x) {
-            val = x;
+        TreeNode node = root;
+
+        while (node != null) {
+            // If the node has a left child
+            if (node.left != null) {
+                // Find the rightmost node
+                TreeNode rightRoot = node.left;
+                while (rightRoot.right != null) {
+                    rightRoot = rightRoot.right;
+                }
+
+                // rewire the connections
+                rightRoot.right = node.right;
+                node.right = node.left;
+                node.left = null;
+            }
+
+            // move on to the right side of the tree
+            node = node.right;
         }
     }
 
-    private TreeNode prev = null;
-
-    private void flatten(TreeNode root) {
-        if (root == null)
-            return;
-        flatten(root.right);
-        flatten(root.left);
-        // reverse
-        root.right = prev;
-        root.left = null;
-        prev = root;
+    public static void main(String[] args) {
+        TreeNode bst = TreeNode.createBinarySearchTree();
+        flatten(bst);
     }
 }

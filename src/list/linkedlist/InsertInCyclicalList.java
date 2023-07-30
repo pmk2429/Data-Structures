@@ -1,6 +1,8 @@
 package list.linkedlist;
 
 /**
+ * Inserts an element in rotated, cyclical LinkedList.
+ * Since the list is rotates, the first element will be greater than the new val to insert.
  * This problem is same as {@link InsertInSortedLinkedList}.
  */
 public class InsertInCyclicalList {

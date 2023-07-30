@@ -8,17 +8,17 @@ public class DeleteMiddleNode {
             return null;
         }
 
-        int count = 0;
+        int size = 0;
         ListNode p1 = head, p2 = head;
 
         // First pass, count the number of nodes in the linked list using 'p1'.
         while (p1 != null) {
-            count += 1;
+            size++;
             p1 = p1.next;
         }
 
         // Get the index of the node to be deleted.
-        int middleIndex = count / 2;
+        int middleIndex = size / 2;
 
         // Second pass, let 'p2' move toward the predecessor of the middle node.
         for (int i = 0; i < middleIndex - 1; i++) {

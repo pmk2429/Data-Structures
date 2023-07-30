@@ -1,5 +1,7 @@
 package stack;
 
+import iomain.io.In;
+
 import java.util.Stack;
 
 public class StackWithMin extends Stack<Integer> {
@@ -31,6 +33,16 @@ public class StackWithMin extends Stack<Integer> {
         else {
             return minStack.peek();
         }
+    }
+
+    public static void main(String[] args) {
+        StackWithMin minStack = new StackWithMin();
+        minStack.push(5);
+        minStack.push(6);
+        minStack.push(1);
+        minStack.push(4);
+        System.out.println(minStack.min());
+
     }
 
 }

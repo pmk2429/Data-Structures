@@ -48,5 +48,10 @@ public class RemoveCancellableNodes {
     }
 
     public static void main(String[] args) {
+        int[] arr = {6, -6, 8, 4, -12, 9, 8, -8};
+        ListNode head = LinkedListUtil.createFromArray(arr);
+        LinkedListUtil.printFancy(head);
+        ListNode updatedHead = removeCancellableNodes(head);
+        LinkedListUtil.printFancy(updatedHead);
     }
 }

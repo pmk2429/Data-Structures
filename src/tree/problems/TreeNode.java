@@ -1,12 +1,7 @@
 package tree.problems;
 
-import com.sun.source.tree.Tree;
-import tree.master.Node;
-
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class TreeNode {
     int data;
@@ -38,6 +33,38 @@ public class TreeNode {
 
         root.left.left = new TreeNode(5);
         root.left.right = new TreeNode(1);
+
+        return root;
+    }
+
+    public static TreeNode createBTWithNull() {
+        TreeNode root = new TreeNode(5);
+        root.left = new TreeNode(4);
+        root.right = new TreeNode(8);
+
+        root.left.left = new TreeNode(11);
+
+        root.right.left = new TreeNode(13);
+        root.right.right = new TreeNode(4);
+
+        root.left.left.left = new TreeNode(7);
+        root.left.left.right = new TreeNode(2);
+
+        root.right.right.right = new TreeNode(1);
+
+        return root;
+    }
+
+    public static TreeNode createSymmetric() {
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(2);
+
+        root.left.left = new TreeNode(3);
+        root.left.right = new TreeNode(4);
+
+        root.right.left = new TreeNode(4);
+        root.right.right = new TreeNode(3);
 
         return root;
     }
@@ -75,6 +102,33 @@ public class TreeNode {
         root.right.right = new TreeNode(25);
         root.left.right.left = new TreeNode(10);
         root.left.right.right = new TreeNode(14);
+        return root;
+    }
+
+    public static TreeNode createBinarySearchTree() {
+        TreeNode root = new TreeNode(6);
+        root.left = new TreeNode(4);
+        root.right = new TreeNode(10);
+
+        root.left.left = new TreeNode(2);
+        root.left.right = new TreeNode(5);
+
+        root.right.left = new TreeNode(8);
+        root.right.right = new TreeNode(12);
+
+        return root;
+    }
+
+    public static TreeNode createBST() {
+        TreeNode root = new TreeNode(5);
+        root.left = new TreeNode(3);
+        root.right = new TreeNode(6);
+
+        root.left.left = new TreeNode(2);
+        root.left.right = new TreeNode(4);
+
+        root.left.left.left = new TreeNode(1);
+
         return root;
     }
 

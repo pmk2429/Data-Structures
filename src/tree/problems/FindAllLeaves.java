@@ -1,5 +1,7 @@
 package tree.problems;
 
+import iomain.io.In;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,8 +55,25 @@ public class FindAllLeaves {
         return leaves;
     }
 
+    private static void allLeaves(TreeNode root, List<Integer> leaves) {
+        if (root != null) {
+            if (root.left == null && root.right == null) {
+                leaves.add(root.data);
+            }
+            allLeaves(root.left, leaves);
+            allLeaves(root.right, leaves);
+        }
+    }
+
+    private static List<Integer> findAllLeaves(TreeNode root) {
+        List<Integer> leaves = new ArrayList<>();
+        allLeaves(root, leaves);
+        return leaves;
+    }
+
     public static void main(String[] args) {
         TreeNode root = TreeNode.createUnusualTree();
         System.out.println(findLeaves(root));
+        System.out.println(findAllLeaves(root));
     }
 }

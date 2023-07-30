@@ -43,4 +43,11 @@ public class MaxElementMerge {
         }
         return head;
     }
+
+    public static void main(String[] args) {
+        ListNode head1 = LinkedListUtil.createFromArray(new int[]{5, 2, 3, 8});
+        ListNode head2 = LinkedListUtil.createFromArray(new int[]{1, 7, 4, 5});
+        ListNode mergedHead = maxMerge(head1, head2);
+        LinkedListUtil.printFancy(mergedHead);
+    }
 }

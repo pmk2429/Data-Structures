@@ -1,62 +1,42 @@
 package tree.problems;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RootToLeafPaths {
 
-    private static boolean isLeaf(Node node) {
-        return (node.left == null && node.right == null);
-    }
-
-    private static void printPath(int[] path, int pathLen) {
-        Arrays.stream(path).filter(num -> num > 0).forEach(p -> System.out.print(p + " "));
-        System.out.println();
-
-        for (int i = 0; i < pathLen; i++) {
-            System.out.print(path[i] + " ");
-        }
-        System.out.println();
-    }
-
-    private static void rootToLeaf(Node node, int[] path, int pathLength) {
-        // base case for recursion
-        if (node == null) {
+    private static void pathBuilder(TreeNode root, StringBuilder sb, List<String> result) {
+        if (root == null) {
             return;
         }
 
-        /* append this node to the path array */
-        path[pathLength++] = node.data;
+        sb.append(root.data);
 
-        if (isLeaf(node)) {
-            // print the traversed path
-            printPath(path, pathLength);
+        if (root.left == null && root.right == null) { // leaf node
+            result.add(sb.toString());
+            return;
         }
-        else {
-            // recur left subtree
-            rootToLeaf(node.left, path, pathLength);
-            // recur right subtree
-            rootToLeaf(node.right, path, pathLength);
-        }
+
+        // if we are here root has at least 1 child node
+        sb.append("->");
+        String answer = sb.toString();
+
+        pathBuilder(root.left, sb, result);
+        pathBuilder(root.right, new StringBuilder(answer), result);
     }
 
-    private static void printRootToLeaf(Node root) {
-        int[] path = new int[1000];
-
-        // start with 0th index for path length
-        rootToLeaf(root, path, 0);
-    }
-
-    private static Node createNode(int data) {
-        return new Node(data);
+    private static List<String> binaryTreePaths(TreeNode root) {
+        List<String> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
+        StringBuilder sb = new StringBuilder();
+        pathBuilder(root, sb, result);
+        return result;
     }
 
     public static void main(String[] args) {
-        Node root = createNode(1);
-        root.left = createNode(2);
-        root.right = createNode(3);
-        root.left.left = createNode(4);
-        root.left.right = createNode(5);
-
-        printRootToLeaf(root);
+        TreeNode root = TreeNode.createBT();
+        System.out.println(binaryTreePaths(root));
     }
 }

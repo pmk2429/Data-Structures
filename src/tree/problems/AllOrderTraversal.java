@@ -111,8 +111,8 @@ public class AllOrderTraversal {
         queue.add(root);
         while (!queue.isEmpty()) {
             List<TreeNode> currentLevelNodes = new ArrayList<>();
-            int count = queue.size();
-            for (int i = 0; i < count; i++) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
                 currentLevelNodes.add(node);
 

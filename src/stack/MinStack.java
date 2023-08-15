@@ -52,7 +52,8 @@ class MinStack {
         }
 
         int currentMin = stack.peek()[1];
-        stack.push(new int[]{x, Math.min(x, currentMin)});
+        currentMin = Math.min(x, currentMin);
+        stack.push(new int[]{x, currentMin});
     }
 
     public void pop() {

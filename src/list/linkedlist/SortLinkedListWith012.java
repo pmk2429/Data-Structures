@@ -1,5 +1,7 @@
 package list.linkedlist;
 
+import static list.linkedlist.LinkedListUtil.printFancy;
+
 /**
  * Sort linked list containing 0’s, 1’s, and 2’s in a single traversal
  * Given a linked list containing 0's, 1's, and 2's, sort the linked list by doing a single traversal of it.
@@ -17,18 +19,17 @@ public class SortLinkedListWith012 {
             return head;
         }
 
+        ListNode zero = new ListNode(0);
         ListNode first = new ListNode(0);
         ListNode second = new ListNode(0);
-        ListNode third = new ListNode(0);
 
-        ListNode n0 = first;
-        ListNode n1 = second;
-        ListNode n2 = third;
+        ListNode n0 = zero;
+        ListNode n1 = first;
+        ListNode n2 = second;
 
         ListNode curr = head;
 
         while (curr != null) {
-
             if (curr.data == 0) {
                 n0.next = curr;
                 n0 = n0.next;
@@ -44,23 +45,12 @@ public class SortLinkedListWith012 {
             curr = curr.next;
         }
 
-        n0.next = (second.next != null) ? second.next : third.next;
-        n1.next = third.next;
+        n0.next = (first.next != null) ? first.next : second.next;
+        n1.next = second.next;
         n2.next = null;
 
-        return first.next;
+        return zero.next;
     }
-
-    private static void printList(ListNode head) {
-        ListNode ptr = head;
-        while (ptr != null) {
-            System.out.print(ptr.data + " —> ");
-            ptr = ptr.next;
-        }
-
-        System.out.println("null");
-    }
-
 
     public static void main(String[] args) {
         int[] keys = {1, 2, 0, 0, 1, 2, 1, 2, 1};
@@ -71,7 +61,7 @@ public class SortLinkedListWith012 {
         }
 
         head = sortList(head);
-        printList(head);
+        printFancy(head);
     }
 
 }

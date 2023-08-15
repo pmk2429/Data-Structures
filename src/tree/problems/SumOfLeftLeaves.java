@@ -21,15 +21,22 @@ package tree.problems;
  * -1000 <= Node.val <= 1000
  */
 public class SumOfLeftLeaves {
-    private int leftLeavesSumHelper(TreeNode root, boolean isLeft) {
-        if (root == null)
+    private static int leftLeavesSumHelper(TreeNode root, boolean isLeft) {
+        if (root == null) {
             return 0;
-        if (root.left == null && root.right == null && isLeft)
+        }
+        if (root.left == null && root.right == null && isLeft) {
             return root.data;
+        }
         return leftLeavesSumHelper(root.left, true) + leftLeavesSumHelper(root.right, false);
     }
 
-    public int sumOfLeftLeaves(TreeNode root) {
+    private static int sumOfLeftLeaves(TreeNode root) {
         return leftLeavesSumHelper(root, false);
+    }
+
+    public static void main(String[] args) {
+        TreeNode root = TreeNode.createBT();
+        System.out.println(sumOfLeftLeaves(root));
     }
 }

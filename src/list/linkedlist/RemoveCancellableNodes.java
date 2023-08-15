@@ -24,6 +24,7 @@ public class RemoveCancellableNodes {
         }
         ListNode curr = head;
         Stack<ListNode> stack = new Stack<>();
+        ListNode newHead = new ListNode(-1);
 
         while (curr != null) {
             // if it's negative then pop and cancel nodes
@@ -33,7 +34,6 @@ public class RemoveCancellableNodes {
                     ListNode temp = stack.pop();
                     sum += temp.data;
                     if (sum == 0) {
-                        curr = stack.peek();
                         break;
                     }
                 }
@@ -44,7 +44,16 @@ public class RemoveCancellableNodes {
             curr = curr.next;
         }
 
-        return head;
+        while (!stack.isEmpty()) {
+            ListNode temp = stack.pop();
+            temp.next = null;
+            if (newHead.next == null) {
+                newHead = temp;
+            } else {
+                newHead.next = temp;
+            }
+        }
+        return newHead;
     }
 
     public static void main(String[] args) {
@@ -52,6 +61,6 @@ public class RemoveCancellableNodes {
         ListNode head = LinkedListUtil.createFromArray(arr);
         LinkedListUtil.printFancy(head);
         ListNode updatedHead = removeCancellableNodes(head);
-        LinkedListUtil.printFancy(updatedHead);
+        LinkedListUtil.display(updatedHead);
     }
 }

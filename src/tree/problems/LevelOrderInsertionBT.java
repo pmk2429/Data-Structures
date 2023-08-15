@@ -36,13 +36,13 @@ public class LevelOrderInsertionBT {
         return 2 * i + 2;
     }
 
-    private static Node insertLevelOrder(int[] arr, Node root, int index) {
+    private static TreeNode insertLevelOrder(int[] arr, TreeNode root, int index) {
         if (arr.length < 1) {
             return null;
         }
 
         if (index < arr.length) {
-            root = new Node(arr[index]);
+            root = new TreeNode(arr[index]);
 
             // for any parent i in a BT, left child is positioned at 2*i+1 and right child at 2*i+2
             root.left = insertLevelOrder(arr, root.left, leftChildIndex(index));
@@ -52,7 +52,7 @@ public class LevelOrderInsertionBT {
         return root;
     }
 
-    private static void inOrderTraversal(Node root) {
+    private static void inOrderTraversal(TreeNode root) {
         if (root == null) {
             return;
         }
@@ -64,7 +64,7 @@ public class LevelOrderInsertionBT {
 
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5, 6, 6, 6, 6};
-        Node root = new Node(arr[0]);
+        TreeNode root = new TreeNode(arr[0]);
         root = insertLevelOrder(arr, root, 0);
         System.out.println("Level order BT representation - Inorder");
         inOrderTraversal(root);

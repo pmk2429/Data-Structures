@@ -46,22 +46,25 @@ public class KthSmallestBST {
     }
 
     private static int kthSmallestRecursive(TreeNode root, int k) {
-        Deque<TreeNode> stack = new ArrayDeque<>();
+        Deque<TreeNode> queue = new ArrayDeque<>();
 
         while (true) {
             while (root != null) {
-                stack.addFirst(root);
+                queue.addFirst(root); // First In Last Out : FILO
                 root = root.left;
             }
-            root = stack.pop();
-            if (--k == 0) return root.data;
+            root = queue.pop();
+            if (--k == 0) {
+                return root.data;
+            }
             root = root.right;
         }
     }
 
     public static void main(String[] args) {
-        TreeNode root = TreeNode.createBST();
-        System.out.println(kthSmallestRecursive(root, 3));
+        TreeNode root = TreeNode.createBSTUneven();
+        System.out.println(kthSmallestRecursive(root, 5));
+        System.out.println(kthSmallestIterative(root, 5));
     }
 
 }

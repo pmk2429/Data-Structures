@@ -37,5 +37,6 @@ public class Balanced {
 
     public static void main(String[] args) {
         Node root = Node.createBTComplex();
+        System.out.println(isBalanced(root));
     }
 }

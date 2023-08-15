@@ -20,21 +20,36 @@ package list.linkedlist;
  */
 public class SortLinkedList {
 
-    private static ListNode merge(ListNode list1, ListNode list2) {
-        ListNode dummyHead = new ListNode();
-        ListNode tail = dummyHead;
-        while (list1 != null && list2 != null) {
-            if (list1.data < list2.data) {
-                tail.next = list1;
-                list1 = list1.next;
-            }
-            else {
-                tail.next = list2;
-                list2 = list2.next;
-            }
-            tail = tail.next;
+    private static ListNode getMiddleNode(ListNode head) {
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        tail.next = (list1 != null) ? list1 : list2;
+        return slow;
+    }
+
+    private static ListNode merge(ListNode l1, ListNode l2) {
+        ListNode dummyHead = new ListNode(-1);
+        ListNode p = dummyHead;
+
+        while (l1 != null && l2 != null) {
+            if (l1.data < l2.data) {
+                p.next = l1;
+                l1 = l1.next;
+            }
+            else if (l2.data < l1.data) {
+                p.next = l2;
+                l2 = l2.next;
+            }
+            p = p.next;
+        }
+        if (l1 != null) {
+            p.next = l1;
+        }
+        if (l2 != null) {
+            p.next = l2;
+        }
         return dummyHead.next;
     }
 
@@ -73,6 +88,9 @@ public class SortLinkedList {
     }
 
     public static void main(String[] args) {
-
+        ListNode node = LinkedListUtil.createUnsorted();
+        LinkedListUtil.printFancy(node);
+        ListNode sortedHead = sortList(node);
+        LinkedListUtil.printFancy(sortedHead);
     }
 }

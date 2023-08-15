@@ -31,6 +31,18 @@ public class LinkedListUtil {
         return head;
     }
 
+    public static ListNode createUnsorted() {
+        ListNode head = newNode(4);
+        head.next = newNode(5);
+        head.next.next = newNode(1);
+        head.next.next.next = newNode(3);
+        head.next.next.next.next = newNode(2);
+        head.next.next.next.next.next = newNode(8);
+        head.next.next.next.next.next.next = newNode(6);
+
+        return head;
+    }
+
     public static ListNode createWithDuplicates() {
         ListNode head = newNode(1);
         head.next = newNode(2);

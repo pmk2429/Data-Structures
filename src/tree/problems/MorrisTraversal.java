@@ -34,18 +34,15 @@ public class MorrisTraversal {
         while (curr != null) {
             if (curr.left == null) {
                 // check if current Node lies between n1 and n2
-                if (curr.data <= n2 && curr.data >= n1) {
+                if (curr.data >= n1 && curr.data <= n2) {
                     System.out.print(curr.data + " ");
                 }
                 curr = curr.right;
             }
             else {
-                TreeNode pre = curr.left;
                 // finding the inorder predecessor is the right most in left subtree or the left
                 // child, i.e. in BST it is the maximum(right most) in left subtree.
-                while (pre.right != null && pre.right != curr) {
-                    pre = pre.right;
-                }
+                TreeNode pre = TreeNode.predecessor(curr);
 
                 if (pre.right == null) {
                     pre.right = curr;
@@ -54,7 +51,7 @@ public class MorrisTraversal {
                 else {
                     pre.right = null;
                     // check if current Node lies between n1 and n2
-                    if (curr.data <= n2 && curr.data >= n1) {
+                    if (curr.data >= n1 && curr.data <= n2) {
                         System.out.print(curr.data + " ");
                     }
                     curr = curr.right;
@@ -64,7 +61,7 @@ public class MorrisTraversal {
     }
 
     public static void main(String[] args) {
-        TreeNode root = TreeNode.createBinarySearchTree();
+        TreeNode root = TreeNode.createBSTEven();
         rangeTraversal(root, 4, 8);
     }
 }

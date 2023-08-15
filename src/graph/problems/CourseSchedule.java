@@ -1,8 +1,9 @@
 package graph.problems;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 /**
  * There are a total of n courses you have to take, labeled from 0 to n-1.
@@ -31,23 +32,19 @@ import java.util.Queue;
  * Read more about how a graph is represented(https://www.khanacademy
  * .org/computing/computer-science/algorithms/graph-representation/a/representing-graphs)
  * You may assume that there are no duplicate edges in the input prerequisites.
- *
+ * <p>
  * ~!@#HARD:REVISE
  */
 public class CourseSchedule {
 
     private static boolean canFinish(int numCourses, int[][] prerequisites) {
         List<Integer>[] graph = new LinkedList[numCourses];
+        int[] inDegree = new int[numCourses];
+        Deque<Integer> queue = new ArrayDeque<>();
 
         for (int i = 0; i < graph.length; i++) {
             graph[i] = new LinkedList<>();
         }
-
-        // init an in-degree array.
-        int[] inDegree = new int[numCourses];
-
-        // init queue
-        Queue<Integer> gQ = new LinkedList<>();
 
         for (int[] prerequisite : prerequisites) {
             // get the edge (u,v)
@@ -64,7 +61,7 @@ public class CourseSchedule {
         // that have 0 inDegree and put them in the Q.
         for (int i = 0; i < inDegree.length; i++) {
             if (inDegree[i] == 0) {
-                gQ.add(i);
+                queue.add(i);
             }
         }
 
@@ -74,9 +71,9 @@ public class CourseSchedule {
         // if its not the case - there was a cycle which means the answer to our question is false.
         int counter = 0;
 
-        while (!gQ.isEmpty()) {
+        while (!queue.isEmpty()) {
             // poll a node with inDegree 0
-            int nodeId = gQ.poll();
+            int nodeId = queue.poll();
 
             // remove its edges and update the inDegree array.
             // if one of the children got an in degree 0 - add it to the Q and perform BFS
@@ -84,7 +81,7 @@ public class CourseSchedule {
                 inDegree[childId]--;
 
                 if (inDegree[childId] == 0) {
-                    gQ.add(childId);
+                    queue.add(childId);
                 }
             }
             counter++;

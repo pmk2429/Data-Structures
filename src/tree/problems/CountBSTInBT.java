@@ -44,7 +44,7 @@ package tree.problems;
  */
 public class CountBSTInBT {
 
-    static class NodeInfo {
+    private static class NodeInfo {
         int numBST;
         int max;
         int min;
@@ -61,7 +61,7 @@ public class CountBSTInBT {
         }
     }
 
-    private static NodeInfo countBinarySearchTrees(Node root) {
+    private static NodeInfo countBinarySearchTrees(TreeNode root) {
         if (root == null) {
             return new NodeInfo(0, Integer.MIN_VALUE, Integer.MAX_VALUE, false);
         }
@@ -93,16 +93,16 @@ public class CountBSTInBT {
     }
 
     public static void main(String[] args) {
-        Node root = new Node(11);
-        root.left = new Node(8);
-        root.right = new Node(10);
+        TreeNode root = new TreeNode(11);
+        root.left = new TreeNode(8);
+        root.right = new TreeNode(10);
         // 2nd level
-        root.left.left = new Node(5);
-        root.right.left = new Node(9);
-        root.right.right = new Node(8);
+        root.left.left = new TreeNode(5);
+        root.right.left = new TreeNode(9);
+        root.right.right = new TreeNode(8);
         // 3rd level
-        root.left.left.left = new Node(4);
-        root.left.left.right = new Node(6);
+        root.left.left.left = new TreeNode(4);
+        root.left.left.right = new TreeNode(6);
 
         NodeInfo info = countBinarySearchTrees(root);
         System.out.println("total BST - " + info.numBST);

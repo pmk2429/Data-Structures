@@ -78,7 +78,7 @@ public class BSTIterator {
     }
 
     public static void main(String[] args) {
-        TreeNode root = TreeNode.createBinarySearchTree();
+        TreeNode root = TreeNode.createBSTEven();
         BSTIterator obj = new BSTIterator(root);
         System.out.println(obj.next());
         System.out.println(obj.hasNext());

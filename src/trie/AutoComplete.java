@@ -14,7 +14,7 @@ public class AutoComplete {
 
         TrieNode(char c) {
             data = c;
-            children = new LinkedList();
+            children = new LinkedList<>();
             isEnd = false;
         }
 
@@ -47,16 +47,12 @@ public class AutoComplete {
                 return "";
             }
             else {
-                return parent.toString() + new String(new char[]{data});
+                return parent + String.valueOf(data);
             }
         }
     }
 
-    private TrieNode root;
-
-    private AutoComplete() {
-        root = new TrieNode(' ');
-    }
+    private final TrieNode root;
 
     private void insert(String word) {
         if (search(word)) {
@@ -102,6 +98,10 @@ public class AutoComplete {
         }
 
         return lastNode.getWords();
+    }
+
+    private AutoComplete() {
+        root = new TrieNode(' ');
     }
 
 

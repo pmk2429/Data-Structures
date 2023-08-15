@@ -5,13 +5,13 @@ public class CompareTree {
         if (p == null && q == null) {
             return true;
         }
-        if (q == null || p == null) {
+        if (p == null || q == null) {
             return false;
         }
         if (p.data != q.data) {
             return false;
         }
-        return isSameTree(p.right, q.right) && isSameTree(p.left, q.left);
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
     }
 
     public static void main(String[] args) {

@@ -29,6 +29,7 @@ public class RotateLinkedList {
         ListNode fast = head;
         ListNode slow = head;
 
+        // move the fast pointer to one Node before end of list
         while (fast.next != null) {
             size++;
             fast = fast.next;

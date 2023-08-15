@@ -1,6 +1,9 @@
 package tree.problems;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class BottomView {
 
@@ -24,9 +27,7 @@ public class BottomView {
         // Queue to store tree nodes in level order traversal
         Deque<Node> queue = new ArrayDeque<>();
 
-        // Assign initialized horizontal distance value to root
-        // node and add it to the queue.
-        queue.add(root);
+        queue.offer(root);
 
         // Loop until the queue is empty (standard level order loop)
         while (!queue.isEmpty()) {
@@ -39,27 +40,27 @@ public class BottomView {
             // Put the dequeued tree node to TreeMap having key
             // as horizontal distance. Every time we find a node
             // having same horizontal distance we need to replace
-            // the data in the map.
+            // the data in the map so the map will store the latest
+            // Node with the same Horizontal Distance (Column Order)
             map.put(horizontalDistance, temp.data);
 
             // If the dequeued node has a left child add it to the
             // queue with a horizontal distance hd-1.
             if (temp.left != null) {
                 temp.left.hd = horizontalDistance - 1;
-                queue.add(temp.left);
+                queue.offer(temp.left);
             }
 
-            // If the dequeued node has a left child add it to the
+            // If the dequeued node has a right child add it to the
             // queue with a horizontal distance hd+1.
             if (temp.right != null) {
                 temp.right.hd = horizontalDistance + 1;
-                queue.add(temp.right);
+                queue.offer(temp.right);
             }
         }
 
-        // Traverse the map elements using the iterator.
-        for (Map.Entry<Integer, Integer> me : map.entrySet()) {
-            System.out.print(me.getValue() + " ");
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            System.out.print(entry.getValue() + " ");
         }
     }
 

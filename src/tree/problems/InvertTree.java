@@ -8,7 +8,7 @@ import java.util.Deque;
  */
 public class InvertTree {
 
-    public TreeNode invertTree(TreeNode root) {
+    private static TreeNode invertTree(TreeNode root) {
         if (root == null) {
             return null;
         }
@@ -32,5 +32,11 @@ public class InvertTree {
             }
         }
         return root;
+    }
+
+    public static void main(String[] args) {
+        TreeNode root = TreeNode.createBST();
+        TreeNode inverted = invertTree(root);
+        TreeNode.printTree(inverted);
     }
 }

@@ -56,7 +56,7 @@ public class FlattenBSTToLinkedListInPlace {
     }
 
     public static void main(String[] args) {
-        TreeNode bst = TreeNode.createBinarySearchTree();
+        TreeNode bst = TreeNode.createBSTEven();
         flatten(bst);
     }
 }

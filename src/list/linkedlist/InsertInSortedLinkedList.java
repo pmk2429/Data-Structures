@@ -1,5 +1,7 @@
 package list.linkedlist;
 
+import static list.linkedlist.LinkedListUtil.printFancy;
+
 public class InsertInSortedLinkedList {
 
     private static ListNode sortedInsert(ListNode head, ListNode newNode) {
@@ -12,38 +14,23 @@ public class InsertInSortedLinkedList {
             head = newNode;
         }
         else {
-            ListNode current = head;
-            while (current.next != null && current.next.data < newNode.data) {
-                current = current.next;
+            ListNode curr = head;
+            while (curr.next != null && curr.next.data < newNode.data) {
+                curr = curr.next;
             }
-            newNode.next = current.next;
-            current.next = newNode;
+            newNode.next = curr.next;
+            curr.next = newNode;
         }
 
         return head;
     }
 
-    private static void printList(ListNode head) {
-        ListNode curr = head;
-        while (curr != null) {
-            System.out.print(curr.data + " —> ");
-            curr = curr.next;
-        }
-        System.out.println("null");
-    }
-
     public static void main(String[] args) {
-        // input keys
         int[] keys = {1, 2, 3, 4, 5, 7, 8};
-
-        ListNode head = null;
-        for (int i = keys.length - 1; i >= 0; i--) {
-            head = new ListNode(keys[i], head);
-        }
-        printList(head);
+        ListNode head = LinkedListUtil.createFromArray(keys);
+        printFancy(head);
         ListNode newNode = new ListNode(6);
         head = sortedInsert(head, newNode);
-        System.out.println();
-        printList(head);
+        printFancy(head);
     }
 }

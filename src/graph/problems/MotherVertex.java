@@ -5,23 +5,23 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MotherVertex {
-    private int V; // No. of vertices
+    private final int V; // No. of vertices
 
     // Array of lists for Adjacency List Representation an array of linked list
     // in this implementation the graph vertex values will be same array index
-    private List<Integer>[] adj;
+    private final List<Integer>[] graph;
 
     MotherVertex(int v) {
         V = v;
-        adj = new LinkedList[v];
+        graph = new LinkedList[v];
         for (int i = 0; i < v; ++i) {
-            adj[i] = new LinkedList();
+            graph[i] = new LinkedList<>();
         }
     }
 
     // Function to add an edge into the graph
-    void addEdge(int v, int w) {
-        adj[v].add(w); // Add w to v's list.
+    private void addEdge(int u, int v) {
+        graph[u].add(v); // Add w to v's list.
     }
 
     // A function used by DFS
@@ -30,7 +30,7 @@ public class MotherVertex {
         visited[v] = true;
 
         // Recur for all the vertices adjacent to this vertex
-        for (int n : adj[v]) {
+        for (int n : graph[v]) {
             if (!visited[n]) {
                 DFSUtil(n, visited);
             }

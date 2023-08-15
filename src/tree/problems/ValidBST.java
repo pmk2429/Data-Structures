@@ -21,7 +21,7 @@ public class ValidBST {
 
 
     public static void main(String[] args) {
-        TreeNode node = TreeNode.createBinarySearchTree();
+        TreeNode node = TreeNode.createBSTEven();
         System.out.println("Is BST valid -> " + isValidBST(node));
     }
 }

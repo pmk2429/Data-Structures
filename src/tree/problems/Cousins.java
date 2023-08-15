@@ -1,12 +1,12 @@
 package tree.problems;
 
 public class Cousins {
-    static class NodeInfo {
-        Node node;
+    private static class NodeInfo {
+        TreeNode node;
+        TreeNode parent;
         int level;
-        Node parent;
 
-        NodeInfo(Node node, int level, Node parent) {
+        NodeInfo(TreeNode node, int level, TreeNode parent) {
             this.node = node;
             this.level = level;
             this.parent = parent;
@@ -14,14 +14,14 @@ public class Cousins {
     }
 
     // Perform inorder traversal on a given binary tree and update 'x' and 'y'
-    public static void updateLevelandParent(Node root, Node parent, int level, NodeInfo x, NodeInfo y) {
+    private static void updateLevelAndParent(TreeNode root, TreeNode parent, int level, NodeInfo x, NodeInfo y) {
         // base case: tree is empty
         if (root == null) {
             return;
         }
 
         // traverse left subtree
-        updateLevelandParent(root.left, root, level + 1, x, y);
+        updateLevelAndParent(root.left, root, level + 1, x, y);
 
         // if the first element is found, save its level and parent node
         if (root == x.node) {
@@ -36,36 +36,35 @@ public class Cousins {
         }
 
         // traverse right subtree
-        updateLevelandParent(root.right, root, level + 1, x, y);
+        updateLevelAndParent(root.right, root, level + 1, x, y);
     }
 
-    public static boolean checkCousins(Node root, Node node1, Node node2) {
+    private static boolean checkCousins(TreeNode root, TreeNode node1, TreeNode node2) {
         // return if the tree is empty
         if (root == null) {
             return false;
         }
 
-        int level = 1;          // level of the root is 1
-        Node parent = null;     // parent of the root is null
+        int level = 1; // level of the root is 1
 
-        NodeInfo x = new NodeInfo(node1, level, parent);
-        NodeInfo y = new NodeInfo(node2, level, parent);
+        NodeInfo x = new NodeInfo(node1, level, null);
+        NodeInfo y = new NodeInfo(node2, level, null);
 
-        // perform inorder traversal on the array and update 'x' and 'y'
-        updateLevelandParent(root, null, 1, x, y);
+        // perform inorder traversal on the array and update `level` and `parent` info for each Node.
+        updateLevelAndParent(root, null, 1, x, y);
 
         // return true if 'x' and 'y' are at the same level, but different parent
         return x.level == y.level && x.parent != y.parent;
     }
 
     public static void main(String[] args) {
-        Node root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
-        root.left.left = new Node(4);
-        root.left.right = new Node(5);
-        root.right.left = new Node(6);
-        root.right.right = new Node(7);
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(7);
 
         if (checkCousins(root, root.left.right, root.right.left)) {
             System.out.println("Nodes are cousins of each other");

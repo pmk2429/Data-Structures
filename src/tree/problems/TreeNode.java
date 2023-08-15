@@ -7,18 +7,35 @@ public class TreeNode {
     int data;
     TreeNode left;
     TreeNode right;
+    TreeNode parent;
+    int height;
+    int horizontalDistance;
 
     TreeNode() {
     }
 
     TreeNode(int data) {
         this.data = data;
+        this.left = null;
+        this.right = null;
+        this.height = 1;
+        this.horizontalDistance = 0;
     }
 
     TreeNode(int data, TreeNode left, TreeNode right) {
         this.data = data;
         this.left = left;
         this.right = right;
+        this.height = 1;
+        this.horizontalDistance = 0;
+    }
+
+    TreeNode(int data, TreeNode left, TreeNode right, int horizontalDistance, int height) {
+        this.data = data;
+        this.left = left;
+        this.right = right;
+        this.height = height;
+        this.horizontalDistance = horizontalDistance;
     }
 
     @Override
@@ -105,7 +122,7 @@ public class TreeNode {
         return root;
     }
 
-    public static TreeNode createBinarySearchTree() {
+    public static TreeNode createBSTEven() {
         TreeNode root = new TreeNode(6);
         root.left = new TreeNode(4);
         root.right = new TreeNode(10);
@@ -132,11 +149,31 @@ public class TreeNode {
         return root;
     }
 
+    public static TreeNode createBSTUneven() {
+        TreeNode root = new TreeNode(2);
+        root.left = new TreeNode(1);
+        root.right = new TreeNode(33);
+
+        root.right.left = new TreeNode(25);
+        root.right.right = new TreeNode(40);
+
+        root.right.left.left = new TreeNode(11);
+        root.right.right.left = new TreeNode(34);
+
+        root.right.left.left.left = new TreeNode(7);
+        root.right.left.left.right = new TreeNode(12);
+        root.right.right.left.right = new TreeNode(36);
+
+        root.right.left.left.right.right = new TreeNode(13);
+
+        return root;
+    }
+
     public static void printTree(TreeNode node) {
         if (node == null) {
             return;
         }
-        System.out.println(node.data + "  ");
+        System.out.print(node.data + "  ");
         printTree(node.left);
         printTree(node.right);
     }
@@ -165,5 +202,45 @@ public class TreeNode {
             nodesQ.remove();
             currNode = nodesQ.peek();
         }
+    }
+
+    public TreeNode maximum(TreeNode node) {
+        if (node == null) {
+            return null;
+        }
+
+        while (node.right != null) {
+            node = node.right;
+        }
+
+        return node;
+    }
+
+    public TreeNode minimum(TreeNode node) {
+        if (node == null) {
+            return null;
+        }
+
+        while (node.left != null) {
+            node = node.left;
+        }
+
+        return node;
+    }
+
+    public static TreeNode successor(TreeNode node) {
+        TreeNode successor = node.right;
+        while (successor.left != null && successor.left != node) {
+            successor = successor.left;
+        }
+        return successor;
+    }
+
+    public static TreeNode predecessor(TreeNode node) {
+        TreeNode predecessor = node.left;
+        while (predecessor.right != null && predecessor.right != node) {
+            predecessor = predecessor.right;
+        }
+        return predecessor;
     }
 }

@@ -9,6 +9,7 @@ public class NodeExists {
      * Binary String represents the path from root to the node, where '1' means going right and '0' means going left.
      * For example, 4 = "100", starting from the index 1, we go from root = 1, going left --> 2, going left --> 4;
      * 7 = "111", starting from index 1, we go from root = 1, going right --> 3, going right --> 7.
+     * Similar to {@link BinaryTreeIndexExists}.
      */
     public boolean nodeExists(Node root, int index) {
         if (index <= 0) {
@@ -31,23 +32,23 @@ public class NodeExists {
         return root != null;
     }
 
-    private static boolean ifNodeExists(Node node, int key) {
-        if (node == null) {
+    private static boolean ifNodeExists(TreeNode root, int key) {
+        if (root == null) {
             return false;
         }
 
-        if (node.data == key) {
+        if (root.data == key) {
             return true;
         }
 
         // then recur on left subtree
-        boolean leftExists = ifNodeExists(node.left, key);
+        boolean leftExists = ifNodeExists(root.left, key);
 
         // node found, no need to look further
         if (leftExists) return true;
 
         // node is not found in left,  so recur on right subtree /
-        boolean rightExists = ifNodeExists(node.right, key);
+        boolean rightExists = ifNodeExists(root.right, key);
 
         return rightExists;
     }

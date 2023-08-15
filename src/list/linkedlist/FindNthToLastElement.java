@@ -75,7 +75,8 @@ public class FindNthToLastElement {
         ListNode fast = dummy;
         ListNode slow = dummy;
         // Advances fast pointer so that the gap between fast and second is n nodes apart
-        for (int i = 1; i <= n + 1; i++) {
+        // advances the fast pointer to the node to be removed not one before
+        for (int i = 0; i < n + 1; i++) {
             fast = fast.next;
         }
         // Move fast to the end, maintaining the gap

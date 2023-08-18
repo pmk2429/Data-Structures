@@ -7,8 +7,24 @@ public class MoveNthNodeToLast {
             return null;
         }
 
-        ListNode curr = head;
+        // ptr represents node before the nth Node to remove
+        ListNode ptr = head;
 
+        for (int i = 0; i < n - 2; i++) {
+            ptr = ptr.next;
+        }
+
+        // move `curr` to tail end of the list
+        ListNode curr = ptr;
+        while (curr.next != null) {
+            curr = curr.next;
+        }
+
+        // rewiring
+        ListNode nthNode = ptr.next;
+        ptr.next = ptr.next.next;
+        nthNode.next = null;
+        curr.next = nthNode;
 
         return head;
     }

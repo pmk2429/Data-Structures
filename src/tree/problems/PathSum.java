@@ -34,7 +34,7 @@ public class PathSum {
         }
 
         sum -= root.data;
-        if ((root.left == null) && (root.right == null)) {
+        if (root.left == null && root.right == null) {
             return sum == 0;
         }
 

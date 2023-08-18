@@ -4,7 +4,9 @@ public class DeleteNode {
 
     private static int successor(TreeNode root) {
         root = root.right;
-        while (root.left != null) root = root.left;
+        while (root.left != null) {
+            root = root.left;
+        }
         return root.data;
     }
 
@@ -13,7 +15,9 @@ public class DeleteNode {
     */
     private static int predecessor(TreeNode root) {
         root = root.left;
-        while (root.right != null) root = root.right;
+        while (root.right != null) {
+            root = root.right;
+        }
         return root.data;
     }
 

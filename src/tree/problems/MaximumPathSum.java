@@ -1,5 +1,7 @@
 package tree.problems;
 
+import javax.swing.tree.TreeCellRenderer;
+
 /**
  * Question:
  * Given a binary tree, find the maximum path sum. The path may start and end at any node in the tree.
@@ -30,7 +32,7 @@ package tree.problems;
  * is able to be more efficient.
  */
 public class MaximumPathSum {
-    private int maxSum;
+    private static int maxSum;
 
     /**
      * At any given node in the binary tree, the max sum of a Node can be represented using one of following
@@ -39,20 +41,26 @@ public class MaximumPathSum {
      * 3 - Max(left subtree) + Max(Right subtree) + node
      * 4 - Node
      */
-    private int findMax(Node root) {
+    private static int findMax(TreeNode root) {
         if (root == null) {
             return 0;
         }
-        int leftMax = findMax(root.left);
-        int rightMax = findMax(root.right);
-        maxSum = Math.max(maxSum, root.data + leftMax + rightMax);
-        int res = root.data + Math.max(leftMax, rightMax);
+        int leftSum = findMax(root.left);
+        int rightSum = findMax(root.right);
+        int sum = root.data + leftSum + rightSum;
+        maxSum = Math.max(maxSum, sum);
+        int res = root.data + Math.max(leftSum, rightSum);
         return Math.max(res, 0);
     }
 
-    public int maxPathSum(Node root) {
+    private static int maxPathSum(TreeNode root) {
         maxSum = Integer.MIN_VALUE;
         findMax(root);
         return maxSum;
+    }
+
+    public static void main(String[] args) {
+        TreeNode root = TreeNode.createBTComplex();
+        System.out.println(maxPathSum(root));
     }
 }

@@ -13,17 +13,17 @@ public class FindNextNodeAtSameLevel {
      * The idea is to modify the level order traversal to maintain the level number of each node, and if
      * the given node is found, we return its immediate right node, present at the same level.
      */
-    private static Node findNextNodeAtSameLevel(Node root, Node node) {
+    private static TreeNode findNextNodeAtSameLevel(TreeNode root, TreeNode node) {
         // return null if a tree is empty
         if (root == null) {
             return null;
         }
 
         // create an empty queue and enqueue the root node
-        Deque<Node> queue = new ArrayDeque<>();
+        Deque<TreeNode> queue = new ArrayDeque<>();
         queue.add(root);
 
-        Node curr;
+        TreeNode curr;
 
         // loop till queue is empty
         while (!queue.isEmpty()) {
@@ -66,16 +66,16 @@ public class FindNextNodeAtSameLevel {
                       / \
                      7   8
         */
-        Node root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
-        root.left.left = new Node(4);
-        root.left.right = new Node(5);
-        root.right.left = new Node(6);
-        root.right.left.left = new Node(7);
-        root.right.left.right = new Node(8);
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+        root.right.left = new TreeNode(6);
+        root.right.left.left = new TreeNode(7);
+        root.right.left.right = new TreeNode(8);
 
-        Node right = findNextNodeAtSameLevel(root, root.left.right);
+        TreeNode right = findNextNodeAtSameLevel(root, root.left.right);
         if (right != null) {
             System.out.print("Right node is " + right.data);
         }

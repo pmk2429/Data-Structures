@@ -20,15 +20,6 @@ package list.linkedlist;
  */
 public class SortLinkedList {
 
-    private static ListNode getMiddleNode(ListNode head) {
-        ListNode slow = head, fast = head;
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-        return slow;
-    }
-
     private static ListNode merge(ListNode l1, ListNode l2) {
         ListNode dummyHead = new ListNode(-1);
         ListNode p = dummyHead;
@@ -60,6 +51,7 @@ public class SortLinkedList {
             head = head.next.next;
         }
         ListNode mid = midPrev.next;
+        // this steps breaks the LinkedList into 2 separate lists
         midPrev.next = null;
         return mid;
     }

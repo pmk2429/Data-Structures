@@ -51,7 +51,7 @@ public class Cousins {
         NodeInfo y = new NodeInfo(node2, level, null);
 
         // perform inorder traversal on the array and update `level` and `parent` info for each Node.
-        updateLevelAndParent(root, null, 1, x, y);
+        updateLevelAndParent(root, null, level, x, y);
 
         // return true if 'x' and 'y' are at the same level, but different parent
         return x.level == y.level && x.parent != y.parent;
